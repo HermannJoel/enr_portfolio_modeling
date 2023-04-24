@@ -74,7 +74,7 @@ viewhedgeasset_query= '''
     '''
 
 
-#======1.Exposition per year
+#1.Exposition per year
 exposure_y = '''
     SELECT year 
     ,CAST(ROUND(COALESCE(SUM(p50), 0) / 1000, 3) AS DECIMAL(10, 3)) + ( 
@@ -88,74 +88,75 @@ ORDER BY year
 '''
 
 
-#======2.Exposition per quarter per year
-query_2 ="SELECT year \
-	,quarter \
-	,CASE \
-        WHEN LEFT(quarter, 2) = 'Q1' \
-			THEN 'Q1' \
-		WHEN LEFT(quarter, 2) = 'Q2' \
-			THEN 'Q2' \
-		WHEN LEFT(quarter, 2) = 'Q3' \
-			THEN 'Q3' \
-		WHEN LEFT(quarter, 2) = 'Q4' \
-			THEN 'Q4' \
-		END AS quarters \
-	,CAST(ROUND(COALESCE(SUM(p50), 0) / 1000, 3) AS DECIMAL(10, 3))+ ( \
-		SELECT CAST(ROUND(COALESCE(SUM(p50), 0) / 1000, 3) AS DECIMAL(10,3)) \
-		FROM dash.p50p90hedge AS h \
-		WHERE a.year = h.year \
-			AND a.quarter = h.quarter \
-		) AS Exposure \
-FROM dash.p50p90asset AS a \
-GROUP BY year \
-	,quarter \
-ORDER BY year \
-	,quarter;"
-query_results_2 = pd.read_sql(query_2, postgressql_engine())
+#2.Exposition per quarter per year
+exposure_q ="""
+            SELECT 
+            year 
+            ,quarter 
+            ,CASE
+                WHEN LEFT(quarter, 2) = 'Q1'
+                    THEN 'Q1' 
+                WHEN LEFT(quarter, 2) = 'Q2' 
+                    THEN 'Q2' 
+                WHEN LEFT(quarter, 2) = 'Q3' 
+                    THEN 'Q3' 
+                WHEN LEFT(quarter, 2) = 'Q4' 
+                    THEN 'Q4' 
+            END AS quarters 
+            ,CAST(ROUND(COALESCE(SUM(p50), 0) / 1000, 3) AS DECIMAL(10, 3))+ ( 
+            SELECT CAST(ROUND(COALESCE(SUM(p50), 0) / 1000, 3) AS DECIMAL(10,3)) 
+            FROM dash.p50p90hedge AS h 
+                WHERE a.year = h.year AND a.quarter = h.quarter ) AS Exposure 
+            FROM dash.p50p90asset AS a 
+            GROUP BY year 
+            ,quarter 
+            ORDER BY year, quarter; 
+            """
 
-#======3.Exposition per month per year
+#3.Exposition per month per year
 
-query_3="SELECT year \
-	,month \
-	,CASE \
-        WHEN month = 1 \
-			THEN 'jan' \
-		WHEN month = 2 \
-			THEN 'feb' \
-		WHEN month = 3 \
-			THEN 'mar' \
-		WHEN month = 4 \
-			THEN 'apr' \
-		WHEN month = 5 \
-			THEN 'may' \
-		WHEN month = 6 \
-			THEN 'jun' \
-		WHEN month = 7 \
-			THEN 'jul' \
-		WHEN month = 8 \
-			THEN 'aug' \
-		WHEN month = 9 \
-			THEN 'sep' \
-		WHEN month = 10 \
-			THEN 'oct' \
-		WHEN month = 11 \
-			THEN 'nov' \
-		WHEN month = 12 \
-			THEN 'dec' \
-		END AS months \
-	,   CAST(ROUND(COALESCE(SUM(p50), 0) / 1000, 3) AS DECIMAL(10, 3))+ ( \
-		SELECT CAST(ROUND(COALESCE(SUM(p50), 0) / 1000, 3) AS DECIMAL(10, 3))\
-		FROM dash.p50p90hedge AS h \
-		WHERE a.year = h.year \
-			AND a.month = h.month \
-		) AS Exposure \
-FROM dash.p50p90asset AS a \
-GROUP BY year \
-	,month \
-ORDER BY year \
-	,month;"
-query_results_3 = pd.read_sql(query_3, postgressql_engine())
+exposure_m ="""
+        SELECT 
+            year 
+            ,month
+        ,CASE 
+            WHEN month = 1 
+                THEN 'jan'
+            WHEN month = 2
+                THEN 'feb' 
+            WHEN month = 3 
+                THEN 'mar'
+            WHEN month = 4 
+                THEN 'apr' 
+            WHEN month = 5 
+                THEN 'may' 
+            WHEN month = 6 
+                THEN 'jun' 
+            WHEN month = 7
+                THEN 'jul'
+            WHEN month = 8
+                THEN 'aug'
+            WHEN month = 9
+                THEN 'sep'
+            WHEN month = 10
+                THEN 'oct'
+            WHEN month = 11
+                THEN 'nov'
+            WHEN month = 12
+                THEN 'dec'
+        END AS months 
+        ,CAST(ROUND(COALESCE(SUM(p50), 0) / 1000, 3) AS DECIMAL(10, 3))+ ( 
+            SELECT CAST(ROUND(COALESCE(SUM(p50), 0) / 1000, 3) AS DECIMAL(10, 3))
+            FROM dash.p50p90hedge AS h 
+            WHERE a.year = h.year 
+            AND a.month = h.month
+            ) AS Exposure 
+        FROM dash.p50p90asset AS a 
+        GROUP BY year 
+        ,month 
+        ORDER BY year 
+        ,month;
+        """
 
 #=====4. Hedge type per year
 

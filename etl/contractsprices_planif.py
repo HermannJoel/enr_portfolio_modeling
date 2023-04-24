@@ -5,13 +5,9 @@ import os
 import configparser
 from datetime import datetime
 import sys
-# adding etls/functions to the system path
-sys.path.insert(0, 'D:/git-local-cwd/Data-Engineering-Projects/blx_mdp_data-eng/etls/functions')
-from etl_functions import (RemoveP50P90TypeHedge, CreateDataFrame, 
-                           MergeDataFrame, AdjustedByPct, ChooseCwd,
-                           RemoveP50P90, ReadExcelFile, SelectColumns,CreateMiniDataFrame)
+os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+from functions import* 
 
-ChooseCwd(cwd=os.getcwd())
 #Load Config
 config_file=os.path.join(os.path.dirname("__file__"), 'Config/config.ini') 
 config=configparser.ConfigParser(allow_no_value=True)
@@ -104,18 +100,15 @@ class etl_contract_prices(object):
         except Exception as e:
             print("Data transformation error!: "+str(e))
 
-if __name__ == '__main__':
-    etl_contract_prices=etl_contract_prices(template_hedge)
-    etl_contract_prices.transform_prices_planif(etl_contract_prices.df_hedge_ = etl_contract_prices.extract_data())
+#if __name__ == '__main__':
+    #etl_contract_prices=etl_contract_prices(template_hedge)
+    #etl_contract_prices.transform_prices_planif(etl_contract_prices.df_hedge_ = etl_contract_prices.extract_data())
 
-"""
-    def Load(self, target_pth, src_data):
-        src_data.to_csv(target_pth, ignore_index=True)
-        
-    loaded_data=Load(target_pth='D:/blx_mdp/cwd/in/prices_planif.txt', src_data=TransformPricesPlanif())
-    
-    #This method transform prices of assets in planification
-    def TransformPricesProd(self, data, **kwargs):
-        
-    return prices_prod
-"""      
+
+# def Load(self, target_pth, src_data):
+# src_data.to_csv(target_pth, ignore_index=True)
+# loaded_data=Load(target_pth='D:/blx_mdp/cwd/in/prices_planif.txt', src_data=TransformPricesPlanif())
+# #This method transform prices of assets in planification
+# def TransformPricesProd(self, data, **kwargs):
+# return prices_prod
+      

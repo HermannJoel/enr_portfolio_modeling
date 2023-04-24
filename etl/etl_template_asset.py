@@ -8,22 +8,19 @@ from pandasql import sqldf
 pysqldf=lambda q: sqldf(q, globals())
 import os
 pd.options.mode.chained_assignment = None
+os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+from functions import*
 
 #Load Config
 config_file=os.path.join(os.path.dirname("__file__"), 'Config/config.ini') 
 config=configparser.ConfigParser(allow_no_value=True)
 config.read(config_file)
 
-# adding etls/functions to the system path
-sys.path.insert(0, 'D:/git-local-cwd/Data-Engineering-Projects/blx_mdp_data-eng/etls/functions')
-from etl_functions import (RemoveP50P90TypeHedge, CreateDataFrame, 
-                                     MergeDataFrame, AdjustedByPct, ChooseCwd,
-                                     RemoveP50P90, ReadExcelFile, SelectColumns,CreateMiniDataFrame)
 
 dest_dir=os.path.join(os.path.dirname("__file__"), config['develop']['dest_dir'])
 temp_dir=os.path.join(os.path.dirname("__file__"),config['develop']['temp_dir'])
 
-def Extract(asset_vmr_path, asset_planif_path):
+def extract(asset_vmr_path, asset_planif_path):
     ''' Function to extract excel files.
     Parameters
     ==========
@@ -48,7 +45,7 @@ def Extract(asset_vmr_path, asset_planif_path):
         print("Data Extraction error!: "+str(e))
 
 
-def Transform(data_asset_vmr, data_asset_planif, **kwargs):
+def transform(data_asset_vmr, data_asset_planif, **kwargs):
     """
     udf Function to generate template asset.
     Parameters
@@ -265,7 +262,23 @@ def Transform(data_asset_vmr, data_asset_planif, **kwargs):
         print("Template asset transformation error!: "+str(e))
         
         
-def Load(dest_dir, src_flow, file_name, file_extension):
+def load(dest_dir, src_flow, file_name, file_extension):
+    """Function to load data as excle file     
+    parameters
+    ==========
+    dest_dir (str) :
+        target folder path
+    src_flow (DataFrame) :
+        data frame returned by transform function        
+    file_name (str) : 
+        destination file name
+    file_extension (str) :
+        file extension as xlsx, csv, txt...
+    exemple
+    =======
+    Load(dest_dir, template_asset_without_prod, 'template_asset', '.csv')
+    >>> to load template_asset_without_prod in dest_dir as template_asset.csv 
+    """
     try:
         if file_extension in ['.xlsx', '.xls', '.xlsm', '.xlsb', '.odf', '.ods', '.odt']:
             src_flow.to_excel(dest_dir+file_name+file_extension, index=False, float_format="%.4f")

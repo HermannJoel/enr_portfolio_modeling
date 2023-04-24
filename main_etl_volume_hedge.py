@@ -16,10 +16,10 @@ hedge=os.path.join(os.path.dirname("__file__"),config['develop']['hedge'])
 
 
 if __name__ == '__main__':
-    df_prod, df_profile, df_mean_profile, df_asset, df_hedge = Extract(prod_path=prod, prod_pct_path=prod, 
+    df_prod, df_profile, df_mean_profile, df_asset, df_hedge = extract(prod_path=prod, prod_pct_path=prod, 
                                                                 mean_pct_path=prod, asset_path=asset, 
                                                                 hedge_path=hedge)
-    df_oa, df_cr, df_ppa=Transform_(hedge=df_hedge)
+    df_oa, df_cr, df_ppa = transform_(hedge=df_hedge)
     volume_hedge=TransformHedge(data_prod=df_prod, hedge=df_hedge, 
                                 prod_pct=df_profile, mean_pct=df_mean_profile, 
                                 oa=df_oa, cr=df_cr, ppa=df_ppa, profile=df_profile)

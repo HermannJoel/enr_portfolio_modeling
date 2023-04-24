@@ -6,15 +6,9 @@ import configparser
 from datetime import datetime
 import sys
 pd.options.mode.chained_assignment = None
+os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+from functions import* 
 
-# adding etls/functions to the system path
-sys.path.insert(0, 'D:/git-local-cwd/Data-Engineering-Projects/blx_mdp_data-eng/etls/functions')
-from etl_functions import (RemoveP50P90TypeHedge, CreateDataFrame, 
-                           MergeDataFrame, AdjustedByPct, ChooseCwd,
-                           RemoveP50P90, ReadExcelFile, SelectColumns,
-                           CreateMiniDataFrame)
-
-ChooseCwd(cwd=os.getcwd())
 #Load Config
 config_file=os.path.join(os.path.dirname("__file__"), 'Config/config.ini') 
 config=configparser.ConfigParser(allow_no_value=True)
@@ -26,7 +20,7 @@ dest_dir=os.path.join(os.path.dirname("__file__"),config['develop']['dest_dir'])
 template_hedge=os.path.join(os.path.dirname("__file__"),config['develop']['template_hedge'])
 template_prices=os.path.join(os.path.dirname("__file__"),config['develop']['template_prices'])
 
-def Extract(template_hedge_path, template_asset_path):
+def extract(template_hedge_path, template_asset_path):
     ''' Function to extract excel files.
     Parameters
     ==========
@@ -350,7 +344,7 @@ def transform(template_asset, df_ppa, **kwargs):
         prices_oa_cr.to_excel(path_dir_temp+'contracts_prices_oa_cr_vmr.xlsx', index=False, float_format="%.3f")
 
 
-def Load(dest_dir, src_flow, file_name, file_extension):
+def load(dest_dir, src_flow, file_name, file_extension):
     """Function to load data as excle file     
     parameters
     ==========

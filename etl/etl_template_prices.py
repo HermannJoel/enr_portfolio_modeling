@@ -6,13 +6,8 @@ import configparser
 from datetime import datetime
 import sys
 pd.options.mode.chained_assignment = None
-
-# adding etls/functions to the system path
-# adding etls/functions to the system path
-sys.path.insert(0, 'D:/git-local-cwd/Data-Engineering-Projects/blx_mdp_data-eng/etls/functions')
-from etl_functions import (RemoveP50P90TypeHedge, CreateDataFrame, 
-                           MergeDataFrame, AdjustedByPct, ChooseCwd,
-                           RemoveP50P90, ReadExcelFile, SelectColumns,CreateMiniDataFrame)
+os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+from functions import*
 
 #Load Config
 config_file=os.path.join(os.path.dirname("__file__"), 'config/config.ini') 
@@ -23,7 +18,7 @@ config.read(config_file)
 dest_dir=os.path.join(os.path.dirname("__file__"),config['develop']['dest_dir'])
 
 
-def Extract(prices_path, template_asset_path):
+def extract(prices_path, template_asset_path):
     '''Function to extract excel files.
     Parameters
     ==========
@@ -108,7 +103,7 @@ def transform(data_prices, sub_template_asset, **kwargs):
         print("Template prices transformation error!: "+str(e))
 
 
-def Load(dest_dir, src_flow, file_name, file_extension):
+def load(dest_dir, src_flow, file_name, file_extension):
     """UDF Function to load template contracts prices asset in prod in dest folder as excel file     
     parameters
     ==========

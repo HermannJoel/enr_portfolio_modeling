@@ -17,35 +17,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from datetime import datetime as dt
 import os
-import configparser
-import datetime as dt
-import sys
-pd.options.mode.chained_assignment = None
 
-# adding etls/functions to the system path
-sys.path.insert(0, 'D:/git-local-cwd/portfolio-modeling/etls/functions')
-from etl_functions import (RemoveP50P90TypeHedge, CreateDataFrame, 
-                           MergeDataFrame, AdjustedByPct, ChooseCwd,
-                           RemoveP50P90, ReadExcelFile, SelectColumns,CreateMiniDataFrame)
 
-ChooseCwd(cwd='D:\git-local-cwd\portfolio-modeling')
-#Load Config
-config_file=os.path.join(os.path.dirname("__file__"), 'config/config.ini') 
-config=configparser.ConfigParser()
-config.read(config_file)
-
-# Initialize Variables
-dest_dir=os.path.join(os.path.dirname("__file__"),config['develop']['dest_dir'])
-future_products=os.path.join(os.path.dirname("__file__"),config['develop']['future_products'])
-
-src_dir="//DESKTOP-JDQLDT1/SharedFolder/d-eng/out/"
-dest_dir="//DESKTOP-JDQLDT1/SharedFolder/d-eng/out/"
-future_products="//DESKTOP-JDQLDT1/SharedFolder/d-eng/in/future_products.xlsx"
-
-path='D:/SharedFolder/d-eng/in/'
-year=2022
-filename=f"Futures_products_{datetime.today().year}.xlsx"
-
+path='D:/local-repo-github/enr_portfolio_modeling/'                #cookie file path
+os.chdir(path)
+year=2023
+filename=f"Futures_products_{dt.today().year}.xlsx"
 
 def change(x):
     if x=='-':
@@ -53,6 +30,7 @@ def change(x):
     else:
         x=str(x)
         try:
+            
             x=x.replace('\u202f','')
         except:
             x=x.replace('.', '')
@@ -75,7 +53,7 @@ def create_excel(dates,url,date1):
     driver = webdriver.Chrome(ChromeDriverManager().install(),chrome_options=chrome_options)
     driver.maximize_window()
     driver.get(url)
-    load_cookie(driver,'cookies.pkl' )
+    load_cookie(driver, 'cookies.pkl')
     i=0
     time.sleep(5)
     S=[[np.nan]*3 for i in range(6*len(dates))]
@@ -109,8 +87,11 @@ def create_excel(dates,url,date1):
     print(date1+'\n')
     
     button = driver.find_element_by_xpath('//*[@id="symbolheader_pffr"]/div/div[2]/div[4]')
-    driver.execute_script("arguments[0].click();", button)   
+    #element = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.ID, "element_id")))
+    #element.click()
+    driver.execute_script("arguments[0].click();", button) 
     time.sleep(6)
+    
     MB=[]
     MP=[]
     table_id = driver.find_elements(By.CLASS_NAME, 'mv-quote')
@@ -291,8 +272,8 @@ def create_excel(dates,url,date1):
 
 def scrap_eex(i):
     url='https://www.eex.com/en/market-data/power/futures'
-    Datescrap=str(datetime.today()-timedelta(days=i)).split(' ')[0]
-    if (datetime.today()-timedelta(days=i)).weekday() in [5,6]:
+    Datescrap=str(dt.today()-timedelta(days=i)).split(' ')[0]
+    if (dt.today()-timedelta(days=i)).weekday() in [5,6]:
         name_excel2=filename
         df_BME=pd.read_excel(name_excel2,sheet_name="MB")
         df_PME=pd.read_excel(name_excel2,sheet_name="MP")        
@@ -337,10 +318,10 @@ def scrap_eex(i):
         except Exception as e: # work on python 3.x
             print(str(e))
             #alert(sender,password,str(e))
-            if datetime.today()==datetime(year,1,1):
-                name_excel2=f"Futures_products_{datetime.today().year-1}.xlsx"
+            if dt.today()==dt(year,1,1):
+                name_excel2=f"Futures_products_{dt.today().year-1}.xlsx"
             else:
-                name_excel2=f"Futures_products_{datetime.today().year}.xlsx"
+                name_excel2=f"Futures_products_{dt.today().year}.xlsx"
             df_BME=pd.read_excel(name_excel2,sheet_name="MB")
             df_PME=pd.read_excel(name_excel2,sheet_name="MP")
             df_BQE=pd.read_excel(name_excel2,sheet_name="QB")
@@ -375,18 +356,11 @@ def scrap_eex(i):
                 DFQP.to_excel(writer, sheet_name='QP',index=False)
                 DFYB.to_excel(writer, sheet_name='YB',index=False)
                 DFYP.to_excel(writer, sheet_name='YP',index=False)
-                
+
     
-def do_scrap_eex(i):
-    """Change the argumet i accordingly:i.e: 0 to scrap today's prices, 
-    1= to scrap yerterday's prices, 
-    2=to scrap the day b4 yesterday prices....so on so forth.
-    Keep in mind that there aren't cotations on week-end. Consequently, 
-    on Monday to scrap last Friday data, (i) should be equal to 3.
-    """
+def do_scrap_eex(i):    
     print("futures scrapping starts")
     scrap_eex(i)
     print("futures scrapping is done")
 
-i=100
-do_scrap_eex(i) 
+    
