@@ -4,14 +4,11 @@ import xlsxwriter
 import os
 import configparser
 from datetime import datetime
-# adding etls/functions to the system path
-sys.path.insert(0, 'D:/git-local-cwd/Data-Engineering-Projects/blx_mdp_data-eng/etls/functions')
-from etl_functions import (RemoveP50P90TypeHedge, CreateDataFrame, 
-                           MergeDataFrame, AdjustedByPct, ChooseCwd,
-                           RemoveP50P90, ReadExcelFile, SelectColumns,CreateMiniDataFrame)
+os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+from functions import*
 
 #Load Config
-config_file=os.path.join(os.path.dirname("__file__"), 'config/config.ini') 
+config_file=os.path.join(os.path.dirname("__file__"), 'Config/config.ini') 
 config=configparser.ConfigParser(allow_no_value=True)
 config.read(config_file)
 
@@ -19,7 +16,7 @@ dest_dir=os.path.join(os.path.dirname("__file__"), config['develop']['dest_dir']
 temp_dir=os.path.join(os.path.dirname("__file__"),config['develop']['temp_dir'])
 
 
-def Extract(productible_path, project_names_path, template_asset_path):
+def extract(productible_path, project_names_path, template_asset_path):
     ''' Function to extract excel files.
     Parameters
     ==========
@@ -51,7 +48,7 @@ def Extract(productible_path, project_names_path, template_asset_path):
         print("Data Extraction error!: "+str(e))
 
 
-def Transform(data_productible, data_profile, data_project_names, data_template_asset):
+def transform(data_productible, data_profile, data_project_names, data_template_asset):
     try:
         #To import prod data from as pd data frame  
         df = data_productible
@@ -136,7 +133,7 @@ def Transform(data_productible, data_profile, data_project_names, data_template_
     except Exception as e:
         print("Template hedge transformation error!: "+str(e))
     
-def Load(dest_dir, src_productible, src_profile_id, src_profile, src_mean_profile, file_name):
+def load(dest_dir, src_productible, src_profile_id, src_profile, src_mean_profile, file_name):
     try:
         #To export prod with no projet_id, profil with no projet_id, typical profil data as one excel file 
         #Create a Pandas Excel writer using XlsxWriter as the engine.
@@ -153,7 +150,7 @@ def Load(dest_dir, src_productible, src_profile_id, src_profile, src_mean_profil
         print("Data load error!: "+str(e))
 
 
-def LoadTemplateAsset(dest_dir, src_flow, file_name, file_extension):
+def load_template_asset(dest_dir, src_flow, file_name, file_extension):
     """Function to load data as excle file     
     parameters
     ==========

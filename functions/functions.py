@@ -244,7 +244,7 @@ Parameters:
     return data
 
 
-def extract():
+def extract_data_from_excel_file():
     try:
         directory=dir
         for filename in os.listdir(dir):
@@ -346,14 +346,14 @@ def convert_date_columns(dataframe, date_format):
     return dataframe
   
     
-def insert_doc_to_mongodb(dest_db, dest_collection, query_name, **kwargs):
+def load_postgres_docs_to_mongodb(dest_db, dest_collection, query_name, **kwargs):
     try:
         myclient=MongoClient(kwargs['mongodb_conn_str'])
         db=myclient[dest_db]
         collection=db[dest_collection]
         collection.insert_many(
-            ConvertDateColumns(
-                QueryDataFromPostgreSQL(
+            convert_date_columns(
+                query_data_from_postgreSQL(
                     query=query_name, db_connection_string=kwargs['postgres_conn_str']), kwargs['date_format']
             ).to_dict('records')
         )
@@ -393,3 +393,62 @@ def make_dbc_table(df, style={}):
 def format_float(func, *args):
     result=func(*args)
     return round(result)
+
+def load_pickle(filename):
+    unpickleFile = open(filename, 'rb')
+    file = pickle.load(unpickleFile)
+    return file 
+
+
+def read_doc_from_mongodb(src_db, src_collection, query={}, no_id=True ,**kwargs):
+    try:
+        myclient = MongoClient(kwargs['mongodb_conn_str'])
+        db = myclient[src_db]
+        collection = db[src_collection]
+        cursor = collection.find(query)
+        data_frame = pd.DataFrame(list(cursor))
+        # Delete the _id
+        if no_id:
+            del data_frame['_id']
+        return data_frame
+        print("Data exported from mondgobd successfully!")
+    except Exception as e:
+        print("Data Import error!: "+str(e))
+        
+def load_as_excel_file(dest_dir, src_flow, file_name, file_extension):
+    try:
+        if file_extension in ['.xlsx', '.xls', '.xlsm', '.xlsb', '.odf', '.ods', '.odt']:
+            src_flow.to_excel(dest_dir+file_name+file_extension, index=False, float_format="%.4f")
+        else: 
+            src_flow.to_csv(dest_dir+file_name+file_extension, index=False, float_format="%.4f", encoding='utf-8-sig')
+            print("Data loaded succesfully!")
+    except Exception as e:
+        print("Data load error!: "+str(e))
+        
+def load_data_in_postgres_table(src_data, dest_table, **kwargs):
+    try:
+        engine = create_engine(f"postgresql+psycopg2://{pguid}:{pgpass}@{pgserver}:5432/{pgdb}")
+        src_data.to_sql(dest_table, kwargs['schema'], con=engine,
+                        index=False, if_exists='replace',
+                        chunksize=1000,
+                       )
+        print(f"Data inserted in postgres db:{pgdb} successfully")
+    except Exception as e:
+        print("Data Import error!: "+str(e))
+
+def load_docs_to_mongodb(dest_db, dest_collection, src_data, **kwargs):
+    try:
+        myclient=MongoClient(kwargs['mongodb_conn_str'])
+        db=myclient[dest_db]
+        collection=db[dest_collection]
+        collection.insert_many(
+            convert_date_columns(
+                src_data
+                , kwargs['date_format']
+            ).to_dict('records')
+        )
+        print("Data imported in mondgobd successfully!")
+    except Exception as e:
+        print("Data Import error!: "+str(e))
+
+

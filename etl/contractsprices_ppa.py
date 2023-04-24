@@ -6,14 +6,9 @@ import configparser
 from datetime import datetime
 import sys
 pd.options.mode.chained_assignment = None
-# adding etls/functions to the system path
-sys.path.insert(0, 'D:/git-local-cwd/Data-Engineering-Projects/blx_mdp_data-eng/etls/functions')
-from etl_functions import (RemoveP50P90TypeHedge, CreateDataFrame, 
-                           MergeDataFrame, AdjustedByPct, ChooseCwd,
-                           RemoveP50P90, ReadExcelFile, SelectColumns,
-                           CreateMiniDataFrame)
+os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+from functions import* 
 
-ChooseCwd(cwd=os.getcwd())
 #Load Config
 config_file=os.path.join(os.path.dirname("__file__"), 'Config/config.ini') 
 config=configparser.ConfigParser(allow_no_value=True)
@@ -26,7 +21,7 @@ template_asset=os.path.join(os.path.dirname("__file__"),config['develop']['templ
 ppa=os.path.join(os.path.dirname("__file__"),config['develop']['ppa'])
 
 
-def Extract(template_asset_path, ppa_path):
+def extract(template_asset_path, ppa_path):
     ''' Function to extract excel files.
     Parameters
     ==========

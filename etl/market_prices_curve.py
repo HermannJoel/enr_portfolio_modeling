@@ -1,15 +1,12 @@
 from datetime import datetime 
 import time
-import warnings
-warnings.filterwarnings("ignore")
 import pandas as pd
 from datetime import timedelta
 import numpy as np
 from datetime import datetime as dt
-pd.options.display.float_format = '{:.3f}'.format
 import os
-
-
+os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+from functions import* 
 
 nb_years=(2028-dt.today().year)#2008 represents end year of time horizon. Change the year to the year that suits the desired horizon
 nb_months=12#Number of months in one year
@@ -19,25 +16,25 @@ horizon_m=(nb_months*nb_years)-2#To remove the month of July/Aug. We are now in 
 horizon_q=nb_quarters-nb_eex_qb_cotation#To determine the number of quarter in the time horizon for which we have to compute prices
 
 
-def Extract(prod_path, prod_pct_path, mean_pct_path, asset_path):
-
+def extract(future_prices_path, q_w_path, m_w_path):
     try:
-        mb = ReadExcelFile(path_dir_in+'Futures_products_2022.xlsx', sheet_name='MB')
+        mb = read_excel_file(path=future_prices_path, sheet_name='MB')
         mb = mb.iloc[0:6,:]
-        df_prod_pct = ReadExcelFile(path_dir_in+'Futures_products_2022.xlsx', sheet_name='QB')
+        qb = read_excel_file(path=future_prices_path, sheet_name='QB')
         qb = qb.iloc[0:6,:]
-        df_mean_pct = ReadExcelFile(path_dir_in+'Futures_products_2022.xlsx', sheet_name='YB')
-        yb = yb.iloc[0:6,:]
+        calb = read_excel_file(path=future_prices_path, sheet_name='YB')
+        calb = calb .iloc[0:6,:]
         #Load weights to compute quarterly prices
-        q_weights = pd.read_excel(path_dir_in+'q_weights.xlsx', sheet_name='Qw')
+        q_w = read_excel_file(path=q_w_path)
         #Load weights to compute monthly prices 
-        m_weights=pd.read_excel(path_dir_in+'m_weights.xlsx', sheet_name='Mw')
-        
-        return mb, qb, yb, q_weights, m_weights
+        m_w = read_excel_file(path=m_w_path)
+        return mb, qb, calb, q_w, m_w
+    
     except Exception as e:
         print("Data Extraction error!: "+str(e))
+        
 
-def market_prices_curve(yb, qb, cal, horizon_q, horizon_m):
+def market_prices_curve_estimation(mb, qb, yb, q_weights, m_weights, horizon_q = horizon_q, horizon_m = horizon_m):
     #To transfrorm cal products
     yb['years']=["20"+yb['Delivery Period'][i][-2:] for i in range(len(yb))]
     yb['years']=pd.to_numeric(yb['years'])
@@ -293,10 +290,52 @@ def market_prices_curve(yb, qb, cal, horizon_q, horizon_m):
     mb_temp_['Settlement Price']=[price[i].values[0] for i in range(len(price))]
     frames=[mb_, mb_temp_]
     prices_mb=pd.concat(frames, axis=0, ignore_index=True)
+    prices_mb['cotation_date']=prices_mb['Date'][0]
+    prices_mb=prices_mb[['Delivery Period', 'Settlement Price', 'cotation_date']]
+    prices_mb.rename(columns = {"Delivery Period":"delivery_period", "Settlement Price":"settlement_price", 
+                     }, inplace = True)
     
     return prices_mb
+
+def load_docs_to_mongodb(dest_db, dest_collection, src_data, **kwargs):
+    """Function to load docs to in mongo db collection     
+    parameters
+    ==========
+    dest_db (str) :
+        
+        
+    dest_collection (str) :
+        destination collection        
+    src_data (DataFrame) : 
+        source DataFrame
+    **kwargs :
+        key words args
+    exemple
+    =======
+    load_docs_to_mongodb(dest_db='staging', dest_collection='EEX', 
+    src_data = market_prices_curve_estimation(mb = mb, qb = qb, yb = calb, q_weights = q_w, m_weights = m_w), 
+                     date_format = '%Y-%m-%d', mongodb_conn_str = mongodbatlas_stg_conn_str)
+    >>> to docs to EEX collection en staging db in mongodb 
+    """
+    try:
+        myclient=MongoClient(kwargs['mongodb_conn_str'])
+        db=myclient[dest_db]
+        collection=db[dest_collection]
+        collection.insert_many(
+            convert_date_columns(
+                src_data
+                , kwargs['date_format']
+            ).to_dict('records')
+        )
+        print("Data imported in mondgobd successfully!")
+    except Exception as e:
+        print("Data Import error!: "+str(e))
+
+
+
+        
     
-def Load(dest_dir, src_flow, file_name, file_extension):
+def load(dest_dir, src_flow, file_name, file_extension):
     scraped_date=(datetime.now()).strftime("%y_%m_%d")
     yesterday=(datetime.today() - timedelta(days=1)).strftime("%y_%m_%d") 
     try:
@@ -311,3 +350,4 @@ def Load(dest_dir, src_flow, file_name, file_extension):
         print("Data loaded succesfully!")
     except Exception as e:
         print("Data load error!: "+str(e))
+        
