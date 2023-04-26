@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import datetime as datetime
+from datetime import datetime as dt
 xrange = range
 import configparser
 import sys
@@ -9,40 +9,7 @@ pysqldf=lambda q: sqldf(q, globals())
 import os
 pd.options.mode.chained_assignment = None
 os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
-from functions import*
-
-#Load Config
-config_file=os.path.join(os.path.dirname("__file__"), 'Config/config.ini') 
-config=configparser.ConfigParser(allow_no_value=True)
-config.read(config_file)
-
-
-dest_dir=os.path.join(os.path.dirname("__file__"), config['develop']['dest_dir'])
-temp_dir=os.path.join(os.path.dirname("__file__"),config['develop']['temp_dir'])
-
-def extract_asset(asset_vmr_path, asset_planif_path):
-    ''' Function to extract excel files.
-    Parameters
-    ==========
-    asset_vmr_path: str
-        path excel file containing data asset in prod
-    asset_planif_path: str
-        path excel file containing data asset in planif    
-    Returns
-    =======
-    df_asset_vmr: DataFrame
-        asset vmr dataframe
-    df_planif: DataFrame
-        asset planif dataframe
-    '''
-    try:
-        df_asset_vmr=ReadExcelFile(asset_vmr_path, sheet_name="vmr", header=0)
-        df_asset_planif=ReadExcelFile(asset_planif_path, sheet_name="Planification", header=20, 
-                                      usecols=['#', 'Nom', 'Technologie', 'Puissance totale (pour les  repowering)', 
-                                               'date MSI depl', "date d'entrée dans statut S", 'Taux de réussite'])
-        return df_asset_vmr, df_asset_planif 
-    except Exception as e:
-        print("Data Extraction error!: "+str(e))
+from src.utils.functions import*
 
 
 def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
@@ -260,33 +227,3 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
         return template_asset_without_prod
     except Exception as e:
         print("Template asset transformation error!: "+str(e))
- 
-
-
-        
-def load(dest_dir, src_flow, file_name, file_extension):
-    """Function to load data as excle file     
-    parameters
-    ==========
-    dest_dir (str) :
-        target folder path
-    src_flow (DataFrame) :
-        data frame returned by transform function        
-    file_name (str) : 
-        destination file name
-    file_extension (str) :
-        file extension as xlsx, csv, txt...
-    exemple
-    =======
-    Load(dest_dir, template_asset_without_prod, 'template_asset', '.csv')
-    >>> to load template_asset_without_prod in dest_dir as template_asset.csv 
-    """
-    try:
-        if file_extension in ['.xlsx', '.xls', '.xlsm', '.xlsb', '.odf', '.ods', '.odt']:
-            src_flow.to_excel(dest_dir+file_name+file_extension, index=False, float_format="%.4f")
-        else: 
-            src_flow.to_csv(dest_dir+file_name+file_extension, index=False, float_format="%.4f", encoding='utf-8-sig')
-        print("Data loaded succesfully!")
-    except Exception as e:
-        print("Data load error!: "+str(e))
-        
