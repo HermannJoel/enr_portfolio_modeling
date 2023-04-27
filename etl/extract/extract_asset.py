@@ -3,7 +3,6 @@ import os
 os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 
-
 def extract_asset(asset_vmr_path, asset_planif_path):
     ''' Function to extract excel files.
     Parameters
