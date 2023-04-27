@@ -104,7 +104,6 @@ class etl_contract_prices(object):
     #etl_contract_prices=etl_contract_prices(template_hedge)
     #etl_contract_prices.transform_prices_planif(etl_contract_prices.df_hedge_ = etl_contract_prices.extract_data())
 
-
 # def Load(self, target_pth, src_data):
 # src_data.to_csv(target_pth, ignore_index=True)
 # loaded_data=Load(target_pth='D:/blx_mdp/cwd/in/prices_planif.txt', src_data=TransformPricesPlanif())

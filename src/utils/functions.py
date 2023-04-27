@@ -402,8 +402,13 @@ def load_pickle(filename):
     file = pickle.load(unpickleFile)
     return file 
 
+def rename_df_columns(df: pd.DataFrame, column_names: list):
+    """Rename DataFrame columns with strings from list"""
+    for i, col in enumerate(df.columns):
+        df = df.rename(columns={col: column_names[i]})
+    return df
 
-def read_doc_from_mongodb(src_db, src_collection, query={}, no_id=True ,**kwargs):
+def read_docs_from_mongodb(src_db, src_collection, column_names, query={}, no_id=True , **kwargs):
     try:
         myclient = MongoClient(kwargs['mongodb_conn_str'])
         db = myclient[src_db]
@@ -413,10 +418,11 @@ def read_doc_from_mongodb(src_db, src_collection, query={}, no_id=True ,**kwargs
         # Delete the _id
         if no_id:
             del data_frame['_id']
+        data_frame = rename_df_columns(data_frame, column_names)
         return data_frame
-        print("Data exported from mondgobd successfully!")
+        print(f"Data exported from {src_db}.{src_collection} successfully!")
     except Exception as e:
-        print("Data read error!: "+str(e))
+        print(f"Data read from {src_db}.{src_collection} error!: "+str(e))
         
 def load_as_excel_file(dest_dir, src_flow, file_name, file_extension):
     """Function to load data as excle file     
@@ -455,7 +461,7 @@ def load_data_in_postgres_table(src_data, dest_table, pguid, pgpass, pgserver, p
     except Exception as e:
         print(f"Data load in {kwargs['schema']}.{dest_table} error!:" +str(e))
         
-def load_data_to_mssql(src_data, dest_table, mssqldb='DWH', dtype={}, **kwargs):
+def load_data_to_mssql(src_data, dest_table, mssqlserver, mssqldb='DWH', dtype={}, yes='yes',**kwargs):
     """Function to load data in mssql db     
     parameters
     ==========
@@ -472,23 +478,28 @@ def load_data_to_mssql(src_data, dest_table, mssqldb='DWH', dtype={}, **kwargs):
     **kwargs
     exemple
     =======
-    load_data_to_mssql(src_data, dest_table, msqsldriver, mssqlserver, mssqldb, mssqluid, yes=yes, dtype={}, **kwargs)
+    load_data_to_mssql(src_data = src_data, dest_table = 'Hedge', mssqlserver = mssqlserver, mssqldb = mssqldb, if_exists = 'replace', schema = 'stg')
     >>>  
     """
     try:
-        #engine = create_engine(f"mssql+pyodbc://{mssqlserver}/{mssqldb}?driver=SQL+Server+Native+Client+11.0")
-        #cnxn = pyodbc.connect('DRIVER=ODBC Driver 17 for SQL Server'+';SERVER=' +mssqlserver + ';DATABASE=' +mssqldb + ';UID=' + mssqluid + ';Trusted_Connection=' +yes)
-        #params = urllib.parse.quote_plus("'DRIVER={ODBC Driver 17 for SQL Server};SERVER='+mssqlserver+';DATABASE='+mssqldb+';Trusted_Connection=' +yes;")
-        #engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
-        engine = create_engine('mssql+pyodbc://DESKTOP-JDQLDT1\MSSQLSERVERDWH,1443/DWH?driver=SQL+Server+Native+Client+11.0') 
-        src_data.to_sql(dest_table, kwargs['schema'], con=engine,
-                        index=False, if_exists = kwargs['if_exists'], 
-                        chunksize=1000, dtype=dtype
-                       )
-        print(f"Data inserted in mssql db:{pgdb} successfully")
+        cnxn = pyodbc.connect('DRIVER=SQL Server Native Client 11.0'+';SERVER=' + mssqlserver + ';DATABASE=' +mssqldb + ';Trusted_Connection=' +yes)
+        cursor = cnxn.cursor()
+        cols = ",".join([str(i) for i in src_data.columns.tolist()])
+        for i, row in src_data.iterrows():
+            sql = "INSERT INTO " +kwargs['schema']+'.'+ dest_table+ " (" +cols + ") VALUES (" + "?,"*(len(row)-1) + "?)"
+            cursor.execute(sql, tuple(row))
+            cnxn.commit()
+        print(f"Data inserted in {mssqldb}.{kwargs['schema']}.{dest_table}!") 
     except Exception as e:
         print(f"Data Import to mssql {mssqldb}.{kwargs['schema']}.{dest_table}. error!: " + str(e))
-
+    finally:
+        cursor.close()
+        
+def rename_df_columns(df: pd.DataFrame, column_names: list):
+    """Rename DataFrame columns with strings from list"""
+    for i, col in enumerate(df.columns):
+        df = df.rename(columns={col: column_names[i]})
+    return df
         
 
 def load_docs_to_mongodb(dest_db, dest_collection, src_data, **kwargs):
@@ -502,12 +513,12 @@ def load_docs_to_mongodb(dest_db, dest_collection, src_data, **kwargs):
                 , kwargs['date_format']
             ).to_dict('records')
         )
-        print("Data imported in mondgobd successfully!")
+        print(f"Data loaded to {dest_db}.{dest_collection} successfully!")
     except Exception as e:
-        print(f"Data import to mongodb {dest_db}.{dest_collection} error!: "+str(e))
+        print(f"Data loaded to {dest_db}.{dest_collection} error!: "+str(e))
         
         
-def load_data_to_gcbq_from_gcs(uri, schema=[], **kwargs):
+def load_data_to_gcbq_from_gcs(uri, write_disposition=None, schema=[], **kwargs):
     """Function exctract blob from gcs and load to gcbq     
     parameters
     ==========
@@ -533,7 +544,11 @@ def load_data_to_gcbq_from_gcs(uri, schema=[], **kwargs):
         #table_id = dataset_id.table(kwargs['table_name'])                #table name
         table_id = kwargs['table_name']
         job_config = bigquery.LoadJobConfig(
-        schema= schema,
+            skip_leading_rows=1, 
+            autodetect=True, 
+            schema= schema,
+            write_disposition = write_disposition,
+            ignore_unknown_values=True,
         source_format=bigquery.SourceFormat.CSV,
         )
         uri = uri 
@@ -546,7 +561,8 @@ def load_data_to_gcbq_from_gcs(uri, schema=[], **kwargs):
         )  
         load_job.result()  
         destination_table = client.get_table(table_id)
-        print("Loaded {} rows.".format(destination_table.num_rows))
+        print("Loaded {} rows.".format(destination_table.num_rows)) 
+        print(f"Data loaded to {kwargs['table_name']}")
     except Exception as e:
         print(f"Data load to {kwargs['table_name']} error!: "+str(e))
     
@@ -574,8 +590,38 @@ def load_blob_to_gcs(source_file_name, bucket_name, destination_blob_name, **kwa
         blob.upload_from_filename(source_file_name) 
         print( f"File {source_file_name} uploaded to {destination_blob_name}.") 
     except Exception as e:
-        print(f"Data load to {bucket} error!: " + str(e))
+        print(f"{destination_blob_name} load to {bucket} error!: " + str(e))
 
+        
+def load_data_to_mssqlserver(src_data, dest_table, mssqlserver, mssqldb='DWH', dtype={}, yes='yes',**kwargs):
+    """Function to load data in mssql db     
+    parameters
+    ==========
+    src_data (str) :
+        Source data
+    dest_table (str) :
+        Destination table in         
+    mssqlserver (str) : 
+        mssql instance server name
+    mssqldb (str) :
+        data base name
+    dtype={} (Dictionnary) : 
+        Dictonnary containing source data type
+    **kwargs
+    exemple
+    =======
+    load_data_to_mssql(src_data, dest_table, msqsldriver, mssqlserver, mssqldb, mssqluid, yes=yes, dtype={}, **kwargs)
+    >>>  
+    """
+    try:
+        connect_string = urllib.parse.quote_plus(f'DRIVER={{ODBC Driver 17 for SQL Server}};Server=DESKTOP-JDQLDT1\MSSQLSERVERDWH,1433;Database=DWH')
+        engine = sqlalchemy.create_engine(f'mssql+pyodbc:///?odbc_connect={connect_string}', fast_executemany=True)
+        src_data.to_sql(dest_table, kwargs['schema'], con=engine,
+                        index=False, if_exists = kwargs['if_exists'], 
+                        chunksize=1000, dtype=dtype, insert_many=True)
+        print(f"Data inserted in {mssqldb}.{kwargs['schema']}.{dest_table}!") 
+    except Exception as e:
+        print(f"Data Import to mssql {mssqldb}.{kwargs['schema']}.{dest_table}. error!: " + str(e))
         
 
 
