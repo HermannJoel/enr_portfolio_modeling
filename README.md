@@ -6,4 +6,4 @@
 
 ![Image]( /etl_gcs_snowflake.jpeg "gcs ETL PIPELINE")
 
-![Image]( /etl_google_bigquery.jpeg "gcs-Snowflake ETL PIPELINE"")
+![Image]( /etl_google_bigquery.jpeg "gcs-Snowflake ETL PIPELINE")
