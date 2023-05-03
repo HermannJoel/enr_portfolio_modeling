@@ -1,3 +1,9 @@
 # Portfolio Risk Modeling data pipeline
 
-![Image]( /enr_portfolio_modeling.jpeg "enr portfolio modeling")
+
+## 1. PIPELINE ARCHITECTURE
+![Image]( /etl_mongodb_mssql.jpeg "enr portfolio modeling")
+
+![Image]( /etl_gcs_snowflake.jpeg "gcs ETL PIPELINE")
+
+![Image]( /etl_google_bigquery.jpeg "gcs-Snowflake ETL PIPELINE"")
