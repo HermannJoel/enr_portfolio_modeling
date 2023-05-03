@@ -27,6 +27,14 @@ msqsldriver = os.path.join(os.path.dirname("__file__"),config['develop']['mssqls
 mssqldb = os.path.join(os.path.dirname("__file__"),config['develop']['mssqldw'])
 uri = os.path.join(os.path.dirname("__file__"),config['develop']['uri'])
 mongodbatlas_stg_conn_str = os.path.join(os.path.dirname("__file__"),config['develop']['mongodbatlas_stg_conn_str']) 
+snowflake_user =  os.path.join(os.path.dirname("__file__"),config['develop']['snowflakeuser'])
+snowflake_password = os.path.join(os.path.dirname("__file__"),config['develop']['snowflakepassword'])
+snowflake_account =  os.path.join(os.path.dirname("__file__"),config['develop']['snowflakeaccount'])
+snowflake_warehouse = os.path.join(os.path.dirname("__file__"),config['develop']['snowflakewarehouse'])
+snowflake_schema = os.path.join(os.path.dirname("__file__"),config['develop']['snowflakeschema'])
+sf_dest_table = os.path.join(os.path.dirname("__file__"),config['develop']['sf_dest_table'])
+gcs_stage = os.path.join(os.path.dirname("__file__"),config['develop']['gcs_stage'])
+gcs_stg_url = os.path.join(os.path.dirname("__file__"),config['develop']['gcs_stg_url'])
 
 
 if __name__ == '__main__':
@@ -76,3 +84,16 @@ if __name__ == '__main__':
                                    bigquery.SchemaField('CountryCounterparty', 'STRING')
                                ] 
                               )
+
+if __name__ == '__main__':
+    #load dimdate to blob gcs
+    #load_blob_to_gcs(source_file_name= '//DESKTOP-JDQLDT1/SharedFolder/enr_modeling/in/dim_date.csv', 
+                     #bucket_name = bucketid, 
+                     #destination_blob_name = 'dim_date.csv', 
+                     #google_application_credentials = google_application_credentials)
+    
+    load_data_to_snowflake(snowflakeuser=snowflake_user, gcs_stg_url=gcs_stg_url,
+                           snowflakepassword=snowflake_password, snowflakeaccount=snowflake_account, 
+                           snowflakewarehouse=snowflake_warehouse, snowflakeschema=snowflake_schema,
+                           sf_dest_table = sf_dest_table, gcs_stage = gcs_stage, 
+                           query=f"COPY INTO {snowflake_schema}.{sf_dest_table} FROM @{snowflake_schema}.{gcs_stage} FILE_FORMAT = (FORMAT_NAME=MY_FILE_FORMAT) ON_ERROR='ABORT_STATEMENT';")

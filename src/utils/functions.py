@@ -15,6 +15,10 @@ import dash_bootstrap_components as dbc
 from dash import html
 from google.cloud import bigquery
 from google.cloud import storage
+import snowflake.connector
+from snowflake.connector.pandas_tools import write_pandas
+import csv
+from io import StringIO
 
 def remove_p50_p90_type_hedge(data, *args, **kwargs):
     """udf to remove p50 p90 values based on date_debut and date_fin
@@ -223,6 +227,7 @@ Args:
     data (DataFrame) :
     date_debut (str) : The arg takes the value 'date_debut' 
     date_fin (str) : The arg takes the value 'date_fin'
+    date_dementelement (str) : The arg takes the value 'date_dementelement'
     price (str) : The arg takes the value 'contract_price'
     date (str) : The arg takes the value 'date'
     projetid (str) : The arg takes the value 'projet_id'
@@ -231,16 +236,24 @@ Args:
 Parameters:
     cond : (condition 1) 'date' column is less (in total seconds) than a given projet_id's first 'date_debut' value 
     cond_2 : (condition 2) 'date' column is higher (in total seconds) than a given projet_id's first 'date_fin' value
+    cond_3 : (condition 3) 
     """
     cond=((data[kwargs['date']] - data.groupby(kwargs['projetid'], kwargs['hedgeid'])[kwargs['date_debut']].transform('first')).dt.total_seconds())<0
     data[kwargs['price']] = np.where(cond,'', data[kwargs['price']])
-    #To remove type of hedge based on date cod
+    #To remove prices based on date cod
     data[kwargs['th']]=np.where(cond,'', data[kwargs['th']])
-    #To remove p50 p90 based on date_fin
+    #To remove based on date_fin
     cond_2=((data[kwargs['date']] - data.groupby(kwargs['projetid'], kwargs['hedgeid'])[kwargs['date_fin']].transform('first')).dt.total_seconds())>0
     data[kwargs['price']] = np.where(cond_2, '', data[kwargs['price']])
-    #To remove type of hedge based on date cod
+    #To remove prices based on date_dementelement
+    cond_3=((data[kwargs['date']] - data.groupby(kwargs['projetid'], kwargs['hedgeid'])[kwargs['date_dementelement']].transform('first')).dt.total_seconds())>0
+    data[kwargs['price']] = np.where(cond_3, '', data[kwargs['price']])   
+    #To remove type of hedge based on date_debut
     data[kwargs['th']]=np.where(cond,'', data[kwargs['th']])
+    #To remove type of hedge based on date_fin
+    data[kwargs['th']]=np.where(cond_2,'', data[kwargs['th']])
+    #To remove type of hedge based on date_dementelement
+    data[kwargs['th']]=np.where(cond_3,'', data[kwargs['th']])
     #To reset index
     data.reset_index(inplace=True, drop=True)
     data=data.assign(id=[1 + i for i in xrange(len(data))])[['id'] + data.columns.tolist()]
@@ -588,9 +601,9 @@ def load_blob_to_gcs(source_file_name, bucket_name, destination_blob_name, **kwa
         bucket = storage_client.bucket(bucket_name) 
         blob = bucket.blob(destination_blob_name) 
         blob.upload_from_filename(source_file_name) 
-        print( f"File {source_file_name} uploaded to {destination_blob_name}.") 
+        print( f"File {source_file_name} uploaded as {destination_blob_name} to {bucket_name}.") 
     except Exception as e:
-        print(f"{destination_blob_name} load to {bucket} error!: " + str(e))
+        print(f"{destination_blob_name} load to {bucket_name} as {bucket} error!: " + str(e))
 
         
 def load_data_to_mssqlserver(src_data, dest_table, mssqlserver, mssqldb='DWH', dtype={}, yes='yes',**kwargs):
@@ -622,7 +635,95 @@ def load_data_to_mssqlserver(src_data, dest_table, mssqlserver, mssqldb='DWH', d
         print(f"Data inserted in {mssqldb}.{kwargs['schema']}.{dest_table}!") 
     except Exception as e:
         print(f"Data Import to mssql {mssqldb}.{kwargs['schema']}.{dest_table}. error!: " + str(e))
+
+def update_data_types(data_frame: pd.DataFrame, data_type_dict: dict):
+    for col, data_type in data_type_dict.items():
+        if col in data_frame.columns:
+            data_frame[col] = data_frame[col].astype(data_type)
+    return data_frame
         
+def read_blob_from_gcs(bucket_name, blob_name, **kwargs):
+    try:
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = kwargs['google_application_credentials']
+        storage_client = storage.Client() 
+        bucket = storage_client.bucket(bucket_name) 
+        blob = bucket.blob(blob_name) 
+        blob = blob.download_as_text(encoding="utf-8")
+        with blob.open("r") as f:
+            print('f')        
+    except Exception as e:
+        print('')
+    
+        
+def load_data_to_snowflake(snowflakeuser:str, gcs_stg_url:str,
+                           snowflakepassword:str, snowflakeaccount:str, sf_dest_table:str,
+                           gcs_stage:str, snowflakewarehouse:str, snowflakeschema:str, query:str):
+    """Function to load data from gcs stage in snowflake to snowflake table
+    parameters
+    ==========
+    snowflakeuser (str) :
+        sf User name
+    gcs_stg_url (str) :
+        url of gcs file to stage in snowflake         
+    snowflakepassword (str) : 
+        sf password
+    snowflakeaccount (str) :
+        sf account
+    sf_dest_table (str) : 
+        Destination table in snowflake
+    gcs_stage (str) :
+        Stage name in snowflake particulat schema
+    snowflakewarehouse (str) :
+        Snowflake warehouse name
+    snowflakeschema (str) :
+        Dest table schame in snowflake
+    query (str) :
+        Query to copy data from stage and load to sf dest table
+    exemple
+    =======
+    load_data_to_snowflake(snowflakeuser=snowflake_user, gcs_stg_url=gcs_stg_url,
+                           snowflakepassword=snowflake_password, snowflakeaccount=snowflake_account, 
+                           snowflakewarehouse=snowflake_warehouse, snowflakeschema=snowflake_schema,
+                           sf_dest_table = sf_dest_table, gcs_stage = gcs_stage, 
+                           query=f"COPY INTO {snowflake_schema}.{sf_dest_table} FROM @{snowflake_schema}.{gcs_stage} FILE_FORMAT = (FORMAT_NAME=MY_FILE_FORMAT) ON_ERROR='ABORT_STATEMENT';")
+    >>>  
+    """
+    try : 
+        ctx = snowflake.connector.connect(
+            user = snowflakeuser,
+            password = snowflakepassword,
+            account = snowflakeaccount,
+            warehouse = snowflakewarehouse 
+        )
+        cursor = ctx.cursor()
+        cursor.execute(f"USE {snowflakewarehouse};")
+        try:
+            cursor.execute(f"ALTER WAREHOUSE {snowflakewarehouse} RESUME;")
+        except:
+            pass
+        cursor.execute(f"USE {snowflakeschema};")
+        cursor.execute(f"CREATE OR REPLACE FILE FORMAT {snowflakschema}.MY_CSV_FORMAT \
+                       TYPE = CSV \
+                       FIELD_DELIMITER= ';' \
+                       SKIP_HEADER = 1 \
+                       NULL_IF = ('NULL', 'null') \
+                       EMPTY_FIELD_AS_NULL = true;"
+                      )
+        cursor.execute(f"CREATE OR REPLACE STAGE {snowflakschema}.{gcs_stage} STORAGE_INTEGRATION = GCP_INT \
+                       URL = {gcs_stg_url} \
+                       FILE_FORMAT = MY_CSV_FORMAT;"
+                      )
+        cursor.execute(query)
+        print(f"File {gcs_stg_url} loaded to {snowflakewarehouse}.{snowflakeschema}.{sf_dest_table}!")
+    except Exception as e:
+        print(f"File {gcs_stg_url} load to {snowflakewarehouse}.{snowflakeschema}.{sf_dest_table} error:" + str(e))
+    finally:
+        cursor.close()
+        
+
+        
+        
+
 
 
 
