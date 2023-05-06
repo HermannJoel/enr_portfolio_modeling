@@ -142,10 +142,10 @@ Args:
     return round(data[kwargs['col1']].apply(lambda x: float(x)), 4) * round(data[kwargs['col2']].apply(lambda x: float(x)), 4)
 
 def merge_data_frame(*args):
-    """
-    To merge df    
-Args:
-    **kwargs : 
+    """To merge df 
+    Parameters
+    ==========
+    * : DataFrame, 
     """
     frames=args
     merged_df=pd.concat(frames)
@@ -187,17 +187,22 @@ def select_columns(data, *args):
     return selection
 
 def create_mini_data_frame(data, *args, **kwargs):
-    """
-    To create a DataFrame containing p50 and P90 across our time horizon     
-    args:
-    data (DataFrame) : 
-    *args: non-keyworded arguments
-        sd (str) : Takes the value of the start of the horizon  dd-mm-yyyy  '01-01-2022'
-    **kwargs : keyworded arguments
-        a (int) : Takes the value 0
-        b (int) : Takes the value of the length of our horizon (12*7)
-        n (int) : The arg takes the value length of data 
-        date (str) : The arg takes the value of date colum label 'date'
+    """To create a DataFrame containing p50 and P90 across our time horizon     
+    Parameters
+    ==========
+    data : DataFrame,
+    * 
+    sd : str, 
+        Takes the value of the start of the horizon  dd-mm-yyyy  '01-01-2022'
+    **
+    a : int, 
+        Takes the value 0
+    b : int,
+        Takes the value of the length of our horizon (12*7)
+    n : int,
+        The arg takes the value length of data 
+    date : str,
+        The arg takes the value of date colum label 'date'
     """
     start_date=pd.to_datetime(args*kwargs['n'])
     d=pd.DataFrame()
@@ -215,38 +220,42 @@ def dis_warn():
         warnings.simplefilter("ignore")
         
     
-def postgressql_engine(): 
-    engine = create_engine('postgresql+psycopg2://postgres:24Fe1988@localhost:5432/blxmdpdwdev') 
-    return engine
-
 def remove_contract_prices(data, *args, **kwargs):
-    """
-    To remove Contract prices values based on date_debut and date_fin
-    condition:The date value is prior to date_debut and post to date_fin    
-Args:
+    """To remove Contract prices values based on date_debut and date_fin
+    condition:The date value is prior to date_debut and post to date_fin 
+    
+    Parameters
+    ==========
     data (DataFrame) :
-    date_debut (str) : The arg takes the value 'date_debut' 
-    date_fin (str) : The arg takes the value 'date_fin'
-    date_dementelement (str) : The arg takes the value 'date_dementelement'
-    price (str) : The arg takes the value 'contract_price'
-    date (str) : The arg takes the value 'date'
-    projetid (str) : The arg takes the value 'projet_id'
-    hedgeid (str) :  The arg takes the value 'hedge_id'
-    th  (str) : Type hedge   
-Parameters:
-    cond : (condition 1) 'date' column is less (in total seconds) than a given projet_id's first 'date_debut' value 
-    cond_2 : (condition 2) 'date' column is higher (in total seconds) than a given projet_id's first 'date_fin' value
-    cond_3 : (condition 3) 
+            
+    sd : str,
+            The arg takes the value 'date_debut' 
+    ed : str,
+            The arg takes the value 'date_fin'
+    dd : str,
+            The arg takes the value 'date_dementelement'
+    price : str,
+            The arg takes the value 'contract_price'
+    date : str,
+            The arg takes the value 'date'
+    projetid : str,
+            The arg takes the value 'projet_id'
+    hedgeid : str,  
+            The arg takes the value 'hedge_id'
+    th : str,
+            Type hedge   
+    cond : 'date' column is less (in total seconds) than a given projet_id's first 'date_debut' value 
+    cond_2 : 'date' column is higher (in total seconds) than a given projet_id's first 'date_fin' value
+    cond_3 : 'date' column is higher (in total seconds) than a given projet_id's first 'date_dementelement' value
     """
-    cond=((data[kwargs['date']] - data.groupby(kwargs['projetid'], kwargs['hedgeid'])[kwargs['date_debut']].transform('first')).dt.total_seconds())<0
+    cond=((data[kwargs['date']] - data.groupby([kwargs['projetid'], kwargs['hedgeid']])[kwargs['sd']].transform('first')).dt.total_seconds())<0
+    #To remove prices based on date_debu
     data[kwargs['price']] = np.where(cond,'', data[kwargs['price']])
-    #To remove prices based on date cod
-    data[kwargs['th']]=np.where(cond,'', data[kwargs['th']])
     #To remove based on date_fin
-    cond_2=((data[kwargs['date']] - data.groupby(kwargs['projetid'], kwargs['hedgeid'])[kwargs['date_fin']].transform('first')).dt.total_seconds())>0
+    cond_2=((data[kwargs['date']] - data.groupby([kwargs['projetid'], kwargs['hedgeid']])[kwargs['ed']].transform('first')).dt.total_seconds())>0
     data[kwargs['price']] = np.where(cond_2, '', data[kwargs['price']])
     #To remove prices based on date_dementelement
-    cond_3=((data[kwargs['date']] - data.groupby(kwargs['projetid'], kwargs['hedgeid'])[kwargs['date_dementelement']].transform('first')).dt.total_seconds())>0
+    cond_3=((data[kwargs['date']] - data.groupby([kwargs['projetid'], kwargs['hedgeid']])[kwargs['dd']].transform('first')).dt.total_seconds())>0
     data[kwargs['price']] = np.where(cond_3, '', data[kwargs['price']])   
     #To remove type of hedge based on date_debut
     data[kwargs['th']]=np.where(cond,'', data[kwargs['th']])
@@ -719,6 +728,7 @@ def load_data_to_snowflake(snowflakeuser:str, gcs_stg_url:str,
         print(f"File {gcs_stg_url} load to {snowflakewarehouse}.{snowflakeschema}.{sf_dest_table} error:" + str(e))
     finally:
         cursor.close()
+        print('connection closed!')
         
 
         

@@ -6,7 +6,7 @@ from src.utils.functions import*
 
 
 
-def extract_contract_prices(template_hedge_path, template_asset_path, ppa_path):
+def extract_contract_prices(template_hedge_path, template_asset_path, ppa_path, template_prices_path):
     ''' Function to extract excel files.
     Parameters
     ==========
@@ -29,8 +29,9 @@ def extract_contract_prices(template_hedge_path, template_asset_path, ppa_path):
         df_template_hedge = read_excel_file(template_hedge_path)
         df_template_asset = read_excel_file(template_asset_path)
         df_ppa = read_excel_file(ppa_path)
+        df_prices = read_excel_file(template_prices_path)
         
-        return df_template_hedge, df_template_asset, df_ppa 
+        return df_template_hedge, df_template_asset, df_ppa, df_prices 
     except Exception as e:
         print("Data Extraction error!: "+str(e))
         

@@ -13,8 +13,7 @@ from src.utils.functions import*
 
 
 def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
-    """
-    udf Function to generate template asset.
+    """udf Function to generate template asset.
     Parameters
     ===========
     **kwargs

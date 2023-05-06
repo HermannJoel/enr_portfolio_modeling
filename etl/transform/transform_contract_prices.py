@@ -25,9 +25,9 @@ def transform_contract_prices_planif(data_hedge):
         df_hedge_sol=df_hedge_sol[df_hedge_sol['projet'].isin(ppa) == False]
         df_hedge_wp=df_hedge_wp[df_hedge_wp['projet'].isin(ppa) == False]
 
-        df_hedge_sol=df_hedge_sol.iloc[:,np.r_[1, 2, 3, 5, 6, 7]]
+        df_hedge_sol=df_hedge_sol.iloc[:,np.r_[1, 2, 3, 5, 6, 7, 8]]
         n_sol=len(df_hedge_sol)
-        df_hedge_wp=df_hedge_wp.iloc[:,np.r_[1, 2, 3, 5, 6, 7]]
+        df_hedge_wp=df_hedge_wp.iloc[:,np.r_[1, 2, 3, 5, 6, 7, 8]]
         n_wp=len(df_hedge_wp)
         print('create solar & wind power dfs:\n')
         #create a df solar
@@ -49,13 +49,13 @@ def transform_contract_prices_planif(data_hedge):
         #To merge hedge_vmr and hedge_planif
         d=merge_data_frame(d1, d2)
         #To remove price based on date_debut and date_fin
-        prices_planif=remove_contract_prices(data=d, sd='date_debut', ed='date_fin', price='price',
-                                             th='type_hedge', date='date', projetid='projet_id', 
-                                             hedgeid='hedge_id')
+        prices_planif=remove_contract_prices(data=d, sd='date_debut', ed='date_fin', dd='date_dementelement', price='price',
+                                             th='type_hedge', date='date', projetid='projet_id', hedgeid='hedge_id')
 
         prices_planif=select_columns(prices_planif, 'hedge_id', 'projet_id', 'projet', 'type_hedge', 'date_debut', 
-                                     'date_fin', 'date', 'année', 'trimestre', 'mois', 'price') 
-
+                                     'date_fin', 'date', 'année', 'trimestre', 'mois', 'price')
+        
+        print('solar & wind power dfs creation ends:\n')
         return prices_planif
     except Exception as e:
             print("Data transformation error!: "+str(e))
@@ -79,6 +79,7 @@ def transform_contract_price_ppa(template_asset, data_ppa, **kwargs):
         template prices dataframe
     """
     try:
+        print('df prices ppa creation starts:\n')
         ppa_= data_ppa
         ppa_=ppa_.iloc[:,np.r_[0, 1, 2, 4, 5, 6, -1]]
         #Import date cod & date_dementelement from asset
@@ -88,65 +89,39 @@ def transform_contract_price_ppa(template_asset, data_ppa, **kwargs):
         #To merge ppa prices data and template asset 
         ppa=pd.merge(ppa_, asset_, how='left', on=['projet_id'])
         n_ppa = len(ppa)
-        #To create a df containing all the dates within the time horizon  
-        #df = ppa.copy()     
-        #start_date = pd.to_datetime([date_obj] * nbr)
-        #d = pd.DataFrame()
-        #for i in range(0, horizon):
-            #df_buffer= df 
-            #df_buffer["date"] = start_date
-            #d = pd.concat([d, df_buffer], axis=0)
-            #start_date= start_date + pd.DateOffset(months=1)
-        #reset index    
-        #d.reset_index(drop=True, inplace=True)
-        
         d = create_mini_data_frame(ppa, '01-01-2022', n=n_ppa, a=0, b=12*7, date='date')
         d.reset_index(inplace=True, drop=True)
         #To create quarter and month columns
         d['année'] = d['date'].dt.year
         d['trimestre'] = d['date'].dt.quarter
         d['mois'] = d['date'].dt.month
-
-        #To remove price based on date_debut
-        #Condition:date column is less (in total seconds) than first date for each projet_id's first date_cod value
-        #cond=((d['date'] - d.groupby(['hedge_id', 'projet_id'])['date_debut'].transform('first')).dt.total_seconds())<0
-        #d['price'] = np.where(cond,'', d['price'])
-        #To remove price based on date_fin
-        #cond_2=((d['date'] - d.groupby(['hedge_id', 'projet_id'])['date_fin'].transform('first')).dt.total_seconds())>0
-        #d['price'] = np.where(cond_2, '', d['price'])
-        #To remove price based on date_dementelemnt
-        #cond_2=((d['date'] - d.groupby(['hedge_id', 'projet_id'])['date_dementelement'].transform('first')).dt.total_seconds())>0
-        #d['price'] = np.where(cond_2, '', d['price'])
-        
-        prices_ppa = remove_contract_prices(data=d, sd='date_debut', ed='date_fin', price='price', 
-                                            th='type_hedge', date_dementelement='date_dementelement', 
-                                            date='date', projetid='projet_id', hedgeid='hedge_id')
+        prices_ppa = remove_contract_prices(data=d, sd='date_debut', ed='date_fin', dd='date_dementelement', price='price', 
+                                            th='type_hedge', date='date', projetid='projet_id', hedgeid='hedge_id')
         prices_ppa=select_columns(d,'hedge_id', 'projet_id', 'projet', 'type_hedge', 'date_debut', 
                                  'date_fin', 'date', 'année', 'trimestre', 'mois', 'price')
+        print('df prices ppa ends:\n')
         return prices_ppa
-        
+    
     except Exception as e:
         print("Data transformation eror!:" +str(e))
         
 def transform_contract_prices_inprod(template_asset, template_hedge, template_prices, data_ppa, **kwargs):
-    """
-    udf Function to generate template contracts prices asset in prod
+    """udf function to generate template contracts prices asset in prod
     Parameters
     ===========
     **kwargs
-        hedge_vmr: DataFrame
-                
-        hedge_planif: DataFrame
-    prices: DataFrame
+    template_asset : DataFrame,            
+    template_hedge : DataFrame,
+    template_prices : DataFrame,
         data frame contract prices
-    template_asset: DataFrame
-    date (str) :
+    data_ppa : DataFrame,
     Returns
     =======
-    template_prices: DataFrame
+    prices_oa_cr_ppa : DataFrame,
         template prices dataframe
     """
     try:
+        print('df prices assets in prod starts:\n')
         hedge_ = template_hedge
         hedge=hedge_.loc[hedge_['en_planif'] == 'Non']
         hedge.reset_index(drop=True, inplace=True)
@@ -163,12 +138,12 @@ def transform_contract_prices_inprod(template_asset, template_hedge, template_pr
         hedge_planif_sol=hedge_planif_sol[hedge_planif_sol['projet'].isin(ppa) == False]
         hedge_planif_eol=hedge_planif_eol[hedge_planif_eol['projet'].isin(ppa) == False]
 
-        hedge_planif_sol=hedge_planif_sol.iloc[:,np.r_[1, 2, 3, 5, 6, 7]]
-        hedge_planif_eol=hedge_planif_eol.iloc[:,np.r_[1, 2, 3, 5, 6, 7]]
-        hedge_ppa=hedge_ppa.iloc[:,np.r_[1, 2, 3, 5, 6, 7]]
+        hedge_planif_sol=hedge_planif_sol.iloc[:,np.r_[1, 2, 3, 5, 6, 7, 8]]
+        hedge_planif_eol=hedge_planif_eol.iloc[:,np.r_[1, 2, 3, 5, 6, 7, 8]]
+        hedge_ppa=hedge_ppa.iloc[:,np.r_[1, 2, 3, 5, 6, 7, 8]]
 
 
-        #asset_=pd.read_excel(path_dir_in+"template_asset.xlsx")
+        asset_=template_asset
         asset=asset_.loc[asset_['en_planif']=='Non']
         asset=asset[['asset_id', 'projet_id', 'cod', 'date_merchant']]
         asset.reset_index(drop=True, inplace=True)
@@ -251,11 +226,10 @@ def transform_contract_prices_inprod(template_asset, template_hedge, template_pr
         price_oa_cr_temp2.reset_index(inplace=True, drop=True)
 
         #OA CR
-        '''
-        To divide the data frame in 2 distinct df
+        """To divide the data frame in 2 distinct df
         price_oa_cr_: contain attributes 
         price_oa_cr: contain prices date  
-        '''
+        """
         price_oa_cr_temp_ = price_oa_cr_temp.iloc[:, 0:12]
         price_oa_cr_temp2_ = price_oa_cr_temp2.iloc[:, 0:12]
 
@@ -296,7 +270,6 @@ def transform_contract_prices_inprod(template_asset, template_hedge, template_pr
         #price dec
         price_oa_cr_12 = pd.concat([price_oa_cr_temp_, price_oa_cr_temp.iloc[:, 23]], axis=1)
         price_oa_cr_12.rename(columns = {'dec':'price'}, inplace = True)
-
 
         #price from Jan 2023 to 2028
         #price jan
@@ -339,91 +312,54 @@ def transform_contract_prices_inprod(template_asset, template_hedge, template_pr
         #Only price_oa_cr__1 for 2022 
         frames=[price_oa_cr_1, price_oa_cr_2, price_oa_cr_3, price_oa_cr_4, price_oa_cr_5, price_oa_cr_6, price_oa_cr_7, 
                price_oa_cr_8, price_oa_cr_9, price_oa_cr_10, price_oa_cr_11, price_oa_cr_12]
-
+        print('df prices 2022 starts:\n')
         price_oa_cr__22 = pd.concat(frames, axis=0, ignore_index=False)
         price_oa_cr__22.reset_index(inplace=True, drop=True)
-        n_oa_cr =len(price_oa_cr_1)
-        #oa cr prices only 
-        #time_horizon = time_horizon
-        #df1=pd.DataFrame(index=np.arange(89), columns=['date'])#To create an empty df of shape 89 that will contain date column
-        #n_oa_cr =price_oa_cr_1.shape[0] 
-        #start_date = pd.to_datetime(kwargs['date'] * nbr)
-        #d1 = pd.DataFrame()
-        #for i in range(0, time_horizon):
-            #df_buffer=df1 
-            #df_buffer["date"] = start_date
-            #d1 = pd.concat([d1, df_buffer], axis=0)
-            #start_date= start_date + pd.DateOffset(months=1)
-        #reset index    
-        #d1.reset_index(drop=True, inplace=True)
+        n_oa_cr = len(price_oa_cr_1)
+        df_dumm_date = pd.DataFrame(index=np.arange(n_oa_cr), columns=['date'])   #To create an empty df of shape 89 that will contain date   
+        df_dumm_date_ = create_mini_data_frame(df_dumm_date, '01-01-2022', n=n_oa_cr, a = 0, b = 12*1, date = 'date')
+        df_dumm_date_.reset_index(drop = True, inplace = True)
         #To concat dates df with oa cr price of only 2022
-        #price_oa_cr__22_=pd.concat([price_oa_cr__22, d1], axis=1, ignore_index=False)
-        
-        price_oa_cr__22_ = create_mini_data_frame(price_oa_cr__22, '01-01-2022', n=n_oa_cr, a=0, b=12*1, date='date')
-        price_oa_cr__22_.reset_index(drop=True, inplace=True)
-
+        price_oa_cr__22_= pd.concat([price_oa_cr__22, df_dumm_date_], axis = 1, ignore_index = False)
         #To cretae year, trimestre, mois columns
         price_oa_cr__22_['date'] = price_oa_cr__22_['date'].apply(pd.to_datetime)
         price_oa_cr__22_['année'] = price_oa_cr__22_['date'].dt.year
         price_oa_cr__22_['trimestre'] = price_oa_cr__22_['date'].dt.quarter
         price_oa_cr__22_['mois'] = price_oa_cr__22_['date'].dt.month
-
-        #Only from price_oa_cr 2023 to 2028
+        print('df prices 2022 ends:\n')
+        #price_oa_cr 2023 to 2028
         frames=[price_oa_cr_1_, price_oa_cr_2_, price_oa_cr_3_, price_oa_cr_4_, price_oa_cr_5_, price_oa_cr_6_, price_oa_cr_7_, 
                price_oa_cr_8_, price_oa_cr_9_, price_oa_cr_10_, price_oa_cr_11_, price_oa_cr_12_]
-        
+        print('df prices 2022-2028 starts:\n')
         price_oa_cr_23_28 = pd.concat(frames, axis=0, ignore_index=False)
         price_oa_cr_23_28.reset_index(inplace=True, drop=True)
         #To multiply prices df by 6  
-        price_oa_cr_23_28_=pd.concat([price_oa_cr_23_28]*6, ignore_index=True)
-
-        #oa cr prices only 
-        #time_horizon = 12*6
-        #nbr=price_oa_cr_1_.shape[0]
-        #df1=pd.DataFrame(index=np.arange(nbr), columns=['Date'])#To create an empty df of shape 89 that will contain date    
-        #start_date = pd.to_datetime(["2023-01-01"] * nbr)#start from 2023 to 2028
-        #d1 = pd.DataFrame()
-        #for i in range(0, time_horizon):
-            #df_buffer=df1 
-            #df_buffer["Date"] = start_date
-            #d1 = pd.concat([d1, df_buffer], axis=0)
-            #start_date= start_date + pd.DateOffset(months=1)
-        #Reset index    
-        #d1.reset_index(drop=True, inplace=True)
-        #To concat dates df with oa cr price of only 2022
-        #price_oa_cr_23_28_=pd.concat([price_oa_cr_23_28_, d1], axis=1, ignore_index=False)
-
-        price_oa_cr_23_28_ = create_mini_data_frame(price_oa_cr_23_28_, '01-01-2023', n=n_oa_cr, a=0, b=12*6, date='date')
-        price_oa_cr_23_28_.reset_index(inplace=True, drop=True)
+        price_oa_cr_23_28=pd.concat([price_oa_cr_23_28]*6, ignore_index=True)
         
+        df_dumm_date_2=pd.DataFrame(index=np.arange(n_oa_cr), columns=['date'])   #To create an empty df of shape 89 that will contain date
+        df_dumm_date_2_ = create_mini_data_frame(df_dumm_date_2, '01-01-2023', n=n_oa_cr, a=0, b=12*6, date='date')
+        df_dumm_date_2_.reset_index(inplace=True, drop=True)
+        #To concat dates df with oa cr prices from 2023-2028
+        price_oa_cr_23_28_=pd.concat([price_oa_cr_23_28, df_dumm_date_2_], axis=1, ignore_index=False)
+        print('df prices 2022-2028 ends:\n')
         #To cretae year, trimestre, mois columns
-        price_oa_cr_23_28_['Date'] = price_oa_cr_23_28_['Date'].apply(pd.to_datetime)
-        price_oa_cr_23_28_['année'] = price_oa_cr_23_28_['Date'].dt.year
-        price_oa_cr_23_28_['trimestre'] = price_oa_cr_23_28_['Date'].dt.quarter
-        price_oa_cr_23_28_['mois'] = price_oa_cr_23_28_['Date'].dt.month
+        price_oa_cr_23_28_['date'] = price_oa_cr_23_28_['date'].apply(pd.to_datetime)
+        price_oa_cr_23_28_['année'] = price_oa_cr_23_28_['date'].dt.year
+        price_oa_cr_23_28_['trimestre'] = price_oa_cr_23_28_['date'].dt.quarter
+        price_oa_cr_23_28_['mois'] = price_oa_cr_23_28_['date'].dt.month
 
-        #MERGING VMR OA & CR 2022 AND 2023-2028
+        #merge VMR OA & CR 2022 and 2023-2028
         frame=[price_oa_cr__22_, price_oa_cr_23_28_]
         d=pd.concat(frame, axis=0, ignore_index=True)
         d.reset_index(inplace=True, drop=True)
-        #To remove price based on date_debut
-        #Condition:date column is less (in total seconds) than first date for each projet_id's first date_cod value
-        #cond=((d['date'] - d.groupby(['hedge_id', 'projet_id'])['date_debut'].transform('first')).dt.total_seconds())<0
-        #d['price'] = np.where(cond,'', d['price'])
-        #To remove price based on date_fin
-        #cond_2=((d['date'] - d.groupby(['hedge_id', 'projet_id'])['date_fin'].transform('first')).dt.total_seconds())>0
-        #d['price'] = np.where(cond_2, '', d['price'])
-        #To remove price based on date_dementelement
-        #cond_3=((d['date'] - d.groupby(['hedge_id', 'projet_id'])['date_dementelement'].transform('first')).dt.total_seconds())>0
-        #d['price'] = np.where(cond_3, '', d['price'])
-        
-        prices_oa_cr=remove_contract_prices(data=d, sd='date_debut', ed='date_fin', price='price', 
-                                            th='type_hedge', date_dementelement='date_dementelement', date='date', projetid='projet_id', 
+        prices_oa_cr=remove_contract_prices(data=d, sd='date_debut', ed='date_fin',  dd='date_dementelement', price='price', 
+                                            th='type_hedge', date='date', projetid='projet_id', 
                                             hedgeid='hedge_id')
 
         prices_oa_cr=select_columns(prices_oa_cr, 'hedge_id', 'projet_id', 'projet', 'type_hedge', 'date_debut', 
                                     'date_fin', 'date', 'année', 'trimestre', 'mois', 'price') 
-
+        
+        print('df prices assets in prod ends:\n')
         return prices_oa_cr
     except Exception as e:
         print("Contract prices data transformation asset in prod error!")

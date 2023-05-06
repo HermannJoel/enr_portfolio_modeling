@@ -16,6 +16,7 @@ hedge_vmr = os.path.join(os.path.dirname("__file__"),config['develop']['hedge_vm
 hedge_planif = os.path.join(os.path.dirname("__file__"),config['develop']['hedge_planif'])
 src_dir = os.path.join(os.path.dirname("__file__"),config['develop']['src_dir'])
 dest_dir = os.path.join(os.path.dirname("__file__"),config['develop']['dest_dir'])
+dest_dir_ = os.path.join(os.path.dirname("__file__"),config['develop']['dest_dir_'])
 temp_dir = os.path.join(os.path.dirname("__file__"),config['develop']['temp_dir'])
 google_application_credentials = os.path.join(os.path.dirname("__file__"),config['develop']['google_application_credentials'])
 datasetid = os.path.join(os.path.dirname("__file__"),config['develop']['datasetid']) #gbq stg ddb
@@ -87,10 +88,10 @@ if __name__ == '__main__':
 
 if __name__ == '__main__':
     #load dimdate to blob gcs
-    #load_blob_to_gcs(source_file_name= '//DESKTOP-JDQLDT1/SharedFolder/enr_modeling/in/dim_date.csv', 
-                     #bucket_name = bucketid, 
-                     #destination_blob_name = 'dim_date.csv', 
-                     #google_application_credentials = google_application_credentials)
+    load_blob_to_gcs(source_file_name= dest_dir_+'hedge.xlsx', 
+                     bucket_name = bucketid, 
+                     destination_blob_name = 'hedge.csv', 
+                     google_application_credentials = google_application_credentials)
     
     load_data_to_snowflake(snowflakeuser=snowflake_user, gcs_stg_url=gcs_stg_url,
                            snowflakepassword=snowflake_password, snowflakeaccount=snowflake_account, 

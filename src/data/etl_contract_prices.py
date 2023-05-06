@@ -18,13 +18,13 @@ dest_dir=os.path.join(os.path.dirname("__file__"),config['develop']['dest_dir'])
 asset=os.path.join(os.path.dirname("__file__"),config['develop']['asset'])
 ppa=os.path.join(os.path.dirname("__file__"),config['develop']['ppa'])
 hedge=os.path.join(os.path.dirname("__file__"),config['develop']['hedge'])
-template_prices=os.path.join(os.path.dirname("__file__"),config['develop']['prices'])
-
+prices=os.path.join(os.path.dirname("__file__"),config['develop']['template_prices'])
 
 if __name__ == '__main__':
-    df_hedge, df_asset, df_ppa = extract_contract_prices(template_hedge_path=hedge, template_asset_path=asset, ppa_path=ppa)
-    #prices_planif = transform_contract_prices_planif(data_hedge=df_hedge)
+    df_hedge, df_asset, df_ppa, df_prices = extract_contract_prices(template_hedge_path=hedge, template_asset_path=asset, ppa_path=ppa, template_prices_path=prices)
+    prices_planif = transform_contract_prices_planif(data_hedge=df_hedge)
     prices_ppa = transform_contract_price_ppa(template_asset=df_asset, data_ppa=df_ppa)
-    prices_oa_cr = transform_contract_prices_inprod(template_hedge=df_hedge, template_asset=df_asset, data_ppa=df_ppa)
+    prices_oa_cr = transform_contract_prices_inprod(template_asset=df_asset, template_hedge=df_hedge, template_prices=df_prices , data_ppa=df_ppa)
+    data_contract_prices = merge_data_frame(prices_planif, prices_ppa, prices_oa_cr)
     
     
