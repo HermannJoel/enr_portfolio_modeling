@@ -15,8 +15,9 @@ config.read(config_file)
 hedge_vmr = os.path.join(os.path.dirname("__file__"),config['develop']['hedge_vmr'])
 hedge_planif = os.path.join(os.path.dirname("__file__"),config['develop']['hedge_planif'])
 src_dir = os.path.join(os.path.dirname("__file__"),config['develop']['src_dir'])
+raw_files = os.path.join(os.path.dirname("__file__"),config['develop']['raw_files_dir'])
 dest_dir = os.path.join(os.path.dirname("__file__"),config['develop']['dest_dir'])
-dest_dir_ = os.path.join(os.path.dirname("__file__"),config['develop']['dest_dir_'])
+processed_files = os.path.join(os.path.dirname("__file__"),config['develop']['processed_files_dir'])
 temp_dir = os.path.join(os.path.dirname("__file__"),config['develop']['temp_dir'])
 google_application_credentials = os.path.join(os.path.dirname("__file__"),config['develop']['google_application_credentials'])
 datasetid = os.path.join(os.path.dirname("__file__"),config['develop']['datasetid']) #gbq stg ddb
@@ -88,9 +89,9 @@ if __name__ == '__main__':
 
 if __name__ == '__main__':
     #load dimdate to blob gcs
-    load_blob_to_gcs(source_file_name= dest_dir_+'hedge.xlsx', 
+    load_blob_to_gcs(source_file_name= processed_files+'asset.xlsx', 
                      bucket_name = bucketid, 
-                     destination_blob_name = 'hedge.csv', 
+                     destination_blob_name = 'asset.csv', 
                      google_application_credentials = google_application_credentials)
     
     load_data_to_snowflake(snowflakeuser=snowflake_user, gcs_stg_url=gcs_stg_url,
