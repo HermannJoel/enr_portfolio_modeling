@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
-from datetime import datetime as dt
+from datetime import datetime
+import datetime as dt
 xrange = range
 import configparser
 import sys
@@ -11,6 +12,7 @@ pd.options.mode.chained_assignment = None
 os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 
+temp_dir='//DESKTOP-JDQLDT1/SharedFolder/d-eng/temp/'
 
 def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
     """udf Function to generate template asset.
@@ -70,13 +72,13 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
                         "date_msi", "en_planif"]]
 
         #To create a df containing projects with a cod>= 2023 
-        vmr_to_planif = df_asset[df_asset['cod'] > (datetime.datetime.today() + pd.offsets.YearEnd()).strftime('%Y-%m-%d')]
+        vmr_to_planif = df_asset[df_asset['cod'] > (dt.datetime.today() + pd.offsets.YearEnd()).strftime('%Y-%m-%d')]
         vmr_to_planif = vmr_to_planif[["id", "asset_id", "projet_id", "projet", "technologie", "cod", "mw", "taux_succès", 
                                         "puissance_installée", "eoh", "date_merchant", "date_dementelement", 
                                         "repowering", "date_msi", "en_planif"]]
 
         #To create a df containing projets already in exploitation
-        df_asset=df_asset[df_asset['cod'] <= (datetime.datetime.today() + pd.offsets.YearEnd()).strftime('%Y-%m-%d')]
+        df_asset=df_asset[df_asset['cod'] <= (dt.datetime.today() + pd.offsets.YearEnd()).strftime('%Y-%m-%d')]
         project_names=df_asset[["asset_id", "projet_id", "projet"]]
         project_names.rename(columns={"projet_id":"code", "projet":"projet_name"}, inplace=True)
 
@@ -137,14 +139,14 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
         df_['date_msi']=pd.to_datetime(df_["date_msi"])
 
         #To fill n/a of date_msi column with with date today + 50 years
-        df_["date_msi"].fillna((datetime.datetime.today() + pd.DateOffset(years=50)).strftime('%Y-%m-%d'), inplace=True)
+        df_["date_msi"].fillna((dt.datetime.today() + pd.DateOffset(years=50)).strftime('%Y-%m-%d'), inplace=True)
 
         #To select projects in planif with a cod date less than 2023. These projects should be moved to projects in prod 
-        df_to_asset_vmr = df_[df_['date_msi'] < (datetime.datetime.today() + pd.offsets.YearEnd()).strftime('%Y-%m-%d')]
+        df_to_asset_vmr = df_[df_['date_msi'] < (dt.datetime.today() + pd.offsets.YearEnd()).strftime('%Y-%m-%d')]
 
 
         #To select only data with cod superior to year's end date
-        filt = df_['date_msi'] > (datetime.datetime.today() + pd.offsets.YearEnd()).strftime('%Y-%m-%d') 
+        filt = df_['date_msi'] > (dt.datetime.today() + pd.offsets.YearEnd()).strftime('%Y-%m-%d') 
         df_ = df_.loc[filt]
 
         #To select rows where Nom is NaN

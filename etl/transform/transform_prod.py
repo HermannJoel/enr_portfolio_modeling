@@ -9,7 +9,7 @@ os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 
 
-def transform_prod(data_prod, mean_pct, **kwargs):
+def transform_prod_asset(data_prod, mean_pct, **kwargs):
     """
     Function to compute P50 & p90 of asset in production    
     Parameters

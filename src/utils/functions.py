@@ -134,7 +134,7 @@ def create_data_frame(data, *args, **kwargs):
 def adjusted_by_pct(data, **kwargs):
     """
     To compute adjusted p50 & p90 by hedge percentage (pct_couverture)    
-Args:
+    Args:
     data (DataFrame) :
     col1 (str) : Takes the value p50_adj column label
     col2 (str) : Takes the value of pct_couverture column label

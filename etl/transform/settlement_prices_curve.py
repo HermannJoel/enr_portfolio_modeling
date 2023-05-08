@@ -15,7 +15,7 @@ horizon_m=(nb_months*nb_years)-2#To remove the month of July/Aug. We are now in 
 horizon_q=nb_quarters-nb_eex_qb_cotation#To determine the number of quarter in the time horizon for which we have to compute prices
 
 
-def settlement_prices_curve_estimation(mb, qb, yb, q_weights, m_weights, horizon_q = horizon_q, horizon_m = horizon_m):
+def settlement_prices_curve_estimation(yb, qb, mb, q_weights, m_weights, horizon_q = horizon_q, horizon_m = horizon_m):
     #To transfrorm cal products
     yb['years']=["20"+yb['Delivery Period'][i][-2:] for i in range(len(yb))]
     yb['years']=pd.to_numeric(yb['years'])
