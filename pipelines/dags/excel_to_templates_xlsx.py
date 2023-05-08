@@ -1,72 +1,81 @@
 #Scheduler: uses the executor
 #Executors: are what Airflow uses to run tasks that the Scheduler determines are ready to run.
 #Operators: are what actually execute scripts, commands, and other operations
-import os
-os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+#import os
+#os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
 
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
-from airflow.operators.postgres_operator import PostgresOperator
+#from airflow.operators.postgres_operator import PostgresOperator
 from airflow.utils.dates import days_ago
-from src.data import etl_hedge
+#from src.data import etl_hedge
 
 
-x_days_ago = datetime.combine(datetime.today() - timedelta(1),
+next_run = datetime.combine(datetime.now() + timedelta(hours = 12),
                                       datetime.min.time())
 default_args = {
-'owner': 'nherm',
-'start_date': x_days_ago,
-'retries': 1,
-'retry_delay': timedelta(minutes=5),
+    'owner': 'nherm',
+    'start_date': next_run,
+    'retries': 1,
+    'retry_delay': timedelta(minutes = 10), 
+    'email': ['hermannjoel.ngayap@yahoo.fr'], 
+    'email_on_failure': False, 
+    'email_on_retry': False,
 }
 
 dag = DAG(
-    'elt_pipeline_to_generate_templates',
-    description='xlsx to templates',
+    'elt_pipeline_enr_portfolio_modeling',
+    description='xlsx to dbs',
     schedule_interval=timedelta(days=1),
-    start_date = days_ago(1),
     default_args=default_args
     )
 create_template_asset_task = BashOperator(
-    task_id='etl_template_asset',
-    bash_command='python /blx_mdp_data-eng/etls/main_etl_template_asset.py',
+    task_id='etl_asset',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_asset.py',
     dag=dag,
     )
 
-create_template_productibles_task = BashOperator(
-    task_id='etl_template_prod',
-    bash_command='python /blx_mdp_data-eng/etls/main_etl_template_productibles.py',
+create_template_profile_task = BashOperator(
+    task_id='etl_profile',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_profile.py',
     dag=dag,
     )
 create_template_hedge_task = BashOperator(
-    task_id='etl_template_hedge',
-    bash_command='python /blx_mdp_data-eng/etls/main_etl_template_hedge.py',
+    task_id='etl_hedge',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_hedge.py',
+    dag=dag,
+    )
+compute_template_prices_task  = BashOperator(
+    task_id='etl_prices',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_prices.py',
     dag=dag,
     )
 
-create_template_price_task  = BashOperator(
-    task_id='etl_template_prices',
-    bash_command='python /blx_mdp_data-eng/etls/main_etl_template_prices.py',
+create_contract_prices_task  = BashOperator(
+    task_id='etl_contract_prices',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_contract_prices.py',
     dag=dag,
     )
 
-compute_p50_p90_asset_task  = BashOperator(
-    task_id='etl_p50_p90_asset',
-    bash_command='python /blx_mdp_data-eng/etls/main_etl_p50_p90_asset.py',
+compute_prod_asset_task  = BashOperator(
+    task_id='etl_prod_asset',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_prod.py',
     dag=dag,
     )
-"""
-compute_volume_hedge_task  = BashOperator(
-    task_id='etl_volume_hedge',
-    bash_command='python /blx_mdp_data-eng/etls/main_etl_volume_hedge.py',
+compute_vol_hedge_task  = BashOperator(
+    task_id='etl_vol_hedge',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_vol_hedge.py',
     dag=dag,
     )
-"""
 
-create_template_asset_task >> create_template_productibles_task
-create_template_productibles_task >> create_template_hedge_task  
-create_template_hedge_task[create_template_prices_task, compute_p50_p90_asset_task]
+create_template_asset_task >> create_template_profile_task
+create_template_profile_task >> create_template_hedge_task  
+create_template_hedge_task >> compute_template_prices_task
+compute_template_prices_task >> create_contract_prices_task
+create_contract_prices_task >> compute_prod_asset_task
+compute_prod_asset_task >> compute_vol_hedge_task
+
 """
 #create_tp_asset_task >> create_tp_productibles_task
 #create_tp_productibles_task >> create_tp_hedge_task 

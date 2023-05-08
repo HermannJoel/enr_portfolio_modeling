@@ -7,40 +7,10 @@ from datetime import datetime
 import sys
 pd.options.mode.chained_assignment = None
 os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
-from functions import*
+from src.utils.functions import*
+from etl import*
 
-#Load Config
-config_file=os.path.join(os.path.dirname("__file__"), 'config/config.ini') 
-config=configparser.ConfigParser(allow_no_value=True)
-config.read(config_file)
-
-# Initialize Variables
-dest_dir=os.path.join(os.path.dirname("__file__"),config['develop']['dest_dir'])
-
-
-def extract(prices_path, template_asset_path):
-    '''Function to extract excel files.
-    Parameters
-    ==========
-    prices_path: str
-        path excel file containing data hedge in prod
-    template_asset_path: str
-        path excel file containing data hedge in planif    
-    Returns
-    =======
-    df_prices: DataFrame
-        contracts prices asset in prod dataframe
-    df_template_asset: DataFrame
-        template asset dataframe
-    '''
-    try:
-        df_prices=ReadExcelFile(prices_path, sheet_name='1-EO_Calcul Reporting', header=10)
-        sub_df_template_asset=ReadExcelFile(template_asset_path, usecols = ["projet_id", "projet", "en_planif"])
-        return df_prices, sub_df_template_asset 
-    except Exception as e:
-        print("Data Extraction error!: "+str(e))
-
-def transform(data_prices, sub_template_asset, **kwargs):
+def transform_prices(data_prices, sub_template_asset, **kwargs):
     """
     udf Function to generate template contracts prices asset in prod
     Parameters
@@ -103,31 +73,5 @@ def transform(data_prices, sub_template_asset, **kwargs):
         print("Template prices transformation error!: "+str(e))
 
 
-def load(dest_dir, src_flow, file_name, file_extension):
-    """UDF Function to load template contracts prices asset in prod in dest folder as excel file     
-    parameters
-    ==========
-    dest_dir (str) :
-        target folder path
-    src_flow (DataFrame) :
-        data frame returned by transform function        
-    file_name (str) : 
-        destination file name
-    file_extension (str):
-        
-    exemple
-    =======
-    Load(dest_dir, template_asset_without_prod, 'template_asset', '.csv')
-    >>> to load template_asset_without_prod in dest_dir as template_asset.csv 
-    """
-    try:
-        if file_extension in ['.xlsx', '.xls', '.xlsm', '.xlsb', '.odf', '.ods', '.odt']:
-            src_flow.to_excel(dest_dir+file_name+file_extension, index=False, float_format="%.4f")
-        else: 
-            src_flow.to_csv(dest_dir+file_name+file_extension, index=False, float_format="%.4f", encoding='utf-8-sig')
-        print("Data loaded succesfully!")
-    except Exception as e:
-        print("Data load error!: "+str(e))
-        
 
         
