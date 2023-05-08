@@ -26,7 +26,7 @@ def transform_hedge_type(hedge):
         df_ppa=df_ppa.loc[df_ppa["type_hedge"] == "PPA"]
         return df_oa, df_cr, df_ppa
     except Exception as e:
-        print("Data transformation error!: "+str(e))
+        print("Hedge type transformation error!: "+str(e))
 
 
 def transform_vol_hedge(data_prod, hedge, prod_pct, mean_pct, **kwargs):
@@ -78,24 +78,24 @@ def transform_vol_hedge(data_prod, hedge, prod_pct, mean_pct, **kwargs):
         prod_profile_dict=prod_profile.to_dict()
         #----------  To create OA, CR, PPA hedge dfs ----------#
         print('oa df creation starts:\n')
-        d=CreateDataFrame(df_oa, '01-01-2022', a=0, b=12*7, n=n_oa, date='date', 
+        d = create_data_frame(df_oa, '01-01-2022', a=0, b=12*7, n=n_oa, date='date', 
                           profile=prod_profile_dict)
         d.reset_index(inplace=True, drop=True)
         print('oa df creation ends!:\n')
         print('cr df creation starts:\n')
-        d2=CreateDataFrame(df_cr, '01-01-2022', a=0, b=12*7, n=n_cr, date='date', 
+        d2 = create_data_frame(df_cr, '01-01-2022', a=0, b=12*7, n=n_cr, date='date', 
                            profile=prod_profile_dict)
         d2.reset_index(inplace=True, drop=True)
         print('cr df creation ends!:\n')
         print('ppa df creation starts:\n')
-        d3=CreateDataFrame(df_ppa, '01-01-2022', a=0, b=12*7, n=n_ppa, date='date', 
+        d3 = create_data_frame(df_ppa, '01-01-2022', a=0, b=12*7, n=n_ppa, date='date', 
                             profile=prod_profile_dict)
         d3.reset_index(inplace=True, drop=True)
         print('ppa df creation ends!:\n')    
         #---------- OA  ----------#
         #Multiply P50 with pct_couverture to obtain adjusted values by hedge percentage
-        d["p50_adj"]=AdjustedByPct(d, col1='p50_adj', col2='pct_couverture')
-        d["p90_adj"]=AdjustedByPct(d, col1='p90_adj', col2='pct_couverture')     
+        d["p50_adj"] = adjusted_by_pct(d, col1='p50_adj', col2='pct_couverture')
+        d["p90_adj"] = adjusted_by_pct(d, col1='p90_adj', col2='pct_couverture')     
         #To convert date
         d["date_debut"] = pd.to_datetime(d["date_debut"])
         d["date"] = pd.to_datetime(d["date"])
@@ -108,8 +108,8 @@ def transform_vol_hedge(data_prod, hedge, prod_pct, mean_pct, **kwargs):
             
         #---------- CR  ----------#
         #Multiply P50 with pct_couverture to obtain adjusted values by hedge percentage
-        d2["p50_adj"]=AdjustedByPct(d2, col1='p50_adj', col2='pct_couverture')
-        d2["p90_adj"]=AdjustedByPct(d2, col1='p90_adj', col2='pct_couverture')    
+        d2["p50_adj"] = adjusted_by_pct(d2, col1='p50_adj', col2='pct_couverture')
+        d2["p90_adj"] = adjusted_by_pct(d2, col1='p90_adj', col2='pct_couverture')    
         #To create new columns
         d2["date_debut"] = pd.to_datetime(d2["date_debut"])
         d2["date"] = pd.to_datetime(d2["date"])
@@ -122,8 +122,8 @@ def transform_vol_hedge(data_prod, hedge, prod_pct, mean_pct, **kwargs):
             
         #---------- PPA  ----------#
         #Multiply P50 with pct_couverture to obtain adjusted values by hedge percentage
-        d3["p50_adj"]=AdjustedByPct(d3, col1='p50_adj', col2='pct_couverture')
-        d3["p90_adj"]=AdjustedByPct(d3, col1='p90_adj', col2='pct_couverture') 
+        d3["p50_adj"] = adjusted_by_pct(d3, col1='p50_adj', col2='pct_couverture')
+        d3["p90_adj"] = adjusted_by_pct(d3, col1='p90_adj', col2='pct_couverture') 
         #To convert columns to datetime
         d3["date_debut"] = pd.to_datetime(d3["date_debut"])
         d3["date"] = pd.to_datetime(d3["date"])
@@ -153,17 +153,17 @@ def transform_vol_hedge(data_prod, hedge, prod_pct, mean_pct, **kwargs):
         #To export results as a data frame
         #res2.to_csv(path_dir_temp + 'hedge_cr.txt', index=False, sep=';')
         #---------- PPA  ----------#
-        res3=RemoveP50P90TypeHedge(d3, sd='date_debut', ed='date_fin', p50='p50_adj', 
+        res3=remove_p50_p90_type_hedge(d3, sd='date_debut', ed='date_fin', p50='p50_adj', 
                                     p90='p90_adj', th='type_hedge', date='date', 
                                     projetid='projet_id', hedgeid='hedge_id')
 
-        res3=SelectColumns(res3, 'hedge_id', 'projet_id', 'projet', 'type_hedge', 'date', 
+        res3=select_columns(res3, 'hedge_id', 'projet_id', 'projet', 'type_hedge', 'date', 
                         'année', 'trim', 'mois', 'p50_adj', 'p90_adj')
         #To export results as a data frame
         #res3.to_csv(path_dir_temp + 'hedge_ppa.txt', index=False, sep=';')
         
         #To merge hedge OA, CR, and PPA dfs
-        hedge_vmr=MergeDataFrame(res, res2, res3)
+        hedge_vmr=merge_data_frame(res, res2, res3)
         #Export p50_p90_hedge_vmr as p50_p90_hedge_vmr.xlsx
         #hedge_vmr=hedge_vmr.assign(id=[1 + i for i in xrange(len(hedge_vmr))])[['id'] + hedge_vmr.columns.tolist()]
         hedge_vmr=hedge_vmr[['hedge_id', 'projet_id', 'projet', 'type_hedge', 
@@ -196,10 +196,10 @@ def transform_vol_hedge(data_prod, hedge, prod_pct, mean_pct, **kwargs):
             
         print('create solar & wind power dfs:\n')
         #create a df solar
-        d1_=CreateMiniDataFrame(prod_planif_solar, '01-01-2022', n=n_sol, a=0, b=12*7, date='date')   
+        d1_ = create_mini_data_frame(prod_planif_solar, '01-01-2022', n=n_sol, a=0, b=12*7, date='date')   
         d1_.reset_index(drop=True, inplace=True)
         #create a df wind power
-        d2_=CreateMiniDataFrame(prod_planif_wp, '01-01-2022', n=n_wp, a=0, b=12*7, date='date')   
+        d2_ = create_mini_data_frame(prod_planif_wp, '01-01-2022', n=n_wp, a=0, b=12*7, date='date')   
         d2_.reset_index(drop=True, inplace=True)
         #Solar
         mean_pct_sol=mean_pct_sol.assign(mth=[1 + i for i in xrange(len(mean_pct_sol))])[['mth'] + mean_pct_sol.columns.tolist()]
@@ -235,23 +235,23 @@ def transform_vol_hedge(data_prod, hedge, prod_pct, mean_pct, **kwargs):
                 'date_dementelement', 'date', 'année', 'trim', 'mois', 'p50_adj', 'p90_adj']]
 
         #To remove p50 p90 based on date_debut
-        res=RemoveP50P90TypeHedge(data=d1_, sd='date_debut', ed='date_fin', p50='p50_adj', 
+        res= remove_p50_p90_type_hedge(data=d1_, sd='date_debut', ed='date_fin', p50='p50_adj', 
                                     p90='p90_adj', th='type_hedge', date='date', 
                                     projetid='projet_id', hedgeid='hedge_id')
-        hedge_solar=SelectColumns(res, 'hedge_id', 'projet_id', 'projet', 'type_hedge', 'date', 
+        hedge_solar=select_columns(res, 'hedge_id', 'projet_id', 'projet', 'type_hedge', 'date', 
                                     'année', 'trim', 'mois', 'p50_adj', 'p90_adj')
         #To remove p50 p90 based on date_debut
-        res2=RemoveP50P90TypeHedge(data=d2_, sd='date_debut', ed='date_fin', p50='p50_adj', 
+        res2=remove_p50_p90_type_hedge(data=d2_, sd='date_debut', ed='date_fin', p50='p50_adj', 
                                     p90='p90_adj', th='type_hedge', date='date', 
                                     projetid='projet_id', hedgeid='hedge_id')
-        hedge_wp=SelectColumns(res2, 'hedge_id', 'projet_id', 'projet', 'type_hedge', 'date', 
+        hedge_wp=select_columns(res2, 'hedge_id', 'projet_id', 'projet', 'type_hedge', 'date', 
                                 'année', 'trim', 'mois', 'p50_adj', 'p90_adj')
             
         #To merge hedge_vmr and hedge_planif
-        hedge_vmr_planif=MergeDataFrame(hedge_vmr, hedge_solar, hedge_wp)
+        hedge_vmr_planif = merge_data_frame(hedge_vmr, hedge_solar, hedge_wp)
         hedge_vmr_planif=hedge_vmr_planif.assign(id=[1 + i for i in xrange(len(hedge_vmr_planif))])[['id'] + hedge_vmr_planif.columns.tolist()]
         print('compute hedge ends!:\n') 
         
         return hedge_vmr_planif
     except Exception as e:
-        print("Hedge transformation error!: "+str(e))
+        print("vol hedge transformation error!: "+str(e))

@@ -1,15 +1,11 @@
 #Scheduler: uses the executor
 #Executors: are what Airflow uses to run tasks that the Scheduler determines are ready to run.
 #Operators: are what actually execute scripts, commands, and other operations
-#import os
-#os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
 
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
-#from airflow.operators.postgres_operator import PostgresOperator
 from airflow.utils.dates import days_ago
-#from src.data import etl_hedge
 
 
 next_run = datetime.combine(datetime.now() + timedelta(hours = 12),
@@ -25,55 +21,61 @@ default_args = {
 }
 
 dag = DAG(
-    'elt_pipeline_enr_portfolio_modeling',
+    'elt_pipeline_prod',
     description='xlsx to dbs',
-    schedule_interval=timedelta(days=1),
+    schedule_interval=timedelta(hours=12),
     default_args=default_args
     )
-create_template_asset_task = BashOperator(
+create_asset_task = BashOperator(
     task_id='etl_asset',
-    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_asset.py',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx-xlsxcsv/etl_asset_xlsx.py',
     dag=dag,
     )
 
-create_template_profile_task = BashOperator(
+create_profile_task = BashOperator(
     task_id='etl_profile',
-    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_profile.py',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx-xlsxcsv/etl_profile_xlsx.py',
     dag=dag,
     )
-create_template_hedge_task = BashOperator(
+create_hedge_task = BashOperator(
     task_id='etl_hedge',
-    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_hedge.py',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx-xlsxcsv/etl_hedge_xlsx.py',
     dag=dag,
     )
-compute_template_prices_task  = BashOperator(
+create_prices_task  = BashOperator(
     task_id='etl_prices',
-    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_prices.py',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx-xlsxcsv/etl_prices_xlsx.py',
+    dag=dag,
+    )
+compute_settl_prices_task  = BashOperator(
+    task_id='etl_settl_prices',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx-xlsxcsv/etl_settlement_prices_xlsx.py',
     dag=dag,
     )
 
-create_contract_prices_task  = BashOperator(
+compute_contract_prices_task  = BashOperator(
     task_id='etl_contract_prices',
-    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_contract_prices.py',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx-xlsxcsv/etl_contract_prices_xlsx.py',
     dag=dag,
     )
 
 compute_prod_asset_task  = BashOperator(
     task_id='etl_prod_asset',
-    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_prod.py',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx-xlsxcsv/etl_prod_xlsx.py',
     dag=dag,
     )
 compute_vol_hedge_task  = BashOperator(
     task_id='etl_vol_hedge',
-    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_vol_hedge.py',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx-xlsxcsv/etl_vol_hedge_xlsx.py',
     dag=dag,
     )
 
-create_template_asset_task >> create_template_profile_task
-create_template_profile_task >> create_template_hedge_task  
-create_template_hedge_task >> compute_template_prices_task
-compute_template_prices_task >> create_contract_prices_task
-create_contract_prices_task >> compute_prod_asset_task
+create_asset_task >> create_profile_task
+create_profile_task >> create_hedge_task  
+create_hedge_task >> create_prices_task
+create_prices_task >> compute_settl_prices_task
+compute_settl_prices_task >> compute_contract_prices_task
+compute_contract_prices_task >> compute_prod_asset_task
 compute_prod_asset_task >> compute_vol_hedge_task
 
 """

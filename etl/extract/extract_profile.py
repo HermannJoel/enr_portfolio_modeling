@@ -3,7 +3,7 @@ import os
 os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 
-def extract_prod(productible_path, project_names_path, template_asset_path):
+def extract_profile(productible_path, project_names_path, template_asset_path):
     ''' Function to extract excel files.
     Parameters
     ==========
