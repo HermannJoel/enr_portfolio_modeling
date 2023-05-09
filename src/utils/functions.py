@@ -529,6 +529,7 @@ def load_docs_to_mongodb(dest_db, dest_collection, src_data, **kwargs):
         myclient=MongoClient(kwargs['mongodb_conn_str'])
         db=myclient[dest_db]
         collection=db[dest_collection]
+        collection.remove({})
         collection.insert_many(
             convert_date_columns(
                 src_data
