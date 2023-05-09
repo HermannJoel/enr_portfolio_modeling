@@ -5,13 +5,13 @@ from airflow.operators.bash_operator import BashOperator
 from airflow.utils.dates import days_ago
 
 
-next_run = datetime.combine(datetime.now() + timedelta(minutes = 5),
+next_run = datetime.combine(datetime.now() + timedelta(minutes = 15),
                                       datetime.min.time())
 default_args = {
     'owner': 'nherm',
     'start_date': next_run,
     'retries': 1,
-    'retry_delay': timedelta(minutes = 2), 
+    'retry_delay': timedelta(minutes = 5), 
     'email': ['hermannjoel.ngayap@yahoo.fr'], 
     'email_on_failure': False, 
     'email_on_retry': False,
@@ -20,7 +20,7 @@ default_args = {
 dag = DAG(
     'elt_data_validation',
     description='xlsx to xlsx_csv',
-    schedule_interval= '0 0 * * *',   # 0 * * * *(@hourly) 0 0 * * 0 (@weekly)
+    schedule_interval= '0 * * * *',   # 0 * * * *(@hourly) 0 0 * * 0 (@weekly)
     default_args=default_args
     )
 validate_asset_task = BashOperator(
