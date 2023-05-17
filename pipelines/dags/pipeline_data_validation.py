@@ -18,7 +18,7 @@ default_args = {
 }
 
 dag = DAG(
-    'elt_data_validation',
+    'pipeline_to_validate_data',
     description='xlsx to xlsx_csv',
     schedule_interval= '0 * * * *',   # 0 * * * *(@hourly) 0 0 * * 0 (@weekly)
     default_args=default_args
@@ -70,4 +70,4 @@ validate_vol_hedge_task  = BashOperator(
     dag=dag,
     )
 
-validate_asset_task >> validate_profile_task >> validate_hedge_task >> validate_prices_task >> validate_settl_prices_task >> validate_contract_prices_task >> validate_prod_asset_task >> validate_vol_hedge_task
+validate_asset_task >> validate_profile_task >> validate_hedge_task >> validate_prices_task >> [validate_settl_prices_task, validate_contract_prices_task, validate_prod_asset_task, validate_vol_hedge_task]

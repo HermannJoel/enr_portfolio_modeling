@@ -17,56 +17,56 @@ default_args = {
 }
 
 dag = DAG(
-    'pipeline_load_to_mssql',
-    description='xlsx to mssql',
+    'pipeline_load_to_gcs',
+    description='xlsx to gcs',
     schedule_interval= '0 * * * *',   # 0 * * * *(@hourly) 0 0 * * 0 (@weekly)
     default_args=default_args
     )
 asset_task = BashOperator(
     task_id='etl_asset',
-    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx_mssql/etl_asset_mssql.py',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_gcs_bigquery/etl_asset_gcp.py',
     dag=dag,
     )
 
 profile_task = BashOperator(
     task_id='etl_profile',
-    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx_mssql/etl_profile_mssql.py',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_gcs_bigquery/etl_profile_gcp.py',
     dag=dag,
     )
 
 hedge_task = BashOperator(
     task_id='etl_hedge',
-    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx_mssql/etl_hedge_mssql.py',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_gcs_bigquery/etl_hedge_gcp.py',
     dag=dag,
     )
 
 prices_task  = BashOperator(
     task_id='etl_prices',
-    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx_mssql/etl_prices_mssql.py',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_gcs_bigquery/etl_prices_gcp.py',
     dag=dag,
     )
 
 settlement_prices_task  = BashOperator(
     task_id='etl_settl_prices',
-    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx_mssql/etl_settlement_prices_mssql.py',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_gcs_bigquery/etl_settlement_prices_gcp.py',
     dag=dag,
     )
 
 contract_prices_task  = BashOperator(
     task_id='etl_contract_prices',
-    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx_mssql/etl_contract_prices_mssql.py',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_gcs_bigquery/etl_contract_prices_gcp.py',
     dag=dag,
     )
 
 prod_asset_task  = BashOperator(
     task_id='etl_prod_asset',
-    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx-xlsxcsv/etl_prod_xlsx.py',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_gcs_bigquery/etl_prod_gcp.py',
     dag=dag,
     )
 vol_hedge_task  = BashOperator(
     task_id='etl_vol_hedge',
-    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx-xlsxcsv/etl_vol_hedge_xlsx.py',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_gcs_bigquery/etl_vol_hedge_gcp.py',
     dag=dag,
     )
 
-asset_task >> profile_task >> hedge_task >> prices_task >> [settlement_prices_task, contract_prices_task, prod_asset_task, vol_hedge_task]
+asset_task >> profile_task >> hedge_task >> prices_task >> settlement_prices_task >> contract_prices_task >> prod_asset_task >> vol_hedge_task

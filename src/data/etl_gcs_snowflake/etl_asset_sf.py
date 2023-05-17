@@ -37,13 +37,15 @@ snowflake_schema = os.path.join(os.path.dirname("__file__"),config['develop']['s
 sf_dest_table = os.path.join(os.path.dirname("__file__"),config['develop']['sf_dest_table'])
 gcs_stage = os.path.join(os.path.dirname("__file__"),config['develop']['gcs_stage'])
 gcs_stg_url = os.path.join(os.path.dirname("__file__"),config['develop']['gcs_stg_url'])
+vmr = os.path.join(os.path.dirname("__file__"),config['develop']['vmr'])
+planif = os.path.join(os.path.dirname("__file__"),config['develop']['planif'])
 
 
 if __name__ == '__main__':
     df_asset_vmr, df_asset_planif = extract_asset(asset_vmr_path =vmr, asset_planif_path = planif)
     src_data = transform_asset(data_asset_vmr=df_asset_vmr, data_asset_planif=df_asset_planif)
     #load dimdate to blob gcs
-    load_blob_to_gcs(source_file_name= processed_files+'asset.csv', 
+    load_blob_to_gcs(source_file_name= processed_files+'asset.xlsx', 
                      bucket_name = bucketid, 
                      destination_blob_name = 'asset.csv', 
                      google_application_credentials = google_application_credentials)
@@ -51,5 +53,5 @@ if __name__ == '__main__':
     load_data_to_snowflake(snowflakeuser=snowflake_user, gcs_stg_url=gcs_stg_url,
                            snowflakepassword=snowflake_password, snowflakeaccount=snowflake_account, 
                            snowflakewarehouse=snowflake_warehouse, snowflakeschema=snowflake_schema,
-                           sf_dest_table = sf_dest_table, gcs_stage = gcs_stage, 
+                           sf_dest_table = 'DIMASSET', gcs_stage = gcs_stage, 
                            query=f"COPY INTO {snowflake_schema}.{sf_dest_table} FROM @{snowflake_schema}.{gcs_stage} FILE_FORMAT = (FORMAT_NAME=MY_FILE_FORMAT) ON_ERROR='ABORT_STATEMENT';")
