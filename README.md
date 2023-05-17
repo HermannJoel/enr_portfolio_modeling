@@ -23,9 +23,22 @@ Pipeline **C** Extracts data from excel source files, transform and loaded as bl
 Data validation tasks are handled with great_expectations.
 
 ## 4. ETL Pipeline
+#### 1. Mssql Pipeline 
+![Image]( /pipeline_msql.jpg "mssql pipeline")
 
 ## 5. Staging
 
 ## 6. Data Warehouse
 
 ## 7. Dashboards
+![Image]( /prod.jpg "prod dashboard")
+
+![Image]( /prod-q.jpg "quarterly prod dashboard")
+
+![Image]( /hedge.jpg "hedge dashboard")
+
+![Image]( /merchant.jpg "merchant dashboard")
+
+![Image]( /mtm.jpg "mtm dashboard")
+
+![Image]( /mtm-h.jpg "hystorical mtm dashboard")

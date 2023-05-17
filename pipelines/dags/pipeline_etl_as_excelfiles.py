@@ -21,7 +21,7 @@ default_args = {
 }
 
 dag = DAG(
-    'elt_pipeline_prod',
+    'pipeline_test',
     description='xlsx to dbs',
     schedule_interval=timedelta(hours=12),
     default_args=default_args
