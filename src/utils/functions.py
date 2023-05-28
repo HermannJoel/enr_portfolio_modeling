@@ -731,6 +731,54 @@ def load_data_to_snowflake(snowflakeuser:str, gcs_stg_url:str,
         cursor.close()
         print('connection closed!')
         
+        
+def excucute_sqlserver_crud_ops(queries:list, mssqlserver:str, mssqldb:str, yes='yes'):
+    """Funtion to execute sql server CUD (CREATE, UPDATE, DELETE) operations
+    parameters
+    ==========
+    queries (list) :
+        list of queries to execute
+    mssqlserver (str) :
+        sql server instance name
+    mssqldb (str) :
+        sql server db name
+    yes (str) :
+        trusted connection
+    exemple
+    =======
+    excucute_sqlserver_crud_ops(
+    queries=[
+        "USE ODS",
+        "TRUNCATE TABLE ods.Hedge",
+        '''INSERT INTO ods.Hedge(HedgeId, ProjetId, Projet, TypeHedge, ContractStartDate, ContractEndDate, Profil, HedgePct, Counterparty, CountryCounterparty) 
+        VALUES (393, 'RON3', 'Ronchois 3', 'PPA', '2024-01-01', '2024-06-30', 'As Produced', 1, 'Axpo', 'France'), 
+        (392, 'RON3', 'Ronchois 3', 'PPA', '2023-01-01', '2023-06-30', 'As Produced', 0.75, 'Axpo', 'France')'''
+    ], 
+    mssqlserver='instance_name', 
+    mssqldb='db')
+    """
+    try:
+        cnxn = pyodbc.connect('DRIVER=SQL Server Native Client 11.0'+';SERVER=' + mssqlserver + ';DATABASE=' +mssqldb +';Trusted_Connection=' +yes)
+        cursor = cnxn.cursor()
+        for query in queries:
+            try:
+                cursor.execute(query)
+                cnxn.commit()
+                print(f"Query executed successfully: {query}")
+            except pyodbc.Error as e:
+                print(f"An error occurred while executing query: {query}")
+                print(f"Error details: {str(e)}") 
+    except pyodbc.Error as e:
+        print(f"An error occurred: {str(e)}")
+    finally:
+        if cursor:
+            cursor.close()
+        if cnxn:
+            cnxn.close()
+        print(f"Connection closed!")
+    
+    
+    
 
         
         

@@ -21,6 +21,19 @@ mssqlserver = os.path.join(os.path.dirname("__file__"),config['develop']['mssqls
 msqsldriver = os.path.join(os.path.dirname("__file__"),config['develop']['mssqlserver'])
 mssqldb = os.path.join(os.path.dirname("__file__"),config['develop']['mssqldw'])
 
+
+excucute_sqlserver_crud_ops(
+    queries=[
+        "USE ODS",
+        "TRUNCATE TABLE ods.Hedge",
+        '''INSERT INTO ods.Hedge(HedgeId, ProjetId, Projet, TypeHedge, ContractStartDate, ContractEndDate, Profil, HedgePct, Counterparty, CountryCounterparty) 
+        VALUES (393, 'RON3', 'Ronchois 3', 'PPA', '2024-01-01', '2024-06-30', 'As Produced', 1, 'Axpo', 'France'), 
+        (392, 'RON3', 'Ronchois 3', 'PPA', '2023-01-01', '2023-06-30', 'As Produced', 0.75, 'Axpo', 'France')'''
+    ], 
+    mssqlserver='DESKTOP-JDQLDT1\MSSQLSERVERDWH', 
+    mssqldb='ODS')
+
+
 if __name__ == '__main__':
     df_asset_vmr, df_asset_planif = extract_asset(asset_vmr_path =vmr, asset_planif_path = planif)
     src_data = transform_asset(data_asset_vmr=df_asset_vmr, data_asset_planif=df_asset_planif)
