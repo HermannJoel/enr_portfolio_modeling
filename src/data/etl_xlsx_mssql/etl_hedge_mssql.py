@@ -43,3 +43,165 @@ if __name__ == '__main__':
     load_data_to_mssql(src_data = src_data, dest_table = 'DimHedge', mssqlserver = mssqlserver, 
                        mssqldb = mssqldb, if_exists = 'replace', schema = 'dwh')
     
+    excucute_sqlserver_crud_ops(
+    queries=[
+        ''' USE ODS ''',
+        ''' UPDATE ods.Hedge SET DimensionCheckSum = 
+        BINARY_CHECKSUM(HedgeId, ProjetId, Projet, TypeHedge, ContractStartDate, ContractEndDate, Profil, 
+        HedgePct, Counterparty, CountryCounterparty);'''
+        ''' SET IDENTITY_INSERT [ods].[DimHedge] ON 
+        INSERT INTO [ods].[DimHedge]
+        ( --Table and columns in which to insert the data
+          HedgeId,
+          ProjetId,
+          Projet,
+          TypeHedge,
+          ContractStartDate,
+          ContractEndDate,
+          Profil,
+          HedgePct,
+          Counterparty,
+          CountryCounterparty,
+          DimensionCheckSum,
+          EffectiveDate,
+          EndDate
+          )
+        --- Select the rows/columns to insert that are output from this merge statement 
+        --- In this example, the rows to be inserted are the rows that have changed (UPDATE).
+        SELECT   
+          HedgeId,
+          ProjetId,
+          Projet,
+          TypeHedge,
+          ContractStartDate,
+          ContractEndDate,
+          Profil,
+          HedgePct,
+          Counterparty,
+          CountryCounterparty,
+          DimensionCheckSum,
+          EffectiveDate,
+          EndDate
+        FROM
+        (
+        --- This is the beginning of the merge statement.
+        --- The target must be defined, in this example it is our slowly changing
+        --- dimension table
+      MERGE into ods.DimHedge AS target
+      --- The source must be defined with the USING clause
+      USING 
+      (
+        --- The source is made up of the attribute columns from the staging table.
+        SELECT 
+          HedgeId,
+          ProjetId,
+          Projet,
+          TypeHedge,
+          ContractStartDate,
+          ContractEndDate,
+          Profil,
+          HedgePct,
+          Counterparty,
+          CountryCounterparty,
+          DimensionCheckSum
+            FROM ods.Hedge
+            ) AS source 
+            ( 
+            HedgeId,
+            ProjetId,
+            Projet,
+            TypeHedge,
+            ContractStartDate,
+            ContractEndDate,
+            Profil,
+            HedgePct,
+            Counterparty,
+            CountryCounterparty,
+            DimensionCheckSum
+          ) ON --We are matching on the SourceSystemID in the target table and the source table.
+          (
+            target.HedgeId = source.HedgeId AND target.ProjetId = source.ProjetId
+          )
+          -- If the ID's match but the CheckSums are different, then the record has changed;
+          -- therefore, update the existing record in the target, end dating the record 
+          -- and set the CurrentRecord flag to N
+          WHEN MATCHED and target.DimensionCheckSum <> source.DimensionCheckSum 
+                                 and target.CurrentRecord='Y'
+      THEN 
+      UPDATE SET 
+        EndDate=GETDATE()-1, 
+        CurrentRecord='N', 
+        LastUpdated=GETDATE(), 
+        UpdatedBy=SUSER_SNAME()
+      --- If the ID's do not match, then the record is new;
+      --- therefore, insert the new record into the target using the values from the source.
+      WHEN NOT MATCHED THEN  
+      INSERT 
+      (
+      HedgeId,
+      ProjetId,
+      Projet,
+      TypeHedge,
+      ContractStartDate,
+      ContractEndDate,
+      Profil,
+      HedgePct,
+      Counterparty,
+      CountryCounterparty,
+      DimensionCheckSum
+      )
+      VALUES 
+      (
+      source.HedgeId,
+      source.ProjetId,
+      source.Projet,
+      source.TypeHedge,
+      source.ContractStartDate,
+      source.ContractEndDate,
+      source.Profil,
+      source.HedgePct,
+      source.Counterparty,
+      source.CountryCounterparty,
+      source.DimensionCheckSum
+      )
+      OUTPUT $ACTION, 
+      source.HedgeId,
+      source.ProjetId,
+      source.Projet,
+    source.TypeHedge,
+    source.ContractStartDate,
+    source.ContractEndDate,
+    source.Profil,
+    source.HedgePct,
+    source.Counterparty,
+    source.CountryCounterparty,
+    source.DimensionCheckSum,
+    GETDATE(),
+    '12/31/9999'
+    ) --- the end of the merge statement
+    ---The changes output below are the records that have changed and will need
+    ---to be inserted into the slowly changing dimension.
+    AS CHANGES 
+    (
+      ACTION, 
+      HedgeId,
+      ProjetId,
+      Projet,
+      TypeHedge,
+      ContractStartDate,
+      ContractEndDate,
+      Profil,
+      HedgePct,
+      Counterparty,
+      CountryCounterparty,
+      DimensionCheckSum,
+      EffectiveDate,
+      EndDate
+    )
+    WHERE ACTION ='UPDATE'
+
+    SET IDENTITY_INSERT [dbo].[Client] OFF '''
+    ], 
+    mssqlserver='DESKTOP-JDQLDT1\MSSQLSERVERDWH', 
+    mssqldb='ODS')
+    
