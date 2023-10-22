@@ -1,7 +1,9 @@
 import pandas as pd
 import os
+import sys
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling')
 #ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath('__file__'))) # This is your Project Root
-os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 
 

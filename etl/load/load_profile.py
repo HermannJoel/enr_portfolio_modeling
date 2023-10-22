@@ -1,7 +1,9 @@
 import pandas as pd
 import os
 import xlsxwriter
-os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+import sys
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 
 def load_profile(dest_dir, src_productible, src_profile_id, src_profile, src_mean_profile, file_name):

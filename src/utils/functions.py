@@ -330,16 +330,33 @@ def query_data_from_postgreSQL(query, db_connection_string):
     )
     return dataframe
 
-def read_data_from_mssql(query):
-    cnxn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};"
-                          "Server=DESKTOP-JDQLDT1/MSSQLSERVERDWH;"
-                          "Database=DWH;"
-                          "Trusted_Connection=yes;")
-    cursor = cnxn.cursor()
-    dataframe= pd.read_sql_query(
-        sql=query, con=cnxn
-    )
-    return dataframe
+def read_data_from_mssql(query:str, db:str, server_instance:str, yes='yes'):
+    try:
+        #cnxn = pyodbc.connect('DRIVER=SQL Server Native Client 11.0'+';SERVER=' + server_instance + ';DATABASE=' +db + ';Trusted_Connection=' +yes)
+        # cnxn = pyodbc.connect("Driver={ODBC Driver 17 for SQL Server};"
+        #                       "Server=DESKTOP-JDQLDT1/MSSQLSERVERDWH;"
+        #                       "Database=ODS;"
+        #                       "Trusted_Connection=yes;")
+        #cnxn = create_engine(f"mssql+pyodbc://{server_instance}/{db}?driver=SQL+Server+Native+Client+11.0", fast_executemany=True)
+        cnxn_str = ("Driver={SQL Server Native Client 11.0};"
+            f"Server={server_instance};"
+            f"Database={db};"
+            f"Trusted_Connection={yes};")
+        cnxn = pyodbc.connect(cnxn_str)
+        cursor = cnxn.cursor()
+        dataFrame= pd.read_sql_query(
+            sql=query, con=cnxn
+        )
+        print(f"Query executed successfully: {query}")
+        return dataFrame
+    except pyodbc.Error as e:
+        print(f"An error occurred: {str(e)}")
+    finally:
+        if cursor:
+            cursor.close()
+        if cnxn:
+            cnxn.close()
+        print(f"Connection closed!")
 
 def read_from_postgresql(query, connection_string):
     cnxn = psycopg2.connect(connection_string)
@@ -776,6 +793,91 @@ def excucute_sqlserver_crud_ops(queries:list, mssqlserver:str, mssqldb:str, yes=
         if cnxn:
             cnxn.close()
         print(f"Connection closed!")
+        
+        
+def mongodb_crud_ops(mongodb_db:str, mongodb_collection:str, queries:list, **kwargs):
+    """Funtion to execute mongodb CRUD (CREATE, UPDATE, DELETE) operations
+    parameters
+    ==========
+    queries (list) :
+        list of queries to execute
+    queries = [
+    'create_db mydatabase',
+    'create_collection mycollection',
+    'drop_db mydatabase',
+    'drop_collection mycollection',
+    'read_collection mycollection'
+    ] 
+    mongodb_db (str) :
+        mongodb database name
+    mongodb_collection (str) :
+        mongo db collection name
+        
+    exemple
+    mongodb_crud_ops(mongodb_db, mongodb_collection,queries={}, **kwargs)
+    >>>
+    =======
+    """
+    try:
+        myclient=MongoClient(kwargs['mongodb_cluster_conn'])
+        db=myclient[mongodb_db]
+        collection=db[mongodb_collection]
+        for query in queries:
+            command, args = query.split()
+            if command == 'create_db':
+                try:
+                    db_name = args
+                    myclient[db_name]
+                    print(f"Query executed successfully!: {query}")
+                    print(f"Database '{db_name}' created!")
+                except Exception as e:
+                    print(f"An error occurred while executing query: {query}")
+                    print(f"Error details: {str(e)}")
+            elif command == 'drop_db':
+                try:
+                    db_name = args
+                    myclient.drop_database(db_name)
+                    print(f"Query executed successfully!: {query}")
+                    print(f"Database '{db_name}' dropped!")
+                except Exception as e:
+                    print(f"An error occurred while executing query: {query}")
+                    print(f"Error details: {str(e)}")
+            elif command == 'create_collection':
+                try:
+                    db.create_collection(collection_name)
+                    print(f"Query executed successfully!: {query}")
+                    print(f"Collection '{args}' created.")
+                except Exception as e:
+                    print(f"An error occurred while executing query: {query}")
+                    print(f"Error details: {str(e)}")
+            elif command == 'drop_collection':
+                try:
+                    collection_name = args
+                    db.drop_collection(collection_name)
+                    print(f"Query executed successfully!: {query}")
+                    print(f"Collection '{collection}' dropped.")
+                except Exception as e:
+                    print(f"An error occurred while executing query: {query}")
+                    print(f"Error details: {str(e)}")
+            elif command == 'read_collection':
+                try:
+                    collection_obj = db[collection]
+                    docs = list(collection_obj.find())
+                    dataFrame = pd.DataFrame(docs)
+                    print(f"Query executed successfully!: {query}")
+                    return dataFrame
+                except Exception as e:
+                    print(f"An error occurred while executing query: {query}")
+                    print(f"Error details: {str(e)}")
+            else:
+                print(f"Unknown command: {command}")
+    except Exception as e:
+        print(f"Mongodb crud operation error!: "+str(e))
+    finally:
+        if myclient:
+            myclient.close()
+        print(f"Connection closed!")
+        
     
     
     

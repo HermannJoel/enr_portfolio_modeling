@@ -1,7 +1,8 @@
 import sys
 import configparser
 import os
-os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 from etl import*
 
@@ -20,9 +21,6 @@ mssqluid = os.path.join(os.path.dirname("__file__"),config['develop']['mssqluid'
 mssqlserver = os.path.join(os.path.dirname("__file__"),config['develop']['mssqlserver'])
 msqsldriver = os.path.join(os.path.dirname("__file__"),config['develop']['mssqlserver'])
 mssqldb = os.path.join(os.path.dirname("__file__"),config['develop']['mssqldw'])
-
-
-
 
 
 if __name__ == '__main__':
@@ -44,10 +42,25 @@ if __name__ == '__main__':
     src_data = src_data.fillna(value=0)
     load_data_to_mssql(src_data = src_data, dest_table = 'DimAsset', mssqlserver = mssqlserver, 
                        mssqldb = mssqldb, if_exists = 'replace', schema = 'dwh')
+    
+    df=read_data_from_mssql(
+        query=''' SELECT * FROM [ods].[Asset] WHERE YEAR(Cod) = 2023;''' 
+        , db='ODS', 
+        server_instance='DESKTOP-JDQLDT1/MSSQLSERVERDWH')
+    
     #execute scd1 to update dim asset
     excucute_sqlserver_crud_ops(
     queries=[
         ''' USE ODS ''',
+        ''' TRUNCATE TABLE [ods].[Asset] ''',
+        ''' INSERT INTO [ods].[Asset]
+        (AssetID, ProjectID, Project, Technology, Cod, MW, SuccesPct, InstalledPower, Eoh, DateMerchant,
+        DismentleDate, Repowering, DateMsi, InPlanif, P50, P90)
+        VALUES (266, 'KEI4', 'Repowering Mont de Bézard II', 'éolien', '2023-02-01', 25.20, 1.00000, 25.20000, 
+        0.000, '2043-02-01', '1901-01-01', 'None', '2023-02-01', 'Non', 55188.000, 44150.400),
+        (174, 'GO16', 'Préveranges', 'éolien', '2023-03-01', 12.00, 1.00000, 12.00000, 0.000, '2043-03-01', 
+        '1901-01-01', 'None', '2023-03-01', 'Non', 26280.000, 21024.000)
+        ''',
         ''' MERGE [ods].[DimAsset] AS DST
             USING [ods].[Asset] AS SRC
             ON (SRC.AssetID = DST.AssetID AND SRC.ProjectID = DST.ProjectID)
@@ -89,7 +102,7 @@ if __name__ == '__main__':
              ,DST.DateMsi = SRC.DateMsi
              ,DST.InPlanif = SRC.InPlanif
              ,DST.P50 = SRC.P50
-             ,DST.P90 = SRC.P90;'''
+             ,DST.P90 = SRC.P90; '''
     ], 
     mssqlserver='DESKTOP-JDQLDT1\MSSQLSERVERDWH', 
     mssqldb='ODS')

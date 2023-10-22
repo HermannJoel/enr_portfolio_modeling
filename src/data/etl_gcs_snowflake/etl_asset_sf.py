@@ -17,7 +17,7 @@ hedge_planif = os.path.join(os.path.dirname("__file__"),config['develop']['hedge
 src_dir = os.path.join(os.path.dirname("__file__"),config['develop']['src_dir'])
 raw_files = os.path.join(os.path.dirname("__file__"),config['develop']['raw_files_dir'])
 dest_dir = os.path.join(os.path.dirname("__file__"),config['develop']['dest_dir'])
-processed_files = os.path.join(os.path.dirname("__file__"),config['develop']['processed_files_dir'])
+processed_files_dir = os.path.join(os.path.dirname("__file__"),config['develop']['processed_files_dir'])
 temp_dir = os.path.join(os.path.dirname("__file__"),config['develop']['temp_dir'])
 google_application_credentials = os.path.join(os.path.dirname("__file__"),config['develop']['google_application_credentials'])
 datasetid = os.path.join(os.path.dirname("__file__"),config['develop']['datasetid']) #gbq stg ddb
@@ -44,14 +44,16 @@ planif = os.path.join(os.path.dirname("__file__"),config['develop']['planif'])
 if __name__ == '__main__':
     df_asset_vmr, df_asset_planif = extract_asset(asset_vmr_path =vmr, asset_planif_path = planif)
     src_data = transform_asset(data_asset_vmr=df_asset_vmr, data_asset_planif=df_asset_planif)
-    #load dimdate to blob gcs
-    load_blob_to_gcs(source_file_name= processed_files+'asset.xlsx', 
+    load_asset(dest_dir = processed_files_dir, src_flow = src_data, file_name = 'asset', file_extension = '.csv')
+    #load data to blob gcs
+    load_blob_to_gcs(source_file_name= processed_files_dir+'asset.csv', 
                      bucket_name = bucketid, 
                      destination_blob_name = 'asset.csv', 
                      google_application_credentials = google_application_credentials)
     
+if __name__ == '__main__':    
     load_data_to_snowflake(snowflakeuser=snowflake_user, gcs_stg_url=gcs_stg_url,
                            snowflakepassword=snowflake_password, snowflakeaccount=snowflake_account, 
                            snowflakewarehouse=snowflake_warehouse, snowflakeschema=snowflake_schema,
-                           sf_dest_table = 'DIMASSET', gcs_stage = gcs_stage, 
+                           sf_dest_table = sf_dest_table, gcs_stage = gcs_stage, 
                            query=f"COPY INTO {snowflake_schema}.{sf_dest_table} FROM @{snowflake_schema}.{gcs_stage} FILE_FORMAT = (FORMAT_NAME=MY_FILE_FORMAT) ON_ERROR='ABORT_STATEMENT';")

@@ -7,7 +7,8 @@ import configparser
 import sys
 import os
 pd.options.mode.chained_assignment = None
-os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 
 
