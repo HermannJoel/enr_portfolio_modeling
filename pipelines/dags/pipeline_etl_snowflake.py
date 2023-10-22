@@ -17,7 +17,7 @@ default_args = {
 }
 
 dag = DAG(
-    'pipeline_load_to_snowflake',
+    'pipeline_snowflake',
     description='xlsx to snowflake',
     schedule_interval= '0 * * * *',   # 0 * * * *(@hourly) 0 0 * * 0 (@weekly)
     default_args=default_args

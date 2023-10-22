@@ -4,7 +4,9 @@ import pandas as pd
 import numpy as np
 from datetime import datetime as dt
 import os
-os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+import sys
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 
 nb_years=(2028-dt.today().year)#2008 represents end year of time horizon. Change the year to the year that suits the desired horizon

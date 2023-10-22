@@ -17,7 +17,7 @@ default_args = {
 }
 
 dag = DAG(
-    'pipeline_load_to_gcs',
+    'pipeline_to_gcs',
     description='xlsx to gcs',
     schedule_interval= '0 * * * *',   # 0 * * * *(@hourly) 0 0 * * 0 (@weekly)
     default_args=default_args

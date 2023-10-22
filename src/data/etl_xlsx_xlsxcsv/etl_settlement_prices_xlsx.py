@@ -1,14 +1,15 @@
 import sys
 import configparser
 import os
-os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 from etl import*
 
 #Load Config
 config_file=os.path.join(os.path.dirname("__file__"), 'Config/config.ini') 
 config=configparser.ConfigParser(allow_no_value=True)
-config.read(config_file)
+config.read(config_file)  
 
 hedge_vmr = os.path.join(os.path.dirname("__file__"),config['develop']['hedge_vmr'])
 hedge_planif = os.path.join(os.path.dirname("__file__"),config['develop']['hedge_planif'])

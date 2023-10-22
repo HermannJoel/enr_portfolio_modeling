@@ -1,6 +1,8 @@
 import pandas as pd
 import os
-os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+import sys
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 
 def extract_settlement_prices_data(future_prices_path:str, q_w_path:str, m_w_path:str):

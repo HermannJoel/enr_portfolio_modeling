@@ -17,10 +17,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from datetime import datetime as dt
 import os
-os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+import sys
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 
-
-path='D:/local-repo-github/enr_portfolio_modeling/'                #cookie file path
+path='/mnt/d/local-repo-github/enr_portfolio_modeling'
+#path='D:/local-repo-github/enr_portfolio_modeling/'                #cookie file path
 os.chdir(path)
 year=2023
 filename=f"Futures_products_{dt.today().year}.xlsx"

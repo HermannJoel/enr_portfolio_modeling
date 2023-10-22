@@ -5,28 +5,32 @@ import datetime as dt
 xrange = range
 import configparser
 import sys
+import sqlalchemy as sqlalchemy
+import  pandasql
 from pandasql import sqldf
-pysqldf=lambda q: sqldf(q, globals())
+#pysqldf=lambda q: sqldf(q, globals())
 import os
 pd.options.mode.chained_assignment = None
-os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 
-temp_dir='//DESKTOP-JDQLDT1/SharedFolder/d-eng/temp/'
+temp_dir='/mnt/d/SharedFolder/d-eng/temp/'
 
 def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
     """udf Function to generate template asset.
     Parameters
-    ===========
-    **kwargs
-        data_asset_vmr: DataFrame
-                
+    ----------
+    **kwargs 
+    data_asset_vmr: DataFrame       
         data_asset_planif: DataFrame
     Returns
-    =======
+    -------
     template_asset_w/o_prod: DataFrame
         template asset without productibles dataframe
-    
+    Examples
+    --------
+    >>>transform_asset(data_asset_vmr, data_asset_planif, **kwargs)
     """
     print('create template asset starts!:\n')
     try:
@@ -107,16 +111,16 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
         #To import data frame containing projects in planification
         df_=data_asset_planif
         #To drop all projects with "Nom" as optimisation 
-        rows_to_drop = sqldf("select * from df_ where Nom like 'optimisation%';", locals())
+        rows_to_drop = pandasql.sqldf('''select * from df_ where Nom like 'optimisation%';''', globals())
         rows_to_drop = list(rows_to_drop['Nom'])
         #To drop all projects with "Nom" as Poste
-        rows_to_drop2 = sqldf("select * from df_ where Nom like 'Poste%';", locals())
+        rows_to_drop2 = pandasql.sqldf('''select * from df_ where Nom like 'Poste%';''', globals())
         rows_to_drop2 = list(rows_to_drop2['Nom'])
         #To drop all projects with "Nom" as Stockage 
-        rows_to_drop3 = sqldf("select * from df_ where Nom like 'Stockage%';", locals())
+        rows_to_drop3 = pandasql.sqldf('''select * from df_ where Nom like 'Stockage%';''', globals())
         rows_to_drop3 = list(rows_to_drop3['Nom'])
         #To drop all projects with "Nom" as Regul 
-        rows_to_drop4 = sqldf("select * from df_ where Nom like 'Régul%';", locals())
+        rows_to_drop4 = pandasql.sqldf('''select * from df_ where Nom like 'Régul%';''', globals())
         rows_to_drop4 = list(rows_to_drop4['Nom'])
 
         #To rename columns

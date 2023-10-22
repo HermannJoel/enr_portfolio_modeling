@@ -1,6 +1,8 @@
 import pandas as pd
 import os
-os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+import sys
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 
 def extract_vol_hedge(prod_path, prod_pct_path, mean_pct_path, asset_path, hedge_path):

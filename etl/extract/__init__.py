@@ -6,4 +6,4 @@ from .extract_vol_hedge import*
 from .extract_contract_prices import*
 from .extract_prices import*
 from .extract_settlement_prices import*
-from .scrap_settlement_prices_eex import*
+#from .scrap_settlement_prices_eex import*
