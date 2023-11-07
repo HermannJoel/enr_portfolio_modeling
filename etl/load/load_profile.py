@@ -17,11 +17,11 @@ def load_profile(dest_dir, src_productible, src_profile_id, src_profile, src_mea
         src_profile.to_excel(writer, sheet_name="profile", float_format="%.4f", index=False)
         src_mean_profile.to_excel(writer, sheet_name="mean_profile", float_format="%.4f", index=False)
         #Close the Pandas Excel writer and output the Excel file.
-        writer.save()
-        print("Data loaded succesfully!")
+        writer.close()
+        print(f"Data loaded in {dest_dir} as {file_name}"+".xlsx!")
     except Exception as e:
-        print("Data load error!: "+str(e))
+        print(f"Data load as {file_name}"+".xlsx"+" "+"error!: "+str(e))
 
 def load_template_asset(dest_dir, src_flow, file_name, file_extension):
-    load_as_excel_file(dest_dir, src_flow, file_name, file_extension)
+        load_as_excel_file(dest_dir, src_flow, file_name, file_extension)
     

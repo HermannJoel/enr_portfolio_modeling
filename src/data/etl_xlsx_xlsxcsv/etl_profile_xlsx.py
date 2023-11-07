@@ -26,7 +26,7 @@ if __name__ == '__main__':
                                                                                     project_names_path=project_names, 
                                                                                     template_asset_path=template_asset)
     
-    df_prod, df_profile_id, df_profile, df_mean_profile, df_template_asset_with_prod = transform_prod(data_productible=df_productibles, 
+    df_prod, df_profile_id, df_profile, df_mean_profile, df_template_asset_with_prod = transform_prod_profile(data_productible=df_productibles, 
                                                                                                        data_profile=df_profile, 
                                                                                                        data_project_names=df_project_names,
                                                                                                        data_template_asset=df_template_asset)

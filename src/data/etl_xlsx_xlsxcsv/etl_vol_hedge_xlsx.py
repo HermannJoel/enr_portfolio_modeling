@@ -14,10 +14,10 @@ config=configparser.ConfigParser(allow_no_value=True)
 config.read(config_file)
 
 # Initialize Variables
-prod=os.path.join(os.path.dirname("__file__"),config['develop']['prod'])
-asset=os.path.join(os.path.dirname("__file__"),config['develop']['asset'])
-hedge=os.path.join(os.path.dirname("__file__"),config['develop']['hedge'])
-val_dir = os.path.join(os.path.dirname("__file__"),config['develop']['ge_val_dir'])
+prod=os.path.join(os.path.dirname("__file__"),config['develop']['template_prod'])
+asset=os.path.join(os.path.dirname("__file__"),config['develop']['template_asset'])
+hedge=os.path.join(os.path.dirname("__file__"),config['develop']['template_hedge'])
+dest_dir = os.path.join(os.path.dirname("__file__"),config['develop']['processed_files_dir'])
 
 if __name__ == '__main__':
     df_prod, df_profile, df_mean_profile, df_asset, df_hedge = extract_vol_hedge(prod_path = prod, prod_pct_path = prod, 
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     src_data = transform_vol_hedge(data_prod=df_prod, hedge=df_hedge, 
                                    prod_pct = df_profile, mean_pct = df_mean_profile, 
                                    oa=df_oa, cr=df_cr, ppa=df_ppa, profile=df_profile)
-    load_vol_hedge(dest_dir = val_dir, src_flow=src_data, file_name="vol_hedge", file_extension='.csv')
+    load_vol_hedge(dest_dir = dest_dir, src_flow=src_data, file_name="vol_hedge", file_extension='.csv')
     
     
     

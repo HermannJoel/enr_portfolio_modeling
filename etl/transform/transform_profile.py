@@ -7,7 +7,7 @@ os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 
 
-def transform_prod(data_productible, data_profile, data_project_names, data_template_asset):
+def transform_prod_profile(data_productible, data_profile, data_project_names, data_template_asset):
     try:
         #To import prod data from as pd data frame  
         df = data_productible
@@ -90,6 +90,6 @@ def transform_prod(data_productible, data_profile, data_project_names, data_temp
         return df_productibles__, profile_id, profile, mean_profile, template_asset_with_prod
     
     except Exception as e:
-        print("Template hedge transformation error!: "+str(e))
+        print("Template profile transformation error!: "+str(e))
     
 

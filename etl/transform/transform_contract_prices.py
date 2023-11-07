@@ -9,11 +9,12 @@ pd.options.mode.chained_assignment = None
 sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling')
 os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
+from etl import*
 
 def transform_contract_prices_planif(data_hedge):
     try:
         df_hedge = data_hedge
-        df_hedge=df_hedge.loc[df_hedge['en_planif']=='Oui']
+        df_hedge=df_hedge.loc[df_hedge['en_planif']==True]
         df_hedge.reset_index(drop=True, inplace=True)
         #create a list containing assets under ppa contracts
         ppa=['Ally Bessadous', 'Ally Mercoeur', 'Ally Monteil', 
@@ -124,14 +125,14 @@ def transform_contract_prices_inprod(template_asset, template_hedge, template_pr
     try:
         print('df prices assets in prod starts:\n')
         hedge_ = template_hedge
-        hedge=hedge_.loc[hedge_['en_planif'] == 'Non']
+        hedge=hedge_.loc[hedge_['en_planif'] == False]
         hedge.reset_index(drop=True, inplace=True)
         #List containing ppa
         ppa=['Ally Bessadous', 'Ally Mercoeur', 'Ally Monteil', 'Ally Verseilles', 'Chépy', 'La citadelle', 
              'Nibas', 'Plouguin', 'Mazagran', 'Pézènes-les-Mines']
 
-        hedge_planif_eol=hedge_.loc[(hedge_['en_planif'] == 'Oui') & (hedge_['technologie'] == 'éolien')]
-        hedge_planif_sol=hedge_.loc[(hedge_['en_planif'] == 'Oui') & (hedge_['technologie'] == 'solaire')]
+        hedge_planif_eol=hedge_.loc[(hedge_['en_planif'] == True) & (hedge_['technologie'] == 'éolien')]
+        hedge_planif_sol=hedge_.loc[(hedge_['en_planif'] == True) & (hedge_['technologie'] == 'solaire')]
         #To create a subset of df containing only ppa
         hedge_ppa=hedge_planif_sol[hedge_planif_sol['projet'].isin(ppa) == True]
 
@@ -145,12 +146,12 @@ def transform_contract_prices_inprod(template_asset, template_hedge, template_pr
 
 
         asset_=template_asset
-        asset=asset_.loc[asset_['en_planif']=='Non']
+        asset=asset_.loc[asset_['en_planif']==False]
         asset=asset[['asset_id', 'projet_id', 'cod', 'date_merchant']]
         asset.reset_index(drop=True, inplace=True)
         #subseting
-        asset_planif_sol = asset_.loc[(asset_['en_planif'] == 'Oui') & (asset_['technologie'] == 'solaire')]
-        asset_planif_eol = asset_.loc[(asset_['en_planif'] == 'Oui') & (asset_['technologie'] == 'éolien')]
+        asset_planif_sol = asset_.loc[(asset_['en_planif'] == True) & (asset_['technologie'] == 'solaire')]
+        asset_planif_eol = asset_.loc[(asset_['en_planif'] == True) & (asset_['technologie'] == 'éolien')]
         #list containing ppa
         ppa=['Ally Bessadous', 'Ally Mercoeur', 'Ally Monteil', 'Ally Verseilles', 'Chépy', 'La citadelle', 
              'Nibas', 'Plouguin', 'Mazagran', 'Pézènes-les-Mines']

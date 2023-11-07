@@ -15,7 +15,8 @@ sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 
-temp_dir='/mnt/d/SharedFolder/d-eng/temp/'
+temp_dir='/mnt/d/local-repo-github/enr_portfolio_modeling/files-storage/temp/'
+#temp_dir='/mnt/d/SharedFolder/d-eng/temp/'
 
 def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
     """udf Function to generate template asset.
@@ -39,7 +40,7 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
                         "Evits et Josaphats", "Remise Reclainville", "Maurienne / Gourgançon", "La Bouleste", 
                         "Cham Longe 1 - off", "Remise Reclainville - off", "Evits et Josaphats - off", "Bougainville - off", 
                         "Maurienne / Gourgançon - off", "Saint-André - off"]
-        
+         #To import data frame containing projects in planification
         df=data_asset_vmr
         df.rename(columns = {"Alias":"projet", "Technologie":"technologie", 
                              "COD":"cod", "MW 100%":"mw", "Taux succès":"taux_succès", 
@@ -65,7 +66,7 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
         #To set "date_dementelement" 6 months before "date_msi"
         df["date_dementelement"] = df["date_msi"] - pd.DateOffset(months=6)
         #To create "en_planif" column Bolean: Non=for parc already in exploitation/Oui=projet in planification
-        df["en_planif"] = "Non"
+        df["en_planif"] = False
 
         df = df.assign(asset_id=[1 + i for i in xrange(len(df))])[['asset_id'] + df.columns.tolist()]
         df = df.assign(id=[1 + i for i in xrange(len(df))])[['id'] + df.columns.tolist()]
@@ -101,9 +102,9 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
                                "date_msi", "en_planif"]]
 
         #To make export as excel files
-        vmr_to_planif.to_excel(temp_dir+"asset_vmr_to_planif.xlsx", index=False, float_format="%.3f")#This file contains data of assets still in planification but were in assets in planification. 
-        project_names.to_excel(temp_dir + "project_names.xlsx", index=False)
-        hedge_vmr.to_excel(temp_dir + "hedge_vmr.xlsx", index=False, float_format="%.3f")#This file contains data tha will be used to create hedge template of assets in production.
+        vmr_to_planif.to_csv(temp_dir+"asset_vmr_to_planif.csv", index=False, float_format="%.3f")#This file contains data of assets still in planification but were in assets in planification. 
+        project_names.to_csv(temp_dir + "project_names.csv", index=False)
+        hedge_vmr.to_csv(temp_dir + "hedge_vmr.csv", index=False, float_format="%.3f")#This file contains data tha will be used to create hedge template of assets in production.
         #This part of the code is to preprocess data of assets in planification
         #==============================================================================
         #=============== Data preprocessing  of Asset in planification  ===============
@@ -111,34 +112,51 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
         #To import data frame containing projects in planification
         df_=data_asset_planif
         #To drop all projects with "Nom" as optimisation 
-        rows_to_drop = pandasql.sqldf('''select * from df_ where Nom like 'optimisation%';''', globals())
-        rows_to_drop = list(rows_to_drop['Nom'])
+        #rows_to_drop = pandasql.sqldf('''select * from df_ where Nom like 'optimisation%';''', globals())
+        #rows_to_drop = list(rows_to_drop['Nom'])
         #To drop all projects with "Nom" as Poste
-        rows_to_drop2 = pandasql.sqldf('''select * from df_ where Nom like 'Poste%';''', globals())
-        rows_to_drop2 = list(rows_to_drop2['Nom'])
+        #rows_to_drop2 = pandasql.sqldf('''select * from df_ where Nom like 'Poste%';''', globals())
+        #rows_to_drop2 = list(rows_to_drop2['Nom'])
         #To drop all projects with "Nom" as Stockage 
-        rows_to_drop3 = pandasql.sqldf('''select * from df_ where Nom like 'Stockage%';''', globals())
-        rows_to_drop3 = list(rows_to_drop3['Nom'])
+        #rows_to_drop3 = pandasql.sqldf('''select * from df_ where Nom like 'Stockage%';''', globals())
+        #rows_to_drop3 = list(rows_to_drop3['Nom'])
         #To drop all projects with "Nom" as Regul 
-        rows_to_drop4 = pandasql.sqldf('''select * from df_ where Nom like 'Régul%';''', globals())
+        #rows_to_drop4 = pandasql.sqldf('''select * from df_ where Nom like 'Régul%';''', globals())
+        #rows_to_drop4 = list(rows_to_drop4['Nom'])
+        df_ = df_[df_['Nom'].notna()]
+        df_.reset_index(inplace=True, drop=True)
+        #df_['Nom']=df_['Nom'].str.lower()
+        rows_to_drop=df_.query('Nom.str.contains("optimisation")', engine='python')
+        rows_to_drop = list(rows_to_drop['Nom'])
+        rows_to_drop2=df_.query('Nom.str.contains("Poste")', engine='python')
+        rows_to_drop2 = list(rows_to_drop2['Nom'])
+        rows_to_drop3=df_.query('Nom.str.contains("Stockage")', engine='python')
+        rows_to_drop3 = list(rows_to_drop3['Nom'])
+        rows_to_drop4=df_.query('Nom.str.contains("Régul")', engine='python')
         rows_to_drop4 = list(rows_to_drop4['Nom'])
 
+        df_ = df_[df_['Nom'].isin(rows_to_drop) == False]
+        df_ = df_[df_['Nom'].isin(rows_to_drop2) == False]
+        df_ = df_[df_['Nom'].isin(rows_to_drop3) == False]
+        df_ = df_[df_['Nom'].isin(rows_to_drop4) == False]
+        
+        #df_['Nom']=df_['Nom'].str.capitalize()
+        
         #To rename columns
         df_.rename(columns = {'#':'projet_id', 'Nom':'projet', 'Technologie':'technologie', 
                               'Puissance totale (pour les  repowering)':'mw','date MSI depl':'date_msi', 
                               'Taux de réussite':'taux_succès'}, inplace=True)
 
         #drop optimisation
-        df_ = df_[df_.projet.isin(rows_to_drop) == False]
+        #df_ = df_[df_.projet.isin(rows_to_drop) == False]
         #drop projects poste de...
-        df_ = df_[df_.projet.isin(rows_to_drop2) == False]
+        #df_ = df_[df_.projet.isin(rows_to_drop2) == False]
         #drop projects Stockage de...
-        df_ = df_[df_.projet.isin(rows_to_drop3) == False]
+        #df_ = df_[df_.projet.isin(rows_to_drop3) == False]
         #drop projects Regul de...
-        df_ = df_[df_.projet.isin(rows_to_drop4) == False]
+        #df_ = df_[df_.projet.isin(rows_to_drop4) == False]
         #To select all projets where technologie is not autre 
-        df_ = df_.loc[df_['technologie'] != 'autre']
-
+        #df_ = df_.loc[df_['technologie'] != 'autre']
 
         df_['date_msi']=pd.to_datetime(df_["date_msi"])
 
@@ -184,8 +202,8 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
         df_['repowering'] = np.nan
         df_to_asset_vmr['repowering'] = np.nan
         #To create a column en_planif
-        df_['en_planif'] = 'Oui'
-        df_to_asset_vmr['en_planif'] = 'Non'
+        df_['en_planif'] = True
+        df_to_asset_vmr['en_planif'] = False
 
         #correct correct "eolien" spelling
         df_["technologie"] = df_["technologie"].str.replace("éolien ", "éolien")
@@ -215,8 +233,8 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
                                          'puissance_installée', 'eoh', 'date_merchant', 'date_dementelement', 
                                          'repowering', 'date_msi', 'en_planif']]
         #To export data as excel files
-        df_to_asset_vmr.to_excel(temp_dir+'planif_to_asset_vmr.xlsx', index=False, float_format="%.3f")#This file contains data of assets already in production but were in planification
-        hedge_planif.to_excel(temp_dir+"hedge_planif.xlsx", index=False, float_format="%.3f")#This file contains data tha will be used to create hedge template of assets that are in planification
+        df_to_asset_vmr.to_csv(temp_dir+'planif_to_asset_vmr.csv', index=False, float_format="%.3f")#This file contains data of assets already in production but were in planification
+        hedge_planif.to_csv(temp_dir+"hedge_planif.csv", index=False, float_format="%.3f")#This file contains data tha will be used to create hedge template of assets that are in planification
         #==============================================================================
         #===================== Joining Asset VMR and Asset Planif =====================
         #==============================================================================

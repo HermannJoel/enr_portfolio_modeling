@@ -1,0 +1,206 @@
+id,hedge_id,id,projet_id,projet,technologie,cod,date_merchant,date_dementelement,puissance_installée,en_planif
+1,206,1,APV1,Agri-PV 1,solaire,2027-09-01,2047-09-01,,1.477,True
+2,207,2,APV2,Agri-PV 2,solaire,2027-09-01,2047-09-01,,1.477,True
+3,208,3,APV3,Agri-PV 3,solaire,2027-09-01,2047-09-01,,1.477,True
+4,209,4,APV4,Agri-PV 4,solaire,2027-09-01,2047-09-01,,1.477,True
+5,210,5,APV5,Agri-PV 5,solaire,2027-09-01,2047-09-01,,1.477,True
+6,211,6,APV6,Agri-PV 6,solaire,2028-09-01,2048-09-01,,1.477,True
+7,212,7,APV7,Agri-PV 7,solaire,2028-09-01,2048-09-01,,1.477,True
+8,213,8,APV8,Agri-PV 8,solaire,2028-09-01,2048-09-01,,1.477,True
+9,214,9,APV9,Agri-PV 9,solaire,2028-09-01,2048-09-01,,1.477,True
+10,215,10,AURA01,Deux-Chaises et le Theil,éolien,2027-10-01,2047-10-01,,15.200,True
+11,216,11,AURA02,Massif du Devès,éolien,2025-08-01,2045-08-01,,12.816,True
+12,217,12,AURA03,Chazemais (Les Brandes),éolien,2028-01-01,2048-01-01,,19.200,True
+13,218,13,AMI01,AO/AMI 2022-1,solaire,2026-07-01,2046-07-01,,18.468,True
+14,219,14,AMI02,AO/AMI 2022-2,solaire,2026-10-01,2046-10-01,,18.468,True
+15,220,15,AMI03,AO/AMI 2022-3,solaire,2027-02-01,2047-02-01,,14.774,True
+16,221,16,SE14,Argilliers,solaire,2025-07-01,2045-07-01,,18.468,True
+17,222,17,S14,Avignonet Barbette,solaire,2025-05-01,2045-05-01,,7.695,True
+18,223,18,NGE6,Bachant,éolien,2027-04-01,2047-04-01,,17.280,True
+19,224,19,AURA04,Blomard - BMF,éolien,2028-04-01,2048-04-01,,16.000,True
+20,225,20,ECO5,Les Cent Mencaudées (SOL),éolien,2024-01-01,2044-01-01,,15.000,True
+21,226,21,GE2,Bonnecourt-Chauffourt,éolien,2030-07-01,2050-07-01,,16.560,True
+22,227,22,S13,Bram,solaire,2025-07-01,2045-07-01,,6.156,True
+23,228,23,ECO8,Bois de St-Aubert (WAL)*,éolien,2024-01-01,2044-01-01,,18.000,True
+24,229,24,GO08,Canville-les-deux-eglises (co-dev KDE),éolien,2027-01-01,2047-01-01,,14.400,True
+25,230,25,AURA05,Prospection PV AURA - 5,solaire,2026-08-01,2046-08-01,,6.156,True
+26,231,26,S09,Extension Avignonet,solaire,2024-03-01,2044-03-01,,11.850,True
+27,232,27,AURA06,Saint-Angel,éolien,2027-11-01,2047-11-01,,11.520,True
+28,233,28,AURA08,Forêt de Bauzon,éolien,2027-08-01,2047-08-01,,22.400,True
+29,234,29,AURA09,Extension Sources de la Loire,éolien,2026-01-01,2046-01-01,,9.600,True
+30,235,30,S15,Crayssac,solaire,2025-12-01,2045-12-01,,8.003,True
+31,236,31,AURA10,Sainte-Eulalie,éolien,2028-10-01,2048-10-01,,9.216,True
+32,237,32,SE12,Estézargues (PV),solaire,2025-06-01,2045-06-01,,9.234,True
+33,238,33,N16,Moulin Blanc,éolien,2024-03-01,2044-03-01,,25.600,True
+34,239,34,N12,Extension Fortel (XFB-62),éolien,2025-12-01,2045-12-01,,14.400,True
+35,240,35,GO21,Extension Grand Camp,éolien,2026-07-01,2046-07-01,,9.600,True
+36,241,36,ECO7,Extension La Chaussée Brunehaut (XLCB),éolien,2027-10-01,2047-10-01,,5.280,True
+37,242,37,GO27,Extension Plaine de Beaunay,éolien,2026-11-01,2046-11-01,,14.400,True
+38,243,38,AURA13,Prospection PV MC - 3,solaire,2026-07-01,2046-07-01,,6.156,True
+39,244,39,N2,Febvin-Palfart Fiefs (FPF),éolien,2027-04-01,2047-04-01,,10.235,True
+40,245,40,EC2,Fermes de Septenville (BOC),éolien,2027-04-01,2047-04-01,,12.282,True
+41,246,41,GO11,FEVA (Co-Dev Nordex),éolien,2026-11-01,2046-11-01,,7.200,True
+42,247,42,S18,Fond de plaine (Repowering),éolien,2025-11-01,2045-11-01,,4.320,True
+43,248,43,GE1,Eparmonts-Repowering,éolien,2024-05-01,2044-05-01,,13.200,True
+44,249,44,AURA14,Coucouron (Laoune),solaire,2025-01-01,2045-01-01,,7.695,True
+45,250,45,N1,Helfaut (SSO),éolien,2024-06-01,2044-06-01,,20.000,True
+46,251,46,AURA15,Trizac,éolien,2026-08-01,2046-08-01,,42.720,True
+47,252,47,SE09,Heintz (PV),solaire,2025-12-01,2045-12-01,,15.390,True
+48,253,48,NGE1,Repowering Boulay,éolien,2024-08-01,2044-08-01,,12.460,True
+49,254,49,GO32,Igoville Lafarge,solaire,2026-01-01,2046-01-01,,9.234,True
+50,255,50,B3,baurèch,solaire,2026-06-01,2046-06-01,,6.156,True
+51,256,51,AURA16,Cézens,éolien,2027-11-01,2047-11-01,,19.200,True
+52,257,52,N10,Le Moulin d'Hestrus (LMH-62),éolien,2025-12-01,2045-12-01,,9.600,True
+53,258,53,AURA17,Saint-Cernin,éolien,2029-05-01,2049-05-01,,10.800,True
+54,259,54,ECO4,Mont de Bagny II (XMB),éolien,2024-11-01,2044-11-01,,13.350,True
+55,260,55,SE07,Mazagran,solaire,2024-09-01,2044-09-01,,81.567,True
+56,261,56,S12,Mas Saintes-Puelles,solaire,2026-01-01,2046-01-01,,6.156,True
+57,262,57,SE11,Cruis,solaire,2024-12-01,2044-12-01,,12.663,True
+58,263,58,ECO9,Seuil du Cambrésis (RIB2),éolien,2024-12-01,2044-12-01,,11.860,True
+59,264,59,EC1,Frégicourt (COM),éolien,2025-02-01,2045-02-01,,12.800,True
+60,265,60,S11,Miremont,solaire,2027-03-01,2047-03-01,,8.550,True
+61,266,61,GE3,Vallée de l'Arce Extension,éolien,2024-11-01,2044-11-01,,28.800,True
+62,267,62,SE10,Montagne d'Aureille,éolien,2027-12-01,2047-12-01,,14.400,True
+63,268,63,AURA22,Chazottes / Rageade,éolien,2024-11-01,2044-11-01,,25.600,True
+64,269,64,NGE7,Neuvilly-Briastre,éolien,2026-09-01,2046-09-01,,11.520,True
+65,270,65,OP05,Optimisation Bois Désiré,éolien,2073-11-03,2093-11-03,,0.000,True
+66,271,66,OP01,Optimisation Bois Ricart,éolien,2073-11-03,2093-11-03,,0.000,True
+67,272,67,OP07,Optimisation Caumont-Chériennes,éolien,2073-11-03,2093-11-03,,0.000,True
+68,273,68,OP02,Optimisation Marcillé,éolien,2073-11-03,2093-11-03,,0.000,True
+69,274,69,OP12,Optimisation Mercoeur,éolien,2073-11-03,2093-11-03,,0.000,True
+70,275,70,OP11,Optimisation Mont de Bagny II XMB,éolien,2073-11-03,2093-11-03,,0.000,True
+71,276,71,OP08,Optimisation Moulin Blanc,éolien,2073-11-03,2093-11-03,,0.000,True
+72,277,72,OP13,Optimisation potentielle 1,éolien,2073-11-03,2093-11-03,,0.000,True
+73,278,73,OP14,Optimisation potentielle 2,éolien,2073-11-03,2093-11-03,,0.000,True
+74,279,74,OP15,Optimisation potentielle 3,éolien,2073-11-03,2093-11-03,,0.000,True
+75,280,75,OP16,Optimisation potentielle 4,éolien,2073-11-03,2093-11-03,,0.000,True
+76,281,76,OP17,Optimisation potentielle 5,éolien,2073-11-03,2093-11-03,,0.000,True
+77,282,77,OP06,Optimisation Préveranges,éolien,2073-11-03,2093-11-03,,0.000,True
+78,283,78,OP09,Optimisation RIB2,éolien,2073-11-03,2093-11-03,,0.000,True
+79,284,79,GO13,Bois Désiré,éolien,2025-02-01,2045-02-01,,8.900,True
+80,285,80,N4,Ouest Château-Thierry (OCT)*,éolien,2027-01-01,2047-01-01,,18.423,True
+81,286,81,N8,Ouest Vron (OVron),éolien,2025-08-01,2045-08-01,,26.880,True
+82,287,82,B6,Plaisance,solaire,2026-01-01,2046-01-01,,12.312,True
+83,288,83,AURA24,Mercoeur,éolien,2025-02-01,2045-02-01,,31.328,True
+84,289,84,N3,Fontaine-lès-Boulans (FLB),éolien,2025-04-01,2045-04-01,,18.423,True
+85,290,85,AURA26,Astet (La Verrerie),éolien,2027-10-01,2047-10-01,,14.400,True
+86,291,86,AURA27,Lespéron (La Fayette),éolien,2027-08-01,2047-08-01,,14.400,True
+87,292,87,SO18,Chantillac,solaire,2026-04-01,2046-04-01,,15.390,True
+88,293,88,SO19,Prospection AK 2,solaire,2026-12-01,2046-12-01,,4.925,True
+89,294,89,SO20,Prospection AK 3,solaire,2027-05-01,2047-05-01,,4.925,True
+90,295,90,SO28,Prospection AK 4,solaire,2027-08-01,2047-08-01,,3.940,True
+91,296,91,SO29,Prospection AK 5,solaire,2027-02-01,2047-02-01,,4.925,True
+92,297,92,GO29,Prospection EOL GO 2022,éolien,2028-07-01,2048-07-01,,11.520,True
+93,298,93,GO07,Prospection EOL Ouest 2022/2023 - 1 -,éolien,2028-12-01,2048-12-01,,9.216,True
+94,299,94,GO24,Prospection EOL Ouest 2022/2023 - 2 -,éolien,2028-10-01,2048-10-01,,9.216,True
+95,300,95,GO39,Prospection EOL Ouest 2022/2023 - 3 -,éolien,2029-03-01,2049-03-01,,9.216,True
+96,301,96,GO40,Prospection EOL Ouest 2022/2023 - 4 -,éolien,2029-06-01,2049-06-01,,7.373,True
+97,302,97,AURA29,Prospection PV MC - 1,solaire,2026-05-01,2046-05-01,,6.156,True
+98,303,98,SO15,prospection éolien Bdx,éolien,2028-11-01,2048-11-01,,9.216,True
+99,304,99,B9,Prospection Eolien Bdx 8,éolien,2028-07-01,2048-07-01,,9.216,True
+100,305,100,AURA31,Orléat,solaire,2025-12-01,2045-12-01,,12.312,True
+101,306,101,AURA34,Repowering La Citadelle,éolien,2026-12-01,2046-12-01,,11.376,True
+102,307,102,AURA35,Repowering Ally Mercoeur,éolien,2026-08-01,2046-08-01,,72.576,True
+103,308,103,AURA36,Repowering Sources de la Loire,éolien,2027-12-01,2047-12-01,,17.280,True
+104,309,104,AURA38,Montilly,solaire,2026-01-01,2046-01-01,,6.156,True
+105,310,105,AURA39,Prospection PV AURA - 6,solaire,2026-11-01,2046-11-01,,4.925,True
+106,311,106,B8,Prospection éolien MPL,éolien,2029-07-01,2049-07-01,,9.216,True
+107,312,107,NGE10,Prospection NGE 10,éolien,2029-03-01,2049-03-01,,9.216,True
+108,313,108,NGE12,Prospection NGE 12 (PV),solaire,2027-01-01,2047-01-01,,4.925,True
+109,314,109,NGE13,Prospection NGE 13,éolien,2026-11-01,2046-11-01,,9.584,True
+110,315,110,NGE14,Prospection NGE 14 (PV),solaire,2026-08-01,2046-08-01,,6.156,True
+111,316,111,NGE15,Prospection NGE 15 (PV),solaire,2026-10-01,2046-10-01,,6.156,True
+112,317,112,NGE16,Prospection NGE 16 (PV),solaire,2026-12-01,2046-12-01,,4.925,True
+113,318,113,NGE17,Prospection NGE 17 (PV),solaire,2027-01-01,2047-01-01,,4.925,True
+114,319,114,NGE18,Prospection NGE 18,éolien,2028-08-01,2048-08-01,,9.216,True
+115,320,115,NGE2,Prospection NGE 2 (PV),solaire,2026-09-01,2046-09-01,,6.156,True
+116,321,116,NGE22,Prospection NGE 22 (PV),solaire,2027-06-01,2047-06-01,,3.940,True
+117,322,117,NGE23,Prospection NGE 23 (PV),solaire,2027-06-01,2047-06-01,,3.940,True
+118,323,118,NGE4,Prospection NGE 4 (PV),solaire,2027-02-01,2047-02-01,,4.925,True
+119,324,119,NGE5,Prospection NGE 5,éolien,2028-04-01,2048-04-01,,11.520,True
+120,325,120,NGE20,Prospection NGE20,éolien,2029-03-01,2049-03-01,,9.216,True
+121,326,121,NGE21,Prospection NGE21,éolien,2029-03-01,2049-03-01,,9.216,True
+122,327,122,GO06,Prospection PV 2022 (Igoville Commune),solaire,2026-07-01,2046-07-01,,9.234,True
+123,328,123,AURA40,Prospection PV MC - 2,solaire,2027-02-01,2047-02-01,,4.925,True
+124,329,124,AURA43,Prospection éolien AURA - 1,éolien,2028-12-01,2048-12-01,,9.216,True
+125,330,125,AURA44,Prospection éolien MC - 2,éolien,2028-10-01,2048-10-01,,9.216,True
+126,331,126,AURA45,Prospection PV MC - 4,solaire,2026-11-01,2046-11-01,,4.925,True
+127,332,127,AURA46,Prospection éolien MC - 3,éolien,2028-07-01,2048-07-01,,9.216,True
+128,333,128,AURA47,Agri-PV AURA -1,solaire,2026-12-01,2046-12-01,,1.477,True
+129,334,129,AURA48,Agri-PV AURA -2,solaire,2027-05-01,2047-05-01,,1.477,True
+130,335,130,BFC01,Clérimois II,éolien,2027-06-01,2047-06-01,,17.280,True
+131,336,131,BFC02,Prospection éolien BFC - 1,éolien,2028-09-01,2048-09-01,,9.216,True
+132,337,132,GO12,Prospection PV GO 2022 - 3 - ,solaire,2027-01-01,2047-01-01,,7.387,True
+133,338,133,BFC03,Gurgy (Nouzeau),solaire,2025-07-01,2045-07-01,,15.390,True
+134,339,134,BFC04,Rosoy (Plaine de Nange),solaire,2024-03-01,2044-03-01,,21.546,True
+135,340,135,BFC05,Villemanoche CEMEX (La Herse),solaire,2025-04-01,2045-04-01,,23.085,True
+136,341,136,BFC06,Prospection éolien BFC - 2,éolien,2028-06-01,2048-06-01,,9.216,True
+137,342,137,GO30,Prospection PV Ouest - 1 -,solaire,2027-03-01,2047-03-01,,7.387,True
+138,343,138,GO34,Prospection PV Ouest - 2 -,solaire,2027-05-01,2047-05-01,,7.387,True
+139,344,139,GO35,Prospection PV Ouest - 3 -,solaire,2027-06-01,2047-06-01,,7.387,True
+140,345,140,GO36,Prospection PV Ouest - 4 -,solaire,2027-07-01,2047-07-01,,7.387,True
+141,346,141,GO37,Prospection PV Ouest - 5 -,solaire,2027-10-01,2047-10-01,,5.910,True
+142,347,142,GO38,Prospection PV Ouest - 6 -,solaire,2027-11-01,2047-11-01,,5.910,True
+143,348,143,S01,Prospection S 1,solaire,2027-02-01,2047-02-01,,4.925,True
+144,349,144,S02,Prospection S 2,solaire,2027-09-01,2047-09-01,,3.940,True
+145,350,145,S03,Prospection S 3,solaire,2026-10-01,2046-10-01,,4.925,True
+146,351,146,S04,Prospection S 4,solaire,2027-03-01,2047-03-01,,4.925,True
+147,352,147,S05,Prospection S 5,solaire,2027-05-01,2047-05-01,,4.925,True
+148,353,148,S20,Prospection S20,solaire,2027-08-01,2047-08-01,,3.940,True
+149,354,149,S21,Prospection S21,solaire,2027-01-01,2047-01-01,,4.925,True
+150,355,150,S22,Prospection S22,solaire,2027-05-01,2047-05-01,,4.925,True
+151,356,151,S23,Prospection S23,solaire,2027-08-01,2047-08-01,,3.940,True
+152,357,152,S24,Prospection S24,solaire,2028-05-01,2048-05-01,,3.940,True
+153,358,153,S25,Prospection S25,solaire,2028-02-01,2048-02-01,,3.940,True
+154,359,154,S26,Prospection S26,solaire,2027-10-01,2047-10-01,,3.940,True
+155,360,155,S27,Prospection S27,solaire,2028-01-01,2048-01-01,,3.940,True
+156,361,156,S06,Prospection S6,solaire,2027-05-01,2047-05-01,,4.925,True
+157,362,157,S07,Prospection S7,solaire,2027-04-01,2047-04-01,,4.925,True
+158,363,158,S08,Prospection S8,solaire,2027-02-01,2047-02-01,,4.925,True
+159,364,159,S19,Prospection S-O 11,solaire,2027-09-01,2047-09-01,,3.940,True
+160,365,160,S16,Prospection S-O 7 (PV),solaire,2027-06-01,2047-06-01,,3.940,True
+161,366,161,S17,Prospection S-O 8 (PV),solaire,2026-09-01,2046-09-01,,6.156,True
+162,367,162,S10,Prospection S-O 9 (PV),solaire,2026-07-01,2046-07-01,,6.156,True
+163,368,163,B4,Jean-Grégoire / folles,solaire,2026-08-01,2046-08-01,,6.156,True
+164,369,164,B11,Prospection solaire Bdx 9,solaire,2026-07-01,2046-07-01,,6.156,True
+165,370,165,B7,Prospection Solaire MPL,solaire,2026-11-01,2046-11-01,,4.925,True
+166,371,166,B2,prospection solaire Nantes,solaire,2026-11-01,2046-11-01,,4.925,True
+167,372,167,B10,Prospection solaire Nantes 2,solaire,2026-07-01,2046-07-01,,6.156,True
+168,373,168,SE18,Prospection sud-est 10 (PV),solaire,2026-12-01,2046-12-01,,4.925,True
+169,374,169,SE08,Prospection sud-est 3 (PV),solaire,2026-11-01,2046-11-01,,4.925,True
+170,375,170,SE16,Prospection sud-est 8 (PV) - Le Luc / Pujaut / Villeneuve,solaire,2026-11-01,2046-11-01,,2.955,True
+171,376,171,SE17,Prospection sud-est 9 (PV) - Riez / prospect ,solaire,2026-06-01,2046-06-01,,3.694,True
+172,377,172,GO17,Prospection TL EOL 49/72,éolien,2028-02-01,2048-02-01,,13.680,True
+173,378,173,GO09,Prospection TL PV 2022,solaire,2026-10-01,2046-10-01,,9.234,True
+174,379,174,GE6,Vinets,éolien,2026-05-01,2046-05-01,,32.000,True
+175,380,175,ECO6,Ostrevent (OST),éolien,2026-03-01,2046-03-01,,17.622,True
+176,381,176,NGE3,Repowering Chasse Marée,éolien,2026-12-01,2046-12-01,,9.504,True
+177,382,177,BFC07,Prospection PV BFC - 3,solaire,2026-11-01,2046-11-01,,4.925,True
+178,383,178,GO26,Repowering Pannecé,éolien,2025-10-01,2045-10-01,,24.000,True
+179,384,179,GO25,Repowering Plouguin,éolien,2027-07-01,2047-07-01,,5.184,True
+180,385,180,BFC08,Prospection PV BFC - 1,solaire,2026-10-01,2046-10-01,,6.156,True
+181,386,181,BFC09,Prospection PV BFC - 2,solaire,2026-11-01,2046-11-01,,4.925,True
+182,387,182,NGE8,Repowering St-André,éolien,2025-05-01,2045-05-01,,14.000,True
+183,388,183,NGE11,Repowering St-Patrick Hermin,éolien,2026-12-01,2046-12-01,,11.520,True
+184,389,184,BFC10,Prospection PV BFC - 4,solaire,2027-03-01,2047-03-01,,4.925,True
+185,390,185,GO18,Repowering Vaux des Roques,éolien,2027-01-01,2047-01-01,,9.936,True
+186,391,186,SE04,La Motte (PV) ,solaire,2024-10-01,2044-10-01,,7.079,True
+187,392,187,BFC11,Prospection PV BFC - 5,solaire,2027-01-01,2047-01-01,,4.925,True
+188,393,188,BFC12,Prospection éolien BFC - 3,éolien,2028-12-01,2048-12-01,,9.216,True
+189,394,189,BFC13,Prospection PV BFC - 3,solaire,2027-05-01,2047-05-01,,4.925,True
+190,395,190,GO33,Saint-Evroult-de-Monfort,éolien,2027-08-01,2047-08-01,,11.520,True
+191,396,191,GO05,Prospection EOL/PV,éolien,2028-12-01,2048-12-01,,9.216,True
+192,397,192,GO28,SEIDER (CRI ou HEU2),éolien,2027-11-01,2047-11-01,,9.216,True
+193,398,193,BFC14,Prospection éolien BFC - 4,éolien,2029-06-01,2049-06-01,,7.373,True
+194,399,194,GO04,Silfiac,éolien,2025-10-01,2045-10-01,,9.600,True
+195,400,195,SO13,Chauvigny,solaire,2026-04-01,2046-04-01,,4.925,True
+196,401,196,SO09,St Christoly de Blaye,solaire,2025-01-01,2045-01-01,,6.156,True
+197,402,197,GE9,STEP Dampierre,autre,2026-12-01,2046-12-01,,0.000,True
+198,403,198,GO19,Repowering Ronchois,éolien,2027-02-01,2047-02-01,,38.880,True
+199,404,199,SO21,Task solaire SO 1,solaire,2027-05-01,2047-05-01,,4.925,True
+200,405,200,SO22,Task solaire SO 2,solaire,2027-08-01,2047-08-01,,3.940,True
+201,406,201,SO14,Bruyeres - Glenic,éolien,2026-11-01,2046-11-01,,13.350,True
+202,407,202,GO10,Repowering Grand-Camp ,éolien,2025-03-01,2045-03-01,,9.600,True
+203,408,203,BFC15,Prospection PV BFC - 6,solaire,2027-09-01,2047-09-01,,3.940,True
+204,409,204,NGE9,Repowering St-Patrick Valhuon,éolien,2027-04-01,2047-04-01,,28.080,True
+205,410,205,NGE19,XLCB 2,éolien,2027-08-01,2047-08-01,,7.128,True

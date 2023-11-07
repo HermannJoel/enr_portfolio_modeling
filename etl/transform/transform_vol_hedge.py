@@ -12,7 +12,7 @@ from src.utils.functions import*
 
 def transform_hedge_type(hedge):
     try:
-        hedge_vmr=hedge.loc[hedge["en_planif"]=="Non"]
+        hedge_vmr=hedge.loc[hedge["en_planif"]==False]
         df_oa=hedge_vmr[["hedge_id", "projet_id", "type_hedge", "date_debut", 
                         "date_fin", "date_dementelement", "pct_couverture"]]
         df_oa=df_oa.loc[df_oa["type_hedge"] == "OA"]
@@ -171,22 +171,22 @@ def transform_vol_hedge(data_prod, hedge, prod_pct, mean_pct, **kwargs):
                             'date', 'année', 'trim', 'mois', 'p50_adj', 'p90_adj']]
         
         print('compute hedge assets in planif starts!:\n')  
-        hedge_planif=hedge.loc[hedge["en_planif"]=="Oui"]
+        hedge_planif=hedge.loc[hedge["en_planif"]==True]
         #8760=24*365(operating hours).To calculate p50/p90 in mw/h of assets in planification.mw*8760*charging factor 
         #wind power
-        hedge_planif.loc[(hedge_planif['technologie']=='éolien') & (hedge_planif['en_planif']=='Oui'), 'p50']=hedge_planif["puissance_installée"]*8760*0.25
-        hedge_planif.loc[(hedge_planif['technologie']=='éolien') & (hedge_planif['en_planif']=='Oui'), 'p90']=hedge_planif["puissance_installée"]*8760*0.20
+        hedge_planif.loc[(hedge_planif['technologie']=='éolien') & (hedge_planif['en_planif']==True), 'p50']=hedge_planif["puissance_installée"]*8760*0.25
+        hedge_planif.loc[(hedge_planif['technologie']=='éolien') & (hedge_planif['en_planif']==True), 'p90']=hedge_planif["puissance_installée"]*8760*0.20
         #solar
-        hedge_planif.loc[(hedge_planif['technologie']=='solaire') & (hedge_planif['en_planif']=='Oui'), 'p50']=hedge_planif["puissance_installée"]*8760*0.15
-        hedge_planif.loc[(hedge_planif['technologie']=='solaire') & (hedge_planif['en_planif']=='Oui'), 'p90']=hedge_planif["puissance_installée"]*8760*0.13
+        hedge_planif.loc[(hedge_planif['technologie']=='solaire') & (hedge_planif['en_planif']==True), 'p50']=hedge_planif["puissance_installée"]*8760*0.15
+        hedge_planif.loc[(hedge_planif['technologie']=='solaire') & (hedge_planif['en_planif']==True), 'p90']=hedge_planif["puissance_installée"]*8760*0.13
 
         #To calculate p50 p90 adjusted by the pct_couverture
         hedge_planif["p50"]=hedge_planif["p50"]*hedge_planif["pct_couverture"]
         hedge_planif["p90"]=hedge_planif["p90"]*hedge_planif["pct_couverture"]
 
-        prod_planif_solar=hedge_planif.loc[(hedge_planif['technologie'] == "solaire") & (hedge_planif['en_planif'] == 'Oui')]
+        prod_planif_solar=hedge_planif.loc[(hedge_planif['technologie'] == "solaire") & (hedge_planif['en_planif'] == True)]
         prod_planif_solar.reset_index(drop = True, inplace=True)
-        prod_planif_wp=hedge_planif.loc[(hedge_planif['technologie'] == "éolien") & (hedge_planif['en_planif'] == 'Oui')]
+        prod_planif_wp=hedge_planif.loc[(hedge_planif['technologie'] == "éolien") & (hedge_planif['en_planif'] == True)]
         prod_planif_wp.reset_index(drop = True, inplace=True)
 
         #To determine the number of solar and eolien
