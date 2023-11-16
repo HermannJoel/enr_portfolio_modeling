@@ -54,8 +54,8 @@ def transform_contract_prices_planif(data_hedge):
         prices_planif=remove_contract_prices(data=d, sd='date_debut', ed='date_fin', dd='date_dementelement', price='price',
                                              th='type_hedge', date='date', projetid='projet_id', hedgeid='hedge_id')
 
-        prices_planif=select_columns(prices_planif, 'hedge_id', 'projet_id', 'projet', 'type_hedge', 'date_debut', 
-                                     'date_fin', 'date', 'année', 'trimestre', 'mois', 'price')
+        prices_planif=select_columns(prices_planif, 'hedge_id', 'projet_id', 'projet', 'type_hedge', 
+                                     'date', 'année', 'trimestre', 'mois', 'price')
         
         print('solar & wind power dfs creation ends:\n')
         return prices_planif
@@ -99,8 +99,8 @@ def transform_contract_price_ppa(template_asset, data_ppa, **kwargs):
         d['mois'] = d['date'].dt.month
         prices_ppa = remove_contract_prices(data=d, sd='date_debut', ed='date_fin', dd='date_dementelement', price='price', 
                                             th='type_hedge', date='date', projetid='projet_id', hedgeid='hedge_id')
-        prices_ppa=select_columns(d,'hedge_id', 'projet_id', 'projet', 'type_hedge', 'date_debut', 
-                                 'date_fin', 'date', 'année', 'trimestre', 'mois', 'price')
+        prices_ppa=select_columns(d,'hedge_id', 'projet_id', 'projet', 'type_hedge', 
+                                  'date', 'année', 'trimestre', 'mois', 'price')
         print('df prices ppa ends:\n')
         return prices_ppa
     
@@ -358,10 +358,10 @@ def transform_contract_prices_inprod(template_asset, template_hedge, template_pr
                                             th='type_hedge', date='date', projetid='projet_id', 
                                             hedgeid='hedge_id')
 
-        prices_oa_cr=select_columns(prices_oa_cr, 'hedge_id', 'projet_id', 'projet', 'type_hedge', 'date_debut', 
-                                    'date_fin', 'date', 'année', 'trimestre', 'mois', 'price') 
+        prices_oa_cr=select_columns(prices_oa_cr, 'hedge_id', 'projet_id', 'projet', 'type_hedge', 
+                                    'date', 'année', 'trimestre', 'mois', 'price') 
         
         print('df prices assets in prod ends:\n')
         return prices_oa_cr
     except Exception as e:
-        print("Contract prices data transformation asset in prod error!")
+        print("Contract prices data transformation asset in prod error!: "+str(e))

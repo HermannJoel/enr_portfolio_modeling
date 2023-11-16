@@ -20,6 +20,7 @@ import snowflake.connector
 from snowflake.connector.pandas_tools import write_pandas
 import csv
 from io import StringIO
+from unidecode import unidecode
 
 def remove_p50_p90_type_hedge(data, *args, **kwargs):
     """udf to remove p50 p90 values based on date_debut and date_fin
@@ -140,7 +141,10 @@ def adjusted_by_pct(data, **kwargs):
     col1 (str) : Takes the value p50_adj column label
     col2 (str) : Takes the value of pct_couverture column label
     """   
-    return round(data[kwargs['col1']].apply(lambda x: float(x)), 4) * round(data[kwargs['col2']].apply(lambda x: float(x)), 4)
+    #return round(data[kwargs['col1']].apply(lambda x: float(x)), 4) * round(data[kwargs['col2']].apply(lambda x: float(x)), 4)
+    col1_values = pd.to_numeric(data[kwargs['col1']], errors='coerce')
+    col2_values = pd.to_numeric(data[kwargs['col2']], errors='coerce')
+    return round(col1_values, 4) * round(col2_values, 4)
 
 def merge_data_frame(*args):
     """To merge df 
@@ -986,11 +990,49 @@ def query_data_from_postgresql(query:str, pguid:str, pgpw:str, pgserver:str, pgp
     except Exception as e:
          print(f"An error occurred: {str(e)}")
         
+def assign_value_to_column(n:int, df:pd.DataFrame, df_:pd.DataFrame, target_col_df:str, args_1_df_:str, args_2_df_:str, args_1_df:str):
+    """
     
+    """
+    # Assuming n is the number of characters to compare
+    n = n
+    # Add a new column 'target_col_df' to df dataframe
+    df[target_col_df] = None                                #project_id
+    # Iterate over each row in df_
+    for index, row in df_.iterrows():
+        comp_1 = unidecode(row[args_1_df_].lower().replace(" ", ""))                             #project                
+        value = row[args_2_df_]                                                                  #code
+        # Iterate over each row in df
+        for idx, price_row in df.iterrows():
+            comp_2 = unidecode(price_row[args_1_df].lower().replace(" ", ""))                    #site
+            # Compare the first n characters
+            if comp_1[:n] == comp_2[:n]:
+            # Assign the corresponding value of 'value' to 'target_col_df'
+                df.at[idx, target_col_df] = value
+    return df                                                                                   #prices_id                                                                                    
 
         
         
+def model_settlement_prices(data_template_hedge:pd.DataFrame, data_settlement_prices:pd.DataFrame):
+    """
+    
+    """
+    #To multiply hedge df by the len of prices df
+    n=len(data_settlement_prices)
+    df_hedge = pd.DataFrame(
+                np.repeat(data_template_hedge.values, n, axis=0),
+                columns=data_template_hedge.columns,
+            )
 
+    #To multiply prices df by the len of hedge df
+    n=len(data_template_hedge)
+    df_settl_prices=pd.concat([data_settlement_prices]*n, ignore_index=True)
+
+    frame=[df_hedge, df_settl_prices]
+    df_modeled_settl_prices=pd.concat(frame, axis=1, ignore_index=False)
+    
+    return df_modeled_settl_prices
+    
 
 
 

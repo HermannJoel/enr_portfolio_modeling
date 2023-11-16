@@ -137,19 +137,19 @@ def transform_vol_hedge(data_prod, hedge, prod_pct, mean_pct, **kwargs):
             
         #To remove p50, p90, type_hedge based on start_date and end_date
         #---------- OA  ----------#
-        res=RemoveP50P90TypeHedge(d, sd='date_debut',ed='date_fin', p50='p50_adj', 
+        res=remove_p50_p90_type_hedge(d, sd='date_debut',ed='date_fin', p50='p50_adj', 
                                 p90='p90_adj', th='type_hedge', date='date', 
                                 projetid='projet_id', hedgeid='hedge_id')
-        res=SelectColumns(res, 'hedge_id', 'projet_id', 'projet', 'type_hedge', 'date', 
+        res=select_columns(res, 'hedge_id', 'projet_id', 'projet', 'type_hedge', 'date', 
                         'année', 'trim', 'mois', 'p50_adj', 'p90_adj')
         #To export results as a data frame
         #res.to_csv(path_dir_temp + 'hedge_oa.txt', index=False, sep=';') 
         #---------- CR  ----------#
-        res2=RemoveP50P90TypeHedge(d2, sd='date_debut', ed='date_fin', p50='p50_adj', 
+        res2=remove_p50_p90_type_hedge(d2, sd='date_debut', ed='date_fin', p50='p50_adj', 
                                 p90='p90_adj', th='type_hedge', date='date', 
                                 projetid='projet_id', hedgeid='hedge_id')
 
-        res2=SelectColumns(res2, 'hedge_id', 'projet_id', 'projet', 'type_hedge', 'date', 
+        res2=select_columns(res2, 'hedge_id', 'projet_id', 'projet', 'type_hedge', 'date', 
                             'année', 'trim', 'mois', 'p50_adj', 'p90_adj')
         #To export results as a data frame
         #res2.to_csv(path_dir_temp + 'hedge_cr.txt', index=False, sep=';')

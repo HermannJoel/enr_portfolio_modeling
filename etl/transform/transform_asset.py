@@ -16,7 +16,7 @@ os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 
 temp_dir='/mnt/d/local-repo-github/enr_portfolio_modeling/files-storage/temp/'
-#temp_dir='/mnt/d/SharedFolder/d-eng/temp/'
+
 
 def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
     """udf Function to generate template asset.
@@ -77,13 +77,13 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
                         "date_msi", "en_planif"]]
 
         #To create a df containing projects with a cod>= 2023 
-        vmr_to_planif = df_asset[df_asset['cod'] > (dt.datetime.today() + pd.offsets.YearEnd()).strftime('%Y-%m-%d')]
+        vmr_to_planif = df_asset[df_asset['cod'] > (dt.datetime.today() - pd.offsets.YearEnd()).strftime('%Y-%m-%d')]
         vmr_to_planif = vmr_to_planif[["id", "asset_id", "projet_id", "projet", "technologie", "cod", "mw", "taux_succès", 
                                         "puissance_installée", "eoh", "date_merchant", "date_dementelement", 
                                         "repowering", "date_msi", "en_planif"]]
 
         #To create a df containing projets already in exploitation
-        df_asset=df_asset[df_asset['cod'] <= (dt.datetime.today() + pd.offsets.YearEnd()).strftime('%Y-%m-%d')]
+        df_asset=df_asset[df_asset['cod'] <= (dt.datetime.today() - pd.offsets.YearEnd()).strftime('%Y-%m-%d')]
         project_names=df_asset[["asset_id", "projet_id", "projet"]]
         project_names.rename(columns={"projet_id":"code", "projet":"projet_name"}, inplace=True)
 

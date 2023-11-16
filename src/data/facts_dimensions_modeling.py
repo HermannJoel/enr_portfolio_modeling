@@ -89,3 +89,17 @@ market_prices_=pd.concat([market_prices]*n, ignore_index=True)
 
 frame=[df_hedge, market_prices_]
 hedge_market_prices=pd.concat(frame, axis=1, ignore_index=False)
+
+#To multiply hedge df by the len of prices df
+n=len(df_settlement_prices)
+df_hedge = pd.DataFrame(
+                np.repeat(df_template_hedge.values, n, axis=0),
+                columns=df_template_hedge.columns,
+            )
+
+#To multiply prices df by the len of hedge df
+n=len(df_template_hedge)
+df_settl_prices=pd.concat([df_settlement_prices]*n, ignore_index=True)
+
+frame=[df_hedge, df_settl_prices]
+hedge_settl_prices=pd.concat(frame, axis=1, ignore_index=False)

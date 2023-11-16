@@ -28,22 +28,7 @@ if __name__ == '__main__':
     df_asset_vmr, df_asset_planif = extract_asset(asset_vmr_path =vmr, asset_planif_path = planif)
     src_data = transform_asset(data_asset_vmr=df_asset_vmr, data_asset_planif=df_asset_planif)
     load_asset(dest_dir = dest_dir, src_flow = src_data, file_name = 'asset', file_extension = '.csv')#load template_asset without prod
-    # load_docs_to_mongodb(dest_db='dw', dest_collection='Asset', 
-    #                      src_data= src_data, 
-    #                      date_format = '%Y-%m-%d', 
-    #                      mongodb_conn_str = mongodbatlas_dw_conn_str)
-    # src_data = read_docs_from_mongodb(src_db = 'dw', src_collection = 'Asset',
-    #                                   query={}, no_id=True, 
-    #                                   column_names=['Id','AssetId', 'ProjetId', 
-    #                                                 'Projet', 'Technology','COD', 
-    #                                                 'MW', 'SuccessPct', 
-    #                                                 'InstalledPower','EOH', 
-    #                                                 'DateMerchant', 'DismantleDate', 
-    #                                                 'Repowering', 'MsiDate', 'InPlanif'], 
-    #                                   mongodb_conn_str = mongodbatlas_dw_conn_str)
-    # src_data = src_data.fillna(value=0)
-    # load_data_to_mssql(src_data = src_data, dest_table = 'Asset', mssqlserver = mssqlserver, 
-    #                    mssqldb = mssqldb, if_exists = 'replace', schema = 'dwh')
+
     
 
     

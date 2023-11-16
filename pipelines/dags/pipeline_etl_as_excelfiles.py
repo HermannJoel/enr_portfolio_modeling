@@ -49,11 +49,11 @@ create_prices_task  = BashOperator(
     bash_command=f'python {python_script_path}'+'etl_prices_xlsx.py',
     dag=dag,
     )
-# compute_settl_prices_task  = BashOperator(
-#     task_id='etl_settl_prices',
-#     bash_command=f'python {python_script_path}'+'etl_settlement_prices_xlsx.py',
-#     dag=dag,
-#     )
+compute_settl_prices_task  = BashOperator(
+     task_id='etl_settl_prices',
+     bash_command=f'python {python_script_path}'+'etl_settlement_prices_xlsx.py',
+     dag=dag,
+     )
 
 compute_contract_prices_task  = BashOperator(
     task_id='etl_contract_prices',
@@ -72,9 +72,7 @@ compute_vol_hedge_task  = BashOperator(
     dag=dag,
     )
 
-#create_asset_task >> create_profile_task >> create_hedge_task >> create_prices_task >> [compute_settl_prices_task, compute_contract_prices_task, #compute_prod_asset_task, compute_vol_hedge_task]
-
-create_asset_task >> create_profile_task >> create_hedge_task >> create_prices_task >> [compute_contract_prices_task, compute_prod_asset_task, compute_vol_hedge_task]
+create_asset_task >> create_profile_task >> create_hedge_task >> create_prices_task >> [compute_settl_prices_task, compute_contract_prices_task, compute_prod_asset_task, compute_vol_hedge_task]
 
 if __name__ == "__main__":
     dag.cli()
