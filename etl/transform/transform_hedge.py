@@ -34,9 +34,10 @@ def transform_hedge(hedge_vmr, hedge_planif, **kwargs):
         df_hedge_vmr["pays_contrepartie"]=np.nan
         df_hedge_vmr.rename(columns={"cod":"date_debut", "date_merchant":"date_fin"}, inplace = True)
         df_hedge_vmr = df_hedge_vmr[["id", "hedge_id", "projet_id", 
-                                           "projet", "type_hedge", "date_debut", 
-                                           "date_fin", "profil", "pct_couverture", 
-                                           "contrepartie", "pays_contrepartie"]]
+                                    "projet", "technologie", "type_hedge", 
+                                     "date_debut", "date_fin", "date_dementelement", 
+                                     "puissance_installée", "en_planif", "profil", 
+                                     "pct_couverture", "contrepartie", "pays_contrepartie"]]
 
         ppa_vmr = ["NIBA" , "CHEP", "ALBE", "ALME", "ALMO", "ALVE", "PLOU"]
 
@@ -57,9 +58,10 @@ def transform_hedge(hedge_vmr, hedge_planif, **kwargs):
         df_hedge_planif["pays_contrepartie"] = np.nan
         df_hedge_planif.rename(columns={"cod":"date_debut", "date_merchant":"date_fin"}, inplace = True)
         df_hedge_planif = df_hedge_planif[["id", "hedge_id", "projet_id", 
-                                           "projet", "type_hedge", "date_debut", 
-                                           "date_fin", "profil", "pct_couverture", 
-                                           "contrepartie", "pays_contrepartie"]]
+                                             "projet", "technologie", "type_hedge", 
+                                             "date_debut", "date_fin", "date_dementelement", 
+                                             "puissance_installée", "en_planif", "profil", 
+                                             "pct_couverture", "contrepartie", "pays_contrepartie"]]
         ppa_planif = ["SE19", "SE07"]
         df_hedge_planif.loc[df_hedge_planif.projet_id.isin(ppa_planif) == True, "type_hedge"] = "PPA"
         df_hedge_planif.loc[df_hedge_planif['type_hedge'] == "CR", "pct_couverture"] = 1

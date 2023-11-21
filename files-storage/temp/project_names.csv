@@ -1,0 +1,97 @@
+asset_id,code,projet_name
+1,ALBE,Ally Bessadous
+2,ALME,Ally Mercoeur
+3,ALMO,Ally Monteil
+4,ALVE,Ally Verseilles
+5,ART1,Artois 1
+6,ART2,Artois 2
+7,AVI1,Avignonet
+8,AVI2,Avignonet II
+9,BTN1,Basse Thiérache Nord 1 
+10,BTN2,Basse Thiérache Nord 2
+11,BASS,Bassigny
+12,BAZO,Bazougeais
+13,PBBF,Blanches Fosses PBF 
+14,GO01,Bois des Fontaines (BDF)
+15,BSLL,Boralex Solaire Lauragais SAS
+16,BSLC,Boralex Solaire Les Cigalettes SAS (Montfort)
+17,CALM,Calmont (Laur Eole Energie )
+18,CHL2,Cham Longe II
+19,CLRE,Cham Longe Repowering
+20,CHAR,Charmoy
+21,CHMA,Chasse Marée
+22,CHDG,Chemin de Grès
+23,CHEP,Chépy
+24,COCO,Coat Conval
+25,CDAR,Comes de l'Arce
+26,COBL,Coteaux du Blaiseron
+27,COCL,Coulonges (CL)
+28,COCP,Coulonges (CP)
+29,CONT,Coulonges (NT)
+30,ECO3,Extension plaine d'Escrebieux (XPE)
+31,ESDB,Extension seuil de Bapaume (XSB)
+32,FIER,Fierville
+33,FOPL,Fond de la Plaine
+34,FOR1,Fortel 1
+35,FOR2,Fortel 2
+36,HDCO,Haut de Comble (HC)
+37,HDC1,Haut de Conge 1
+38,HDC2,Haut de Conge 2
+39,HDC3,Haut de Conge 3
+40,IDBO,Inter deux bos (MET)
+41,LACI,La Citadelle
+42,ECO1,La Grande Borne (LGB)
+43,CATE,Le Catésis (CAT)
+44,LGCA,Le Grand Camp
+45,LEPE,Le Pelon
+46,LEAG,Leign ar Gasprenn
+47,LCLE,Les Clérimois
+48,LEPA,Les Eparmonts
+49,LMDB,Les Moulins de Boulay
+50,MELC,Ménétréols Les chênes (La vallée 3)
+51,MELI,Ménétréols Lizeray (La vallée 4)
+52,MERE,Ménétréols Renardiére (La vallée 2)
+53,MDB1,Monts de Bagny 1
+54,MDB2,Monts de Bagny 2
+55,MORL,Morlange
+56,NIBA,Nibas
+57,NOYE,Noyers Bucamps NOB
+58,PANN,Pannecé (BS)
+59,PANV,Pannecé La Vallière
+60,XSAN,Parc du Santerre (XSAN)
+61,PDO1,Pays d'Othe 1
+62,SE01,Peyrolles
+63,PDBE,Plaine de Beaunay
+64,PLAN,Plateau de Langres
+65,PDS1,Plateau de Savernat 1
+66,PDS2,Plateau de Savernat 2
+67,PLOU,Plouguin
+68,KEI3,Repowering Bougainville (BGV-R)
+69,GO02,Repowering Evit Et Josaphats (EEJ-R)
+70,GO03,Repowering Reclainville (RCL-R)
+71,RON1,Ronchois 1
+72,RON2,Ronchois 2
+73,RON3,Ronchois 3
+74,STAN,Saint André
+75,AURA19,Saint Christophe - Clé des champs
+76,SDI1,SdlL1
+77,SDI2,SdlL2
+78,SCRI,Seuil du Cambrésis- Ribecourt (RIB)
+79,SDA1,Sources de l'Ancre 1 
+80,SDA2,Sources de l'Ancre 2
+81,SFR2,St François Roye 2
+82,SFR3,St François Roye 3
+83,STGE,St Georges (La Vallée 1)
+84,SPH,St Patrick Hermin
+85,SPP1,St Patrick Pernois 1
+86,SPP2,St Patrick Pernois 2
+87,SPP3,St Patrick Pernois 3
+88,TOUV,Touvent
+89,VAM1,Val au Moines 1
+90,VAM2,Val au Moines 2
+91,VAA1,Vallée d'Arce 1 (DR)
+92,VAA2,Vallée d'Arce 2 (NY)
+93,VAA3,Vallée d'Arce 3 (NU)
+94,VDMO,Voie des monts
+95,VRON,Vron
+96,ZOND,Zondrange

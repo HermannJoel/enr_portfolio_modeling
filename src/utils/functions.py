@@ -6,6 +6,7 @@ import warnings
 import os
 import pathlib
 import psycopg2
+from psycopg2 import sql
 import pyodbc
 import sqlalchemy as sqlalchemy
 from sqlalchemy import create_engine
@@ -19,6 +20,7 @@ import snowflake.connector
 from snowflake.connector.pandas_tools import write_pandas
 import csv
 from io import StringIO
+from unidecode import unidecode
 
 def remove_p50_p90_type_hedge(data, *args, **kwargs):
     """udf to remove p50 p90 values based on date_debut and date_fin
@@ -139,7 +141,10 @@ def adjusted_by_pct(data, **kwargs):
     col1 (str) : Takes the value p50_adj column label
     col2 (str) : Takes the value of pct_couverture column label
     """   
-    return round(data[kwargs['col1']].apply(lambda x: float(x)), 4) * round(data[kwargs['col2']].apply(lambda x: float(x)), 4)
+    #return round(data[kwargs['col1']].apply(lambda x: float(x)), 4) * round(data[kwargs['col2']].apply(lambda x: float(x)), 4)
+    col1_values = pd.to_numeric(data[kwargs['col1']], errors='coerce')
+    col2_values = pd.to_numeric(data[kwargs['col2']], errors='coerce')
+    return round(col1_values, 4) * round(col2_values, 4)
 
 def merge_data_frame(*args):
     """To merge df 
@@ -248,14 +253,14 @@ def remove_contract_prices(data, *args, **kwargs):
     cond_2 : 'date' column is higher (in total seconds) than a given projet_id's first 'date_fin' value
     cond_3 : 'date' column is higher (in total seconds) than a given projet_id's first 'date_dementelement' value
     """
-    cond=((data[kwargs['date']] - data.groupby([kwargs['projetid'], kwargs['hedgeid']])[kwargs['sd']].transform('first')).dt.total_seconds())<0
+    cond=((data[kwargs['date']] - pd.to_datetime(data.groupby([kwargs['projetid'], kwargs['hedgeid']])[kwargs['sd']].transform('first'))).dt.total_seconds())<0
     #To remove prices based on date_debu
     data[kwargs['price']] = np.where(cond,'', data[kwargs['price']])
     #To remove based on date_fin
-    cond_2=((data[kwargs['date']] - data.groupby([kwargs['projetid'], kwargs['hedgeid']])[kwargs['ed']].transform('first')).dt.total_seconds())>0
+    cond_2=((data[kwargs['date']] - pd.to_datetime(data.groupby([kwargs['projetid'], kwargs['hedgeid']])[kwargs['ed']].transform('first'))).dt.total_seconds())>0
     data[kwargs['price']] = np.where(cond_2, '', data[kwargs['price']])
     #To remove prices based on date_dementelement
-    cond_3=((data[kwargs['date']] - data.groupby([kwargs['projetid'], kwargs['hedgeid']])[kwargs['dd']].transform('first')).dt.total_seconds())>0
+    cond_3=((data[kwargs['date']] - pd.to_datetime(data.groupby([kwargs['projetid'], kwargs['hedgeid']])[kwargs['dd']].transform('first'))).dt.total_seconds())>0
     data[kwargs['price']] = np.where(cond_3, '', data[kwargs['price']])   
     #To remove type of hedge based on date_debut
     data[kwargs['th']]=np.where(cond,'', data[kwargs['th']])
@@ -321,14 +326,6 @@ def open_postgres_db():
     cursor = cnxn.cursor()
     print( "Connected!\n")
     return cnxn
-    
-def query_data_from_postgreSQL(query, db_connection_string):
-    engine = sqlalchemy.create_engine(db_connection_string)
-    connection = engine.connect()
-    dataframe= pd.read_sql_query(
-        sql=query, con=db_connection_string
-    )
-    return dataframe
 
 def read_data_from_mssql(query:str, db:str, server_instance:str, yes='yes'):
     try:
@@ -382,6 +379,7 @@ def convert_date_columns(dataframe, date_format):
         if dataframe[col].dtype == 'datetime64[ns]' or 'date' in col.lower():
             try:
                 #dataframe[col] = pd.to_datetime(dataframe[col], format=date_format)
+                dataframe[col] = dataframe[col].astype(object).where(dataframe[col].notnull(), None)
                 dataframe[col] = dataframe[col].apply(lambda x: datetime.strptime(x, date_format))
             except:
                 continue
@@ -399,7 +397,7 @@ def load_postgres_docs_to_mongodb(dest_db, dest_collection, query_name, **kwargs
                     query=query_name, db_connection_string=kwargs['postgres_conn_str']), kwargs['date_format']
             ).to_dict('records')
         )
-        print("Data imported in mondgobd successfully!")
+        print(f"Data imported in mondgobd collection{dest_db}.{dest_collection}successfully!")
     except Exception as e:
         print("Data Import error!: "+str(e))
         
@@ -448,20 +446,47 @@ def rename_df_columns(df: pd.DataFrame, column_names: list):
     return df
 
 def read_docs_from_mongodb(src_db, src_collection, column_names, query={}, no_id=True , **kwargs):
+    """Function to extract documents from mongo db collection     
+    parameters
+    ==========
+    src_db (str) :
+        db name 
+    src_collection (str) :
+        collection name        
+    column_names (list) : 
+        list containing columns name
+    query (dict) : default {}
+         fetch all
+    no_id (bool) : default True
+        not include id
+    ** mongodb_conn_str (str) :
+        mongo db string connexion
+    example
+    =======
+    >>>src_data = read_docs_from_mongodb(src_db = 'dw', src_collection = 'Asset',
+                                       query={}, no_id=True, 
+                                       column_names=['Id','AssetId', 'ProjetId', 
+                                                     'Projet', 'Technology','COD', 
+                                                     'MW', 'SuccessPct', 
+                                                     'InstalledPower','EOH', 
+                                                     'DateMerchant', 'DismantleDate', 
+                                                     'Repowering', 'MsiDate', 'InPlanif'], 
+                                     mongodb_conn_str = mongodbatlas_dw_conn_str)
+     """ 
     try:
         myclient = MongoClient(kwargs['mongodb_conn_str'])
         db = myclient[src_db]
         collection = db[src_collection]
         cursor = collection.find(query)
         data_frame = pd.DataFrame(list(cursor))
-        # Delete the _id
+        #To delete the _id (indexes)
         if no_id:
             del data_frame['_id']
         data_frame = rename_df_columns(data_frame, column_names)
         return data_frame
-        print(f"Data exported from {src_db}.{src_collection} successfully!")
+        print(f"Data extracted from mongodb collection {src_db}.{src_collection} successfully!")
     except Exception as e:
-        print(f"Data read from {src_db}.{src_collection} error!: "+str(e))
+        print(f"Data extract from mongodb collection {src_db}.{src_collection} error!: "+str(e))
         
 def load_as_excel_file(dest_dir, src_flow, file_name, file_extension):
     """Function to load data as excle file     
@@ -477,8 +502,7 @@ def load_as_excel_file(dest_dir, src_flow, file_name, file_extension):
         file extension as xlsx, csv, txt...
     exemple
     =======
-    load_as_excel_file(dest_dir, template_asset_without_prod, 'template_asset', '.csv')
-    >>>  
+    >>>load_as_excel_file(dest_dir, template_asset_without_prod, 'template_asset', '.csv') 
     """
     try:
         if file_extension in ['.xlsx', '.xls', '.xlsm', '.xlsb', '.odf', '.ods', '.odt']:
@@ -489,16 +513,15 @@ def load_as_excel_file(dest_dir, src_flow, file_name, file_extension):
     except Exception as e:
         print(f"Data load as {file_name}.{file_extension} error!: "+str(e))
 
-def load_data_in_postgres_table(src_data, dest_table, pguid, pgpass, pgserver, pgdb, **kwargs):
+def load_data_in_postgres_table(src_data:str, dest_table:str, pguid:str, pgpw:str, pgserver:str, pgdb:str, schema:str, if_exists:str):
     try:
-        engine = create_engine(f"postgresql+psycopg2://{pguid}:{pgpass}@{pgserver}:5432/{pgdb}")
-        src_data.to_sql(dest_table, kwargs['schema'], con=engine,
-                        index=False, if_exists='replace',
-                        chunksize=1000,
-                       )
-        print(f"Data inserted in postgres db:{pgdb} successfully")
+        engine = create_engine(f"postgresql+psycopg2://{pguid}:{pgpw}@{pgserver}:5432/{pgdb}")
+        src_data.to_sql(dest_table, schema=schema, con=engine,
+                        index=False, if_exists=if_exists,
+                        chunksize=1000,)
+        print(f"Data loaded to postgres {pgdb}.{schema}.{dest_table} successfully")
     except Exception as e:
-        print(f"Data load in {kwargs['schema']}.{dest_table} error!:" +str(e))
+        print(f"Data load to postgres {pgdb}.{schema}.{dest_table} error!:" +str(e))
         
 def load_data_to_mssql(src_data, dest_table, mssqlserver, mssqldb='DWH', dtype={}, yes='yes',**kwargs):
     """Function to load data in mssql db     
@@ -521,18 +544,19 @@ def load_data_to_mssql(src_data, dest_table, mssqlserver, mssqldb='DWH', dtype={
     >>>  
     """
     try:
-        cnxn = pyodbc.connect('DRIVER=SQL Server Native Client 11.0'+';SERVER=' + mssqlserver + ';DATABASE=' +mssqldb + ';Trusted_Connection=' +yes)
+        cnxn = pyodbc.connect('DRIVER=ODBC Driver 13 for SQL Server'+';SERVER=' + mssqlserver + ';DATABASE=' +mssqldb + ';Trusted_Connection=' +yes)
         cursor = cnxn.cursor()
         cols = ",".join([str(i) for i in src_data.columns.tolist()])
         for i, row in src_data.iterrows():
             sql = "INSERT INTO " +kwargs['schema']+'.'+ dest_table+ " (" +cols + ") VALUES (" + "?,"*(len(row)-1) + "?)"
             cursor.execute(sql, tuple(row))
             cnxn.commit()
-        print(f"Data inserted in {mssqldb}.{kwargs['schema']}.{dest_table}!") 
+        print(f"Data loaded to {mssqldb}.{kwargs['schema']}.{dest_table}!") 
     except Exception as e:
-        print(f"Data Import to mssql {mssqldb}.{kwargs['schema']}.{dest_table}. error!: " + str(e))
+        print(f"Data load to mssql {mssqldb}.{kwargs['schema']}.{dest_table}. error!: " + str(e))
     finally:
         cursor.close()
+        print(f"Connexion: {cnxn} closed!")
         
 def rename_df_columns(df: pd.DataFrame, column_names: list):
     """Rename DataFrame columns with strings from list"""
@@ -546,16 +570,16 @@ def load_docs_to_mongodb(dest_db, dest_collection, src_data, **kwargs):
         myclient=MongoClient(kwargs['mongodb_conn_str'])
         db=myclient[dest_db]
         collection=db[dest_collection]
-        collection.remove({})
+        collection.delete_many({})
         collection.insert_many(
             convert_date_columns(
                 src_data
                 , kwargs['date_format']
             ).to_dict('records')
         )
-        print(f"Data loaded to {dest_db}.{dest_collection} successfully!")
+        print(f"Data loaded to mongodb collection {dest_db}.{dest_collection} successfully!")
     except Exception as e:
-        print(f"Data loaded to {dest_db}.{dest_collection} error!: "+str(e))
+        print(f"Data load to mongodb collection {dest_db}.{dest_collection} error!: "+str(e))
         
         
 def load_data_to_gcbq_from_gcs(uri, write_disposition=None, schema=[], **kwargs):
@@ -763,7 +787,7 @@ def excucute_sqlserver_crud_ops(queries:list, mssqlserver:str, mssqldb:str, yes=
         trusted connection
     exemple
     =======
-    excucute_sqlserver_crud_ops(
+    >>>excucute_sqlserver_crud_ops(
     queries=[
         "USE ODS",
         "TRUNCATE TABLE ods.Hedge",
@@ -775,7 +799,7 @@ def excucute_sqlserver_crud_ops(queries:list, mssqlserver:str, mssqldb:str, yes=
     mssqldb='db')
     """
     try:
-        cnxn = pyodbc.connect('DRIVER=SQL Server Native Client 11.0'+';SERVER=' + mssqlserver + ';DATABASE=' +mssqldb +';Trusted_Connection=' +yes)
+        cnxn = pyodbc.connect('{ODBC Driver 13 for SQL Server}'+';SERVER=' + mssqlserver + ';DATABASE=' +mssqldb +';Trusted_Connection=' +yes)
         cursor = cnxn.cursor()
         for query in queries:
             try:
@@ -878,13 +902,137 @@ def mongodb_crud_ops(mongodb_db:str, mongodb_collection:str, queries:list, **kwa
             myclient.close()
         print(f"Connection closed!")
         
+        
+def excucute_postgres_crud_ops(queries:list, pguid:str, pgpw:str, pgserver:str, pgdb:str, pgport=5432, params=None,):
+    """Funtion to execute postgres db CUD (CREATE, UPDATE, DELETE) operations
+    parameters
+    ==========
+    queries (list) :
+        list of queries to execute
+    pguid (str) :
+        postgres user name
+    pgpw (str) :
+        postgres password
+    pgserver (str) :
+        pg host name
+    pgdb (str) :
+        pg data base
+    pgport (str) :
+        pg port
+    params (str) :   
+        query parameters as denoted as %s  
+    exemple
+    =======
+    excucute_postgres_crud_ops(
+    queries=[
+        '''DELETE FROM stagging."Asset" WHERE "AssetId" = %s AND "Id = %s"'''
+        '''TRUNCATE TABLE stagging."Asset''',
+        '''INSERT INTO satgging.Hedge(HedgeId, ProjetId, Projet, TypeHedge, ContractStartDate, ContractEndDate, Profil, HedgePct, Counterparty, CountryCounterparty) 
+        VALUES (393, 'RON3', 'Ronchois 3', 'PPA', '2024-01-01', '2024-06-30', 'As Produced', 1, 'Axpo', 'France'), 
+        (392, 'RON3', 'Ronchois 3', 'PPA', '2023-01-01', '2023-06-30', 'As Produced', 0.75, 'Axpo', 'France')''',
+        '''DELETE FROM stagging."Asset" WHERE "LastUpdated" > TO_TIMESTAMP(%s, %s);'''], 
+        params=('2023-10-29 13:11:10.733', 'YYYY-MM-DD-HH24:MI:SS'), 
+        pguid=pguid, 
+        pgpw=pgpw, 
+        pgserver=pgserver,
+        pgport=pgport,
+        pgdb=pgdb, 
+        )
+    """
+    try:
+        cnxn = psycopg2.connect(user=pguid, 
+                                password=pgpw,
+                                host=pgserver,
+                                port=pgport,
+                                database=pgdb)
+        cursor = cnxn.cursor() 
+        for query in queries:
+            try:
+                if params:
+                    cursor.execute(query, params)
+                else:
+                    cursor.execute(query)
+                cnxn.commit()
+                print(f"Query executed successfully: {query}")
+            except pyodbc.Error as e:
+                print(f"An error occurred while executing query: {query}")
+                print(f"Error details: {str(e)}")                
+    except pyodbc.Error as e:
+        print(f"An error occurred: {str(e)}")
+    finally:
+        if cursor:
+            cursor.close()
+        if cnxn:
+            cnxn.close()
+        print(f"Connection closed!")
+        
+def query_data_from_postgresql(query:str, pguid:str, pgpw:str, pgserver:str, pgport:int, pgdb:str):
+    """Etract data from postgres db
+    parameters
+    ==========
+    query (str) :
+    pguid (str) : 
+    pgpw (str) :
+    pgserver (str) :
+    pgport (int) :
+    pgdb (str) :
+    example
+    ==========
+    >>>query_data_from_postgresql(query='''SELECT * FROM "stagging"."Asset";''', pguid=pguid, 
+                                     pgpw=pgpw, pgserver=pgserver, pgport=pgport, pgdb=pgdwhdb)
+    """
+    try:
+        engine=create_engine(f"postgresql://{pguid}:{pgpw}@{pgserver}:{pgport}/{pgdb}")
+        dataframe= pd.read_sql_query(
+        sql=query, con=engine)
+        print(f"Query executed successfully: {query}")
+        return dataframe
+    except Exception as e:
+         print(f"An error occurred: {str(e)}")
+        
+def assign_value_to_column(n:int, df:pd.DataFrame, df_:pd.DataFrame, target_col_df:str, args_1_df_:str, args_2_df_:str, args_1_df:str):
+    """
     
-    
-    
+    """
+    # Assuming n is the number of characters to compare
+    n = n
+    # Add a new column 'target_col_df' to df dataframe
+    df[target_col_df] = None                                #project_id
+    # Iterate over each row in df_
+    for index, row in df_.iterrows():
+        comp_1 = unidecode(row[args_1_df_].lower().replace(" ", ""))                             #project                
+        value = row[args_2_df_]                                                                  #code
+        # Iterate over each row in df
+        for idx, price_row in df.iterrows():
+            comp_2 = unidecode(price_row[args_1_df].lower().replace(" ", ""))                    #site
+            # Compare the first n characters
+            if comp_1[:n] == comp_2[:n]:
+            # Assign the corresponding value of 'value' to 'target_col_df'
+                df.at[idx, target_col_df] = value
+    return df                                                                                   #prices_id                                                                                    
 
         
         
+def model_settlement_prices(data_template_hedge:pd.DataFrame, data_settlement_prices:pd.DataFrame):
+    """
+    
+    """
+    #To multiply hedge df by the len of prices df
+    n=len(data_settlement_prices)
+    df_hedge = pd.DataFrame(
+                np.repeat(data_template_hedge.values, n, axis=0),
+                columns=data_template_hedge.columns,
+            )
 
+    #To multiply prices df by the len of hedge df
+    n=len(data_template_hedge)
+    df_settl_prices=pd.concat([data_settlement_prices]*n, ignore_index=True)
+
+    frame=[df_hedge, df_settl_prices]
+    df_modeled_settl_prices=pd.concat(frame, axis=1, ignore_index=False)
+    
+    return df_modeled_settl_prices
+    
 
 
 

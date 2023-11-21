@@ -63,9 +63,11 @@ def transform_prod_asset(data_prod, mean_pct, **kwargs):
         
         print("creation df asset in planif starts!:\n")
         asset=kwargs['asset']
+        asset['cod'] = pd.to_datetime(asset['cod'], errors='coerce')
         asset["date_merchant"].fillna(asset["cod"] + pd.DateOffset(years=20), inplace=True) 
         #To select only data with 2023 cod 
-        filter = asset['cod'] > dt.datetime.today().strftime('%Y-%m-%d') 
+        #filter = asset['cod'] > dt.datetime.today().strftime('%Y-%m-%d')
+        filter= asset['cod'] > (dt.datetime.today() - pd.offsets.YearEnd()).strftime('%Y-%m-%d')
         asset = asset.loc[filter]       
         asset.loc[asset['technologie']=='éolien', 'p50']=asset["puissance_installée"]*8760*0.25
         asset.loc[asset['technologie']=='éolien', 'p90']=asset["puissance_installée"]*8760*0.20

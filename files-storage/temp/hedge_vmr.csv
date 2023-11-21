@@ -1,0 +1,97 @@
+id,hedge_id,projet_id,projet,technologie,type_hedge,cod,date_merchant,date_dementelement,puissance_installée,en_planif
+1,1,ALBE,Ally Bessadous,éolien,FiT,2005-12-25,2020-12-24,2028-06-30,8.700,False
+2,2,ALME,Ally Mercoeur,éolien,FiT,2005-12-25,2020-12-25,2028-06-30,5.740,False
+3,3,ALMO,Ally Monteil,éolien,FiT,2005-12-25,2020-12-26,2028-06-30,7.460,False
+4,4,ALVE,Ally Verseilles,éolien,FiT,2005-12-25,2020-12-27,2028-06-30,9.030,False
+5,5,ART1,Artois 1,éolien,FiT,2017-11-21,2032-11-20,,13.100,False
+6,6,ART2,Artois 2,éolien,FiT,2017-11-21,2032-11-20,,10.000,False
+7,7,AVI1,Avignonet,éolien,FiT,2002-11-01,2017-10-31,,8.000,False
+8,8,AVI2,Avignonet II,éolien,FiT,2008-12-29,2023-12-28,,4.600,False
+9,9,BTN1,Basse Thiérache Nord 1 ,éolien,CR16,2019-02-01,2034-01-31,,12.800,False
+10,10,BTN2,Basse Thiérache Nord 2,éolien,CR16,2019-02-01,2034-01-31,,7.000,False
+11,11,BASS,Bassigny,éolien,FiT,2009-01-12,2024-01-11,,12.000,False
+12,12,BAZO,Bazougeais,éolien,CR17,2021-05-01,2041-04-30,,12.000,False
+13,13,PBBF,Blanches Fosses PBF ,éolien,CR17,2020-11-01,2040-10-31,,11.000,False
+14,14,GO01,Bois des Fontaines (BDF),éolien,CR,2022-09-01,2042-08-31,,25.200,False
+15,15,BSLL,Boralex Solaire Lauragais SAS,solaire,FiT,2011-06-15,2031-06-14,,4.500,False
+16,16,BSLC,Boralex Solaire Les Cigalettes SAS (Montfort),solaire,FiT,2015-09-29,2035-09-28,,9.800,False
+17,17,CALM,Calmont (Laur Eole Energie ),éolien,FiT,2015-12-06,2030-12-05,,14.350,False
+18,18,CHL2,Cham Longe II,éolien,FiT,2010-02-01,2025-01-31,2025-06-30,4.600,False
+19,19,CLRE,Cham Longe Repowering,éolien,CR,2021-01-01,2040-12-31,,35.350,False
+20,20,CHAR,Charmoy,éolien,FiT,2011-07-08,2026-07-07,,10.000,False
+21,21,CHMA,Chasse Marée,éolien,FiT,2010-10-01,2025-09-30,2026-06-30,9.200,False
+22,22,CHDG,Chemin de Grès,éolien,FiT,2017-12-06,2032-12-05,,29.700,False
+23,23,CHEP,Chépy,éolien,FiT,2003-11-11,2018-11-10,,4.000,False
+24,24,COCO,Coat Conval,éolien,FiT,2008-02-29,2023-02-27,,8.100,False
+25,25,CDAR,Comes de l'Arce,éolien,FiT,2015-03-27,2030-03-26,,10.000,False
+26,26,COBL,Coteaux du Blaiseron,éolien,FiT,2018-11-09,2033-11-08,,25.600,False
+27,27,COCL,Coulonges (CL),éolien,FiT,2011-07-01,2026-06-30,,12.000,False
+28,28,COCP,Coulonges (CP),éolien,FiT,2011-07-01,2026-06-30,,11.000,False
+29,29,CONT,Coulonges (NT),éolien,FiT,2011-07-01,2026-06-30,,11.000,False
+30,30,ECO3,Extension plaine d'Escrebieux (XPE),éolien,CR,2021-09-01,2041-08-31,,13.800,False
+31,31,ESDB,Extension seuil de Bapaume (XSB),éolien,CR,2020-12-01,2040-11-30,,17.250,False
+32,32,FIER,Fierville,éolien,FiT,2009-06-02,2024-06-01,2026-06-30,8.000,False
+33,33,FOPL,Fond de la Plaine,éolien,FiT,2007-10-04,2022-10-03,2025-06-30,4.000,False
+34,34,FOR1,Fortel 1,éolien,FiT,2014-11-15,2029-11-14,,11.400,False
+35,35,FOR2,Fortel 2,éolien,FiT,2014-10-15,2029-10-14,,11.400,False
+36,36,HDCO,Haut de Comble (HC),éolien,FiT,2018-11-05,2033-11-04,,19.800,False
+37,37,HDC1,Haut de Conge 1,éolien,FiT,2010-08-02,2025-08-01,,9.300,False
+38,38,HDC2,Haut de Conge 2,éolien,FiT,2013-04-17,2028-04-16,,3.000,False
+39,39,HDC3,Haut de Conge 3,éolien,FiT,2010-08-02,2025-08-01,,9.300,False
+40,40,IDBO,Inter deux bos (MET),éolien,FiT,2018-09-24,2033-09-23,,33.000,False
+41,41,LACI,La Citadelle,éolien,FiT,2007-07-15,2022-07-14,2026-06-30,13.800,False
+42,42,ECO1,La Grande Borne (LGB),éolien,CR17,2021-12-01,2041-11-30,,8.800,False
+43,43,CATE,Le Catésis (CAT),éolien,CR17,2019-06-01,2039-05-31,,10.000,False
+44,44,LGCA,Le Grand Camp,éolien,FiT,2010-10-01,2025-09-30,2026-06-30,10.000,False
+45,45,LEPE,Le Pelon,éolien,CR16,2019-01-01,2033-12-31,,10.000,False
+46,46,LEAG,Leign ar Gasprenn,éolien,FiT,2008-12-31,2023-12-30,,8.000,False
+47,47,LCLE,Les Clérimois,éolien,FiT,2011-03-21,2026-03-20,2027-06-30,8.000,False
+48,48,LEPA,Les Eparmonts,éolien,FiT,2008-12-31,2023-12-30,2024-06-30,12.000,False
+49,49,LMDB,Les Moulins de Boulay,éolien,FiT,2007-12-02,2022-12-01,2024-06-30,10.000,False
+50,50,MELC,Ménétréols Les chênes (La vallée 3),éolien,FiT,2013-12-02,2028-12-01,,4.400,False
+51,51,MELI,Ménétréols Lizeray (La vallée 4),éolien,FiT,2013-12-02,2028-12-01,,3.500,False
+52,52,MERE,Ménétréols Renardiére (La vallée 2),éolien,FiT,2013-12-02,2022-06-30,2022-06-30,17.500,False
+53,53,MDB1,Monts de Bagny 1,éolien,FiT,2017-08-01,2032-07-31,,14.800,False
+54,54,MDB2,Monts de Bagny 2,éolien,FiT,2017-08-02,2032-07-31,,15.100,False
+55,55,MORL,Morlange,éolien,FiT,2016-12-01,2031-11-30,,9.600,False
+56,56,NIBA,Nibas,éolien,FiT,2004-12-22,2019-12-21,,12.000,False
+57,57,NOYE,Noyers Bucamps NOB,éolien,CR16,2018-11-01,2033-10-31,,10.000,False
+58,58,PANN,Pannecé (BS),éolien,FiT,2009-09-25,2024-09-24,2025-06-30,10.000,False
+59,59,PANV,Pannecé La Vallière,éolien,FiT,2010-02-17,2025-02-16,2025-06-30,8.000,False
+60,60,XSAN,Parc du Santerre (XSAN),éolien,CR,2020-09-01,2040-08-31,,15.000,False
+61,61,PDO1,Pays d'Othe 1,éolien,FiT,2014-10-29,2029-10-28,,8.000,False
+62,62,SE01,Peyrolles,solaire,CR,2021-10-01,2041-09-30,,14.660,False
+63,63,PDBE,Plaine de Beaunay,éolien,FiT,2017-09-19,2032-09-18,,12.500,False
+64,64,PLAN,Plateau de Langres,éolien,FiT,2009-08-12,2024-08-11,2026-07-01,12.000,False
+65,65,PDS1,Plateau de Savernat 1,éolien,FiT,2016-11-24,2031-11-23,,12.000,False
+66,66,PDS2,Plateau de Savernat 2,éolien,FiT,2017-05-24,2032-05-23,,4.000,False
+67,67,PLOU,Plouguin,éolien,FiT,2006-01-30,2021-01-29,2026-06-30,8.000,False
+68,68,KEI3,Repowering Bougainville (BGV-R),éolien,CR17,2022-12-01,2042-11-30,,18.000,False
+69,69,GO02,Repowering Evit Et Josaphats (EEJ-R),éolien,CR17,2022-06-01,2042-05-31,,14.400,False
+70,70,GO03,Repowering Reclainville (RCL-R),éolien,CR17,2022-06-01,2042-05-31,,14.400,False
+71,71,RON1,Ronchois 1,éolien,FiT,2010-08-01,2025-07-31,2026-06-30,11.600,False
+72,72,RON2,Ronchois 2,éolien,FiT,2010-08-01,2025-07-31,2026-06-30,5.770,False
+73,73,RON3,Ronchois 3,éolien,FiT,2010-10-01,2025-09-30,2026-06-30,11.200,False
+74,74,STAN,Saint André,éolien,FiT,2008-04-15,2023-04-14,2026-06-30,11.500,False
+75,75,AURA19,Saint Christophe - Clé des champs,solaire,CR,2021-11-01,2041-10-31,,12.530,False
+76,76,SDI1,SdlL1,éolien,FiT,2011-08-08,2026-08-07,,13.000,False
+77,77,SDI2,SdlL2,éolien,FiT,2011-08-08,2026-08-07,,5.000,False
+78,78,SCRI,Seuil du Cambrésis- Ribecourt (RIB),éolien,CR16,2019-12-01,2034-11-30,,24.150,False
+79,79,SDA1,Sources de l'Ancre 1 ,éolien,CR16,2019-01-01,2033-12-31,,10.900,False
+80,80,SDA2,Sources de l'Ancre 2,éolien,CR16,2019-01-01,2033-12-31,,14.700,False
+81,81,SFR2,St François Roye 2,éolien,FiT,2015-02-18,2030-02-17,,11.400,False
+82,82,SFR3,St François Roye 3,éolien,FiT,2015-03-13,2030-03-12,,11.400,False
+83,83,STGE,St Georges (La Vallée 1),éolien,FiT,2013-12-02,2028-12-01,,4.200,False
+84,84,SPH,St Patrick Hermin,éolien,FiT,2010-02-02,2025-02-01,2026-07-01,11.500,False
+85,85,SPP1,St Patrick Pernois 1,éolien,FiT,2009-07-01,2024-06-30,2026-07-01,9.200,False
+86,86,SPP2,St Patrick Pernois 2,éolien,FiT,2009-08-25,2024-08-24,2026-07-01,9.200,False
+87,87,SPP3,St Patrick Pernois 3,éolien,FiT,2009-09-18,2024-09-17,2026-07-01,4.600,False
+88,88,TOUV,Touvent,éolien,FiT,2016-08-01,2031-07-31,,13.800,False
+89,89,VAM1,Val au Moines 1,éolien,FiT,2017-08-18,2032-08-17,,11.400,False
+90,90,VAM2,Val au Moines 2,éolien,FiT,2017-08-18,2032-08-17,,5.300,False
+91,91,VAA1,Vallée d'Arce 1 (DR),éolien,FiT,2009-12-02,2024-12-01,2027-06-30,13.000,False
+92,92,VAA2,Vallée d'Arce 2 (NY),éolien,FiT,2009-10-09,2024-10-08,2027-06-30,6.600,False
+93,93,VAA3,Vallée d'Arce 3 (NU),éolien,FiT,2009-10-09,2024-10-08,2027-06-30,13.000,False
+94,94,VDMO,Voie des monts,éolien,FiT,2017-07-10,2032-07-09,,10.000,False
+95,95,VRON,Vron,éolien,FiT,2013-09-15,2028-09-14,,8.000,False
+96,96,ZOND,Zondrange,éolien,FiT,2016-12-01,2031-11-30,,12.500,False

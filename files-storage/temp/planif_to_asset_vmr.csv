@@ -1,0 +1,16 @@
+id,projet_id,projet,technologie,cod,mw,taux_succès,puissance_installée,eoh,date_merchant,date_dementelement,repowering,date_msi,en_planif
+1,N15,Caumont-Chériennes (CC),éolien,2023-11-01,17.250,1.000,17.250,,2043-11-01,,,2023-11-01,False
+2,KEI3,Bougainville,éolien,2022-11-01,18.000,1.000,18.000,,2042-11-01,,,2022-11-01,False
+3,KEI2,Bois Ricart,éolien,2023-11-01,14.000,1.000,14.000,,2043-11-01,,,2023-11-01,False
+4,GO15,Marcillé,éolien,2023-08-01,12.000,1.000,12.000,,2043-08-01,,,2023-08-01,False
+5,ECO3,Extension Plaine d'Escrebieux (XPE),éolien,2021-08-01,13.800,1.000,13.800,,2041-08-01,,,2021-08-01,False
+6,ECO1,La Grande Borne (LGB),éolien,2021-12-01,8.800,1.000,8.800,,2041-12-01,,,2021-12-01,False
+7,GO22,Les Moulins du Lohan ,éolien,2023-05-01,64.600,1.000,64.600,,2043-05-01,,,2023-05-01,False
+8,GO01,Louville extension BDF ,éolien,2022-06-01,25.200,1.000,25.200,,2042-06-01,,,2022-06-01,False
+9,GO02,Louville repowering EEJ ,éolien,2022-08-01,14.400,1.000,14.400,,2042-08-01,,,2022-08-01,False
+10,GO03,Louville repowering RCL ,éolien,2022-07-01,14.400,1.000,14.400,,2042-07-01,,,2022-07-01,False
+11,AURA19,S43-01 St-Christophe,solaire,2022-08-01,12.500,1.000,12.500,,2042-08-01,,,2022-08-01,False
+12,SE01,Peyrolles ,solaire,2021-12-01,14.600,1.000,14.600,,2041-12-01,,,2021-12-01,False
+13,SE19,Pézènes-les-Mines,solaire,2023-03-01,16.000,1.000,16.000,,2043-03-01,,,2023-03-01,False
+14,GO16,Préveranges,éolien,2023-03-01,12.000,1.000,12.000,,2043-03-01,,,2023-03-01,False
+15,KEI4,Repowering Mont de Bézard II,éolien,2023-02-01,25.200,1.000,25.200,,2043-02-01,,,2023-02-01,False

@@ -51,20 +51,22 @@ def transform_prices(data_prices, sub_template_asset, **kwargs):
 
         #To import projet_id from template asset
         projet_names_id = sub_template_asset
-        projet_names_id = projet_names_id.loc[projet_names_id["en_planif"] == "Non"]
+        projet_names_id = projet_names_id.loc[projet_names_id["en_planif"] == False]
         projet_names_id.sort_values(by=['projet'], inplace=True, ignore_index=True)
         projet_names_id.drop("en_planif", axis=1, inplace=True)
         projet_names_id.reset_index(drop=True, inplace=True)
         #rename projet_id as code
         projet_names_id.rename(columns={"projet_id":"code"}, inplace=True)
-
+        
+        #prices_id=assign_value_to_column(n=30, df=prices, df_=projet_names_id, target_col_df='projet_id', args_1_df_='projet', args_2_df_='code', args_1_df='site')
         #To join projet_id to template_price
         frame=[projet_names_id, prices]
         prices_id = pd.concat(frame, axis=1, ignore_index=False)
         #To create a new column with projet_id
         #Compare the 1st 5 character of projet names and site. set projet_id=code when the values match.
-        n = 3
-        prices_id.loc[prices_id['site'].str[:n] == prices_id['projet'].str[:n], 'projet_id'] = prices_id["code"]
+        n = 7
+        #prices_id.loc[prices_id['site'].str[:n] == prices_id['projet'].str[:n], 'projet_id'] = prices_id["code"]
+        prices_id['projet_id'] = prices_id.apply(lambda row: row['code'] if row['projet'][:n] == row['site'][:n] else None, axis=1)
         template_prices=prices_id[["projet_id", "site", "jan", "feb", "mar", "apr", "may", "june","july", 
                                    "aug", "sep", "oct", "nov", "dec", ]]
         

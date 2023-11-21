@@ -23,11 +23,11 @@ dag = DAG(
      )
 python_script_path = '/mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx_xlsxcsv/'
 
-# validate_asset_task = BashOperator(
-#     task_id='validate_etl_asset',
-#     bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx-xlsxcsv/etl_asset_xlsx.py', 
-#     dag=dag,
-#      )
+validate_asset_task = BashOperator(
+    task_id='validate_etl_asset',
+    bash_command='python /mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx-xlsxcsv/etl_asset_xlsx.py', 
+    dag=dag,
+     )
 
 validate_profile_task = BashOperator(
      task_id='validate_etl_profile',
@@ -72,7 +72,7 @@ validate_vol_hedge_task  = BashOperator(
 
 #validate_asset_task >> validate_profile_task >> validate_hedge_task >> validate_prices_task >> [validate_settl_prices_task, validate_contract_prices_task, validate_prod_asset_task, validate_vol_hedge_task]
 
-validate_profile_task >> validate_hedge_task >> validate_prices_task >> [validate_contract_prices_task, validate_prod_asset_task, validate_vol_hedge_task]
+validate_asset_task >> validate_profile_task >> validate_hedge_task >> validate_prices_task >> [validate_contract_prices_task, validate_prod_asset_task, validate_vol_hedge_task]
 
 if __name__ == "__main__":
     dag.cli()
