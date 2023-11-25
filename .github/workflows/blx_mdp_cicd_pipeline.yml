@@ -2,7 +2,9 @@ name: blx_mdp
 
 on: 
   push: 
-    branches: [" test "]
+    branches: [ "test" ]
+  pull_request: 
+    branches: [ "test" ]
 permissions: 
   contents: read
 
