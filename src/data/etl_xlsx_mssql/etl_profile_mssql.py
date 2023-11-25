@@ -43,7 +43,7 @@ if __name__ == '__main__':
     load_profile(dest_dir = dest_dir, src_productible=df_prod, src_profile_id=df_profile_id, 
                  src_profile=df_profile, src_mean_profile=df_mean_profile, file_name="profile_")
     
-    load_template_asset(dest_dir = dest_dir, src_flow=df_template_asset_with_prod, file_name='template_asset', file_extension='.csv')
+    load_template_asset(dest_dir = dest_dir, src_flow=df_template_asset_with_prod, file_name='template_asset_', file_extension='.csv')
     load_docs_to_mongodb(dest_db='dw', dest_collection='Asset', 
                          src_data= df_template_asset_with_prod, 
                          date_format = '%Y-%m-%d', 
@@ -192,4 +192,3 @@ if __name__ == '__main__':
 #     ], 
 #     mssqlserver=mssqlserver, 
 #     mssqldb=mssqldb)
-    

@@ -95,12 +95,16 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
         #To select specific columns 
         hedge_vmr = hedge_vmr[["id", "hedge_id", "projet_id", "projet", "technologie", "type_hedge", "cod", 
                                "date_merchant", "date_dementelement", "puissance_installée", "en_planif"]]
+        
         #Select specific columns to create asset template    
         df_asset_vmr=df_asset[["id", "asset_id", "projet_id", "projet", "technologie", 
                                "cod", "mw", "taux_succès","puissance_installée", "eoh", 
                                "date_merchant", "date_dementelement", "repowering", 
                                "date_msi", "en_planif"]]
-
+        #set len var
+        len_asset_vmr=len(df_asset_vmr)
+        len_hedge_vmr=len(hedge_vmr)
+        
         #To make export as excel files
         vmr_to_planif.to_csv(temp_dir+"asset_vmr_to_planif.csv", index=False, float_format="%.3f")#This file contains data of assets still in planification but were in assets in planification. 
         project_names.to_csv(temp_dir + "project_names.csv", index=False)
@@ -126,7 +130,7 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
         df_ = df_[df_['Nom'].notna()]
         df_.reset_index(inplace=True, drop=True)
         #df_['Nom']=df_['Nom'].str.lower()
-        rows_to_drop=df_.query('Nom.str.contains("optimisation")', engine='python')
+        rows_to_drop=df_.query('Nom.str.contains("Optimisation")', engine='python')
         rows_to_drop = list(rows_to_drop['Nom'])
         rows_to_drop2=df_.query('Nom.str.contains("Poste")', engine='python')
         rows_to_drop2 = list(rows_to_drop2['Nom'])
@@ -212,7 +216,7 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
         #To create a column id 
         df_ = df_.assign(id=[1 + i for i in xrange(len(df_))])[['id'] + df_.columns.tolist()]
         #To create a column asset_id 
-        df_ = df_.assign(asset_id=[(len(df_)+1) + i for i in xrange(len(df_))])[['asset_id'] + df_.columns.tolist()]
+        df_ = df_.assign(asset_id=[(len_asset_vmr+1) + i for i in xrange(len(df_))])[['asset_id'] + df_.columns.tolist()]
         df_to_asset_vmr = df_to_asset_vmr.assign(id=[1 + i for i in xrange(len(df_to_asset_vmr))])[['id'] + df_to_asset_vmr.columns.tolist()]
         df_to_asset_vmr = df_to_asset_vmr.assign(asset_id=[1 + i for i in xrange(len(df_to_asset_vmr))])[['asset_id'] + df_to_asset_vmr.columns.tolist()]
 
@@ -226,7 +230,7 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
         hedge_planif = df_[["id", "projet_id", "projet", "technologie", "cod", 
                             "date_merchant", "date_dementelement", 
                             "puissance_installée", "en_planif"]]
-        hedge_planif = hedge_planif.assign(hedge_id=[(len(hedge_planif)+1) + i for i in xrange(len(hedge_planif))])[['hedge_id'] + hedge_planif.columns.tolist()]
+        hedge_planif = hedge_planif.assign(hedge_id=[(len_hedge_vmr+1) + i for i in xrange(len(hedge_planif))])[['hedge_id'] + hedge_planif.columns.tolist()]
         hedge_planif=hedge_planif.assign(id=[1 + i for i in xrange(len(hedge_planif))])[['id'] + hedge_planif.columns.tolist()]
         #Select only specific columns 
         df_to_asset_vmr = df_to_asset_vmr[['id', 'projet_id', 'projet', 'technologie', 'cod', 'mw', 'taux_succès', 

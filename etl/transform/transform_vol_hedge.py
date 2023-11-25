@@ -250,7 +250,7 @@ def transform_vol_hedge(data_prod, hedge, prod_pct, mean_pct, **kwargs):
             
         #To merge hedge_vmr and hedge_planif
         hedge_vmr_planif = merge_data_frame(hedge_vmr, hedge_solar, hedge_wp)
-        hedge_vmr_planif=hedge_vmr_planif.assign(id=[1 + i for i in xrange(len(hedge_vmr_planif))])[['id'] + hedge_vmr_planif.columns.tolist()]
+        #hedge_vmr_planif=hedge_vmr_planif.assign(id=[1 + i for i in xrange(len(hedge_vmr_planif))])[['id'] + hedge_vmr_planif.columns.tolist()]
         print('compute hedge ends!:\n') 
         
         return hedge_vmr_planif

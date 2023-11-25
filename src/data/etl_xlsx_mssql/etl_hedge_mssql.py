@@ -33,7 +33,7 @@ temp_dir = os.path.join(os.path.dirname("__file__"),config['develop']['tempdir']
 if __name__ == '__main__':
     df_hedge_vmr, df_hedge_planif = extract_hedge(hedge_vmr_path=hedge_vmr, hedge_planif_path=hedge_planif)
     src_data = transform_hedge(hedge_vmr=df_hedge_vmr, hedge_planif=df_hedge_planif)
-    load_hedge(dest_dir = dest_dir, src_flow=src_data, file_name="template_hedge", file_extension='.csv')
+    load_hedge(dest_dir = dest_dir, src_flow=src_data, file_name="template_hedge_", file_extension='.csv')
     load_docs_to_mongodb(dest_db='dw', dest_collection='Hedge', 
                          src_data= src_data, 
                          date_format = '%Y-%m-%d', 

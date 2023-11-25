@@ -30,7 +30,7 @@ python_val_path = '/mnt/d/local-repo-github/enr_portfolio_modeling/test/'
 dag = DAG(
     'pipeline_mssql',
     description='xlsx to mssql',
-    schedule_interval= '0 20 * * 1-5',   # 0 * * * *(@hourly) 0 0 * * 0 (@weekly)
+    schedule_interval= '0 21 * * 1-7',   # 0 * * * *(@hourly) 0 0 * * 0 (@weekly)
     default_args=default_args
     )
 

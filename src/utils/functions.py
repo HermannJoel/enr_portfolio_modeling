@@ -95,6 +95,25 @@ Parameters:
     data=data.assign(id=[1 + i for i in xrange(len(data))])[['id'] + data.columns.tolist()]
     return data
 
+
+
+def multiply_p50_p90_by_minus_1(df:pd.DataFrame, column_names:list):
+    non_existing_columns = [col for col in column_names if col not in df.columns]
+    if non_existing_columns:
+        print(f"Columns {non_existing_columns} not found in {df} DataFrame.")
+        return df
+
+    # Iterate through specified columns
+    for column_name in column_names:
+        # Iterate through rows and multiply the column by -1 if the value is not 0, NaN, or null
+        for index, row in df.iterrows():
+            value = row[column_name]
+            if pd.notna(value) and value != 0:
+                df.at[index, column_name] = value * -1
+
+    return df
+    
+
 def create_data_frame(data, *args, **kwargs):
     """
     To create a DataFrame containing p50 and P90 across our time horizon     
@@ -1032,6 +1051,36 @@ def model_settlement_prices(data_template_hedge:pd.DataFrame, data_settlement_pr
     df_modeled_settl_prices=pd.concat(frame, axis=1, ignore_index=False)
     
     return df_modeled_settl_prices
+
+def assign_value_to_df_column(src_df:pd.DataFrame, target_df:pd.DataFrame, src_col:str, target_col:str):
+    """Function to assign value df column label
+    parameters
+    ==========
+    src_df (DataFrame) :
+        
+    target_df (DataFrame) :
+        
+    src_col (str) :
+        
+    target_col (str) :
+
+    example
+    ==========
+    >>>assign_value_to_df_column(src_df=, target_df=, src_col=, target_col=)
+    """
+    try:
+        # Iterate over the columns of target df
+        for col_name in target_df.columns:
+            # Iterate over the rows of src df
+            for index, row in src_df.iterrows():
+                # Compare the first len(row['Name']) characters
+                if col_name.startswith(row[target_col][:len(col_name)]):
+                    # Rename the column in df2
+                    target_df = target_df.rename(columns={col_name: row[src_col]})
+                    break  # Break the inner loop if a match is found
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+        
     
 
 

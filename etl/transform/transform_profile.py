@@ -62,6 +62,7 @@ def transform_prod_profile(data_productible, data_profile, data_project_names, d
         else:
             profile.columns=profile.columns
         
+        profile=profile.sort_index(axis=1)
         #To join 2 data frame
         frames = [data_project_names, df_productibles_]
         df__ = pd.concat(frames, axis=1, ignore_index=False)
@@ -71,7 +72,7 @@ def transform_prod_profile(data_productible, data_profile, data_project_names, d
         df_productibles__=df__[["projet_id", "projet", "p50", "p90"]]
         
         #To change prod_perc column names by projet_id
-        n = 5
+        n = 12
         s = (df__.assign(names=df__['projet'].str[:n])
              .drop_duplicates('names')
              .set_index('names')['projet_id']

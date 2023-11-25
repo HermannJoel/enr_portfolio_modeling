@@ -60,6 +60,7 @@ if __name__ == '__main__':
         pgdb=pgdwhdb,
         params=None
         )
+    src_data[["P50","P90"]] = src_data[["P50","P90"]].apply(pd.to_numeric, errors='coerce')
     load_data_in_postgres_table(src_data=src_data, dest_table='VolumeHedge', 
                                 pguid=pguid, pgpw=pgpw, pgserver=pgserver,  
                                 pgdb=pgdwhdb, schema='stagging', if_exists='append')
@@ -69,13 +70,7 @@ if __name__ == '__main__':
     load_data_in_postgres_table(src_data=src_scd1, dest_table='FactContractPrices', 
                                 pguid=pguid, pgpw=pgpw, pgserver=pgserver,  
                                 pgdb=pgdwhdb, schema='dwh', if_exists='append')
-    
-    
-    
-src_data.shape
-src_data.head()
-    
-    
+      
     
     
     

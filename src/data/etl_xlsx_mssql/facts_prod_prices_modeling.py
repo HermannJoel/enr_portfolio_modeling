@@ -32,9 +32,15 @@ if __name__ == '__main__':
                                                                                                                                            contract_prices_path=contract_prices, 
                                                                                                                                            settl_prices_path=settl_prices_curve)
     df_modeled_settl_prices=model_settlement_prices(data_template_hedge=df_template_hedge, 
-                                                data_settlement_prices=df_settlement_prices)  
-    
+                                                data_settlement_prices=df_settlement_prices)
+    df_modeled_settl_prices=rename_df_columns(df=df_modeled_settl_prices, column_names=["hedge_id", "projet_id", "date_debut", "date_fin", "date", "SettlementPrice"])
     #To merge p_50, P_90 asset and p_50, P90_hedge
     df_prod_aseet_vol_hedge=pd.merge(df_vol_hedge, df_prod_asset, how='left', on=['projet_id', 'date', 'année', 'trim', 'mois'])
     #To merge p_50, p_50, P90_hedge and contract prices(OA, CR, PPA)
-    df_prod_aseet_vol_hedge_prices=pd.merge(df_contract_prices, df_prod_aseet_vol_hedge, how='inner', on=['projet_id', 'hedge_id', 'date', 'année', 'mois'])
+    df_prod_aseet_vol_hedge_prices=pd.merge(df_prod_aseet_vol_hedge, df_contract_prices, how='left', on=['projet_id', 'hedge_id', 'date', 'année', 'mois'])
+    df_prod_aseet_vol_hedge_prices.head()
+    #To merge prod_prices with settlement prices
+    df_modeled_settl_prices.head()
+    df_prod_aseet_vol_hedge_contract_settl_prices=pd.merge(df_prod_aseet_vol_hedge_prices, df_modeled_settl_prices, how='left', on=['projet_id', 'hedge_id', 'date'])
+    
+    df_prod_aseet_vol_hedge_contract_settl_prices.head()
