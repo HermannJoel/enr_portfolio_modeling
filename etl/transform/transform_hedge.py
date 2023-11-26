@@ -33,7 +33,7 @@ def transform_hedge(hedge_vmr, hedge_planif, **kwargs):
         df_hedge_vmr["contrepartie"]=np.nan
         df_hedge_vmr["pays_contrepartie"]=np.nan
         df_hedge_vmr.rename(columns={"cod":"date_debut", "date_merchant":"date_fin"}, inplace = True)
-        df_hedge_vmr = df_hedge_vmr[["id", "hedge_id", "projet_id", 
+        df_hedge_vmr = df_hedge_vmr[["id", "hedge_id", "asset_id","projet_id", 
                                     "projet", "technologie", "type_hedge", 
                                      "date_debut", "date_fin", "date_dementelement", 
                                      "puissance_installée", "en_planif", "profil", 
@@ -57,7 +57,7 @@ def transform_hedge(hedge_vmr, hedge_planif, **kwargs):
         df_hedge_planif["contrepartie"] = np.nan
         df_hedge_planif["pays_contrepartie"] = np.nan
         df_hedge_planif.rename(columns={"cod":"date_debut", "date_merchant":"date_fin"}, inplace = True)
-        df_hedge_planif = df_hedge_planif[["id", "hedge_id", "projet_id", 
+        df_hedge_planif = df_hedge_planif[["id", "hedge_id", "asset_id", "projet_id", 
                                              "projet", "technologie", "type_hedge", 
                                              "date_debut", "date_fin", "date_dementelement", 
                                              "puissance_installée", "en_planif", "profil", 

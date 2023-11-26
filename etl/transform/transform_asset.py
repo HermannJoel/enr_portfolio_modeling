@@ -88,12 +88,12 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
         project_names.rename(columns={"projet_id":"code", "projet":"projet_name"}, inplace=True)
 
         #To select specific rows to create a hedge df
-        hedge_vmr=df_asset[["id", "projet_id", "projet", "technologie", "type_hedge", "cod", 
+        hedge_vmr=df_asset[["id", "asset_id", "projet_id", "projet", "technologie", "type_hedge", "cod", 
                             "date_merchant", "date_dementelement", "puissance_installée", "en_planif"]]
         #To create a column containing hedge_id
         hedge_vmr = hedge_vmr.assign(hedge_id=[1 + i for i in xrange(len(hedge_vmr))])[['hedge_id'] + hedge_vmr.columns.tolist()]
         #To select specific columns 
-        hedge_vmr = hedge_vmr[["id", "hedge_id", "projet_id", "projet", "technologie", "type_hedge", "cod", 
+        hedge_vmr = hedge_vmr[["id", "hedge_id", "asset_id", "projet_id", "projet", "technologie", "type_hedge", "cod", 
                                "date_merchant", "date_dementelement", "puissance_installée", "en_planif"]]
         
         #Select specific columns to create asset template    
@@ -227,9 +227,8 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
                                'date_msi', 'en_planif']]
 
         #To select only specific rows(df containing hedge template data of projects in planification)
-        hedge_planif = df_[["id", "projet_id", "projet", "technologie", "cod", 
-                            "date_merchant", "date_dementelement", 
-                            "puissance_installée", "en_planif"]]
+        hedge_planif = df_[["id", "asset_id", "projet_id", "projet", "technologie", "cod", 
+                            "date_merchant", "date_dementelement", "puissance_installée", "en_planif"]]
         hedge_planif = hedge_planif.assign(hedge_id=[(len_hedge_vmr+1) + i for i in xrange(len(hedge_planif))])[['hedge_id'] + hedge_planif.columns.tolist()]
         hedge_planif=hedge_planif.assign(id=[1 + i for i in xrange(len(hedge_planif))])[['id'] + hedge_planif.columns.tolist()]
         #Select only specific columns 

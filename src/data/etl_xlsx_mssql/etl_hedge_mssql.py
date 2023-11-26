@@ -19,6 +19,7 @@ src_dir = os.path.join(os.path.dirname("__file__"),config['develop']['src_dir'])
 raw_files = os.path.join(os.path.dirname("__file__"),config['develop']['raw_files_dir'])
 dest_dir = os.path.join(os.path.dirname("__file__"),config['develop']['processed_files_dir'])
 temp_dir = os.path.join(os.path.dirname("__file__"),config['develop']['tempdir'])
+template_hedge = os.path.join(os.path.dirname("__file__"),config['develop']['template_hedge'])
 mongodbatlas_dw_conn_str = os.path.join(os.path.dirname("__file__"),config['develop']['mongodbatlas_dw_conn_str'])
 pgpw=os.path.join(os.path.dirname("__file__"),config['develop']['pgpw'])
 pgport=os.path.join(os.path.dirname("__file__"),config['develop']['pgport'])
@@ -34,39 +35,59 @@ if __name__ == '__main__':
     df_hedge_vmr, df_hedge_planif = extract_hedge(hedge_vmr_path=hedge_vmr, hedge_planif_path=hedge_planif)
     src_data = transform_hedge(hedge_vmr=df_hedge_vmr, hedge_planif=df_hedge_planif)
     load_hedge(dest_dir = dest_dir, src_flow=src_data, file_name="template_hedge_", file_extension='.csv')
+    src_data=read_excel_file(template_hedge)
     load_docs_to_mongodb(dest_db='dw', dest_collection='Hedge', 
                          src_data= src_data, 
                          date_format = '%Y-%m-%d', 
                          mongodb_conn_str = mongodbatlas_dw_conn_str)
     src_data = read_docs_from_mongodb(src_db = 'dw', src_collection = 'Hedge',
                                       query={}, no_id=True, 
-                                      column_names=['Id','HedgeId', 'ProjectId', 
+                                      column_names=['Id','HedgeId', 'AssetId','ProjectId', 
                                                     'Project', 'Technology', 'TypeHedge', 
                                                     'ContractStartDate', 'ContractEndDate', 'DismantleDate',
                                                     'InstalledPower', 'InPlanif', 'Profil', 
                                                     'HedgePct', 'Counterparty', 'CountryCounterparty'], 
                                       mongodb_conn_str = mongodbatlas_dw_conn_str)
+    scd2=src_data.iloc[:,1:]
     excucute_postgres_crud_ops(
         queries=[
         '''TRUNCATE TABLE stagging."Hedge";'''],  
         pguid=pguid, 
         pgpw=pgpw, 
         pgserver=pgserver,
-        pgport=5432,
-        pgdb=pgstgdb,
+        pgport=pgport,
+        pgdb=pgdwhdb,
         params=None
         )
-    
-    load_data_in_postgres_table(src_data=src_data, dest_table='Hedge', 
+    load_data_in_postgres_table(src_data=scd2, dest_table='Hedge', 
                                 pguid=pguid, pgpw=pgpw, pgserver=pgserver,  
-                                pgdb=pgstgdb, schema='stagging', if_exists='append')
-    
-    src_scd2=query_data_from_postgresql(query='''SELECT * FROM "stagging"."Hedge";''',  
-                                        pguid=pguid, pgpw=pgpw, pgserver=pgserver, pgport=pgport, pgdb=pgdwhdb)
-    load_data_in_postgres_table(src_data=src_scd2, dest_table='DimHedge', 
-                                pguid=pguid, pgpw=pgpw, pgserver=pgserver,  
-                                pgdb=pgdwhdb, schema='dwh', if_exists='append')
-    
+                                pgdb=pgdwhdb, schema='stagging', if_exists='append')
+    excucute_postgres_crud_ops(queries=[
+        '''with upd as ( 
+        update dwh."D_Hedge" dest 
+        set "CurrentRecord" = False,  
+            "EndDate" = src."LastUpdated"
+        from stagging."Hedge" src
+        where src."HedgeId" = dest."HedgeId" and dest."CurrentRecord" = True )
+        insert into dwh."D_Hedge" ( 
+                            "HedgeId", "AssetId", "ProjectId", "Project", "TypeHedge", "ContractStartDate", 
+                            "ContractEndDate", "DismantleDate", "InstalledPower", "InPlanif", "Profil",
+                           "HedgePct", "Counterparty", "CountryCounterparty", "DimensionCheckSum", 
+                           "EffectiveDate", "EndDate", "CurrentRecord"
+                           ) 
+                           select
+                           "HedgeId", "AssetId", "ProjectId", "Project", "TypeHedge", "ContractStartDate",
+                           "ContractEndDate", "DismantleDate", "InstalledPower", "InPlanif", "Profil", 
+                           "HedgePct", "Counterparty", "CountryCounterparty", "DimensionCheckSum", 
+                           "LastUpdated", '9999-12-31'::date, True 
+                           from Stagging."Hedge" src;'''], 
+                               pguid=pguid, 
+                               pgpw=pgpw, 
+                               pgserver=pgserver,
+                               pgport=pgport,
+                               pgdb=pgdwhdb,
+                               params=None
+                              )
     # excucute_sqlserver_crud_ops(
     #     queries=[''' TRUNCATE TABLE [stagging].[Hedge]; '''], 
     #     mssqlserver=mssqlserver, 
