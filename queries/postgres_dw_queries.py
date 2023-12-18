@@ -1,3 +1,11 @@
+import pandas as pd
+import sqlalchemy
+from sqlalchemy import create_engine
+
+def postgressql_engine(): 
+    engine = create_engine('postgresql+psycopg2://postgres:24Fe1988@localhost:5432/blxmdpdwdev') 
+    return engine
+
 dimasset_query = '''
     SELECT
          "AssetId"

@@ -27,9 +27,9 @@ def transform_contract_prices_planif(data_hedge):
         df_hedge_sol=df_hedge_sol[df_hedge_sol['projet'].isin(ppa) == False]
         df_hedge_wp=df_hedge_wp[df_hedge_wp['projet'].isin(ppa) == False]
 
-        df_hedge_sol=df_hedge_sol.iloc[:,np.r_[1, 2, 3, 5, 6, 7, 8]]
+        df_hedge_sol=df_hedge_sol.iloc[:,np.r_[1, 2, 3, 4, 5, 6, 7, 8, 9]]
         n_sol=len(df_hedge_sol)
-        df_hedge_wp=df_hedge_wp.iloc[:,np.r_[1, 2, 3, 5, 6, 7, 8]]
+        df_hedge_wp=df_hedge_wp.iloc[:,np.r_[1, 2, 3, 4, 5, 6, 7, 8, 9]]
         n_wp=len(df_hedge_wp)
         print('create solar & wind power dfs:\n')
         #create a df solar
@@ -140,14 +140,14 @@ def transform_contract_prices_inprod(template_asset, template_hedge, template_pr
         hedge_planif_sol=hedge_planif_sol[hedge_planif_sol['projet'].isin(ppa) == False]
         hedge_planif_eol=hedge_planif_eol[hedge_planif_eol['projet'].isin(ppa) == False]
 
-        hedge_planif_sol=hedge_planif_sol.iloc[:,np.r_[1, 2, 3, 5, 6, 7, 8]]
-        hedge_planif_eol=hedge_planif_eol.iloc[:,np.r_[1, 2, 3, 5, 6, 7, 8]]
-        hedge_ppa=hedge_ppa.iloc[:,np.r_[1, 2, 3, 5, 6, 7, 8]]
+        hedge_planif_sol=hedge_planif_sol.iloc[:,np.r_[1, 2, 3, 4, 5, 6, 7, 8, 9]]
+        hedge_planif_eol=hedge_planif_eol.iloc[:,np.r_[1, 2, 3, 4, 5, 6, 7, 8, 9]]
+        hedge_ppa=hedge_ppa.iloc[:,np.r_[1, 2, 3, 4, 5, 6, 7, 8, 9]]
 
 
         asset_=template_asset
         asset=asset_.loc[asset_['en_planif']==False]
-        asset=asset[['asset_id', 'projet_id', 'cod', 'date_merchant']]
+        #asset=asset[['asset_id', 'projet_id', 'cod', 'date_merchant']]
         asset.reset_index(drop=True, inplace=True)
         #subseting
         asset_planif_sol = asset_.loc[(asset_['en_planif'] == True) & (asset_['technologie'] == 'solaire')]
@@ -201,20 +201,21 @@ def transform_contract_prices_inprod(template_asset, template_hedge, template_pr
         price_23_28_id=pd.concat(frames, axis=0)
         #projet_23_28_id.sort_values(by=['projet'], inplace=True, ignore_index=True)
         price_23_28_id.reset_index(inplace=True, drop=True)
-
+        
+        asset=select_columns(asset, 'asset_id', 'projet_id', 'cod', 'date_merchant')
         #To join hedge, asset and contract price data frames
         #data 2022
-        df_temp=pd.merge(hedge, asset, how='inner', on='projet_id')
+        df_temp=pd.merge(hedge, asset, how='inner', on=['asset_id','projet_id'])
         df=pd.merge(df_temp, price, how='inner', on='projet_id')
 
         #post 2022 (2023 to 2028)
-        df_temp2=pd.merge(hedge, asset, how='inner', on='projet_id')
+        df_temp2=pd.merge(hedge, asset, how='inner', on=['asset_id','projet_id'])
         df2=pd.merge(df_temp2, price_23_28_id, how='inner', on='projet_id')
 
         #To print columns + indexes
         #list(enumerate(df.columns))
         #Select by range and position   
-        df_ = df.iloc[:,np.r_[1, 2, 3, 4, 5, 6, 7, 8, 15, 16, 17, 18, 19, 20:31]]
+        df_ = df.iloc[:,np.r_[1, 2, 3, 4, 5, 6, 7, 8, 9, 16, 17, 18, 19:31]]
         #df subseting
         price_oa_cr_temp = df_.loc[df_['type_hedge'] != 'PPA']
         price_oa_cr_temp.reset_index(inplace=True, drop=True)#only 2022 prices data 
@@ -222,7 +223,7 @@ def transform_contract_prices_inprod(template_asset, template_hedge, template_pr
         price_ppa = price_ppa.iloc[:, 0:11]
 
         #df2= data from 2023 to 2028
-        df2_ = df2.iloc[:,np.r_[1, 2, 3, 4, 5, 6, 7, 8, 15, 16, 17, 18, 19, 20:31]]
+        df2_ = df2.iloc[:,np.r_[1, 2, 3, 4, 5, 6, 7, 8, 9, 16, 17, 18, 19:31]]
         #df subseting
         price_oa_cr_temp2 = df2_.loc[df2_['type_hedge'] != 'PPA']
         price_oa_cr_temp2.reset_index(inplace=True, drop=True)

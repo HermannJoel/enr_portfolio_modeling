@@ -95,6 +95,25 @@ Parameters:
     data=data.assign(id=[1 + i for i in xrange(len(data))])[['id'] + data.columns.tolist()]
     return data
 
+
+
+def multiply_p50_p90_by_minus_1(df:pd.DataFrame, column_names:list):
+    non_existing_columns = [col for col in column_names if col not in df.columns]
+    if non_existing_columns:
+        print(f"Columns {non_existing_columns} not found in {df} DataFrame.")
+        return df
+
+    # Iterate through specified columns
+    for column_name in column_names:
+        # Iterate through rows and multiply the column by -1 if the value is not 0, NaN, or null
+        for index, row in df.iterrows():
+            value = row[column_name]
+            if pd.notna(value) and value != 0:
+                df.at[index, column_name] = value * -1
+
+    return df
+    
+
 def create_data_frame(data, *args, **kwargs):
     """
     To create a DataFrame containing p50 and P90 across our time horizon     
@@ -177,7 +196,7 @@ def read_excel_file(path, **kwargs):
         return pd.read_excel(path, **kwargs)
     else: 
         return pd.read_csv(path, **kwargs)
-
+   
     
 def format_float(df, column, decimals=2):
     df[column] = df[column].apply(lambda x: f"{x:,.{decimals}f}")
@@ -445,24 +464,29 @@ def rename_df_columns(df: pd.DataFrame, column_names: list):
         df = df.rename(columns={col: column_names[i]})
     return df
 
-def read_docs_from_mongodb(src_db, src_collection, column_names, query={}, no_id=True , **kwargs):
+def read_docs_from_mongodb(src_db, src_collection, column_names, query={}, no_id=True , **kwargs)->'DataFrame':
     """Function to extract documents from mongo db collection     
     parameters
-    ==========
+    ----------
     src_db (str) :
-        db name 
+        db name. 
     src_collection (str) :
-        collection name        
+        collection name.       
     column_names (list) : 
-        list containing columns name
+        list containing columns name.
     query (dict) : default {}
-         fetch all
+         fetch all.
     no_id (bool) : default True
-        not include id
+        not include id.
     ** mongodb_conn_str (str) :
         mongo db string connexion
+        
+    Returns
+    -------
+    pd.DataFrame
+        Resulting DataFrame.
     example
-    =======
+    -------
     >>>src_data = read_docs_from_mongodb(src_db = 'dw', src_collection = 'Asset',
                                        query={}, no_id=True, 
                                        column_names=['Id','AssetId', 'ProjetId', 
@@ -487,11 +511,82 @@ def read_docs_from_mongodb(src_db, src_collection, column_names, query={}, no_id
         print(f"Data extracted from mongodb collection {src_db}.{src_collection} successfully!")
     except Exception as e:
         print(f"Data extract from mongodb collection {src_db}.{src_collection} error!: "+str(e))
+    finally:
+        myclient.close()
+        print("Connection closed!")
+        
+        
+def read_docs_from_mongodb_collections(src_db, src_collection, column_names, query=None, no_id=True, **kwargs):
+    """Function to extract documents from MongoDB collection using an aggregation pipeline.
+    Parameters
+    ----------
+    src_db : str
+        Database name.
+    src_collection : str
+        Collection name.
+    column_names : list
+        List containing column names.
+    query : list or None, default=None
+        Aggregation pipeline for the collection.
+    no_id : bool, default=True
+        Exclude the "_id" field.
+    **kwargs :
+        Keyword arguments including 'mongodb_conn_str' (MongoDB connection string).
+    
+    Returns
+    -------
+    pd.DataFrame
+        Resulting DataFrame after applying the aggregation pipeline.
+
+    Example
+    -------
+    >>> aggregation_pipeline = [
+            {"$lookup": {"from": "Asset", "localField": "AssetId", "foreignField": "AssetId", "as": "HedgeAsset"}},
+            {"$unwind": "$HedgeAsset"}
+        ]
+
+        src_data = read_docs_from_mongodb(
+            src_db='dw',
+            src_collection='Hedge',
+            query=aggregation_pipeline,
+            no_id=True,
+            column_names=['Id', 'AssetId', 'ProjetId', 'Projet', 'Technology', 'COD',
+                          'MW', 'SuccessPct', 'InstalledPower', 'EOH', 'DateMerchant',
+                          'DismantleDate', 'Repowering', 'MsiDate', 'InPlanif'],
+            mongodb_conn_str=mongodbatlas_dw_conn_str
+        )
+    """
+    try:
+        myclient = MongoClient(kwargs['mongodb_conn_str'])
+        db = myclient[src_db]
+        collection = db[src_collection]
+
+        # Use aggregation pipeline if provided
+        if query:
+            cursor = collection.aggregate(query)
+        else:
+            cursor = collection.find({})
+
+        data_frame = pd.DataFrame(list(cursor))
+
+        # To delete the _id (indexes)
+        if no_id:
+            del data_frame['_id']
+
+        # Rename columns
+        data_frame = rename_df_columns(data_frame, column_names)
+
+        return data_frame
+        print(f"Data extracted from MongoDB collection {src_db}.{src_collection} successfully!")
+    except Exception as e:
+        print(f"Data extract from MongoDB collection {src_db}.{src_collection} error!: " + str(e))
+
+
         
 def load_as_excel_file(dest_dir, src_flow, file_name, file_extension):
     """Function to load data as excle file     
     parameters
-    ==========
+    ----------
     dest_dir (str) :
         target folder path
     src_flow (DataFrame) :
@@ -500,8 +595,8 @@ def load_as_excel_file(dest_dir, src_flow, file_name, file_extension):
         destination file name
     file_extension (str) :
         file extension as xlsx, csv, txt...
-    exemple
-    =======
+    example
+    -------
     >>>load_as_excel_file(dest_dir, template_asset_without_prod, 'template_asset', '.csv') 
     """
     try:
@@ -526,7 +621,7 @@ def load_data_in_postgres_table(src_data:str, dest_table:str, pguid:str, pgpw:st
 def load_data_to_mssql(src_data, dest_table, mssqlserver, mssqldb='DWH', dtype={}, yes='yes',**kwargs):
     """Function to load data in mssql db     
     parameters
-    ==========
+    ----------
     src_data (str) :
         Source data
     dest_table (str) :
@@ -538,10 +633,9 @@ def load_data_to_mssql(src_data, dest_table, mssqlserver, mssqldb='DWH', dtype={
     dtype={} (Dictionnary) : 
         Dictonnary containing source data type
     **kwargs
-    exemple
-    =======
-    load_data_to_mssql(src_data = src_data, dest_table = 'Hedge', mssqlserver = mssqlserver, mssqldb = mssqldb, if_exists = 'replace', schema = 'stg')
-    >>>  
+    example
+    -------
+    >>>load_data_to_mssql(src_data = src_data, dest_table = 'Hedge', mssqlserver = mssqlserver, mssqldb = mssqldb, if_exists = 'replace', schema = 'stg') 
     """
     try:
         cnxn = pyodbc.connect('DRIVER=ODBC Driver 13 for SQL Server'+';SERVER=' + mssqlserver + ';DATABASE=' +mssqldb + ';Trusted_Connection=' +yes)
@@ -558,14 +652,42 @@ def load_data_to_mssql(src_data, dest_table, mssqlserver, mssqldb='DWH', dtype={
         cursor.close()
         print(f"Connexion: {cnxn} closed!")
         
-def rename_df_columns(df: pd.DataFrame, column_names: list):
-    """Rename DataFrame columns with strings from list"""
+def rename_df_columns(df:pd.DataFrame, column_names: list)->'DataFrame':
+    """Rename DataFrame columns with strings from list
+    Parameters
+    ----------
+    df : DataFrame
+        pd data frame to rename.
+    column_names : list
+        list of string containing columns label.
+    Returns
+    df : DataFrame
+        pd DataFrame with renamed columns
+    -------
+    Example
+    -------
+    >>>rename_df_columns(df=, column_names=[])
+    """
     for i, col in enumerate(df.columns):
         df = df.rename(columns={col: column_names[i]})
     return df
         
 
 def load_docs_to_mongodb(dest_db, dest_collection, src_data, **kwargs):
+    """Function to load documents in mongo db collection
+    Parameters
+    ----------
+    dest_db : str
+        
+    dest_collection : str
+        
+    src_data : str
+        
+    **kwargs : 
+    Example
+    -------
+    >>>load_docs_to_mongodb(dest_db, dest_collection, src_data, **kwargs)
+    """
     try:
         myclient=MongoClient(kwargs['mongodb_conn_str'])
         db=myclient[dest_db]
@@ -585,19 +707,20 @@ def load_docs_to_mongodb(dest_db, dest_collection, src_data, **kwargs):
 def load_data_to_gcbq_from_gcs(uri, write_disposition=None, schema=[], **kwargs):
     """Function exctract blob from gcs and load to gcbq     
     parameters
-    ==========
-    uri (str) :
+    ----------
+    uri : str
         The path to your file blob to upload
-    schema (list) :
+    schema : list
         Schema of dest table in dest dataset in gbq 
     **kwargs
-    google_application_credentials (str) : 
+        google_application_credentials : str 
         storage-object-name, The ID of your GCS object
-    datasetid (str) : 
-    tableid (str) :
-        
+    datasetid : str 
+    tableid : str
+    Returns
+    ------- 
     exemple
-    =======
+    -------
     load_blob_to_gcs(source_file_name, bucket_name, destination_blob_name, **kwargs)
     >>>  
     """
@@ -631,7 +754,7 @@ def load_data_to_gcbq_from_gcs(uri, write_disposition=None, schema=[], **kwargs)
         print(f"Data load to {kwargs['table_name']} error!: "+str(e))
     
 def load_blob_to_gcs(source_file_name, bucket_name, destination_blob_name, **kwargs):
-    """Function to load blob to glogle storage bucket     
+    """Function to load blob to gloogle storage bucket     
     parameters
     ==========
     source_file_name (str) :
@@ -822,7 +945,7 @@ def excucute_sqlserver_crud_ops(queries:list, mssqlserver:str, mssqldb:str, yes=
 def mongodb_crud_ops(mongodb_db:str, mongodb_collection:str, queries:list, **kwargs):
     """Funtion to execute mongodb CRUD (CREATE, UPDATE, DELETE) operations
     parameters
-    ==========
+    ----------
     queries (list) :
         list of queries to execute
     queries = [
@@ -837,10 +960,9 @@ def mongodb_crud_ops(mongodb_db:str, mongodb_collection:str, queries:list, **kwa
     mongodb_collection (str) :
         mongo db collection name
         
-    exemple
-    mongodb_crud_ops(mongodb_db, mongodb_collection,queries={}, **kwargs)
-    >>>
-    =======
+    example
+    -------
+    >>>mongodb_crud_ops(mongodb_db, mongodb_collection,queries={}, **kwargs)
     """
     try:
         myclient=MongoClient(kwargs['mongodb_cluster_conn'])
@@ -906,24 +1028,24 @@ def mongodb_crud_ops(mongodb_db:str, mongodb_collection:str, queries:list, **kwa
 def excucute_postgres_crud_ops(queries:list, pguid:str, pgpw:str, pgserver:str, pgdb:str, pgport=5432, params=None,):
     """Funtion to execute postgres db CUD (CREATE, UPDATE, DELETE) operations
     parameters
-    ==========
-    queries (list) :
+    ----------
+    queries : list
         list of queries to execute
-    pguid (str) :
+    pguid : str
         postgres user name
-    pgpw (str) :
+    pgpw : str
         postgres password
-    pgserver (str) :
+    pgserver : str
         pg host name
-    pgdb (str) :
+    pgdb : str
         pg data base
-    pgport (str) :
+    pgport : str
         pg port
-    params (str) :   
+    params : str  
         query parameters as denoted as %s  
-    exemple
-    =======
-    excucute_postgres_crud_ops(
+    example
+    -------
+    >>>excucute_postgres_crud_ops(
     queries=[
         '''DELETE FROM stagging."Asset" WHERE "AssetId" = %s AND "Id = %s"'''
         '''TRUNCATE TABLE stagging."Asset''',
@@ -969,7 +1091,7 @@ def excucute_postgres_crud_ops(queries:list, pguid:str, pgpw:str, pgserver:str, 
 def query_data_from_postgresql(query:str, pguid:str, pgpw:str, pgserver:str, pgport:int, pgdb:str):
     """Etract data from postgres db
     parameters
-    ==========
+    ----------
     query (str) :
     pguid (str) : 
     pgpw (str) :
@@ -977,7 +1099,7 @@ def query_data_from_postgresql(query:str, pguid:str, pgpw:str, pgserver:str, pgp
     pgport (int) :
     pgdb (str) :
     example
-    ==========
+    -------
     >>>query_data_from_postgresql(query='''SELECT * FROM "stagging"."Asset";''', pguid=pguid, 
                                      pgpw=pgpw, pgserver=pgserver, pgport=pgport, pgdb=pgdwhdb)
     """
@@ -991,8 +1113,18 @@ def query_data_from_postgresql(query:str, pguid:str, pgpw:str, pgserver:str, pgp
          print(f"An error occurred: {str(e)}")
         
 def assign_value_to_column(n:int, df:pd.DataFrame, df_:pd.DataFrame, target_col_df:str, args_1_df_:str, args_2_df_:str, args_1_df:str):
-    """
-    
+    """Function to assign value df column label
+    parameters
+    ----------
+    src_df : DataFrame 
+        target_df (DataFrame) :
+    src_col : str 
+        source data frame column name
+    target_col : str
+        target data frame column name
+    example
+    -------
+    >>>assign_value_to_df_column(src_df=, target_df=, src_col=, target_col=)
     """
     # Assuming n is the number of characters to compare
     n = n
@@ -1013,9 +1145,17 @@ def assign_value_to_column(n:int, df:pd.DataFrame, df_:pd.DataFrame, target_col_
 
         
         
-def model_settlement_prices(data_template_hedge:pd.DataFrame, data_settlement_prices:pd.DataFrame):
-    """
-    
+def model_settlement_prices(data_template_hedge:pd.DataFrame, data_settlement_prices:pd.DataFrame)->'DataFrame':
+    """Function to model settlement prices in fact table
+    Parameters
+    ----------
+    data_template_hedge : DataFrame
+        template hedge pd data frame
+    data_settlement_prices : DataFrame
+        monthly product settlement prices data frame
+    Example
+    -------
+    >>>model_settlement_prices(data_template_hedge=, data_settlement_prices=)
     """
     #To multiply hedge df by the len of prices df
     n=len(data_settlement_prices)
@@ -1032,6 +1172,34 @@ def model_settlement_prices(data_template_hedge:pd.DataFrame, data_settlement_pr
     df_modeled_settl_prices=pd.concat(frame, axis=1, ignore_index=False)
     
     return df_modeled_settl_prices
+
+def assign_value_to_df_column(src_df:pd.DataFrame, target_df:pd.DataFrame, src_col:str, target_col:str):
+    """Function to assign value df column label
+    parameters
+    ----------
+    src_df : DataFrame 
+        target_df (DataFrame) :
+    src_col : str 
+        source data frame column name
+    target_col : str
+        target data frame column name
+    example
+    -------
+    >>>assign_value_to_df_column(src_df=, target_df=, src_col=, target_col=)
+    """
+    try:
+        # Iterate over the columns of target df
+        for col_name in target_df.columns:
+            # Iterate over the rows of src df
+            for index, row in src_df.iterrows():
+                # Compare the first len(row['Name']) characters
+                if col_name.startswith(row[target_col][:len(col_name)]):
+                    # Rename the column in df2
+                    target_df = target_df.rename(columns={col_name: row[src_col]})
+                    break  # Break the inner loop if a match is found
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+        
     
 
 

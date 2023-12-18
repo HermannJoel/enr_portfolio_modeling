@@ -4,13 +4,14 @@ Created on Fri Jul  1 09:07:49 2022
 
 @author: hermann.ngayap
 """
-
-import dash_core_components as dcc
-import dash_html_components as html
+import sys
+import os
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+from dash import dcc, html
 import plotly.graph_objs as go
-from colors import colors
-from x_axes import years, quarters, months 
-from postgresql_queries import*
+from dashboards.env import*  
+from queries.pg_dwh_queries import*
 
 
 BAR_H_WIDTH = 2 
@@ -38,7 +39,7 @@ production_graph= html.Div(
                    go.Bar(
                        name='Production',
                        x=years['years'],
-                       y=query_results_10['prod'],
+                       y=prod_y["Prod"],
                        marker=dict(color=colors['l_green']),
                        )], 
                    'layout':go.Layout(dict(title='Prod/Year', 
@@ -63,7 +64,7 @@ production_graph= html.Div(
                    go.Bar(
                        name='Production',
                        x=quarters['quarters'], #quarters
-                       y=query_results_11['prod'],
+                       y=prod_q["Prod"],
                        marker=dict(color=colors['l_green']),
                        )], 
                    'layout':go.Layout(title='Prod/Quarter/Year', 
@@ -88,7 +89,7 @@ production_graph= html.Div(
                    go.Bar(
                        name='Production',
                        x=months['months'],
-                       y=query_results_12['prod'],
+                       y=prod_m["Prod"],
                        marker=dict(color=colors['l_green']),
                        )], 
                    'layout':go.Layout(title='Prod/Month/Year', 

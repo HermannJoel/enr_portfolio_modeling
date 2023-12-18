@@ -1,5 +1,44 @@
-
 import pandas as pd
+import sys
+import os
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+app = dash.Dash(suppress_callback_exceptions=True)
+from dashboards.env import*  
+from queries.pg_dwh_queries import*
+
+app = dash.Dash(suppress_callback_exceptions=True)
+#**********Exposure per quarter callback  
+@app.callback(Output('exposition_q', 'figure'),
+              [Input('drop_year_q', 'value')])
+def update_figure_q(selected_year_q):
+    filtered_df_q = exposure_q[exposure_q["Year"] == selected_year_q]
+    qtr = []
+    for quarter in filtered_df_q["Quarters"].unique():
+        df_by_quarter = filtered_df_q[filtered_df_q["Quarters"] == quarter]
+        qtr.append(go.Bar(
+            name='Exposure',
+            x=df_by_quarter["Quarters"],
+            y=df_by_quarter["Exposure"],
+            marker=dict(color=colors['e_white']),
+            opacity=0.20
+        ))
+
+    return {
+        'data': qtr,
+        'layout': go.Layout(
+            title='Exposure/Quarter/Year',
+            xaxis=dict(gridcolor=colors['grid'], title='quarter', dtick=1),
+            yaxis=dict(gridcolor=colors['grid'], title='GWh'),
+            showlegend = False,
+            paper_bgcolor = colors["background1"],
+            plot_bgcolor= colors["background1"],
+            font=dict(color=colors["text"], size=PLOTS_FONT_SIZE),
+            hovermode="x unified",
+            legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+            
+        )
+    }
 
 #**********Exposure per month callback
 
@@ -7,14 +46,14 @@ import pandas as pd
               [Input('drop_year_m', 'value')])
 
 def update_figure_m(selected_year_m):
-    filtered_df_m = query_results_3[query_results_3['year'] == selected_year_m]
+    filtered_df_m = exposure_q[exposure_m["Year"] == selected_year_m]
     mth = []
-    for month in filtered_df_m['months'].unique():
-        df_by_month = filtered_df_m[filtered_df_m['months'] == month]
+    for month in filtered_df_m["Months"].unique():
+        df_by_month = filtered_df_m[filtered_df_m["Months"] == month]
         mth.append(go.Bar(
             name='Exposure',
-            x=df_by_month['months'],
-            y=df_by_month['exposure'],
+            x=df_by_month["Months"],
+            y=df_by_month["Exposure"],
             marker=dict(color=colors['e_white']),
             opacity=0.20
                
@@ -40,14 +79,14 @@ def update_figure_m(selected_year_m):
               [Input('drop_year_p_q', 'value')])
 
 def update_figure_p_q(selected_year_p_q):
-    filtered_df_p_q = query_results_11[query_results_11['year'] == selected_year_p_q]
+    filtered_df_p_q = prod_q[prod_q["Year"] == selected_year_p_q]
     qtr_p = []
-    for quarter in filtered_df_p_q['quarters'].unique():
-        df_p_by_quarter = filtered_df_p_q[filtered_df_p_q['quarters'] == quarter]
+    for quarter in filtered_df_p_q["Quarters"].unique():
+        df_p_by_quarter = filtered_df_p_q[filtered_df_p_q["Quarters"] == quarter]
         qtr_p.append(go.Bar(
             name='Production',
-            x=df_p_by_quarter['quarters'],
-            y=df_p_by_quarter['prod'],
+            x=df_p_by_quarter["Quarters"],
+            y=df_p_by_quarter["Prod"],
             marker=dict(color=colors['l_green'])
             
         ))
@@ -70,14 +109,14 @@ def update_figure_p_q(selected_year_p_q):
               [Input('drop_year_p_m', 'value')])
 
 def update_figure_p_m(selected_year_p_m):
-    filtered_df_p_m = query_results_12[query_results_12['year'] == selected_year_p_m]
+    filtered_df_p_m = prod_m[prod_m["Year"] == selected_year_p_m]
     mth_p = []
-    for month in filtered_df_p_m['months'].unique():
-        df_p_by_month = filtered_df_p_m[filtered_df_p_m['months'] == month]
+    for month in filtered_df_p_m["Months"].unique():
+        df_p_by_month = filtered_df_p_m[filtered_df_p_m["Months"] == month]
         mth_p.append(go.Bar(
             name='Production',
-            x=df_p_by_month['months'],
-            y=df_p_by_month['prod'],
+            x=df_p_by_month["Months"],
+            y=df_p_by_month["Prod"],
             marker=dict(color=colors['l_green']),
                
         ))
@@ -98,22 +137,20 @@ def update_figure_p_m(selected_year_p_m):
     }
 
 #**********Hedge per quarter callback
-
 @app.callback(Output('hedge_type_q', 'figure'),
               [Input('drop_year_h_q', 'value')])
-
 def update_figure_h_q(selected_year_h_q):
-    filtered_df_h_q = query_results_5[query_results_5['year'] == selected_year_h_q]
-    filtered_df_p_q_ = query_results_11[query_results_11['year'] == selected_year_h_q]
+    filtered_df_h_q = hedge_q[hedge_q["Year"] == selected_year_h_q]
+    filtered_df_p_q_ = prod_q[prod_q["Year"] == selected_year_h_q]
     qtr_h_ppa = []
     qtr_h_oa = []
     qtr_h_cr = []
-    for quarter in filtered_df_h_q['quarters'].unique():
-        df_h_by_quarter = filtered_df_h_q[filtered_df_h_q['quarters'] == quarter]
+    for quarter in filtered_df_h_q["Quarters"].unique():
+        df_h_by_quarter = filtered_df_h_q[filtered_df_h_q["Quarters"] == quarter]
         qtr_h_ppa.append(go.Bar(
             name='PPA',
             x=quarters,
-            y=df_h_by_quarter.loc[df_h_by_quarter['typecontract']=='PPA', 'hedge']),
+            y=df_h_by_quarter.loc[df_h_by_quarter["TypeContract"]=='PPA', "Hedge"]),
             opacity=1,
             marker=dict(color=colors['ppa']),
             marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
@@ -121,29 +158,29 @@ def update_figure_h_q(selected_year_h_q):
         qtr_h_oa.append(go.Bar(
             name='OA',
             x=quarters,
-            y=df_h_by_quarter.loc[df_h_by_quarter['typecontract']=='OA', 'hedge']),
+            y=df_h_by_quarter.loc[df_h_by_quarter["TypeContract"]=='OA', "Hedge"]),
             opacity=0.4,
-            base=df_h_by_quarter.loc[df_h_by_quarter['typecontract']=='PPA', 'hedge'],
+            base=df_h_by_quarter.loc[df_h_by_quarter["TypeContract"]=='PPA', "Hedge"],
             marker=dict(color=colors['oa']),
             marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
             ),
         qtr_h_cr.append(go.Bar(
             name='CR',
             x=quarters,
-            y=df_h_by_quarter.loc[df_h_by_quarter['typecontract']=='CR', 'hedge']),
+            y=df_h_by_quarter.loc[df_h_by_quarter["TypeContract"]=='CR', "Hedge"]),
             opacity=0.25,
-            base=df_h_by_quarter.loc[df_h_by_quarter['typecontract']=='OA', 'hedge'],
+            base=df_h_by_quarter.loc[df_h_by_quarter["TypeContract"]=='OA', "Hedge"],
             marker=dict(color=colors['cr']),
             marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
             ),
 
-    for quarter in filtered_df_p_q_['quarters'].unique():
-        df_p_by_quarter_ = filtered_df_p_q_[filtered_df_p_q_['quarters'] == quarter]
+    for quarter in filtered_df_p_q_["Quarters"].unique():
+        df_p_by_quarter_ = filtered_df_p_q_[filtered_df_p_q_["Quarters"] == quarter]
         qtr_p = []
         qtr_p.append(go.Bar(
             name='Production',
             x=quarters,
-            y=df_p_by_quarter_['prod'],
+            y=df_p_by_quarter_["Prod"],
             marker=dict(color=colors['l_green']),
             opacity=0.1,
             
@@ -171,16 +208,16 @@ def update_figure_h_q(selected_year_h_q):
               [Input('drop_year_h_m', 'value')])
 
 def update_figure_h_m(selected_year_h_m):
-    filtered_df_h_m = query_results_6[query_results_6['year'] == selected_year_h_m]
-    filtered_df_p_m_ = query_results_12[query_results_12['year'] == selected_year_h_m]
+    filtered_df_h_m = hedge_m[hedge_m["Year"] == selected_year_h_m]
+    filtered_df_p_m_ = prod_m[prod_m["Year"] == selected_year_h_m]
     mth_h_ppa = []
     mth_h_oa = []
     mth_h_cr = []
-    for month in filtered_df_h_m['months'].unique():
-        df_h_by_month = filtered_df_h_m[filtered_df_h_m['months'] == month]
+    for month in filtered_df_h_m["Months"].unique():
+        df_h_by_month = filtered_df_h_m[filtered_df_h_m["Months"] == month]
         mth_h_ppa.append(go.Bar(
             x=months['months'],
-            y=df_h_by_month.loc[df_h_by_month['typecontract']=='PPA', 'hedge'],
+            y=df_h_by_month.loc[df_h_by_month["TypeContract"]=='PPA', "Hedge"],
             opacity=1,
             marker=dict(color=colors['ppa']),
             marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
@@ -188,32 +225,32 @@ def update_figure_h_m(selected_year_h_m):
         mth_h_cr.append(go.Bar(
             name="CR",
             x=months['months'],
-            y=df_h_by_month.loc[df_h_by_month['typecontract'] == 'CR', 'hedge'],
+            y=df_h_by_month.loc[df_h_by_month["TypeContract"] == 'CR', "Hedge"],
             opacity=0.25,
-            base=df_h_by_month.loc[df_h_by_month['typecontract'] == 'OA', 'hedge'],
+            base=df_h_by_month.loc[df_h_by_month["TypeContract"] == 'OA', "Hedge"],
             marker=dict(color=colors['cr']),
             marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
             )),
         mth_h_oa.append(go.Bar(
             name="0A",   
-            x=months['months'],
-            y=df_h_by_month.loc[df_h_by_month['typecontract'] == 'OA', 'hedge'],
+            x=months["Months"],
+            y=df_h_by_month.loc[df_h_by_month["TypeContract"] == 'OA', "Hedge"],
             opacity=0.4,
-            base=df_h_by_month.loc[df_h_by_month['typecontract'] == 'PPA', 'hedge'],
+            base=df_h_by_month.loc[df_h_by_month["TypeContract"] == 'PPA', "Hedge"],
             marker=dict(color=colors['oa']),
             marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
             )),
 
-    for month in filtered_df_p_m_['months'].unique():
-         df_p_by_month_ = filtered_df_p_m_[filtered_df_p_m_['months'] == month]
-         mth_p = []
-         mth_p.append(go.Bar(
-             name='Production',
-             x=months['months'],
-             y=df_p_by_month_['prod'],
-             opacity=0.1,
-             marker=dict(color=colors['e_white']),
-             marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
+    for month in filtered_df_p_m_["Months"].unique():
+        df_p_by_month_ = filtered_df_p_m_[filtered_df_p_m_["Months"] == month]
+        mth_p = []
+        mth_p.append(go.Bar(
+            name='Production',
+            x=months["Months"],
+            y=df_p_by_month_["Prod"],
+            opacity=0.1,
+            marker=dict(color=colors['e_white']),
+            marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
              ))
     return {
         'data': (mth_h_ppa, mth_h_oa, mth_h_cr),
@@ -235,30 +272,30 @@ def update_figure_h_m(selected_year_h_m):
               [Input('drop_year_m_ppa_m', 'value')])
 
 def update_figure_m_ppa_m(selected_year_m_ppa_m):
-    filtered_df_m_ppa_m = query_results_18[query_results_18['year'] == selected_year_m_ppa_m]
-    filtered_df_not_oa_cr_m = query_results_21[query_results_21['year'] == selected_year_m_ppa_m]
+    filtered_df_m_ppa_m = h_ppa_m[h_ppa_m["Year"] == selected_year_m_ppa_m]
+    filtered_df_not_oa_cr_m = prod_m_m[prod_m_m["Year"] == selected_year_m_ppa_m]
     mth_m_ppa = []
     mth_not_oa_cr = []
-    for month in filtered_df_m_ppa_m['months'].unique():
-        df_m_ppa_by_mth = filtered_df_m_ppa_m[filtered_df_m_ppa_m['months'] == month]
+    for month in filtered_df_m_ppa_m["Months"].unique():
+        df_m_ppa_by_mth = filtered_df_m_ppa_m[filtered_df_m_ppa_m["Months"] == month]
         mth_m_ppa.append(go.Bar(
             x=months,
-            y=df_m_ppa_by_mth['ppa'],
+            y=df_m_ppa_by_mth["PPA"],
             opacity=0.2,
-            marker=dict(color=colors['ppa']),
+            marker=dict(color=colors["PPA"]),
             marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
             ))
         mth_not_oa_cr.append(go.Bar(
              x=months,
-             y=df_h_by_quarter['typecontract'],
+             y=df_h_by_quarter["TypeContract"],
              opacity=1,
-             marker=dict(color=colors['oa']),
+             marker=dict(color=colors["OA"]),
              marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color']))),
-    for month in filtered_df_not_oa_cr_m['months'].unique():
-        df_not_oa_cr_by_mth = filtered_df_not_oa_cr_m[filtered_df_not_oa_cr_m['months'] == month]
+    for month in filtered_df_not_oa_cr_m["Months"].unique():
+        df_not_oa_cr_by_mth = filtered_df_not_oa_cr_m[filtered_df_not_oa_cr_m["Months"] == month]
         mth_not_oa_cr.append(go.Bar(
             x=months,
-            y=df_not_oa_cr_by_mth['prodmerchant'],
+            y=df_not_oa_cr_by_mth["ProdMerchant"],
             opacity=0.4,
             marker=dict(color=colors['l_green'])),
             marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color']))
@@ -276,3 +313,6 @@ def update_figure_m_ppa_m(selected_year_m_ppa_m):
             font=dict(color=colors["text"], size=PLOTS_FONT_SIZE)
         )
     }
+
+if __name__ == '__main__':
+    app.run_server(host='127.0.0.1', port=8050, debug=True) 

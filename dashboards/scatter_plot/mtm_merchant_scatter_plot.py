@@ -4,11 +4,14 @@ Created on Sun Aug 21 18:02:36 2022
 
 @author: hermann.ngayap
 """
+import sys
+import os
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from dash import dcc, html
 import plotly.graph_objs as go
-from x_axes import years, quarters, months
-from colors import colors 
-from postgresql_queries import*
+from dashboards.env import* 
+from queries.pg_dwh_queries import*
 
 width=1
 dashed="solid"
@@ -24,7 +27,7 @@ MtM_merchant_sp=html.Div(
                        go.Scatter(
                           name='MtM', 
                           x=years['years'], 
-                          y=query_results_50['mtm'],
+                          y=mtm_merch["MtM"],
                           mode='lines',
                           line=dict(color=colors['mtm_q'], dash=dashed, width=width),
                           marker=dict(color=colors['white'], size=1, symbol='pentagon', 

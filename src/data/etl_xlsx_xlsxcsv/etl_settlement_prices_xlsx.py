@@ -29,4 +29,4 @@ if __name__ == '__main__':
     #do_scrap_eex(i=)
     calb, qb, mb, q_w, m_w = extract_settlement_prices_data(future_prices_path = future_products, q_w_path = wq, m_w_path = wm)
     prices_mb = settlement_prices_curve_estimation(yb = calb, qb = qb, mb = mb, q_weights = q_w, m_weights = m_w, horizon_q = horizon_q, horizon_m = horizon_m)
-    load_settlement_prices_as_excel(dest_dir=dest_dir , src_flow = prices_mb, file_name = 'settlement_prices', file_extension = '.csv')    
+    load_settlement_prices_as_excel(dest_dir=dest_dir , src_flow = prices_mb, file_name = 'settlement_prices', file_extension = '.csv')

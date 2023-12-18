@@ -6,11 +6,8 @@ Created on Sun Jun 26 13:04:12 2022
 """
 from dash import dcc, html
 import plotly.graph_objs as go
-from colors import colors
-
-
-from graphs.MtM_graph import MtM_graph
-from graphs.MtM_H_graph import MtM_H_graph
+from dashboards.graphs.mtm_graph import MtM_graph
+from dashboards.graphs.mtm_historic_graph import MtM_H_graph
   
 
 MtM_layout=html.Div(

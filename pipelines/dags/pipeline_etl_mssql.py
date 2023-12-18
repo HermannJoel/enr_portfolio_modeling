@@ -3,24 +3,19 @@ from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.postgres_operator import PostgresOperator
+from airflow.operators.email_operator import EmailOperator
 from airflow.sensors.external_task_sensor import ExternalTaskSensor
 from airflow.utils.dates import days_ago
-import os
-import pandas as pd
-import numpy as np
-from datetime import datetime
-import sys
-import configparser
 
-next_run = datetime.combine(datetime.now() + timedelta(days = 1),
+next_run = datetime.combine(datetime.now() + timedelta(hours = 1),
                                       datetime.min.time())
 default_args = {
     'owner': 'nherm',
     'start_date': next_run,
     'retries': 1,
     'retry_delay': timedelta(hours = 1), 
-    'email': ['hermannjoel.ngayap@yahoo.fr'], 
-    'email_on_failure': False, 
+    'email': ['hermannjoel.ngayap@gmail.com'], 
+    'email_on_failure': True, 
     'email_on_retry': False,
 }
 
@@ -30,7 +25,7 @@ python_val_path = '/mnt/d/local-repo-github/enr_portfolio_modeling/test/'
 dag = DAG(
     'pipeline_mssql',
     description='xlsx to mssql',
-    schedule_interval= '0 20 * * 1-5',   # 0 * * * *(@hourly) 0 0 * * 0 (@weekly)
+    schedule_interval= '0 21 * * 1-7',   # 0 * * * *(@hourly) 0 0 * * 0 (@weekly)
     default_args=default_args
     )
 
@@ -103,8 +98,18 @@ vol_hedge_task  = BashOperator(
     bash_command=f'python {python_script_path}'+'etl_vol_hedge_xlsx.py',
     dag=dag,
     )
+# email_task = EmailOperator(
+#      task_id='send_email_on_failure',
+#      to="hermannjoel.ngayap@gmail.com",
+#      subject="pipeline_xls_xlsxcsv failed",
+#      html_content='This batch did not run successfully. Check you logs',
+#       )
 
-etl_as_xlsx_sensor >> asset_task >> profile_task >> hedge_task >> prices_task >> check_prod_per_tech_task >>[settlement_prices_task, contract_prices_task, prod_asset_task, vol_hedge_task]
-
+etl_as_xlsx_sensor >> asset_task >> profile_task >> hedge_task >> prices_task >> check_prod_per_tech_task >>[settlement_prices_task, contract_prices_task, prod_asset_task, vol_hedge_task] 
+#>> email_task
+# etl_as_xlsx_sensor >> asset_task
+# etl_as_xlsx_sensor >> profile_task >> hedge_task >> prices_task >> settlement_prices_task
+# asset_task >> check_prod_per_tech_task >> settlement_prices_task
+# contract_prices_task >> prod_asset_task >> vol_hedge_task >> email_task
 if __name__ == "__main__":
     dag.cli()

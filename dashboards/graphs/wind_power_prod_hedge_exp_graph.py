@@ -4,13 +4,14 @@ Created on Sat Jul 16 17:00:20 2022
 
 @author: hermann.ngayap
 """
-
-import dash_core_components as dcc
-import dash_html_components as html
+import sys
+import os
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+from dash import dcc, html
 import plotly.graph_objs as go
-from colors import colors
-from x_axes import years, quarters, months  
-from postgresql_queries import*
+from dashboards.env import*  
+from queries.pg_dwh_queries import*
 
 BAR_H_WIDTH = 2 
 PLOTS_FONT_SIZE = 11
@@ -30,7 +31,7 @@ annotations = [dict(
             showarrow=False,
             align='center', 
             font=dict(size=8),
-        ) for xi, yi, zi in zip(years['years'], query_results_26['prodwp'], query_results_44['hcrwp'])]
+        ) for xi, yi, zi in zip(years['years'], prod_wp_y["ProdWp"], hcr_wp_y["HCRWp"])]
 
 prod_hedge_exp_wind_power_gr = html.Div(
     children=[
@@ -49,7 +50,7 @@ prod_hedge_exp_wind_power_gr = html.Div(
                       go.Bar(
                           name='HCR', 
                           x=years['years'], 
-                          y=query_results_44['hcrwp'],
+                          y=hcr_wp_y["HCRWp"],
                           opacity=0.0,
                           marker=dict(color=colors['white']),
                           ),
@@ -57,7 +58,7 @@ prod_hedge_exp_wind_power_gr = html.Div(
                       go.Bar(
                           name='PPA', 
                           x=years['years'], 
-                          y=query_results_38.loc[query_results_38['typecontract'] == 'PPA', 'hedgewp'],
+                          y=typehedge_wp_y.loc[typehedge_wp_y["TypeContract"] == 'PPA', "HedgeWp"],
                           opacity=1,
                           marker=dict(color=colors['ppa']),
                           marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color']),
@@ -66,9 +67,9 @@ prod_hedge_exp_wind_power_gr = html.Div(
                       go.Bar(
                           name='OA', 
                           x=years['years'], 
-                          y=query_results_38.loc[query_results_38['typecontract'] == 'OA', 'hedgewp'],
+                          y=typehedge_wp_y.loc[typehedge_wp_y["TypeContract"] == 'OA', "HedgeWp"],
                           opacity=0.4,
-                          base=query_results_38.loc[query_results_38['typecontract'] == 'PPA', 'hedgewp'],
+                          base=typehedge_wp_y.loc[typehedge_wp_y["TypeContract"] == 'PPA', "HedgeWp"],
                           marker=dict(color=colors['oa']),
                           marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
                           ),
@@ -76,9 +77,9 @@ prod_hedge_exp_wind_power_gr = html.Div(
                       go.Bar(
                           name='CR', 
                           x=years['years'], 
-                          y=query_results_38.loc[query_results_38['typecontract'] == 'CR', 'hedgewp'],
+                          y=typehedge_wp_y.loc[typehedge_wp_y["TypeContract"] == 'CR', "HedgeWp"],
                           opacity=0.25,
-                          base=query_results_38.loc[query_results_38['typecontract'] == 'OA', 'hedgewp'],
+                          base=typehedge_wp_y.loc[typehedge_wp_y["TypeContract"] == 'OA', "HedgeWp"],
                           marker=dict(color=colors['cr']),
                           marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
                           ),
@@ -86,7 +87,7 @@ prod_hedge_exp_wind_power_gr = html.Div(
                       go.Bar(
                           name='Prod Wind Power', 
                           x=years['years'], 
-                          y=query_results_26['prodwp'],
+                          y=prod_wp_y["ProdWp"],
                           opacity=0.09,
                           marker=dict(color=colors['wind_power']),                             
                           marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color']) 

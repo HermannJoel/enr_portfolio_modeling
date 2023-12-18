@@ -4,9 +4,12 @@ Created on Sun Aug 21 22:55:22 2022
 
 @author: hermann.ngayap
 """
+import sys
+import os
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from dash import dcc, html
-from scatter_plot.MtM_H_scatter_plot import MtM_H_sp
-
+from dashboards.scatter_plot.mtm_historic_scatter_plot import MtM_H_sp
 
 
 MtM_H_graph= html.Div(
