@@ -4,12 +4,14 @@ Created on Fri Jul  1 14:13:05 2022
 
 @author: hermann.ngayap
 """
+import sys
+import os
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from dash import dcc, html
 import plotly.graph_objs as go
-from colors import colors
-from x_axes import years, quarters, months
-from postgresql_queries import*
-
+from dashboards.env import*  
+from queries.pg_dwh_queries import*
 
 BAR_H_WIDTH = 2 
 PLOTS_FONT_SIZE = 11
@@ -30,7 +32,7 @@ annotations = [dict(
             showarrow=False,
             align='center', 
             font=dict(size=8),
-        ) for xi, yi, zi in zip(quarters['quarters'], query_results_20['prodmerchant'], query_results_23['hcr'])]
+        ) for xi, yi, zi in zip(quarters['quarters'], prod_m_q['ProdMerchant'], prod_m_hcr_q['HCR'])]
     
 merchant_qtr_bar=html.Div(
     children=[
@@ -43,7 +45,7 @@ merchant_qtr_bar=html.Div(
                       go.Bar(
                            name='HCR', 
                            x=quarters['quarters'], 
-                           y=query_results_23['hcr'],
+                           y=prod_m_hcr_q['HCR'],
                            opacity=0,
                            marker=dict(color=colors['white']),
                            marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color']),
@@ -53,7 +55,7 @@ merchant_qtr_bar=html.Div(
                       go.Bar(
                           name='PPA', 
                           x=quarters['quarters'], 
-                          y=query_results_17['ppa'],
+                          y=h_ppa_q['PPA'],
                           opacity=1,
                           marker=dict(color=colors['ppa']),
                           marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
@@ -61,7 +63,7 @@ merchant_qtr_bar=html.Div(
                      go.Bar(
                          name='Prod Merchant', 
                          x=quarters['quarters'], 
-                         y=query_results_20['prodmerchant'],
+                         y=prod_m_q['ProdMerchant'],
                          opacity=0.25,
                          marker=dict(color=colors['e_white']),                             
                          marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color']) 

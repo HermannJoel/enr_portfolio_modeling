@@ -4,11 +4,15 @@ Created on Sun Aug 21 22:59:09 2022
 
 @author: hermann.ngayap
 """
+import sys
+import os
+from datetime import datetime
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from dash import dcc, html
 import plotly.graph_objs as go
-from x_axes import years, quarters, months
-from colors import colors 
-from postgresql_queries import*
+from dashboards.env import* 
+from queries.pg_dwh_queries import*
 
 width=1.5
 dashed="solid"
@@ -18,9 +22,9 @@ PLOTS_HEIGHT = 340  # For main graphs
 SMALL_PLOTS_HEIGHT = 290  # For secondary graphs
 
 
-query_results_52['cotationdate']=pd.to_datetime(query_results_52.cotationdate, format='%Y-%m-%d')
+mtm_hist["CotationDate"]=pd.to_datetime(mtm_hist.CotationDate, format='%Y-%m-%d')
 #query_results_52['cotationdate']=query_results_52['cotationdate'].dt.date
-list_ = query_results_52["cotationdate"].tolist()
+list_ = mtm_hist["CotationDate"].tolist()
 
 MtM_H_sp=html.Div(
     children=[
@@ -29,7 +33,7 @@ MtM_H_sp=html.Div(
                       go.Scatter(
                          name='MtM', 
                          x=years['years'], 
-                         y=query_results_49['mtm'],
+                         y=mtm["MtM"],
                          line=dict(color=colors['mtm_y'], dash=dashed, width=width),
                          mode='markers+lines',
                          marker=dict(color=colors['white'], size = 1, symbol = 'pentagon', 
@@ -38,7 +42,7 @@ MtM_H_sp=html.Div(
                       go.Scatter(
                          name='MtM-Merchant', 
                          x=years['years'], 
-                         y=query_results_50['mtm'],
+                         y=mtm_merch["MtM"],
                          mode='markers+lines',
                          line=dict(color=colors['mtm_q'], dash=dashed, width=width),
                          marker=dict(color=colors['white'], size=1, symbol='pentagon', 
@@ -47,7 +51,7 @@ MtM_H_sp=html.Div(
                        go.Scatter(
                           name='MtM-Reguled', 
                           x=years['years'], 
-                          y=query_results_51['mtm'],
+                          y=mtm_reg["MtM"],
                           line=dict(color=colors['mtm_m'], dash=dashed, width=width),
                           mode='markers+lines',
                           marker=dict(color=colors['white'], size=1, symbol='pentagon', 
@@ -55,7 +59,7 @@ MtM_H_sp=html.Div(
                               ), 
                       
                      ],
-                      'layout':go.Layout(title='Comparaison/MtM',
+                      'layout':go.Layout(title='Comparison/MtM',
                                         xaxis=dict(gridcolor=colors['grid'], title='Years', dtick=1, tickangle = 45), 
                                         yaxis=dict(gridcolor=colors['grid'], title='M€', side='left'),
                                         paper_bgcolor = colors["background1"],
@@ -70,8 +74,8 @@ MtM_H_sp=html.Div(
                   figure = {'data':[
                        go.Scatter(
                           name='MtM', 
-                          x=query_results_52['cotationdate'], 
-                          y=query_results_52['mtm'],
+                          x=mtm_hist["CotationDate"], 
+                          y=mtm_hist["MtM"],
                           line=dict(color=colors['mtm_h'], dash=dashed, width=width),
                           mode='lines',
                           marker=dict(color=colors['white'], size = 1, symbol = 'pentagon', 

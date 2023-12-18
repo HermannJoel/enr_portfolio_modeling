@@ -1,0 +1,504 @@
+[2023-12-05T21:47:13.133+0100] {processor.py:157} INFO - Started process (PID=31829) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:47:13.143+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:47:13.149+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:47:13.147+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:47:13.339+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:47:15.323+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:47:15.320+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:47:15.685+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:47:15.684+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:47:15.868+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 2.782 seconds
+[2023-12-05T21:47:50.289+0100] {processor.py:157} INFO - Started process (PID=31900) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:47:50.306+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:47:50.316+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:47:50.312+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:47:50.594+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:47:51.359+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:47:51.351+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:47:51.712+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:47:51.711+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:47:51.905+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.687 seconds
+[2023-12-05T21:48:27.043+0100] {processor.py:157} INFO - Started process (PID=31979) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:48:27.052+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:48:27.058+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:48:27.056+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:48:27.268+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:48:27.931+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:48:27.930+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:48:28.169+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:48:28.167+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:48:28.303+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.299 seconds
+[2023-12-05T21:48:59.401+0100] {processor.py:157} INFO - Started process (PID=32044) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:48:59.421+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:48:59.435+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:48:59.430+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:48:59.652+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:49:00.307+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:49:00.306+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:49:00.573+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:49:00.572+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:49:00.728+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.405 seconds
+[2023-12-05T21:49:31.947+0100] {processor.py:157} INFO - Started process (PID=32116) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:49:31.962+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:49:31.972+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:49:31.968+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:49:32.203+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:49:34.736+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:49:34.734+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:49:35.265+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:49:35.264+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:49:35.981+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 4.125 seconds
+[2023-12-05T21:50:08.150+0100] {processor.py:157} INFO - Started process (PID=32231) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:50:08.167+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:50:08.179+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:50:08.174+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:50:08.486+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:50:10.724+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:50:10.636+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:50:11.317+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:50:11.315+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:50:12.138+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 4.044 seconds
+[2023-12-05T21:50:56.571+0100] {processor.py:157} INFO - Started process (PID=32316) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:50:56.586+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:50:56.599+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:50:56.595+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:50:56.960+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:50:57.961+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:50:57.956+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:50:58.632+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:50:58.630+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:50:58.983+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 2.563 seconds
+[2023-12-05T21:51:36.702+0100] {processor.py:157} INFO - Started process (PID=32367) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:51:36.718+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:51:36.728+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:51:36.724+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:51:36.986+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:51:37.757+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:51:37.756+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:51:39.811+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:51:39.809+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:51:39.984+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 3.341 seconds
+[2023-12-05T21:52:28.920+0100] {processor.py:157} INFO - Started process (PID=32460) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:52:28.935+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:52:28.944+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:52:28.940+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:52:29.514+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:52:33.652+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:52:33.651+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:52:34.528+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:52:34.526+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:52:35.613+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 6.806 seconds
+[2023-12-05T21:53:13.335+0100] {processor.py:157} INFO - Started process (PID=32511) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:53:13.365+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:53:13.376+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:53:13.371+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:53:15.109+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:53:16.377+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:53:16.375+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:53:16.670+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:53:16.668+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:53:16.924+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 3.703 seconds
+[2023-12-05T21:53:56.591+0100] {processor.py:157} INFO - Started process (PID=32573) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:53:56.607+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:53:56.619+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:53:56.615+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:53:56.918+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:53:57.791+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:53:57.790+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:53:58.111+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:53:58.109+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:53:58.301+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.784 seconds
+[2023-12-05T21:54:31.080+0100] {processor.py:157} INFO - Started process (PID=32624) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:54:31.090+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:54:31.097+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:54:31.094+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:54:31.248+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:54:31.865+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:54:31.865+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:54:32.071+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:54:32.070+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:54:32.211+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.175 seconds
+[2023-12-05T21:55:03.464+0100] {processor.py:157} INFO - Started process (PID=32667) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:55:03.474+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:55:03.484+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:55:03.480+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:55:03.673+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:55:04.113+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:55:04.112+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:55:04.293+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:55:04.293+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:55:04.410+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.989 seconds
+[2023-12-05T21:55:35.071+0100] {processor.py:157} INFO - Started process (PID=32705) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:55:35.091+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:55:35.102+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:55:35.098+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:55:35.296+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:55:35.958+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:55:35.958+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:55:36.181+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:55:36.180+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:55:36.326+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.324 seconds
+[2023-12-05T21:56:06.828+0100] {processor.py:157} INFO - Started process (PID=32753) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:56:06.837+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:56:06.843+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:56:06.841+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:56:06.985+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:56:07.394+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:56:07.393+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:56:07.577+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:56:07.576+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:56:07.686+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.897 seconds
+[2023-12-05T21:56:38.437+0100] {processor.py:157} INFO - Started process (PID=40) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:56:38.447+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:56:38.454+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:56:38.451+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:56:38.600+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:56:39.054+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:56:39.053+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:56:39.312+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:56:39.310+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:56:39.476+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.083 seconds
+[2023-12-05T21:57:09.828+0100] {processor.py:157} INFO - Started process (PID=94) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:57:09.836+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:57:09.843+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:57:09.840+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:57:10.022+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:57:10.592+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:57:10.590+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:57:10.970+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:57:10.968+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:57:11.180+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.391 seconds
+[2023-12-05T21:57:41.576+0100] {processor.py:157} INFO - Started process (PID=145) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:57:41.599+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:57:41.615+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:57:41.609+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:57:41.948+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:57:42.664+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:57:42.664+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:57:42.995+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:57:42.994+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:57:43.342+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.848 seconds
+[2023-12-05T21:58:14.129+0100] {processor.py:157} INFO - Started process (PID=196) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:58:14.139+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:58:14.145+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:58:14.143+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:58:14.298+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:58:14.797+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:58:14.796+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:58:15.018+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:58:15.017+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:58:15.141+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.053 seconds
+[2023-12-05T21:58:45.532+0100] {processor.py:157} INFO - Started process (PID=247) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:58:45.541+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:58:45.547+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:58:45.545+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:58:45.684+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:58:46.104+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:58:46.103+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:58:46.269+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:58:46.268+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:58:46.375+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.883 seconds
+[2023-12-05T21:59:16.626+0100] {processor.py:157} INFO - Started process (PID=296) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:59:16.634+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:59:16.640+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:59:16.638+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:59:16.789+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:59:17.246+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:59:17.246+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:59:17.412+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:59:17.411+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:59:17.517+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.928 seconds
+[2023-12-05T21:59:49.318+0100] {processor.py:157} INFO - Started process (PID=347) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:59:49.328+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T21:59:49.334+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:59:49.331+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:59:49.468+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T21:59:49.885+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:59:49.883+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:59:50.076+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:59:50.075+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:59:50.195+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.914 seconds
+[2023-12-05T22:00:20.588+0100] {processor.py:157} INFO - Started process (PID=385) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:00:20.597+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:00:20.603+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:00:20.601+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:00:20.748+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:00:21.184+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:00:21.183+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:00:21.350+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:00:21.349+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:00:21.466+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.914 seconds
+[2023-12-05T22:00:52.098+0100] {processor.py:157} INFO - Started process (PID=425) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:00:52.107+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:00:52.113+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:00:52.111+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:00:52.252+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:00:52.690+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:00:52.690+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:00:52.863+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:00:52.862+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:00:52.973+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.911 seconds
+[2023-12-05T22:01:23.342+0100] {processor.py:157} INFO - Started process (PID=476) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:01:23.351+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:01:23.357+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:01:23.355+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:01:23.506+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:01:23.940+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:01:23.939+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:01:24.112+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:01:24.111+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:01:24.218+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.915 seconds
+[2023-12-05T22:01:54.768+0100] {processor.py:157} INFO - Started process (PID=531) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:01:54.776+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:01:54.782+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:01:54.780+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:01:54.915+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:01:55.333+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:01:55.333+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:01:55.496+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:01:55.495+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:01:55.604+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.872 seconds
+[2023-12-05T22:02:26.279+0100] {processor.py:157} INFO - Started process (PID=584) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:02:26.289+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:02:26.295+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:02:26.293+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:02:26.442+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:02:26.845+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:02:26.844+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:02:27.017+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:02:27.016+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:02:27.129+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.888 seconds
+[2023-12-05T22:02:57.439+0100] {processor.py:157} INFO - Started process (PID=633) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:02:57.448+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:02:57.454+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:02:57.452+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:02:57.595+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:02:58.009+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:02:58.008+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:02:58.179+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:02:58.178+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:02:58.289+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.887 seconds
+[2023-12-05T22:03:28.868+0100] {processor.py:157} INFO - Started process (PID=684) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:03:28.877+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:03:28.883+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:03:28.881+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:03:29.035+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:03:29.466+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:03:29.466+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:03:29.637+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:03:29.636+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:03:29.748+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.920 seconds
+[2023-12-05T22:04:00.779+0100] {processor.py:157} INFO - Started process (PID=735) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:04:00.793+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:04:00.801+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:04:00.798+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:04:01.009+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:04:01.561+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:04:01.560+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:04:01.804+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:04:01.803+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:04:01.950+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.226 seconds
+[2023-12-05T22:04:33.630+0100] {processor.py:157} INFO - Started process (PID=786) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:04:33.641+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:04:33.647+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:04:33.645+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:04:33.815+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:04:34.367+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:04:34.366+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:04:34.564+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:04:34.563+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:04:34.695+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.140 seconds
+[2023-12-05T22:05:05.032+0100] {processor.py:157} INFO - Started process (PID=839) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:05:05.041+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:05:05.047+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:05:05.045+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:05:05.185+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:05:05.607+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:05:05.607+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:05:05.783+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:05:05.783+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:05:05.897+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.903 seconds
+[2023-12-05T22:05:36.672+0100] {processor.py:157} INFO - Started process (PID=888) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:05:36.681+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:05:36.687+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:05:36.685+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:05:36.829+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:05:37.243+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:05:37.242+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:05:37.429+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:05:37.428+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:05:37.542+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.920 seconds
+[2023-12-05T22:06:10.023+0100] {processor.py:157} INFO - Started process (PID=931) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:06:10.031+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:06:10.040+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:06:10.037+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:06:10.185+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:06:10.625+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:06:10.624+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:06:10.794+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:06:10.793+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:06:10.907+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.925 seconds
+[2023-12-05T22:06:43.219+0100] {processor.py:157} INFO - Started process (PID=977) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:06:43.237+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:06:43.250+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:06:43.245+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:06:43.432+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:06:43.911+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:06:43.910+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:06:44.158+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:06:44.156+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:06:44.304+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.179 seconds
+[2023-12-05T22:07:14.907+0100] {processor.py:157} INFO - Started process (PID=1020) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:07:14.921+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:07:14.931+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:07:14.925+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:07:15.291+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:07:15.996+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:07:15.995+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:07:16.290+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:07:16.289+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:07:16.442+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.592 seconds
+[2023-12-05T22:07:47.315+0100] {processor.py:157} INFO - Started process (PID=1068) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:07:47.325+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:07:47.333+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:07:47.329+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:07:47.494+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:07:47.957+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:07:47.956+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:07:48.156+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:07:48.155+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:07:48.296+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.025 seconds
+[2023-12-05T22:08:18.723+0100] {processor.py:157} INFO - Started process (PID=1119) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:08:18.732+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:08:18.738+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:08:18.736+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:08:18.878+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:08:19.540+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:08:19.539+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:08:19.812+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:08:19.811+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:08:19.968+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.285 seconds
+[2023-12-05T22:08:50.252+0100] {processor.py:157} INFO - Started process (PID=1170) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:08:50.261+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:08:50.267+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:08:50.265+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:08:50.431+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:08:50.852+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:08:50.851+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:08:51.032+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:08:51.031+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:08:51.152+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.940 seconds
+[2023-12-05T22:09:21.596+0100] {processor.py:157} INFO - Started process (PID=1221) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:09:21.605+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:09:21.611+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:09:21.609+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:09:21.749+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:09:22.167+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:09:22.167+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:09:22.342+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:09:22.341+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:09:22.448+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.888 seconds
+[2023-12-05T22:09:53.026+0100] {processor.py:157} INFO - Started process (PID=1272) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:09:53.035+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:09:53.041+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:09:53.039+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:09:53.182+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:09:53.612+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:09:53.611+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:09:53.793+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:09:53.792+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:09:53.905+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.918 seconds
+[2023-12-05T22:10:25.092+0100] {processor.py:157} INFO - Started process (PID=1328) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:10:25.103+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:10:25.110+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:10:25.107+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:10:25.275+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:10:25.747+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:10:25.746+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:10:25.958+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:10:25.956+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:10:26.133+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.088 seconds
+[2023-12-05T22:10:56.497+0100] {processor.py:157} INFO - Started process (PID=1383) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:10:56.508+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:10:56.516+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:10:56.513+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:10:56.668+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:10:57.093+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:10:57.092+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:10:57.259+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:10:57.259+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:10:57.362+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.902 seconds
+[2023-12-05T22:11:28.062+0100] {processor.py:157} INFO - Started process (PID=1436) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:11:28.071+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:11:28.077+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:11:28.075+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:11:28.222+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:11:28.643+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:11:28.643+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:11:28.810+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:11:28.809+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:11:28.915+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.892 seconds
+[2023-12-05T22:11:59.671+0100] {processor.py:157} INFO - Started process (PID=1485) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:11:59.680+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:11:59.686+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:11:59.683+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:11:59.838+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:12:00.268+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:12:00.266+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:12:00.463+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:12:00.462+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:12:00.572+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.939 seconds
+[2023-12-05T22:12:32.762+0100] {processor.py:157} INFO - Started process (PID=1536) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:12:32.770+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:12:32.776+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:12:32.774+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:12:32.915+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:12:33.365+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:12:33.364+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:12:33.545+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:12:33.544+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:12:33.662+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.939 seconds
+[2023-12-05T22:13:04.118+0100] {processor.py:157} INFO - Started process (PID=1574) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:13:04.129+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:13:04.137+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:13:04.134+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:13:04.279+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:13:04.696+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:13:04.695+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:13:04.871+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:13:04.870+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:13:04.976+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.901 seconds
+[2023-12-05T22:13:35.679+0100] {processor.py:157} INFO - Started process (PID=1617) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:13:35.688+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:13:35.694+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:13:35.692+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:13:35.839+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:13:36.277+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:13:36.276+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:13:36.442+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:13:36.442+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:13:36.550+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.912 seconds
+[2023-12-05T22:14:07.087+0100] {processor.py:157} INFO - Started process (PID=1663) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:14:07.096+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:14:07.102+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:14:07.099+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:14:07.242+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:14:07.652+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:14:07.651+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:14:07.824+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:14:07.823+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:14:07.930+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.879 seconds
+[2023-12-05T22:14:38.492+0100] {processor.py:157} INFO - Started process (PID=1714) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:14:38.501+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:14:38.507+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:14:38.505+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:14:38.665+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:14:39.078+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:14:39.077+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:14:39.250+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:14:39.249+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:14:39.367+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.916 seconds
+[2023-12-05T22:15:09.785+0100] {processor.py:157} INFO - Started process (PID=1765) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:15:09.794+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:15:09.800+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:15:09.797+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:15:09.950+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:15:10.369+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:15:10.368+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:15:10.551+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:15:10.550+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:15:10.674+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.931 seconds
+[2023-12-05T22:15:41.232+0100] {processor.py:157} INFO - Started process (PID=1816) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:15:41.243+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:15:41.251+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:15:41.249+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:15:41.406+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:15:41.836+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:15:41.835+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:15:42.010+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:15:42.009+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:15:42.122+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.928 seconds
+[2023-12-05T22:16:12.517+0100] {processor.py:157} INFO - Started process (PID=1864) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:16:12.527+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:16:12.533+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:16:12.531+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:16:12.670+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:16:13.092+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:16:13.091+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:16:13.259+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:16:13.258+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:16:13.376+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.895 seconds
+[2023-12-05T22:16:43.745+0100] {processor.py:157} INFO - Started process (PID=1915) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:16:43.754+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:16:43.761+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:16:43.758+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:16:43.916+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:16:44.377+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:16:44.376+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:16:44.548+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:16:44.547+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:16:44.673+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.969 seconds
+[2023-12-05T22:17:14.892+0100] {processor.py:157} INFO - Started process (PID=1966) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:17:14.901+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:17:14.909+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:17:14.907+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:17:15.050+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:17:15.571+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:17:15.570+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:17:15.736+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:17:15.735+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:17:15.840+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.987 seconds
+[2023-12-05T22:17:46.407+0100] {processor.py:157} INFO - Started process (PID=2017) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:17:46.415+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:17:46.421+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:17:46.419+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:17:46.567+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:17:46.976+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:17:46.975+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:17:47.147+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:17:47.146+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:17:47.252+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.882 seconds
+[2023-12-05T22:18:17.735+0100] {processor.py:157} INFO - Started process (PID=2066) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:18:17.745+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:18:17.751+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:18:17.749+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:18:17.898+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:18:18.367+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:18:18.366+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:18:18.619+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:18:18.618+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:18:18.753+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.057 seconds
+[2023-12-05T22:18:49.174+0100] {processor.py:157} INFO - Started process (PID=2117) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:18:49.182+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:18:49.188+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:18:49.186+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:18:49.325+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:18:49.891+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:18:49.890+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:18:50.084+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:18:50.083+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:18:50.197+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.059 seconds
+[2023-12-05T22:19:20.850+0100] {processor.py:157} INFO - Started process (PID=2155) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:19:20.859+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:19:20.865+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:19:20.863+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:19:21.015+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:19:21.436+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:19:21.435+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:19:21.615+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:19:21.614+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:19:21.729+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.916 seconds
+[2023-12-05T22:19:52.118+0100] {processor.py:157} INFO - Started process (PID=2198) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:19:52.127+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:19:52.134+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:19:52.131+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:19:52.276+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:19:52.738+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:19:52.737+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:19:52.922+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:19:52.921+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:19:53.038+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.958 seconds
+[2023-12-05T22:20:23.797+0100] {processor.py:157} INFO - Started process (PID=2246) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:20:23.806+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:20:23.813+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:20:23.810+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:20:23.953+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:20:24.408+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:20:24.407+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:20:24.578+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:20:24.577+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:20:24.686+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.926 seconds
+[2023-12-05T22:20:55.420+0100] {processor.py:157} INFO - Started process (PID=2297) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:20:55.429+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:20:55.435+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:20:55.433+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:20:55.572+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:20:56.002+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:20:56.001+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:20:56.171+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:20:56.170+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:20:56.277+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.895 seconds
+[2023-12-05T22:21:26.919+0100] {processor.py:157} INFO - Started process (PID=2348) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:21:26.930+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:21:26.941+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:21:26.937+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:21:27.107+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:21:27.528+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:21:27.528+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:21:27.696+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:21:27.696+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:21:27.799+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.931 seconds
+[2023-12-05T22:21:58.418+0100] {processor.py:157} INFO - Started process (PID=2399) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:21:58.427+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:21:58.433+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:21:58.431+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:21:58.573+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:21:58.993+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:21:58.992+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:21:59.170+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:21:59.169+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:21:59.283+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.903 seconds
+[2023-12-05T22:22:30.145+0100] {processor.py:157} INFO - Started process (PID=2450) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:22:30.155+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:22:30.161+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:22:30.159+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:22:30.315+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:22:30.748+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:22:30.747+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:22:30.914+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:22:30.913+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:22:31.023+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.918 seconds
+[2023-12-05T22:23:01.461+0100] {processor.py:157} INFO - Started process (PID=2501) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:23:01.469+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:23:01.475+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:23:01.473+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:23:01.614+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:23:02.042+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:23:02.041+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:23:02.207+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:23:02.206+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:23:02.315+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.891 seconds
+[2023-12-05T22:23:32.800+0100] {processor.py:157} INFO - Started process (PID=2552) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:23:32.809+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:23:32.815+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:23:32.813+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:23:32.958+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:23:33.380+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:23:33.379+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:23:33.549+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:23:33.549+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:23:33.655+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.894 seconds
+[2023-12-05T22:24:04.181+0100] {processor.py:157} INFO - Started process (PID=2601) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:24:04.193+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:24:04.200+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:24:04.198+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:24:04.341+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:24:04.788+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:24:04.787+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:24:04.976+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:24:04.975+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:24:05.093+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.961 seconds
+[2023-12-05T22:24:35.870+0100] {processor.py:157} INFO - Started process (PID=2654) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:24:35.880+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:24:35.885+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:24:35.883+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:24:36.031+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:24:36.438+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:24:36.438+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:24:36.607+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:24:36.606+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:24:36.712+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.885 seconds
+[2023-12-05T22:25:07.670+0100] {processor.py:157} INFO - Started process (PID=2703) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:25:07.681+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:25:07.687+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:25:07.684+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:25:07.873+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:25:08.388+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:25:08.387+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:25:08.565+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:25:08.564+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:25:08.683+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.058 seconds
+[2023-12-05T22:25:41.110+0100] {processor.py:157} INFO - Started process (PID=2754) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:25:41.118+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:25:41.124+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:25:41.122+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:25:41.260+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:25:41.697+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:25:41.696+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:25:41.890+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:25:41.890+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:25:41.994+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 0.921 seconds
+[2023-12-05T22:26:17.549+0100] {processor.py:157} INFO - Started process (PID=2797) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:26:17.566+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py for tasks to queue
+[2023-12-05T22:26:17.577+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:26:17.573+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:26:17.856+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_snowflake']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py
+[2023-12-05T22:26:18.672+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:26:18.671+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:26:18.998+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:26:18.997+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_snowflake to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:26:19.202+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_snowflake.py took 1.729 seconds

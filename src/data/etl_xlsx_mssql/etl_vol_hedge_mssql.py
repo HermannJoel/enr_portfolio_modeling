@@ -38,18 +38,28 @@ if __name__ == '__main__':
                                    prod_pct = df_profile, mean_pct = df_mean_profile, 
                                    oa=df_oa, cr=df_cr, ppa=df_ppa, profile=df_profile)
     load_vol_hedge(dest_dir = dest_dir, src_flow=src_data, file_name="volume_hedge", file_extension='.csv')
-    
     load_docs_to_mongodb(dest_db='dw', dest_collection='VolumeHedge', 
                          src_data=src_data, 
                          date_format = '%Y-%m-%d', 
                          mongodb_conn_str = mongodbatlas_dw_conn_str)
-    src_data = read_docs_from_mongodb(src_db = 'dw', src_collection = 'VolumeHedge',
+    df_vol_hedge = read_docs_from_mongodb(src_db = 'dw', src_collection = 'VolumeHedge',
                                       query={}, no_id=True, 
                                       column_names=['HedgeId', 'ProjectId', 
                                                     'Project', 'TypeHedge','Date', 
                                                     'Year', 'Quarter', 'Month',
                                                     'P50', 'P90'], 
-                                      mongodb_conn_str = mongodbatlas_dw_conn_str)
+                                          mongodb_conn_str = mongodbatlas_dw_conn_str)
+    df_hedge=read_docs_from_mongodb(src_db='dw', 
+                                    src_collection='Hedge',  
+                                    query={}, 
+                                    no_id=True,
+                                    column_names=["Id", "HedgeId", "AssetId", "ProjectId", "Project", "Technology", "TypeHedge", "ContractStartDate", 
+                                                  "ContractEndDate", "DismantleDate", "InstalledPower", "InPlanif", "Profil", "HedgePct", 
+                                                  "Countreparty", "CountryCountreparty"], 
+                                    mongodb_conn_str=mongodbatlas_dw_conn_str) 
+    src_data=sqldf("""select h."HedgeId", h."ProjectId", h."Project", vh."TypeHedge", vh."Date", vh."Year", vh."Quarter", vh."Month", vh."P50", vh."P90" 
+                      from df_vol_hedge vh  
+                      inner join df_hedge h on vh.HedgeId=h.HedgeId and vh.ProjectId=h.ProjectId;""", locals())
     excucute_postgres_crud_ops(
         queries=[
         '''TRUNCATE TABLE stagging."VolumeHedge";'''],  
@@ -64,12 +74,27 @@ if __name__ == '__main__':
     load_data_in_postgres_table(src_data=src_data, dest_table='VolumeHedge', 
                                 pguid=pguid, pgpw=pgpw, pgserver=pgserver,  
                                 pgdb=pgdwhdb, schema='stagging', if_exists='append')
-    
-    src_data=query_data_from_postgresql(query='''SELECT * FROM "stagging"."VolumeHedge";''', 
-                                pguid=pguid, pgpw=pgpw, pgserver=pgserver, pgport=pgport, pgdb=pgdwhdb)
-    load_data_in_postgres_table(src_data=src_scd1, dest_table='FactContractPrices', 
-                                pguid=pguid, pgpw=pgpw, pgserver=pgserver,  
-                                pgdb=pgdwhdb, schema='dwh', if_exists='append')
+    excucute_postgres_crud_ops(queries=[
+        '''UPDATE "stagging"."VolumeHedge" 
+           SET "DateId" = to_char("Date", 'YYYYMMDD')::integer;'''], 
+                                   pguid=pguid, 
+                                   pgpw=pgpw, 
+                                   pgserver=pgserver,
+                                   pgport=pgport,
+                                   pgdb=pgdwhdb,
+                                   params=None)
+    excucute_postgres_crud_ops(queries=[
+        '''INSERT into dwh."I_Hedge" (
+        "HedgeId", "DateId", "ProjectId", "Project", "TypeHedge", "Date", "Year", "Quarter", "Month", "P50H", "P90H") 
+        select 
+            vh."HedgeId", vh."DateId", vh."ProjectId", vh."Project", vh."TypeHedge", vh."Date", vh."Year", vh."Quarter", vh."Month", vh."P50", vh."P90" 
+            from stagging."VolumeHedge" as vh;'''], 
+                                   pguid=pguid, 
+                                   pgpw=pgpw, 
+                                   pgserver=pgserver,
+                                   pgport=pgport,
+                                   pgdb=pgdwhdb,
+                                   params=None)
       
     
     

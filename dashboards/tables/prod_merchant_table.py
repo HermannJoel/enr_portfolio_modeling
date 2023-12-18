@@ -8,12 +8,14 @@ from dash import dcc, html
 import dash_bootstrap_components as dbc
 import pandas as pd
 import plotly.graph_objs as go
-from functions import make_dbc_table
-from postgresql_queries import*
+from src.utils.functions import make_dbc_table
+from dashboards.env.colors import colors
+from dashboards.env.x_axes import*
+from queries.pg_dwh_queries import prod_m_y, prod_m_hcr_y, prod_y, hcr_y
 
 cols = ['Year', 'Prod-Merchant', 'HCR-Pm', 'Prod-Total', 'HCR-T']
 
-frames=[query_results_19, query_results_22.iloc[:,1:], query_results_10.iloc[:,1], query_results_7.iloc[:,1]]
+frames=[prod_m_y, prod_m_hcr_y.iloc[:,1:], prod_y.iloc[:,1], hcr_y.iloc[:,1]]
 df=pd.concat(frames, axis=1, ignore_index=False)
 
 table_header = [

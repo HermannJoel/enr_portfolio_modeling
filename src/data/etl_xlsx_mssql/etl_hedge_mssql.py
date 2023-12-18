@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 from datetime import datetime
+from pandasql import sqldf
+pysqldf=lambda q: sqldf(q, globals())
 import sys
 import configparser
 import os
@@ -40,14 +42,35 @@ if __name__ == '__main__':
                          src_data= src_data, 
                          date_format = '%Y-%m-%d', 
                          mongodb_conn_str = mongodbatlas_dw_conn_str)
-    src_data = read_docs_from_mongodb(src_db = 'dw', src_collection = 'Hedge',
-                                      query={}, no_id=True, 
-                                      column_names=['Id','HedgeId', 'AssetId','ProjectId', 
-                                                    'Project', 'Technology', 'TypeHedge', 
-                                                    'ContractStartDate', 'ContractEndDate', 'DismantleDate',
-                                                    'InstalledPower', 'InPlanif', 'Profil', 
-                                                    'HedgePct', 'Counterparty', 'CountryCounterparty'], 
-                                      mongodb_conn_str = mongodbatlas_dw_conn_str)
+    # src_data = read_docs_from_mongodb(src_db = 'dw', src_collection = 'Hedge',
+    #                                   query={}, no_id=True, 
+    #                                   column_names=['Id','HedgeId', 'AssetId','ProjectId', 
+    #                                                 'Project', 'Technology', 'TypeHedge', 
+    #                                                 'ContractStartDate', 'ContractEndDate', 'DismantleDate',
+    #                                                 'InstalledPower', 'InPlanif', 'Profil', 
+    #                                                 'HedgePct', 'Counterparty', 'CountryCounterparty'], 
+    #                                   mongodb_conn_str = mongodbatlas_dw_conn_str)
+    
+    df_hedge=read_docs_from_mongodb(src_db='dw', 
+                                    src_collection='Hedge',  
+                                    query={}, 
+                                    no_id=True,
+                                    column_names=["Id_", "HedgeId", "AssetId", "ProjectId_", "Project_", "Technology_", "TypeHedge", "ContractStartDate", 
+                                                  "ContractEndDate", "DismantleDate_", "InstalledPower_", "InPlanif_", "Profil", "HedgePct", 
+                                                  "Countreparty", "CountryCountreparty"], 
+                                    mongodb_conn_str=mongodbatlas_dw_conn_str                                     ) 
+    df_asset=read_docs_from_mongodb(src_db='dw', 
+                                    src_collection='Asset',  
+                                    query={}, 
+                                    no_id=True,
+                                    column_names=[ 'Id', 'AssetId', 'ProjectId', 'Project', 'Technology', 'COD','MW', 'SuccessPct', 'InstalledPower', 
+                                                  'EOH', 'DateMerchant','DismantleDate', 'Repowering', 'MsiDate', 'InPlanif', "p50","p90"], 
+                                    mongodb_conn_str=mongodbatlas_dw_conn_str) 
+    
+    src_data=sqldf("""select h."Id", h."HedgeId", a."AssetId", h."ProjectId", h."Project", h."Technology", h."TypeHedge", h."ContractStartDate", 
+            h."ContractEndDate", h."DismantleDate", h."InstalledPower", h."InPlanif", h."Profil", h."HedgePct", h."Countreparty", h."CountryCountreparty"
+            from df_hedge h  
+            inner join df_asset a on h.AssetId=a.AssetId and h.ProjectId_=a.ProjectId;""", locals())
     scd2=src_data.iloc[:,1:]
     excucute_postgres_crud_ops(
         queries=[
@@ -70,13 +93,13 @@ if __name__ == '__main__':
         from stagging."Hedge" src
         where src."HedgeId" = dest."HedgeId" and dest."CurrentRecord" = True )
         insert into dwh."D_Hedge" ( 
-                            "HedgeId", "AssetId", "ProjectId", "Project", "TypeHedge", "ContractStartDate", 
+                            "HedgeId", "AssetId", "ProjectId", "Project", "Technology","TypeHedge", "ContractStartDate", 
                             "ContractEndDate", "DismantleDate", "InstalledPower", "InPlanif", "Profil",
                            "HedgePct", "Counterparty", "CountryCounterparty", "DimensionCheckSum", 
                            "EffectiveDate", "EndDate", "CurrentRecord"
                            ) 
                            select
-                           "HedgeId", "AssetId", "ProjectId", "Project", "TypeHedge", "ContractStartDate",
+                           "HedgeId", "AssetId", "ProjectId", "Project", , "Technology", "TypeHedge", "ContractStartDate",
                            "ContractEndDate", "DismantleDate", "InstalledPower", "InPlanif", "Profil", 
                            "HedgePct", "Counterparty", "CountryCounterparty", "DimensionCheckSum", 
                            "LastUpdated", '9999-12-31'::date, True 

@@ -4,12 +4,14 @@ Created on Wed Jul 13 11:18:24 2022
 
 @author: hermann.ngayap
 """
-import dash_core_components as dcc
-import dash_html_components as html
+import sys
+import os
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+from dash import dcc, html
 import plotly.graph_objs as go
-from colors import colors
-from x_axes import years, quarters, months  
-from postgresql_queries import*
+from dashboards.env import*  
+from queries.pg_dwh_queries import*
 
 BAR_H_WIDTH = 2 
 PLOTS_FONT_SIZE = 11
@@ -36,13 +38,13 @@ prod_solar_wind_power_gr = html.Div(
                    go.Bar(
                        name="Solar",
                        x=years['years'],
-                       y=query_results_25['prodsolar'],
+                       y=prod_sol_y["ProdSolar"],
                        marker=dict(color=colors['solar']),
                        ),
                    go.Bar(
                        name="Wind Power",
                        x=years['years'],
-                       y=query_results_26['prodwp'],
+                       y=prod_wp_y["ProdWp"],
                        marker=dict(color=colors['wind_power']),
                        )
                    ], 
@@ -69,13 +71,13 @@ prod_solar_wind_power_gr = html.Div(
                    go.Bar(
                        name='Solar',
                        x=quarters['quarters'],
-                       y=query_results_27['prodsolar'],
+                       y=prod_sol_q["ProdSolar"],
                        marker=dict(color=colors['solar']),
                        ),
                    go.Bar(
                        name='Wind Power',
                        x=quarters['quarters'],
-                       y=query_results_28['prodwp'],
+                       y=prod_wp_q["ProdWp"],
                        marker=dict(color=colors['wind_power']),
                        )
                    ], 
@@ -102,13 +104,13 @@ prod_solar_wind_power_gr = html.Div(
                    go.Bar(
                        name='Solar',
                        x=months['months'],
-                       y=query_results_29['prodsolar'],
+                       y=prod_sol_m["ProdSolar"],
                        marker=dict(color=colors['solar']),
                        ),
                    go.Bar(
                        name='Wind Power',
                        x=months['months'],
-                       y=query_results_30['prodwp'],
+                       y=prod_wp_m["ProdWp"],
                        marker=dict(color=colors['wind_power']),
                        )
                    ], 

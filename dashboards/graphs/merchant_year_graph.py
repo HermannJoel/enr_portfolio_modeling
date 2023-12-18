@@ -4,13 +4,17 @@ Created on Mon Jul 11 12:05:34 2022
 
 @author: hermann.ngayap
 """
+import sys
+import os
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from dash import dcc, html
 import plotly.graph_objs as go
-from colors import colors
-from tables.prod_merchant_table import prod_merchant_tbl
-from functions import make_dbc_table
-from x_axes import years, quarters, months 
-from postgresql_queries import*
+from dashboards.env import*  
+from queries.pg_dwh_queries import*
+from dashboards.tables.prod_merchant_table import*
+from src.utils.functions import make_dbc_table 
+
 
 annotations = [dict(
             x=xi,
@@ -21,7 +25,7 @@ annotations = [dict(
             showarrow=False,
             align='center', 
             font=dict(size=8),
-        ) for xi, yi, zi in zip(years['years'], query_results_19['prodmerchant'], query_results_22['hcr'])]
+        ) for xi, yi, zi in zip(years['years'], prod_m_y["ProdMerchant"], prod_m_hcr_y["HCR"])]
 
 BAR_H_WIDTH = 2 
 PLOTS_FONT_SIZE = 11
@@ -51,7 +55,7 @@ merchant_year_bar= html.Div(
                                                go.Bar(
                                                   name='HCR', 
                                                   x=years['years'], 
-                                                  y=query_results_22['hcr'],
+                                                  y=prod_m_hcr_y['HCR'],
                                                   opacity=0,
                                                   marker=dict(color=colors['white']),
                                                   marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color']),
@@ -61,7 +65,7 @@ merchant_year_bar= html.Div(
                                                go.Bar(
                                                   name='PPA', 
                                                   x=years['years'], 
-                                                  y=query_results_16['ppa'],
+                                                  y=h_ppa_y['PPA'],
                                                   opacity=1,
                                                   marker=dict(color=colors['ppa']),
                                                   marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
@@ -69,7 +73,7 @@ merchant_year_bar= html.Div(
                                                go.Bar(
                                                  name='Prod Merchant', 
                                                  x=years['years'], 
-                                                 y=query_results_19['prodmerchant'],
+                                                 y=prod_m_y['ProdMerchant'],
                                                  opacity=0.25,
                                                  marker=dict(color=colors['e_white']),                             
                                                  marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color']) 

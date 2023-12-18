@@ -4,12 +4,16 @@ Created on Wed Jul 13 11:17:00 2022
 
 @author: hermann.ngayap
 """
-import dash_core_components as dcc
-import dash_html_components as html
+import sys
+import os
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+# import dash_core_components as dcc
+# import dash_html_components as html
+from dash import dcc, html
 import plotly.graph_objs as go
-from colors import colors
-from x_axes import years, quarters, months  
-from postgresql_queries import*
+from dashboards.env import*  
+from queries.pg_dwh_queries import*
 
 BAR_H_WIDTH = 2 
 PLOTS_FONT_SIZE = 11
@@ -36,17 +40,16 @@ exposure_solar_wind_power_gr = html.Div(
                       go.Bar(
                           name='Solar',
                           x=years['years'],
-                          y=query_results_31['exposuresolar'],
+                          y=exposure_sol_y["ExposureSolar"],
                           marker=dict(color=colors['e_white']),
                           opacity=0.15
                           ),
                       go.Bar(
                           name='Wind Power',
                           x=years['years'],
-                          y=query_results_32['exposurewp'],
+                          y=exposure_wp_y["ExposureWp"],
                           marker=dict(color=colors['e_white_1']),
-                          opacity=0.45
-                          )
+                          opacity=0.45)
                       ], 
                       'layout':go.Layout(dict(title='Solar Wind-Power Exposure/Year', 
                                               xaxis = dict(gridcolor=colors['grid'], title='year', dtick=1, tickangle = 45), 
@@ -69,14 +72,14 @@ exposure_solar_wind_power_gr = html.Div(
                       go.Bar(
                           name='Solar',
                           x=quarters['quarters'],
-                          y=query_results_33['exposuresolar'],
+                          y=exposure_sol_q["ExposureSolar"],
                           marker=dict(color=colors['e_white']),
                           opacity=0.15
                           ),
                       go.Bar(
                           name='Wind Power',
                           x=quarters['quarters'],
-                          y=query_results_34['exposurewp'],
+                          y=exposure_wp_q["ExposureWp"],
                           marker=dict(color=colors['e_white_1']),
                           opacity=0.45
                           )
@@ -103,14 +106,14 @@ exposure_solar_wind_power_gr = html.Div(
                       go.Bar(
                           name='Solar',
                           x=months['months'],
-                          y=query_results_35['exposuresolar'],
+                          y=exposure_sol_m["ExposureSolar"],
                           marker=dict(color=colors['e_white']),
                           opacity=0.15
                           ),
                       go.Bar(
                           name='Wind Power',
                           x=months['months'],
-                          y=query_results_36['exposurewp'],
+                          y=exposure_wp_m["ExposureWp"],
                           marker=dict(color=colors['e_white_1']),
                           opacity=0.45
                           )

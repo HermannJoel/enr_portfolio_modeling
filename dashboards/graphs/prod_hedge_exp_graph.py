@@ -4,12 +4,15 @@ Created on Fri Jul  1 09:41:36 2022
 
 @author: hermann.ngayap
 """
+import sys
+import os
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from dash import dcc, html
 import plotly.graph_objs as go
-from colors import colors
-from x_axes import years, quarters, months 
-from postgresql_queries import*
 import plotly.express as px
+from dashboards.env import*  
+from queries.pg_dwh_queries import*
 
 BAR_H_WIDTH = 2 
 PLOTS_FONT_SIZE = 11
@@ -29,7 +32,7 @@ annotations_y = [dict(
             showarrow=False,
             align='center', 
             font=dict(size=8),
-        ) for xi, yi, zi in zip(years['years'], query_results_10['prod'], query_results_7['hcr'])]
+        ) for xi, yi, zi in zip(years["years"], prod_y["Prod"], hcr_y["HCR"])]
     
 annotations_q = [dict(
             x=xi,
@@ -40,7 +43,7 @@ annotations_q = [dict(
             showarrow=False,
             align='center', 
             font=dict(size=8),
-        ) for xi, yi, zi in zip(quarters['quarters'], query_results_11['prod'], query_results_8['hcr'])]
+        ) for xi, yi, zi in zip(quarters["quarters"], prod_q["Prod"], hcr_q["HCR"])]
 
 annotations_m = [dict(
             x=xi,
@@ -51,7 +54,7 @@ annotations_m = [dict(
             showarrow=False,
             align='center', 
             font=dict(size=8),
-        ) for xi, yi, zi in zip(months['months'], query_results_12['prod'], query_results_9['hcr'])]
+        ) for xi, yi, zi in zip(months["months"], prod_m["Prod"], hcr_m["HCR"])]
 
     
 prod_hedge_exp_graph=html.Div(
@@ -70,8 +73,8 @@ prod_hedge_exp_graph=html.Div(
                figure = {'data':[
                    go.Bar(
                        name='HCR', 
-                       x=years['years'], 
-                       y=query_results_7['hcr'],
+                       x=years["years"], 
+                       y=hcr_y["HCR"],
                        opacity=0,
                        marker=dict(color=colors['white']),
                        marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color']),
@@ -79,7 +82,7 @@ prod_hedge_exp_graph=html.Div(
                    go.Bar(
                        name='PPA', 
                        x=years['years'], 
-                       y=query_results_4.loc[query_results_4['typecontract'] == 'PPA', 'hedge'],
+                       y=hedge_y.loc[hedge_y["TypeContract"] == 'PPA', "Hedge"],
                        opacity=1,
                        marker=dict(color=colors['ppa']),
                        marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
@@ -87,18 +90,18 @@ prod_hedge_exp_graph=html.Div(
                    go.Bar(
                        name='OA', 
                        x=years['years'], 
-                       y=query_results_4.loc[query_results_4['typecontract'] == 'OA', 'hedge'],
+                       y=hedge_y.loc[hedge_y["TypeContract"] == 'OA', "Hedge"],
                        opacity=0.4,
-                       base=query_results_4.loc[query_results_4['typecontract'] == 'PPA', 'hedge'],
+                       base=hedge_y.loc[hedge_y["TypeContract"] == 'PPA', "Hedge"],
                        marker=dict(color=colors['oa']),
                        marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
                        ),
                    go.Bar(
                        name='CR', 
                        x=years['years'], 
-                       y=query_results_4.loc[query_results_4['typecontract'] == 'CR', 'hedge'],
+                       y=hedge_y.loc[hedge_y["TypeContract"] == 'CR', "Hedge"],
                        opacity=0.25,
-                       base=query_results_4.loc[query_results_4['typecontract'] == 'OA', 'hedge'],
+                       base=hedge_y.loc[hedge_y["TypeContract"] == 'OA', "Hedge"],
                        marker=dict(color=colors['cr']),
                        marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
                        ),
@@ -106,7 +109,7 @@ prod_hedge_exp_graph=html.Div(
                   go.Bar(
                       name='Production', 
                       x=years['years'], 
-                      y=query_results_10['prod'],
+                      y=prod_y["Prod"],
                       opacity=0.09,
                       marker=dict(color=colors['e_white']),                             
                       marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color']) 
@@ -136,7 +139,7 @@ prod_hedge_exp_graph=html.Div(
                  go.Bar(
                       name='HCR', 
                       x=quarters['quarters'], 
-                      y=query_results_8['hcr'],
+                      y=hcr_q["HCR"],
                       opacity=0,
                       marker=dict(color=colors['white']),
                       marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color']),
@@ -146,7 +149,7 @@ prod_hedge_exp_graph=html.Div(
                   go.Bar(
                       name='PPA',
                       x=quarters['quarters'],
-                      y=query_results_5.loc[query_results_5['typecontract']=='PPA', 'hedge'],
+                      y=hedge_q.loc[hedge_q["TypeContract"]=='PPA', "Hedge"],
                       opacity=1,
                       marker=dict(color=colors['ppa']),
                       marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
@@ -154,18 +157,18 @@ prod_hedge_exp_graph=html.Div(
                   go.Bar(
                       name='OA',
                       x=quarters['quarters'],
-                      y=query_results_5.loc[query_results_5['typecontract']=='OA', 'hedge'],
+                      y=hedge_q.loc[hedge_q["TypeContract"]=='OA', "Hedge"],
                       opacity=0.4,
-                      base=query_results_5.loc[query_results_5['typecontract']=='PPA', 'hedge'],
+                      base=hedge_q.loc[hedge_q["TypeContract"]=='PPA', "Hedge"],
                       marker=dict(color=colors['oa']),
                       marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
                       ),
                   go.Bar(
                       name='CR',
                       x=quarters['quarters'],
-                      y=query_results_5.loc[query_results_5['typecontract']=='CR', 'hedge'],
+                      y=hedge_q.loc[hedge_q["TypeContract"]=='CR', "Hedge"],
                       opacity=0.25,
-                      base=query_results_5.loc[query_results_5['typecontract']=='OA', 'hedge'],
+                      base=hedge_q.loc[hedge_q["TypeContract"]=='OA', "Hedge"],
                       marker=dict(color=colors['cr']),
                       marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
                       ),
@@ -173,7 +176,7 @@ prod_hedge_exp_graph=html.Div(
                   go.Bar(
                       name='Production', 
                       x=quarters['quarters'],
-                      y=query_results_11['prod'],
+                      y=prod_q["Prod"],
                       opacity=0.1,
                       marker=dict(color=colors['e_white']),
                       marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color']),
@@ -205,7 +208,7 @@ prod_hedge_exp_graph=html.Div(
                   go.Bar(
                        name='HCR', 
                        x=months['months'], 
-                       y=query_results_9['hcr'],
+                       y=hcr_m["HCR"],
                        opacity=0,
                        marker=dict(color=colors['white']),
                        marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color']),
@@ -215,25 +218,25 @@ prod_hedge_exp_graph=html.Div(
                   go.Bar(
                       name="0A",   
                       x=months['months'],
-                      y=query_results_6.loc[query_results_6['typecontract'] == 'OA', 'hedge'],
+                      y=hedge_m.loc[hedge_m["TypeContract"] == 'OA', "Hedge"],
                       opacity=0.4,
-                      base=query_results_6.loc[query_results_6['typecontract'] == 'PPA', 'hedge'],
+                      base=hedge_m.loc[hedge_m["TypeContract"] == 'PPA', "Hedge"],
                       marker=dict(color=colors['oa']),
                       marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
                       ),
                   go.Bar(
                       name="CR",
                       x=months['months'],
-                      y=query_results_6.loc[query_results_6['typecontract'] == 'CR', 'hedge'],
+                      y=hedge_m.loc[hedge_m["TypeContract"] == 'CR', "Hedge"],
                       opacity=0.25,
-                      base=query_results_6.loc[query_results_6['typecontract'] == 'OA', 'hedge'],
+                      base=hedge_m.loc[hedge_m["TypeContract"] == 'OA', "Hedge"],
                       marker=dict(color=colors['cr']),
                       marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
                       ), 
                   go.Bar(
                       name="PPA",
                       x=months['months'],
-                      y=query_results_6.loc[query_results_6['typecontract'] == 'PPA', 'hedge'],
+                      y=hedge_m.loc[hedge_m["TypeContract"] == 'PPA', "Hedge"],
                       opacity=1,
                       marker=dict(color=colors['ppa']),
                       marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
@@ -241,7 +244,7 @@ prod_hedge_exp_graph=html.Div(
                   go.Bar(
                       name='Production', 
                       x=months['months'],
-                      y=query_results_12['prod'],
+                      y=prod_m["Prod"],
                       opacity=0.1,
                       marker=dict(color=colors['e_white']),
                       marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color']),

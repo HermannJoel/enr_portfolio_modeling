@@ -4,12 +4,14 @@ Created on Wed Jul 13 11:19:32 2022
 
 @author: hermann.ngayap
 """
-import dash_core_components as dcc
-import dash_html_components as html
+import sys
+import os
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+from dash import dcc, html
 import plotly.graph_objs as go
-from colors import colors
-from x_axes import years, quarters, months  
-from postgresql_queries import* 
+from dashboards.env import*  
+from queries.pg_dwh_queries import*
 
 BAR_H_WIDTH = 1 
 PLOTS_FONT_SIZE = 11
@@ -29,7 +31,7 @@ annotations = [dict(
             showarrow=False,
             align='center', 
             font=dict(size=8),
-        ) for xi, yi, zi in zip(years['years'], query_results_25['prodsolar'], query_results_43['hcrsolar'])]
+        ) for xi, yi, zi in zip(years['years'], prod_sol_y["ProdSolar"], hcr_sol_y["HCRSolar"])]
 
 prod_hedge_exp_solar_wind_power_gr = html.Div(
     children=[
@@ -48,16 +50,16 @@ prod_hedge_exp_solar_wind_power_gr = html.Div(
                       go.Bar(
                           name='HCR', 
                           x=years['years'], 
-                          y=query_results_43['hcrsolar'],
+                          y=hcr_sol_y["HCRSolar"],
                           opacity=0.0,
                           marker=dict(color=colors['white']),
                           ),
                       go.Bar(
                           name='PPA', 
                           x=years['years'], 
-                          y=query_results_37.loc[query_results_37['typecontract'] == 'PPA', 'hedgesolar'],
+                          y=typehedge_sol_y.loc[typehedge_sol_y["TypeContract"] == 'PPA', "HedgeSolar"],
                           opacity=1,
-                          base=query_results_37.loc[query_results_37['typecontract'] == 'OA', 'hedgesolar'],
+                          base=typehedge_sol_y.loc[typehedge_sol_y["TypeContract"] == 'OA', "HedgeSolar"],
                           marker=dict(color=colors['ppa']),
                           marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color']),
                           ),
@@ -65,9 +67,9 @@ prod_hedge_exp_solar_wind_power_gr = html.Div(
                       go.Bar(
                           name='OA', 
                           x=years['years'], 
-                          y=query_results_37.loc[query_results_37['typecontract'] == 'OA', 'hedgesolar'],
+                          y=typehedge_sol_y.loc[typehedge_sol_y["TypeContract"] == 'OA', "HedgeSolar"],
                           opacity=0.4,
-                          base=query_results_37.loc[query_results_37['typecontract'] == 'CR', 'hedgesolar'],
+                          base=typehedge_sol_y.loc[typehedge_sol_y["TypeContract"] == 'CR', "HedgeSolar"],
                           offsetgroup=1,
                           marker=dict(color=colors['oa']),
                           marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color'])
@@ -75,7 +77,7 @@ prod_hedge_exp_solar_wind_power_gr = html.Div(
                       go.Bar(
                           name='CR', 
                           x=years['years'], 
-                          y=query_results_37.loc[query_results_37['typecontract'] == 'CR', 'hedgesolar'],
+                          y=typehedge_sol_y.loc[typehedge_sol_y["TypeContract"] == 'CR', "HedgeSolar"],
                           opacity=0.25,
                           offsetgroup=1,
                           marker=dict(color=colors['cr']),
@@ -85,7 +87,7 @@ prod_hedge_exp_solar_wind_power_gr = html.Div(
                      go.Bar(
                          name='Prod Solar', 
                          x=years['years'], 
-                         y=query_results_25['prodsolar'],
+                         y=prod_sol_y["ProdSolar"],
                          opacity=0.09,
                          marker=dict(color=colors['solar']),                             
                          marker_line=dict(width= BAR_H_WIDTH, color=colors['bar_h_color']) 

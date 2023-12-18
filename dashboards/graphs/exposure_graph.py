@@ -4,12 +4,17 @@ Created on Fri Jul  1 09:42:15 2022
 
 @author: hermann.ngayap
 """
-import dash_core_components as dcc
-import dash_html_components as html
+import sys
+import os
+sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+#import dash_core_components as dcc
+#import dash_html_components as html
+from dash import dcc, html
 import plotly.graph_objs as go
-from x_axes import years, quarters, months 
-from colors import colors
-from postgresql_queries import*
+from dashboards.env import*  
+from queries.pg_dwh_queries import*
+
 
 BAR_H_WIDTH = 2 
 PLOTS_FONT_SIZE = 11
@@ -18,8 +23,7 @@ SMALL_PLOTS_HEIGHT = 290  # For secondary graphs
 
 year_count = []
 for year in years['years'].unique():
-    year_count.append({'label':str(year),'value':year})
-    
+    year_count.append({'label':str(year),'value':year}) 
     
 exposure_graph=html.Div(
     children=[
@@ -37,7 +41,7 @@ exposure_graph=html.Div(
                       go.Bar(
                           name='Exposure',
                           x=years['years'],
-                          y=query_results_1['exposure'],
+                          y=exposure_y['Exposure'],
                           marker=dict(color=colors['e_white']),
                           opacity=0.15,
                           )], 
@@ -62,7 +66,7 @@ exposure_graph=html.Div(
                       go.Bar(
                           name='Exposure',
                           x=quarters['quarters'],
-                          y=query_results_2['exposure'],
+                          y=exposure_q['Exposure'],
                           marker=dict(color=colors['e_white']),
                           opacity=0.20
                           )], 
@@ -89,7 +93,7 @@ exposure_graph=html.Div(
                       go.Bar(
                           name='Exposure',
                           x=months['months'],
-                          y=query_results_3['exposure'],
+                          y=exposure_m['Exposure'],
                           marker=dict(color=colors['e_white']),
                           opacity=0.15
                           )], 

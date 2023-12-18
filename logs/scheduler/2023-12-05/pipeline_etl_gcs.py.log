@@ -1,0 +1,504 @@
+[2023-12-05T21:47:14.819+0100] {processor.py:157} INFO - Started process (PID=31834) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:47:14.834+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:47:14.846+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:47:14.841+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:47:15.121+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:47:16.785+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:47:16.783+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:47:17.020+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:47:17.018+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:47:17.163+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 2.411 seconds
+[2023-12-05T21:47:51.078+0100] {processor.py:157} INFO - Started process (PID=31905) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:47:51.092+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:47:51.102+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:47:51.098+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:47:51.379+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:47:52.124+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:47:52.123+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:47:52.344+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:47:52.343+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:47:52.472+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.454 seconds
+[2023-12-05T21:48:28.649+0100] {processor.py:157} INFO - Started process (PID=31984) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:48:28.664+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:48:28.674+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:48:28.670+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:48:28.868+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:48:29.518+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:48:29.517+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:48:29.822+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:48:29.821+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:48:30.031+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.440 seconds
+[2023-12-05T21:49:03.294+0100] {processor.py:157} INFO - Started process (PID=32062) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:49:03.308+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:49:03.319+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:49:03.316+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:49:03.559+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:49:04.244+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:49:04.243+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:49:04.528+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:49:04.527+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:49:04.827+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.589 seconds
+[2023-12-05T21:49:38.014+0100] {processor.py:157} INFO - Started process (PID=32188) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:49:38.027+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:49:38.062+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:49:38.033+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:49:38.418+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:49:40.518+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:49:40.489+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:49:41.071+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:49:41.070+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:49:42.083+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 4.169 seconds
+[2023-12-05T21:50:16.910+0100] {processor.py:157} INFO - Started process (PID=32239) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:50:16.927+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:50:16.938+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:50:16.933+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:50:17.614+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:50:20.009+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:50:20.005+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:50:20.412+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:50:20.411+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:50:20.921+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 4.185 seconds
+[2023-12-05T21:50:59.342+0100] {processor.py:157} INFO - Started process (PID=32323) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:50:59.358+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:50:59.366+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:50:59.364+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:50:59.669+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:51:00.972+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:51:00.971+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:51:01.466+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:51:01.465+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:51:01.956+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 2.677 seconds
+[2023-12-05T21:51:39.698+0100] {processor.py:157} INFO - Started process (PID=32372) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:51:39.714+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:51:39.725+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:51:39.721+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:51:39.982+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:51:40.818+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:51:40.817+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:51:42.283+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:51:42.281+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:51:42.546+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 2.921 seconds
+[2023-12-05T21:52:31.903+0100] {processor.py:157} INFO - Started process (PID=32465) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:52:31.926+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:52:31.961+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:52:31.957+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:52:32.509+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:52:38.442+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:52:38.441+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:52:39.306+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:52:39.302+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:52:40.755+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 9.124 seconds
+[2023-12-05T21:53:15.100+0100] {processor.py:157} INFO - Started process (PID=32516) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:53:15.125+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:53:15.136+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:53:15.132+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:53:16.737+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:53:17.521+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:53:17.519+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:53:17.855+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:53:17.853+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:53:18.178+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 3.190 seconds
+[2023-12-05T21:53:58.129+0100] {processor.py:157} INFO - Started process (PID=32578) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:53:58.148+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:53:58.159+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:53:58.156+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:53:58.445+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:53:59.228+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:53:59.227+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:53:59.601+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:53:59.599+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:53:59.789+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.734 seconds
+[2023-12-05T21:54:32.515+0100] {processor.py:157} INFO - Started process (PID=32629) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:54:32.530+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:54:32.539+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:54:32.536+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:54:32.754+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:54:33.484+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:54:33.483+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:54:33.752+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:54:33.751+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:54:33.881+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.422 seconds
+[2023-12-05T21:55:04.615+0100] {processor.py:157} INFO - Started process (PID=32672) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:55:04.624+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:55:04.630+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:55:04.628+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:55:04.820+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:55:05.288+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:55:05.287+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:55:05.465+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:55:05.464+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:55:05.575+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.999 seconds
+[2023-12-05T21:55:36.607+0100] {processor.py:157} INFO - Started process (PID=32718) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:55:36.620+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:55:36.626+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:55:36.623+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:55:36.778+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:55:37.315+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:55:37.314+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:55:37.483+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:55:37.481+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:55:37.607+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.050 seconds
+[2023-12-05T21:56:07.903+0100] {processor.py:157} INFO - Started process (PID=32758) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:56:07.913+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:56:07.920+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:56:07.917+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:56:08.074+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:56:08.580+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:56:08.580+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:56:08.809+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:56:08.808+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:56:08.928+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.064 seconds
+[2023-12-05T21:56:39.637+0100] {processor.py:157} INFO - Started process (PID=45) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:56:39.649+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:56:39.658+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:56:39.655+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:56:39.904+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:56:40.400+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:56:40.400+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:56:40.629+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:56:40.629+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:56:40.748+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.155 seconds
+[2023-12-05T21:57:11.173+0100] {processor.py:157} INFO - Started process (PID=97) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:57:11.197+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:57:11.211+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:57:11.205+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:57:11.424+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:57:11.942+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:57:11.937+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:57:12.492+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:57:12.491+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:57:12.681+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.579 seconds
+[2023-12-05T21:57:43.684+0100] {processor.py:157} INFO - Started process (PID=150) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:57:43.699+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:57:43.708+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:57:43.704+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:57:44.066+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:57:44.691+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:57:44.690+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:57:44.923+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:57:44.922+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:57:45.082+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.454 seconds
+[2023-12-05T21:58:15.382+0100] {processor.py:157} INFO - Started process (PID=201) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:58:15.392+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:58:15.401+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:58:15.398+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:58:15.575+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:58:16.248+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:58:16.247+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:58:16.491+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:58:16.490+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:58:16.606+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.265 seconds
+[2023-12-05T21:58:47.694+0100] {processor.py:157} INFO - Started process (PID=252) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:58:47.703+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:58:47.709+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:58:47.707+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:58:47.883+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:58:48.334+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:58:48.333+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:58:48.529+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:58:48.528+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:58:48.640+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.991 seconds
+[2023-12-05T21:59:19.362+0100] {processor.py:157} INFO - Started process (PID=303) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:59:19.370+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:59:19.376+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:59:19.374+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:59:19.515+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:59:19.920+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:59:19.920+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:59:20.085+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:59:20.084+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:59:20.189+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.864 seconds
+[2023-12-05T21:59:50.422+0100] {processor.py:157} INFO - Started process (PID=352) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:59:50.432+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T21:59:50.438+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:59:50.435+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:59:50.576+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T21:59:50.983+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:59:50.982+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T21:59:51.155+0100] {logging_mixin.py:154} INFO - [2023-12-05T21:59:51.154+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T21:59:51.268+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.885 seconds
+[2023-12-05T22:00:21.691+0100] {processor.py:157} INFO - Started process (PID=390) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:00:21.700+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:00:21.706+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:00:21.704+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:00:21.855+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:00:22.276+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:00:22.275+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:00:22.445+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:00:22.445+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:00:22.557+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.904 seconds
+[2023-12-05T22:00:53.201+0100] {processor.py:157} INFO - Started process (PID=433) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:00:53.210+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:00:53.216+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:00:53.213+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:00:53.351+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:00:53.768+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:00:53.767+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:00:53.942+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:00:53.941+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:00:54.055+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.891 seconds
+[2023-12-05T22:01:24.432+0100] {processor.py:157} INFO - Started process (PID=481) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:01:24.441+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:01:24.447+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:01:24.445+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:01:24.588+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:01:24.999+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:01:24.998+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:01:25.177+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:01:25.176+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:01:25.287+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.895 seconds
+[2023-12-05T22:01:55.898+0100] {processor.py:157} INFO - Started process (PID=538) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:01:55.907+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:01:55.912+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:01:55.910+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:01:56.049+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:01:56.463+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:01:56.462+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:01:56.632+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:01:56.631+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:01:56.743+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.882 seconds
+[2023-12-05T22:02:27.342+0100] {processor.py:157} INFO - Started process (PID=589) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:02:27.351+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:02:27.356+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:02:27.354+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:02:27.503+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:02:27.918+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:02:27.917+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:02:28.083+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:02:28.083+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:02:28.199+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.893 seconds
+[2023-12-05T22:02:58.499+0100] {processor.py:157} INFO - Started process (PID=640) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:02:58.508+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:02:58.514+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:02:58.512+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:02:58.651+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:02:59.090+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:02:59.089+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:02:59.255+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:02:59.254+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:02:59.359+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.897 seconds
+[2023-12-05T22:03:29.914+0100] {processor.py:157} INFO - Started process (PID=691) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:03:29.922+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:03:29.928+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:03:29.926+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:03:30.069+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:03:30.484+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:03:30.483+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:03:30.650+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:03:30.649+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:03:30.756+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.880 seconds
+[2023-12-05T22:04:02.092+0100] {processor.py:157} INFO - Started process (PID=742) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:04:02.101+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:04:02.107+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:04:02.105+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:04:02.253+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:04:02.706+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:04:02.705+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:04:02.936+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:04:02.935+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:04:03.065+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.010 seconds
+[2023-12-05T22:04:33.790+0100] {processor.py:157} INFO - Started process (PID=791) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:04:33.800+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:04:33.806+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:04:33.804+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:04:34.003+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:04:34.522+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:04:34.521+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:04:34.753+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:04:34.752+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:04:34.878+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.140 seconds
+[2023-12-05T22:05:05.916+0100] {processor.py:157} INFO - Started process (PID=842) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:05:05.925+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:05:05.931+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:05:05.929+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:05:06.067+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:05:06.478+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:05:06.477+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:05:06.654+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:05:06.653+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:05:06.763+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.886 seconds
+[2023-12-05T22:05:37.752+0100] {processor.py:157} INFO - Started process (PID=895) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:05:37.761+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:05:37.767+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:05:37.765+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:05:37.911+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:05:38.320+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:05:38.319+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:05:38.485+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:05:38.485+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:05:38.592+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.878 seconds
+[2023-12-05T22:06:11.119+0100] {processor.py:157} INFO - Started process (PID=944) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:06:11.128+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:06:11.134+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:06:11.132+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:06:11.283+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:06:11.716+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:06:11.715+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:06:11.888+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:06:11.887+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:06:11.999+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.917 seconds
+[2023-12-05T22:06:44.575+0100] {processor.py:157} INFO - Started process (PID=987) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:06:44.587+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:06:44.593+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:06:44.591+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:06:44.780+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:06:45.378+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:06:45.377+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:06:45.648+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:06:45.646+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:06:45.844+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.321 seconds
+[2023-12-05T22:07:16.756+0100] {processor.py:157} INFO - Started process (PID=1025) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:07:16.771+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:07:16.777+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:07:16.775+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:07:16.992+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:07:17.526+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:07:17.525+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:07:17.727+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:07:17.726+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:07:17.853+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.163 seconds
+[2023-12-05T22:07:48.506+0100] {processor.py:157} INFO - Started process (PID=1073) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:07:48.517+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:07:48.523+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:07:48.521+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:07:48.702+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:07:49.143+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:07:49.142+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:07:49.335+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:07:49.334+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:07:49.454+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.005 seconds
+[2023-12-05T22:08:19.942+0100] {processor.py:157} INFO - Started process (PID=1122) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:08:19.956+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:08:19.964+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:08:19.961+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:08:20.150+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:08:20.592+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:08:20.591+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:08:20.856+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:08:20.855+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:08:20.989+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.102 seconds
+[2023-12-05T22:08:51.346+0100] {processor.py:157} INFO - Started process (PID=1175) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:08:51.354+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:08:51.361+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:08:51.359+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:08:51.498+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:08:52.020+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:08:52.019+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:08:52.183+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:08:52.182+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:08:52.292+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.984 seconds
+[2023-12-05T22:09:22.657+0100] {processor.py:157} INFO - Started process (PID=1226) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:09:22.666+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:09:22.672+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:09:22.670+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:09:22.809+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:09:23.225+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:09:23.224+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:09:23.401+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:09:23.400+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:09:23.506+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.885 seconds
+[2023-12-05T22:09:54.130+0100] {processor.py:157} INFO - Started process (PID=1277) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:09:54.142+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:09:54.149+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:09:54.147+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:09:54.316+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:09:54.760+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:09:54.760+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:09:54.934+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:09:54.933+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:09:55.051+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.960 seconds
+[2023-12-05T22:10:26.251+0100] {processor.py:157} INFO - Started process (PID=1334) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:10:26.262+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:10:26.268+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:10:26.266+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:10:26.461+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:10:26.934+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:10:26.933+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:10:27.124+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:10:27.123+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:10:27.234+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.033 seconds
+[2023-12-05T22:10:57.578+0100] {processor.py:157} INFO - Started process (PID=1390) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:10:57.586+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:10:57.593+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:10:57.591+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:10:57.726+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:10:58.166+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:10:58.165+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:10:58.332+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:10:58.331+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:10:58.440+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.900 seconds
+[2023-12-05T22:11:29.144+0100] {processor.py:157} INFO - Started process (PID=1441) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:11:29.153+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:11:29.158+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:11:29.156+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:11:29.300+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:11:29.701+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:11:29.701+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:11:29.876+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:11:29.875+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:11:29.984+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.877 seconds
+[2023-12-05T22:12:00.783+0100] {processor.py:157} INFO - Started process (PID=1492) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:12:00.791+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:12:00.797+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:12:00.795+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:12:00.937+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:12:01.355+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:12:01.354+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:12:01.523+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:12:01.522+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:12:01.628+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.882 seconds
+[2023-12-05T22:12:33.874+0100] {processor.py:157} INFO - Started process (PID=1541) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:12:33.883+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:12:33.889+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:12:33.886+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:12:34.024+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:12:34.441+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:12:34.440+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:12:34.612+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:12:34.611+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:12:34.724+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.887 seconds
+[2023-12-05T22:13:05.303+0100] {processor.py:157} INFO - Started process (PID=1584) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:13:05.312+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:13:05.317+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:13:05.315+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:13:05.455+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:13:05.893+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:13:05.892+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:13:06.112+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:13:06.111+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:13:06.261+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.998 seconds
+[2023-12-05T22:13:36.782+0100] {processor.py:157} INFO - Started process (PID=1630) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:13:36.792+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:13:36.798+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:13:36.795+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:13:36.951+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:13:37.374+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:13:37.373+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:13:37.542+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:13:37.541+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:13:37.662+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.926 seconds
+[2023-12-05T22:14:08.207+0100] {processor.py:157} INFO - Started process (PID=1670) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:14:08.215+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:14:08.221+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:14:08.219+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:14:08.360+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:14:08.771+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:14:08.770+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:14:08.938+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:14:08.938+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:14:09.050+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.879 seconds
+[2023-12-05T22:14:39.547+0100] {processor.py:157} INFO - Started process (PID=1721) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:14:39.558+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:14:39.564+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:14:39.562+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:14:39.706+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:14:40.113+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:14:40.112+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:14:40.279+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:14:40.279+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:14:40.394+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.886 seconds
+[2023-12-05T22:15:10.720+0100] {processor.py:157} INFO - Started process (PID=1770) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:15:10.730+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:15:10.736+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:15:10.733+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:15:10.877+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:15:11.286+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:15:11.285+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:15:11.455+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:15:11.455+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:15:11.561+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.881 seconds
+[2023-12-05T22:15:42.349+0100] {processor.py:157} INFO - Started process (PID=1821) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:15:42.361+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:15:42.367+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:15:42.365+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:15:42.513+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:15:42.948+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:15:42.947+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:15:43.114+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:15:43.113+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:15:43.225+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.917 seconds
+[2023-12-05T22:16:13.619+0100] {processor.py:157} INFO - Started process (PID=1872) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:16:13.629+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:16:13.635+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:16:13.632+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:16:13.777+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:16:14.200+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:16:14.199+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:16:14.372+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:16:14.371+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:16:14.479+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.900 seconds
+[2023-12-05T22:16:45.409+0100] {processor.py:157} INFO - Started process (PID=1925) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:16:45.417+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:16:45.423+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:16:45.421+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:16:45.562+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:16:45.996+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:16:45.995+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:16:46.162+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:16:46.161+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:16:46.273+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.900 seconds
+[2023-12-05T22:17:17.132+0100] {processor.py:157} INFO - Started process (PID=1974) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:17:17.141+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:17:17.147+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:17:17.145+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:17:17.338+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:17:17.818+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:17:17.817+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:17:17.986+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:17:17.985+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:17:18.095+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.013 seconds
+[2023-12-05T22:17:48.517+0100] {processor.py:157} INFO - Started process (PID=2025) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:17:48.525+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:17:48.531+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:17:48.529+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:17:48.685+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:17:49.097+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:17:49.096+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:17:49.266+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:17:49.265+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:17:49.373+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.896 seconds
+[2023-12-05T22:18:20.204+0100] {processor.py:157} INFO - Started process (PID=2076) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:18:20.215+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:18:20.221+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:18:20.219+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:18:20.413+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:18:20.905+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:18:20.904+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:18:21.143+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:18:21.142+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:18:21.257+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.100 seconds
+[2023-12-05T22:18:51.776+0100] {processor.py:157} INFO - Started process (PID=2127) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:18:51.785+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:18:51.790+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:18:51.788+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:18:51.932+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:18:52.364+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:18:52.363+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:18:52.564+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:18:52.563+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:18:52.803+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.065 seconds
+[2023-12-05T22:19:23.046+0100] {processor.py:157} INFO - Started process (PID=2165) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:19:23.056+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:19:23.062+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:19:23.060+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:19:23.212+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:19:23.643+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:19:23.642+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:19:23.836+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:19:23.835+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:19:23.959+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.951 seconds
+[2023-12-05T22:19:54.242+0100] {processor.py:157} INFO - Started process (PID=2211) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:19:54.251+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:19:54.257+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:19:54.255+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:19:54.398+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:19:54.842+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:19:54.841+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:19:55.014+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:19:55.013+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:19:55.130+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.928 seconds
+[2023-12-05T22:20:25.908+0100] {processor.py:157} INFO - Started process (PID=2251) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:20:25.916+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:20:25.922+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:20:25.920+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:20:26.070+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:20:26.487+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:20:26.486+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:20:26.663+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:20:26.662+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:20:26.774+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.903 seconds
+[2023-12-05T22:20:57.567+0100] {processor.py:157} INFO - Started process (PID=2302) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:20:57.577+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:20:57.584+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:20:57.582+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:20:57.754+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:20:58.235+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:20:58.234+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:20:58.432+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:20:58.431+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:20:58.551+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.032 seconds
+[2023-12-05T22:21:29.020+0100] {processor.py:157} INFO - Started process (PID=2353) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:21:29.029+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:21:29.035+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:21:29.033+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:21:29.174+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:21:29.585+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:21:29.584+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:21:29.752+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:21:29.751+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:21:29.858+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.874 seconds
+[2023-12-05T22:22:00.527+0100] {processor.py:157} INFO - Started process (PID=2404) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:22:00.535+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:22:00.541+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:22:00.539+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:22:00.679+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:22:01.107+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:22:01.106+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:22:01.303+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:22:01.302+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:22:01.421+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.932 seconds
+[2023-12-05T22:22:32.255+0100] {processor.py:157} INFO - Started process (PID=2455) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:22:32.264+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:22:32.270+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:22:32.268+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:22:32.418+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:22:32.844+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:22:32.843+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:22:33.021+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:22:33.021+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:22:33.140+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.924 seconds
+[2023-12-05T22:23:03.553+0100] {processor.py:157} INFO - Started process (PID=2506) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:23:03.562+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:23:03.568+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:23:03.566+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:23:03.710+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:23:04.159+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:23:04.159+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:23:04.336+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:23:04.335+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:23:04.452+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.938 seconds
+[2023-12-05T22:23:34.906+0100] {processor.py:157} INFO - Started process (PID=2557) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:23:34.915+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:23:34.922+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:23:34.919+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:23:35.074+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:23:35.505+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:23:35.504+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:23:35.676+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:23:35.675+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:23:35.783+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.919 seconds
+[2023-12-05T22:24:06.279+0100] {processor.py:157} INFO - Started process (PID=2608) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:24:06.289+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:24:06.294+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:24:06.292+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:24:06.436+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:24:06.946+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:24:06.945+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:24:07.117+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:24:07.116+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:24:07.233+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.998 seconds
+[2023-12-05T22:24:37.985+0100] {processor.py:157} INFO - Started process (PID=2659) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:24:38.001+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:24:38.012+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:24:38.007+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:24:38.177+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:24:38.616+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:24:38.615+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:24:38.791+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:24:38.789+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:24:38.909+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.978 seconds
+[2023-12-05T22:25:09.339+0100] {processor.py:157} INFO - Started process (PID=2710) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:25:09.348+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:25:09.354+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:25:09.352+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:25:09.500+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:25:09.918+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:25:09.917+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:25:10.090+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:25:10.089+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:25:10.198+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.894 seconds
+[2023-12-05T22:25:42.193+0100] {processor.py:157} INFO - Started process (PID=2759) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:25:42.204+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:25:42.212+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:25:42.210+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:25:42.359+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:25:42.777+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:25:42.776+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:25:42.949+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:25:42.948+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:25:43.058+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 0.901 seconds
+[2023-12-05T22:26:21.454+0100] {processor.py:157} INFO - Started process (PID=2815) to work on /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:26:21.469+0100] {processor.py:829} INFO - Processing file /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py for tasks to queue
+[2023-12-05T22:26:21.483+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:26:21.478+0100] {dagbag.py:536} INFO - Filling up the DagBag from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:26:21.780+0100] {processor.py:839} INFO - DAG(s) dict_keys(['pipeline_to_gcs']) retrieved from /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py
+[2023-12-05T22:26:22.554+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:26:22.552+0100] {dag.py:2941} INFO - Sync 1 DAGs
+[2023-12-05T22:26:22.882+0100] {logging_mixin.py:154} INFO - [2023-12-05T22:26:22.881+0100] {dag.py:3722} INFO - Setting next_dagrun for pipeline_to_gcs to 2023-12-05T00:00:00+00:00, run_after=2023-12-05T01:00:00+00:00
+[2023-12-05T22:26:23.098+0100] {processor.py:179} INFO - Processing /mnt/d/local-repo-github/enr_portfolio_modeling/pipelines/dags/pipeline_etl_gcs.py took 1.727 seconds
