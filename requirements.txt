@@ -201,7 +201,6 @@ protobuf==4.24.4
 psutil==5.9.0
 psycopg2==2.9.3
 psycopg2-binary==2.9.9
-ptyprocess==0.7.0
 pycosat==0.6.4
 pycparser==2.21
 pycryptodomex==3.19.0
