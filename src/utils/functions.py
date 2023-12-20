@@ -26,7 +26,7 @@ def remove_p50_p90_type_hedge(data, *args, **kwargs):
     """udf to remove p50 p90 values based on date_debut and date_fin
     condition:The date value is less than date_debut and higher than date_fin 
     Paremeters
-    ==========
+    ----------
     *Args:
         data: DataFrame 
         sd: (str) 
@@ -48,6 +48,13 @@ def remove_p50_p90_type_hedge(data, *args, **kwargs):
             
         cond : (condition 1) 'date' column is less (in total seconds) than the given projet_id's first 'date_debut' value 
         cond_2 : (condition 2) 'date' column is higher (in total seconds) than the given projet_id's first 'date_fin' value
+    Returns
+    -------
+    data : DataFrame
+        pd DataFrame
+    Example
+    -------
+    >>>remove_p50_p90_type_hedge(data, *args, **kwargs)
     """
     cond=((data[kwargs['date']] - data.groupby([kwargs['projetid'], kwargs['hedgeid']])[kwargs['sd']].transform('first')).dt.total_seconds())<0
     data[kwargs['p50']] = np.where(cond,'', data[kwargs['p50']])
@@ -69,19 +76,33 @@ def remove_p50_p90(data, *args, **kwargs):
     """
     To remove p50 p90 values based on date_debut and date_fin
     condition:The date value is prior to date_debut and post to date_fin    
-*Args:
-    data (DataFrame) :
-    cod (str) : The arg takes the value 'cod' 
-    dd (str) : The arg takes the value 'date_dementelement'
-    p50 (str) : The arg takes the value 'p50_adj'
-    p90 (str) : The arg takes the value of the column label 'p90_adj'
-    date (str) : The arg takes the value 'date'
-    projetid (str) : The arg takes the value 'projet_id'
-    assetid (str) :  The arg takes the value 'asset_id'
+    *Args:
+    data : DataFrame
+    cod :  str
+        The arg takes the value 'cod' 
+    dd : str 
+        The arg takes the value 'date_dementelement'
+    p50 : str 
+        The arg takes the value 'p50_adj'
+    p90 : str 
+        The arg takes the value of the column label 'p90_adj'
+    date : str
+        The arg takes the value 'date'
+    projetid : str 
+        The arg takes the value 'projet_id'
+    assetid : str
+        The arg takes the value 'asset_id'
+    Parameters:
+    cond : 
+        (condition 1) 'date' column is less (in total seconds) than a given projet_id's first 'date_debut' value 
+    cond_2 : 
+        (condition 2) 'date' column is higher (in total seconds) than a given projet_id's first 'date_fin' value
+    Returns
+    -------
     
-Parameters:
-    cond : (condition 1) 'date' column is less (in total seconds) than a given projet_id's first 'date_debut' value 
-    cond_2 : (condition 2) 'date' column is higher (in total seconds) than a given projet_id's first 'date_fin' value
+    Example
+    -------
+    >>>remove_p50_p90(data, *args, **kwargs)
     """
     cond=((data[kwargs['date']] - data.groupby(kwargs['projetid'])[kwargs['cod']].transform('first')).dt.total_seconds())<0
     data[kwargs['p50']] = np.where(cond,'', data[kwargs['p50']])
@@ -98,6 +119,16 @@ Parameters:
 
 
 def multiply_p50_p90_by_minus_1(df:pd.DataFrame, column_names:list):
+    """
+    Parameters
+    ----------
+    
+    Returns
+    -------
+    
+    Example
+    -------
+    """
     non_existing_columns = [col for col in column_names if col not in df.columns]
     if non_existing_columns:
         print(f"Columns {non_existing_columns} not found in {df} DataFrame.")
@@ -117,7 +148,8 @@ def multiply_p50_p90_by_minus_1(df:pd.DataFrame, column_names:list):
 def create_data_frame(data, *args, **kwargs):
     """
     To create a DataFrame containing p50 and P90 across our time horizon     
-    args:
+    Parameters
+    ----------
     data (DataFrame) :
     
     *args: non-keyworded arguments
@@ -128,6 +160,11 @@ def create_data_frame(data, *args, **kwargs):
         profile (dictionaries) : The arg takes the value of the production profile
         n (int) : The arg takes the value length of data 
         date (str) : The arg takes the value of date colum label 'date'
+    Returns
+    -------
+    
+    Example
+    -------
     """
     pd.options.display.float_format = '{:.5f}'.format
     start_date=pd.to_datetime(args*kwargs['n'])
@@ -155,10 +192,18 @@ def create_data_frame(data, *args, **kwargs):
 def adjusted_by_pct(data, **kwargs):
     """
     To compute adjusted p50 & p90 by hedge percentage (pct_couverture)    
-    Args:
-    data (DataFrame) :
-    col1 (str) : Takes the value p50_adj column label
-    col2 (str) : Takes the value of pct_couverture column label
+    Parameters
+    ----------
+    data : DataFrame
+    **col1 : str
+        Takes the value p50_adj column label
+    **col2 : str 
+        Takes the value of pct_couverture column label
+    Returns
+    -------
+    
+    Example
+    -------
     """   
     #return round(data[kwargs['col1']].apply(lambda x: float(x)), 4) * round(data[kwargs['col2']].apply(lambda x: float(x)), 4)
     col1_values = pd.to_numeric(data[kwargs['col1']], errors='coerce')
@@ -168,8 +213,15 @@ def adjusted_by_pct(data, **kwargs):
 def merge_data_frame(*args):
     """To merge df 
     Parameters
-    ==========
-    * : DataFrame, 
+    ----------
+    *args : DataFrame
+        
+    Returns
+    -------
+    merged_df : DataFrame
+    Example
+    -------
+    >>>merge_data_frame(*args)
     """
     frames=args
     merged_df=pd.concat(frames)
@@ -203,6 +255,10 @@ def format_float(df, column, decimals=2):
     return df
  
 def select_columns(data, *args):
+    """select columns from a data frame
+    
+    
+    """
     columns=args
     list=[]
     for i in columns:
@@ -213,7 +269,7 @@ def select_columns(data, *args):
 def create_mini_data_frame(data, *args, **kwargs):
     """To create a DataFrame containing p50 and P90 across our time horizon     
     Parameters
-    ==========
+    ----------
     data : DataFrame,
     * 
     sd : str, 
@@ -227,6 +283,13 @@ def create_mini_data_frame(data, *args, **kwargs):
         The arg takes the value length of data 
     date : str,
         The arg takes the value of date colum label 'date'
+    Returns
+    -------
+    d : DataFrame
+        pd Data Frame
+    Example
+    -------
+    >>>create_mini_data_frame(data, *args, **kwargs)
     """
     start_date=pd.to_datetime(args*kwargs['n'])
     d=pd.DataFrame()
@@ -249,9 +312,8 @@ def remove_contract_prices(data, *args, **kwargs):
     condition:The date value is prior to date_debut and post to date_fin 
     
     Parameters
-    ==========
-    data (DataFrame) :
-            
+    ----------
+    data (DataFrame) :      
     sd : str,
             The arg takes the value 'date_debut' 
     ed : str,
@@ -271,6 +333,12 @@ def remove_contract_prices(data, *args, **kwargs):
     cond : 'date' column is less (in total seconds) than a given projet_id's first 'date_debut' value 
     cond_2 : 'date' column is higher (in total seconds) than a given projet_id's first 'date_fin' value
     cond_3 : 'date' column is higher (in total seconds) than a given projet_id's first 'date_dementelement' value
+    Returns
+    -------
+    
+    Example
+    -------
+    >>>remove_contract_prices(data, *args, **kwargs)
     """
     cond=((data[kwargs['date']] - pd.to_datetime(data.groupby([kwargs['projetid'], kwargs['hedgeid']])[kwargs['sd']].transform('first'))).dt.total_seconds())<0
     #To remove prices based on date_debu
@@ -459,7 +527,17 @@ def load_pickle(filename):
     return file 
 
 def rename_df_columns(df: pd.DataFrame, column_names: list):
-    """Rename DataFrame columns with strings from list"""
+    """Rename DataFrame columns with strings from list
+    Parameters
+    ----------
+    
+    Returns
+    -------
+    
+    Example
+    -------
+    >>>rename_df_columns(df: pd.DataFrame, column_names: list)
+    """
     for i, col in enumerate(df.columns):
         df = df.rename(columns={col: column_names[i]})
     return df
@@ -485,7 +563,7 @@ def read_docs_from_mongodb(src_db, src_collection, column_names, query={}, no_id
     -------
     pd.DataFrame
         Resulting DataFrame.
-    example
+    Example
     -------
     >>>src_data = read_docs_from_mongodb(src_db = 'dw', src_collection = 'Asset',
                                        query={}, no_id=True, 
@@ -585,7 +663,7 @@ def read_docs_from_mongodb_collections(src_db, src_collection, column_names, que
         
 def load_as_excel_file(dest_dir, src_flow, file_name, file_extension):
     """Function to load data as excle file     
-    parameters
+    Parameters
     ----------
     dest_dir (str) :
         target folder path
@@ -595,7 +673,7 @@ def load_as_excel_file(dest_dir, src_flow, file_name, file_extension):
         destination file name
     file_extension (str) :
         file extension as xlsx, csv, txt...
-    example
+    Example
     -------
     >>>load_as_excel_file(dest_dir, template_asset_without_prod, 'template_asset', '.csv') 
     """
@@ -620,7 +698,7 @@ def load_data_in_postgres_table(src_data:str, dest_table:str, pguid:str, pgpw:st
         
 def load_data_to_mssql(src_data, dest_table, mssqlserver, mssqldb='DWH', dtype={}, yes='yes',**kwargs):
     """Function to load data in mssql db     
-    parameters
+    Parameters
     ----------
     src_data (str) :
         Source data
@@ -633,7 +711,7 @@ def load_data_to_mssql(src_data, dest_table, mssqlserver, mssqldb='DWH', dtype={
     dtype={} (Dictionnary) : 
         Dictonnary containing source data type
     **kwargs
-    example
+    Example
     -------
     >>>load_data_to_mssql(src_data = src_data, dest_table = 'Hedge', mssqlserver = mssqlserver, mssqldb = mssqldb, if_exists = 'replace', schema = 'stg') 
     """
@@ -683,7 +761,10 @@ def load_docs_to_mongodb(dest_db, dest_collection, src_data, **kwargs):
         
     src_data : str
         
-    **kwargs : 
+    **kwargs :
+    Returns
+    -------
+    
     Example
     -------
     >>>load_docs_to_mongodb(dest_db, dest_collection, src_data, **kwargs)
@@ -719,10 +800,11 @@ def load_data_to_gcbq_from_gcs(uri, write_disposition=None, schema=[], **kwargs)
     tableid : str
     Returns
     ------- 
-    exemple
+    
+    Exemple
     -------
-    load_blob_to_gcs(source_file_name, bucket_name, destination_blob_name, **kwargs)
-    >>>  
+    >>>load_blob_to_gcs(source_file_name, bucket_name, destination_blob_name, **kwargs)
+     
     """
     try:
         os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = kwargs['google_application_credentials'] 
@@ -755,19 +837,21 @@ def load_data_to_gcbq_from_gcs(uri, write_disposition=None, schema=[], **kwargs)
     
 def load_blob_to_gcs(source_file_name, bucket_name, destination_blob_name, **kwargs):
     """Function to load blob to gloogle storage bucket     
-    parameters
-    ==========
-    source_file_name (str) :
+    Parameters
+    ----------
+    source_file_name : str
         The path to your file to upload, "local/path/to/file"
-    bucket_name (str) :
+    bucket_name : str)
         Your-bucket-name, The ID of your GCS bucket         
-    destination_blob_name (str) : 
+    destination_blob_name : str
         storage-object-name, The ID of your GCS object
     **kwargs
-    exemple
-    =======
-    load_blob_to_gcs(source_file_name, bucket_name, destination_blob_name, **kwargs)
-    >>>  
+    Returns
+    -------
+    
+    Example
+    -------
+    >>>load_blob_to_gcs(source_file_name, bucket_name, destination_blob_name, **kwargs)
     """
     try: 
         os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = kwargs['google_application_credentials']
@@ -782,8 +866,8 @@ def load_blob_to_gcs(source_file_name, bucket_name, destination_blob_name, **kwa
         
 def load_data_to_mssqlserver(src_data, dest_table, mssqlserver, mssqldb='DWH', dtype={}, yes='yes',**kwargs):
     """Function to load data in mssql db     
-    parameters
-    ==========
+    Parameters
+    ----------
     src_data (str) :
         Source data
     dest_table (str) :
@@ -795,8 +879,10 @@ def load_data_to_mssqlserver(src_data, dest_table, mssqlserver, mssqldb='DWH', d
     dtype={} (Dictionnary) : 
         Dictonnary containing source data type
     **kwargs
-    exemple
-    =======
+    Returns
+    -------
+    Example
+    -------
     load_data_to_mssql(src_data, dest_table, msqsldriver, mssqlserver, mssqldb, mssqluid, yes=yes, dtype={}, **kwargs)
     >>>  
     """
@@ -833,34 +919,36 @@ def load_data_to_snowflake(snowflakeuser:str, gcs_stg_url:str,
                            snowflakepassword:str, snowflakeaccount:str, sf_dest_table:str,
                            gcs_stage:str, snowflakewarehouse:str, snowflakeschema:str, query:str):
     """Function to load data from gcs stage in snowflake to snowflake table
-    parameters
-    ==========
-    snowflakeuser (str) :
+    Parameters
+    ----------
+    snowflakeuser : str 
         sf User name
-    gcs_stg_url (str) :
+    gcs_stg_url : str
         url of gcs file to stage in snowflake         
-    snowflakepassword (str) : 
+    snowflakepassword : str 
         sf password
-    snowflakeaccount (str) :
+    snowflakeaccount : str 
         sf account
-    sf_dest_table (str) : 
+    sf_dest_table : str 
         Destination table in snowflake
-    gcs_stage (str) :
+    gcs_stage : str 
         Stage name in snowflake particulat schema
-    snowflakewarehouse (str) :
+    snowflakewarehouse : str 
         Snowflake warehouse name
-    snowflakeschema (str) :
+    snowflakeschema : str 
         Dest table schame in snowflake
-    query (str) :
+    query : str 
         Query to copy data from stage and load to sf dest table
-    exemple
-    =======
-    load_data_to_snowflake(snowflakeuser=snowflake_user, gcs_stg_url=gcs_stg_url,
+    Returns
+    ------
+    Example
+    -------
+    >>>load_data_to_snowflake(snowflakeuser=snowflake_user, gcs_stg_url=gcs_stg_url,
                            snowflakepassword=snowflake_password, snowflakeaccount=snowflake_account, 
                            snowflakewarehouse=snowflake_warehouse, snowflakeschema=snowflake_schema,
                            sf_dest_table = sf_dest_table, gcs_stage = gcs_stage, 
                            query=f"COPY INTO {snowflake_schema}.{sf_dest_table} FROM @{snowflake_schema}.{gcs_stage} FILE_FORMAT = (FORMAT_NAME=MY_FILE_FORMAT) ON_ERROR='ABORT_STATEMENT';")
-    >>>  
+      
     """
     try : 
         ctx = snowflake.connector.connect(
@@ -898,8 +986,8 @@ def load_data_to_snowflake(snowflakeuser:str, gcs_stg_url:str,
         
 def excucute_sqlserver_crud_ops(queries:list, mssqlserver:str, mssqldb:str, yes='yes'):
     """Funtion to execute sql server CUD (CREATE, UPDATE, DELETE) operations
-    parameters
-    ==========
+    Parameters
+    ----------
     queries (list) :
         list of queries to execute
     mssqlserver (str) :
@@ -908,8 +996,8 @@ def excucute_sqlserver_crud_ops(queries:list, mssqlserver:str, mssqldb:str, yes=
         sql server db name
     yes (str) :
         trusted connection
-    exemple
-    =======
+    Example
+    -------
     >>>excucute_sqlserver_crud_ops(
     queries=[
         "USE ODS",
@@ -1027,7 +1115,7 @@ def mongodb_crud_ops(mongodb_db:str, mongodb_collection:str, queries:list, **kwa
         
 def excucute_postgres_crud_ops(queries:list, pguid:str, pgpw:str, pgserver:str, pgdb:str, pgport=5432, params=None,):
     """Funtion to execute postgres db CUD (CREATE, UPDATE, DELETE) operations
-    parameters
+    Parameters
     ----------
     queries : list
         list of queries to execute
@@ -1042,8 +1130,10 @@ def excucute_postgres_crud_ops(queries:list, pguid:str, pgpw:str, pgserver:str, 
     pgport : str
         pg port
     params : str  
-        query parameters as denoted as %s  
-    example
+        query parameters as denoted as %s 
+    Retuns
+    ------
+    Example
     -------
     >>>excucute_postgres_crud_ops(
     queries=[
@@ -1090,15 +1180,19 @@ def excucute_postgres_crud_ops(queries:list, pguid:str, pgpw:str, pgserver:str, 
         
 def query_data_from_postgresql(query:str, pguid:str, pgpw:str, pgserver:str, pgport:int, pgdb:str):
     """Etract data from postgres db
-    parameters
+    Parameters
     ----------
-    query (str) :
-    pguid (str) : 
-    pgpw (str) :
-    pgserver (str) :
-    pgport (int) :
-    pgdb (str) :
-    example
+    query : str
+    pguid : str 
+    pgpw : str
+    pgserver : str
+    pgport : int
+    pgdb : str
+    
+    Retuns
+    ------
+    
+    Example
     -------
     >>>query_data_from_postgresql(query='''SELECT * FROM "stagging"."Asset";''', pguid=pguid, 
                                      pgpw=pgpw, pgserver=pgserver, pgport=pgport, pgdb=pgdwhdb)
@@ -1114,7 +1208,7 @@ def query_data_from_postgresql(query:str, pguid:str, pgpw:str, pgserver:str, pgp
         
 def assign_value_to_column(n:int, df:pd.DataFrame, df_:pd.DataFrame, target_col_df:str, args_1_df_:str, args_2_df_:str, args_1_df:str):
     """Function to assign value df column label
-    parameters
+    Parameters
     ----------
     src_df : DataFrame 
         target_df (DataFrame) :
@@ -1122,7 +1216,10 @@ def assign_value_to_column(n:int, df:pd.DataFrame, df_:pd.DataFrame, target_col_
         source data frame column name
     target_col : str
         target data frame column name
-    example
+    Returns
+    -------
+    df : DataFrame
+    Example
     -------
     >>>assign_value_to_df_column(src_df=, target_df=, src_col=, target_col=)
     """
@@ -1153,6 +1250,9 @@ def model_settlement_prices(data_template_hedge:pd.DataFrame, data_settlement_pr
         template hedge pd data frame
     data_settlement_prices : DataFrame
         monthly product settlement prices data frame
+    Returns
+    -------
+    df_modeled_settl_prices : DataFrame
     Example
     -------
     >>>model_settlement_prices(data_template_hedge=, data_settlement_prices=)
@@ -1183,6 +1283,9 @@ def assign_value_to_df_column(src_df:pd.DataFrame, target_df:pd.DataFrame, src_c
         source data frame column name
     target_col : str
         target data frame column name
+    Returns
+    -------
+    
     example
     -------
     >>>assign_value_to_df_column(src_df=, target_df=, src_col=, target_col=)
