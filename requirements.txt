@@ -203,8 +203,6 @@ psycopg2==2.9.3
 psycopg2-binary==2.9.9
 ptyprocess==0.7.0
 pure-eval==0.2.2
-pyasn1==0.4.8
-pyasn1-modules==0.2.8
 pycosat==0.6.4
 pycparser==2.21
 pycryptodomex==3.19.0
