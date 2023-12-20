@@ -489,5 +489,5 @@ def update_figure_m_ppa_m(selected_year_m_ppa_m):
 
 
 if __name__ == '__main__':
-    app.run_server(host='127.0.0.1', port=8050, debug=True)  
+    app.run_server(jupyter_mode="external", host='127.0.0.1', port=8050, debug=True)  
 
