@@ -4,9 +4,9 @@ import os
 import subprocess
 # Call the shell script to change the working directory and run the Python script
 #subprocess.run('.\cd_dir.sh', shell=True)
-repo_path = os.getenv('GITHUB_WORKSPACE', '/mnt/d/local-repo-github/enr_portfolio_modeling/')
+repo_path = os.getenv('GITHUB_WORKSPACE', '/home/runner/work/enr_portfolio_modeling/enr_portfolio_modeling/')
 os.chdir(repo_path)
-sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+#sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 #os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 from etl import*
