@@ -30,8 +30,8 @@ dag = DAG(
     )
 
 etl_as_xlsx_sensor = ExternalTaskSensor(
-    task_id='pipeline_etl_xls_xlsxcsv_sensor',
-    external_dag_id = 'pipeline_xls_xlsxcsv',
+    task_id='pipeline_xlsx_csv_sensor',
+    external_dag_id = 'pipeline_xlsx_csv',
     external_task_id = None,
     dag=dag,
     mode = 'reschedule',

@@ -462,6 +462,22 @@ def date_convert(date_col_to_convert):
     
 
 def convert_date_columns(dataframe, date_format):
+    """
+    Parameters
+    ----------
+    dataframe : pd.DataFrame
+        
+    date_format : str
+        
+    
+    Return
+    ------
+    dataframe : pd.DataFrame
+    
+    Example
+    -------
+    >>>convert_date_columns(dataframe=, date_format=)
+    """
     for col in dataframe.columns:
         if dataframe[col].dtype == 'datetime64[ns]' or 'date' in col.lower():
             try:
@@ -531,7 +547,7 @@ def rename_df_columns(df: pd.DataFrame, column_names: list):
     Parameters
     ----------
     
-    Returns
+    Return
     -------
     
     Example
@@ -897,12 +913,41 @@ def load_data_to_mssqlserver(src_data, dest_table, mssqlserver, mssqldb='DWH', d
         print(f"Data Import to mssql {mssqldb}.{kwargs['schema']}.{dest_table}. error!: " + str(e))
 
 def update_data_types(data_frame: pd.DataFrame, data_type_dict: dict):
+    """Function to change column data type
+    Parameters
+    ----------
+    data_frame : pd.DataFrame
+    
+    data_type_dict : dictionnary
+    Returns
+    -------
+    data_frame : pd.DataFrame
+    Example
+    -------
+    >>>update_data_types(data_frame: pd.DataFrame, data_type_dict: dict)
+    """
     for col, data_type in data_type_dict.items():
         if col in data_frame.columns:
             data_frame[col] = data_frame[col].astype(data_type)
     return data_frame
         
 def read_blob_from_gcs(bucket_name, blob_name, **kwargs):
+    """Function to read blob file from google Cloud Storage bucket
+    Parameters
+    ----------
+    bucket_name : str
+    
+    blob_name : str
+    
+    **kwargs : keywords arguments
+    
+    Returns
+    -------
+    blob : 
+    Example
+    -------
+    >>>read_blob_from_gcs(bucket_name, blob_name, **kwargs)
+    """
     try:
         os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = kwargs['google_application_credentials']
         storage_client = storage.Client() 
@@ -1189,9 +1234,9 @@ def query_data_from_postgresql(query:str, pguid:str, pgpw:str, pgserver:str, pgp
     pgport : int
     pgdb : str
     
-    Retuns
+    Returns
     ------
-    
+    dataframe : pd.DataFrame
     Example
     -------
     >>>query_data_from_postgresql(query='''SELECT * FROM "stagging"."Asset";''', pguid=pguid, 
@@ -1205,6 +1250,57 @@ def query_data_from_postgresql(query:str, pguid:str, pgpw:str, pgserver:str, pgp
         return dataframe
     except Exception as e:
          print(f"An error occurred: {str(e)}")
+            
+def execute_data_queries_from_postgresql(queries, pguid, pgpw, pgserver, pgport, pgdb):
+    """Extract data from PostgreSQL db for multiple queries.
+
+    Parameters
+    ----------
+    queries : dict
+        A dictionary where keys are query names and values are SQL queries.
+    pguid : str
+        Postgre user.
+    pgpw : str
+        Postgres password.
+    pgserver : str
+        Postgres server.
+    pgport : int
+        Postgres server port.
+    pgdb : str
+        Postgres database name.
+
+    Returns
+    -------
+    result : dict
+        A dictionary where keys are query names and values are corresponding DataFrames.
+
+    Example
+    -------
+    >>> queries = {
+            'd_asset': 'SELECT SUM(a."P50")
+                        FROM dwh."D_Asset" a 
+                        WHERE  a."InPlanif"  = FALSE
+                        group by a."Technology";',
+            'stg_asset': 'SELECT SUM(a."P50")
+                        FROM stagging."Asset" a 
+                        WHERE  a."InPlanif" = false
+                        group by a."Technology";'}
+    >>> result = query_data_from_postgresql(queries, pguid, pgpw, pgserver, pgport, pgdb)
+    """
+    result = {}
+    try:
+        engine = create_engine(f"postgresql://{pguid}:{pgpw}@{pgserver}:{pgport}/{pgdb}")
+
+        for query_name, query in queries.items():
+            dataframe = pd.read_sql_query(sql=query, con=engine)
+            result[query_name] = dataframe
+            print(f"Query '{query_name}' executed successfully: {query}")
+
+        return result
+
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+
         
 def assign_value_to_column(n:int, df:pd.DataFrame, df_:pd.DataFrame, target_col_df:str, args_1_df_:str, args_2_df_:str, args_1_df:str):
     """Function to assign value df column label
