@@ -36,28 +36,28 @@ jobs:
         pwd
     - name: Run etl asset
       run: |
-        python src/data/etl_xlsx_xlsxcsv/etl_asset_xlsx.py
+        python /src/data/etl_xlsx_xlsxcsv/etl_asset_xlsx.py
     - name: Run etl profile
       run: |
-        python src/data/etl_xlsx_xlsxcsv/etl_profile_xlsx.py
+        python /src/data/etl_xlsx_xlsxcsv/etl_profile_xlsx.py
     - name: Run etl hedge
       run: |
-        python src/data/etl_xlsx_xlsxcsv/etl_hedge_xlsx.py
+        python /src/data/etl_xlsx_xlsxcsv/etl_hedge_xlsx.py
     - name: Run etl prices
       run: |
-        python src/data/etl_xlsx_xlsxcsv/etl_prices_xlsx.py
+        python /src/data/etl_xlsx_xlsxcsv/etl_prices_xlsx.py
     - name: Run etl settlement prices
       run: |
-        python src/data/etl_xlsx_xlsxcsv/etl_settlement_prices_xlsx.py
+        python /src/data/etl_xlsx_xlsxcsv/etl_settlement_prices_xlsx.py
     - name: Run etl contract prices
       run: |
-        python src/data/etl_xlsx_xlsxcsv/etl_contract_prices_xlsx.py
+        python /src/data/etl_xlsx_xlsxcsv/etl_contract_prices_xlsx.py
     - name: Run etl production asset
       run: |
-        python src/data/etl_xlsx_xlsxcsv/etl_prod_xlsx.py
+        python /src/data/etl_xlsx_xlsxcsv/etl_prod_xlsx.py
     - name: Run etl volume hedge
       run: |
-        python src/data/etl_xlsx_xlsxcsv/etl_vol_hedge_xlsx.py
+        python /src/data/etl_xlsx_xlsxcsv/etl_vol_hedge_xlsx.py
     - name: Run tests
       run: |
         pytest
