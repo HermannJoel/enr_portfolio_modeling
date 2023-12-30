@@ -886,3 +886,24 @@ select current_user;
 delete from dwh."I_Asset" a
 where exists (select 'fait present dans la table de stagging' from stagging.ProdAsset pa where pa.AssetId=a.AssetId);
 commit;
+
+
+select count(*) from dwh."I_ContractPrices" cp
+where cp."ProjectId"='S18' and cp."ContractPrice" is not null;
+select count(*) from dwh."I_Hedge" h
+where h."ProjectId"='S18' and h."P50H" is not null;
+
+select round(sum(ia."P50A")/1000, 2) as production
+from dwh."I_Asset" ia
+where ia."Year"=2022 and ia."ProjectId" in (select da."ProjectId" from dwh."D_Asset" da where da."InPlanif"=False);
+
+select round(sum(da."P50")/1000,2) as productible
+from dwh."D_Asset" da
+where da."InPlanif" = false;
+
+select round(sum(pa."P50A")/1000, 2) as production
+from stagging."ProductionAsset"
+where pa."Year"=2022 and pa."ProjectId" in (select a."ProjectId" from a."Asset" a where a."InPlanif"=False);
+
+
+

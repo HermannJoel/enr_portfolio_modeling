@@ -24,7 +24,7 @@ default_args = {
 }
 
 dag = DAG(
-    'pipeline_xls_xlsxcsv',
+    'pipeline_xlsx_csv',
     description='xlsxcsv to templates',
     schedule_interval='0 20 * * 1-7',
     default_args=default_args
