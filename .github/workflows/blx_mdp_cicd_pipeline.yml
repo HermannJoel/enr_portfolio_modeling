@@ -37,6 +37,7 @@ jobs:
       run: |
         pwd
     - name: Run etl asset
+      working-directory: /mnt/d/local-repo-github/enr_portfolio_modeling/
       run: |
         export PYTHONPATH="${PYTHONPATH}:/home/runner/work/enr_portfolio_modeling/enr_portfolio_modeling"
         python /home/runner/work/enr_portfolio_modeling/enr_portfolio_modeling/src/data/etl_xlsx_xlsxcsv/etl_asset_xlsx.py
