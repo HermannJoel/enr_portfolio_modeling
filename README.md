@@ -4,7 +4,7 @@
 ## 1. Architecture
 
 #### A
-![Image]( /etl_mongodb_mssql.jpeg "enr portfolio modeling")
+![Image]( /etl_mongodb_postgres.jpeg "enr portfolio modeling")
 
 #### B
 ![Image]( /etl_gcs_snowflake.jpeg "gcs ETL PIPELINE")
@@ -13,7 +13,7 @@
 ![Image]( /etl_google_bigquery.jpeg "gcs-Snowflake ETL PIPELINE")
 
 ## 2. Overview
-Pipeline **A** Extracts data from excel files, transform and load processed data in MongoDB collections. Then data are Extracted from the staging db, modeled into facts and dimensions. And Load in SQL server data warehouse. Airflow is used for orchestration. The data dashboard is run in the cloud with dash-ploty application deployed in a Heroku VM. A SSAS multidimensionnal model is built on top of the data warehouse, SSRS dashboards and reports are used to display aggregated data. 
+Pipeline **A** Extracts data from excel files, transform and load processed data in MongoDB collections. Then data are Extracted from the staging db, modeled into facts and dimensions. And Load in postgres data warehouse. Airflow is used for orchestration. The data dashboard is run in the cloud with dash-ploty application deployed in a Heroku VM. 
 
 With pipeline **B**, The data are Extracted from excel source files, transform and loaded as blob files in Google Cloud Storage bucket that serves as data lake. A Snowflake Storage Integration is created and serves as staging area in snowflake datawarehouse. The data are Extracted from staging area, modeled in facts and dimensions. Then loaded in snowflake data warehouse. all the orchestration work is done with Airflow.
 

@@ -19,10 +19,6 @@ future_products = os.path.join(os.path.dirname("__file__"),config['develop']['fu
 wq = os.path.join(os.path.dirname("__file__"),config['develop']['wq'])
 wm = os.path.join(os.path.dirname("__file__"),config['develop']['wm'])
 mongodbatlas_dw_conn_str = os.path.join(os.path.dirname("__file__"),config['develop']['mongodbatlas_dw_conn_str'])
-mssqluid = os.path.join(os.path.dirname("__file__"),config['develop']['mssqluid'])
-mssqlserver = os.path.join(os.path.dirname("__file__"),config['develop']['mssqlserver'])
-msqsldriver = os.path.join(os.path.dirname("__file__"),config['develop']['mssqlserver'])
-mssqldwhdb = os.path.join(os.path.dirname("__file__"),config['develop']['mssqldb'])
 pgpw=os.path.join(os.path.dirname("__file__"),config['develop']['pgpw'])
 pguid=os.path.join(os.path.dirname("__file__"),config['develop']['pguid'])
 pgserver=os.path.join(os.path.dirname("__file__"),config['develop']['pgserver'])
@@ -111,33 +107,6 @@ if __name__ == '__main__':
                                 pguid=pguid, pgpw=pgpw, pgserver=pgserver,  
                                 pgdb=pgdwhdb, schema='stagging', if_exists='append')
     
-    excucute_postgres_crud_ops(queries=[
-        '''UPDATE "stagging"."MarketPrices" 
-           SET "DateId" = to_char("DeliveryPeriod", 'YYYYMMDD')::integer;''',
-        '''UPDATE "stagging"."MarketPrices" 
-           SET "Year" = EXTRACT(YEAR FROM "DeliveryPeriod")::integer;''',
-        '''UPDATE "stagging"."MarketPrices" 
-           SET "Quarter" = EXTRACT(QUARTER FROM "DeliveryPeriod")::integer;''',
-        '''UPDATE "stagging"."MarketPrices" 
-           SET "Month" = EXTRACT(MONTH FROM "DeliveryPeriod")::integer;'''], 
-                               pguid=pguid, 
-                               pgpw=pgpw, 
-                               pgserver=pgserver,
-                               pgport=pgport,
-                               pgdb=pgdwhdb, 
-                               params=None)
-    excucute_postgres_crud_ops(queries=[
-        '''INSERT into dwh."I_MarketPrices" ( 
-        "HedgeId", "DateId", "ProjectId", "DeliveryPeriod", "Year", "Quarter", "Month", "SettlementPrice"
-        ) 
-        select 
-            sp."HedgeId", sp."DateId", sp."ProjectId", sp."DeliveryPeriod", sp."Year", sp."Quarter", sp."Month", sp."SettlementPrice"
-            from stagging."MarketPrices" as sp;'''], 
-                                   pguid=pguid, 
-                                   pgpw=pgpw, 
-                                   pgserver=pgserver,
-                                   pgport=pgport,
-                                   pgdb=pgdwhdb,
-                                   params=None) 
+
 
 

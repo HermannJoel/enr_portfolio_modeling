@@ -13,13 +13,14 @@ import dash
 from dash import html, dcc
 import plotly.graph_objs as go
 from dash.dependencies import Output, Input
+from jupyter_dash import JupyterDash
 import plotly.io as pio
 pio.renderers.default='browser'
 import dash_auth
 import plotly.express as px
 import urllib.parse
 
-username_password_pairs = [['username', 'password'], ['blx_mdp', '04042O22']]
+#username_password_pairs = [['username', 'password'], ['blx_mdp', '04042O22']]
 
 
 #********** Dash App
@@ -32,9 +33,10 @@ SMALL_PLOTS_HEIGHT = 290  # For secondary graphs
 
 #********** Start
 #app = dash.Dash(__name__)
-app = dash.Dash(suppress_callback_exceptions=True)
-auth = dash_auth.BasicAuth(app, username_password_pairs)
-server = app.server
+#app = dash.Dash(suppress_callback_exceptions=True)
+app = JupyterDash(__name__)
+#auth = dash_auth.BasicAuth(app, username_password_pairs)
+#server = app.server
 
 year_count = []
 for year in years['years'].unique():
@@ -489,5 +491,7 @@ def update_figure_m_ppa_m(selected_year_m_ppa_m):
 
 
 if __name__ == '__main__':
-    app.run_server(jupyter_mode="external", host='127.0.0.1', port=8050, debug=True)  
+    #app.run_server(debug=False, host='127.0.0.1', port=8085)
+    app.run_server(mode='jupyterlab')
+    
 

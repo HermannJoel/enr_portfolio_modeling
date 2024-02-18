@@ -80,28 +80,5 @@ if __name__ == '__main__':
     load_data_in_postgres_table(src_data=src_data, dest_table='ContractPrices', 
                                 pguid=pguid, pgpw=pgpw, pgserver=pgserver,  
                                 pgdb=pgdwhdb, schema='stagging', if_exists='append')
-    excucute_postgres_crud_ops(queries=[
-        '''UPDATE "stagging"."ContractPrices" 
-           SET "DateId" = to_char("Date", 'YYYYMMDD')::integer;'''], 
-                                   pguid=pguid, 
-                                   pgpw=pgpw, 
-                                   pgserver=pgserver,
-                                   pgport=pgport,
-                                   pgdb=pgdwhdb,
-                                   params=None)
-    excucute_postgres_crud_ops(queries=[
-        '''INSERT into dwh."I_ContractPrices" ( 
-        "HedgeId", "DateId", "ProjectId", "Project", "TypeHedge", "Date", "Year", "Quarter", "Month", "ContractPrice"
-        ) 
-        select 
-            cp."HedgeId", cp."DateId", cp."ProjectId", cp."Project", cp."TypeHedge", cp."Date", cp."Year", cp."Quarter", cp."Month", cp."ContractPrice"
-            from stagging."ContractPrices" as cp;'''], 
-                                   pguid=pguid, 
-                                   pgpw=pgpw, 
-                                   pgserver=pgserver,
-                                   pgport=pgport,
-                                   pgdb=pgdwhdb,
-                                   params=None)
-    
 
 

@@ -8,26 +8,29 @@ from airflow.operators.bash_operator import BashOperator
 #from airflow.operators.email_operator import EmailOperator
 from airflow.utils.dates import days_ago
 
-next_run = datetime.combine(datetime.now() + timedelta(hours = 1),
+next_run = datetime.combine(datetime.now() + timedelta(minutes = 0),
                                        datetime.min.time())
 
 #next_run = (datetime.now() + timedelta(hours = 1))
 
 default_args = {
     'owner': 'nherm',
-    'start_date': next_run,
+    'depends_on_past': False,
+    'start_date': datetime(2024, 1, 9, 21, 00),
+    'max_active_runs': 1,
     'retries': 1,
-    'retry_delay': timedelta(hours = 1), 
+    'retry_delay': timedelta(minutes = 5), 
     'email': ['hermannjoel.ngayap@gmail.com'], 
-    'email_on_failure': True, 
+    'email_on_failure': False, 
     'email_on_retry': False,
 }
 
 dag = DAG(
-    'pipeline_xlsx_csv',
+    dag_id='pipeline_xlsx_csv',
     description='xlsxcsv to templates',
-    schedule_interval='0 20 * * 1-7',
-    default_args=default_args
+    schedule_interval='0 * * * *', #0 20 * * 1-7
+    default_args=default_args,
+    catchup=False
     )
 
 python_script_path = '/mnt/d/local-repo-github/enr_portfolio_modeling/src/data/etl_xlsx_xlsxcsv/'

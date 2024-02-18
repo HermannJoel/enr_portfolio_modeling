@@ -4,7 +4,7 @@ from datetime import datetime
 import sys
 import configparser
 import os
-os.chdir('D:/local-repo-github/enr_portfolio_modeling/')
+os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
 from etl import*
 
@@ -18,7 +18,7 @@ src_dir = os.path.join(os.path.dirname("__file__"),config['develop']['src_dir'])
 raw_files = os.path.join(os.path.dirname("__file__"),config['develop']['raw_files_dir'])
 dest_dir = os.path.join(os.path.dirname("__file__"),config['develop']['dest_dir'])
 processed_files = os.path.join(os.path.dirname("__file__"),config['develop']['processed_files_dir'])
-temp_dir = os.path.join(os.path.dirname("__file__"),config['develop']['temp_dir'])
+temp_dir = os.path.join(os.path.dirname("__file__"),config['develop']['tempdir'])
 google_application_credentials = os.path.join(os.path.dirname("__file__"),config['develop']['google_application_credentials'])
 datasetid = os.path.join(os.path.dirname("__file__"),config['develop']['datasetid']) #gbq stg ddb
 tableid = os.path.join(os.path.dirname("__file__"),config['develop']['tableid'])
@@ -26,7 +26,7 @@ bucketid = os.path.join(os.path.dirname("__file__"),config['develop']['bucketid'
 mssqluid = os.path.join(os.path.dirname("__file__"),config['develop']['mssqluid'])
 mssqlserver = os.path.join(os.path.dirname("__file__"),config['develop']['mssqlserver'])
 msqsldriver = os.path.join(os.path.dirname("__file__"),config['develop']['mssqlserver'])
-mssqldb = os.path.join(os.path.dirname("__file__"),config['develop']['mssqldw'])
+mssqldb = os.path.join(os.path.dirname("__file__"),config['develop']['mssqldb'])
 uri = os.path.join(os.path.dirname("__file__"),config['develop']['uri'])
 mongodbatlas_stg_conn_str = os.path.join(os.path.dirname("__file__"),config['develop']['mongodbatlas_stg_conn_str']) 
 snowflake_user =  os.path.join(os.path.dirname("__file__"),config['develop']['snowflakeuser'])
