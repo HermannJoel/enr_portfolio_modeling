@@ -74,27 +74,6 @@ if __name__ == '__main__':
     load_data_in_postgres_table(src_data=src_data, dest_table='VolumeHedge', 
                                 pguid=pguid, pgpw=pgpw, pgserver=pgserver,  
                                 pgdb=pgdwhdb, schema='stagging', if_exists='append')
-    excucute_postgres_crud_ops(queries=[
-        '''UPDATE "stagging"."VolumeHedge" 
-           SET "DateId" = to_char("Date", 'YYYYMMDD')::integer;'''], 
-                                   pguid=pguid, 
-                                   pgpw=pgpw, 
-                                   pgserver=pgserver,
-                                   pgport=pgport,
-                                   pgdb=pgdwhdb,
-                                   params=None)
-    excucute_postgres_crud_ops(queries=[
-        '''INSERT into dwh."I_Hedge" (
-        "HedgeId", "DateId", "ProjectId", "Project", "TypeHedge", "Date", "Year", "Quarter", "Month", "P50H", "P90H") 
-        select 
-            vh."HedgeId", vh."DateId", vh."ProjectId", vh."Project", vh."TypeHedge", vh."Date", vh."Year", vh."Quarter", vh."Month", vh."P50", vh."P90" 
-            from stagging."VolumeHedge" as vh;'''], 
-                                   pguid=pguid, 
-                                   pgpw=pgpw, 
-                                   pgserver=pgserver,
-                                   pgport=pgport,
-                                   pgdb=pgdwhdb,
-                                   params=None)
       
     
     

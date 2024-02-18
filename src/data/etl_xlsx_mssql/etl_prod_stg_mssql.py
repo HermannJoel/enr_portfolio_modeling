@@ -80,15 +80,3 @@ src_data.head()
                                    pgport=pgport,
                                    pgdb=pgdwhdb,
                                    params=None)
-    excucute_postgres_crud_ops(queries=[
-        '''INSERT into dwh."I_Asset" (
-        "AssetId", "DateId", "ProjectId", "Project", "Date", "Year", "Quarter", "Month", "P50A", "P90A") 
-        select 
-            pa."AssetId", pa."DateId", pa."ProjectId", pa."Project", pa."Date", pa."Year", pa."Quarter", pa."Month", pa."P50", pa."P90" 
-            from stagging."ProductionAsset" as pa;'''], 
-                                   pguid=pguid, 
-                                   pgpw=pgpw, 
-                                   pgserver=pgserver,
-                                   pgport=pgport,
-                                   pgdb=pgdwhdb,
-                                   params=None)

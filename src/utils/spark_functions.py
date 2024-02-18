@@ -6,6 +6,24 @@ import os
 import sys
 
 
+
+def read_excel_file_spark(spark, path, sheet_name="Sheet1", header=True, **kwargs):
+    """Function to read Excel files using PySpark.
+    Parameters
+    ----------
+    
+    Returns
+    -------
+    
+    Example
+    -------
+    """
+    ext = pathlib.Path(path).suffix
+    if ext in ['.xlsx', '.xls', '.xlsm', '.xlsb', '.odf', '.ods', '.odt']:
+        return spark.read.format("com.crealytics.spark.excel").option("header", header).option("inferSchema", True).option("sheetName", sheet_name).load(path, **kwargs)
+    else:
+        return spark.read.csv(path, header=header, **kwargs)
+    
 def read_spark_df(path:str, n:int)->'DataFrame':
     """Function to read csv file with spark
     Parameters
