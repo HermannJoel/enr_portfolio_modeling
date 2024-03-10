@@ -39,8 +39,9 @@ jobs:
     - name: Run etl asset
       working-directory: /mnt/d/local-repo-github/enr_portfolio_modeling/
       run: |
-        export PYTHONPATH="${PYTHONPATH}:/home/runner/work/enr_portfolio_modeling/enr_portfolio_modeling"
-        python /home/runner/work/enr_portfolio_modeling/enr_portfolio_modeling/src/data/etl_xlsx_xlsxcsv/etl_asset_xlsx.py
+        python /enr_portfolio_modeling/src/data/etl_xlsx_xlsxcsv/etl_asset_xlsx.py
+#       export PYTHONPATH="${PYTHONPATH}:/home/runner/work/enr_portfolio_modeling/enr_portfolio_modeling"
+#       python /home/runner/work/enr_portfolio_modeling/enr_portfolio_modeling/src/data/etl_xlsx_xlsxcsv/etl_asset_xlsx.py
 #    - name: Run etl profile
 #      run: |
 #        python /home/runner/work/enr_portfolio_modeling/enr_portfolio_modeling/src/data/etl_xlsx_xlsxcsv/etl_profile_xlsx.py
