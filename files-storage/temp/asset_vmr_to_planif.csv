@@ -1,0 +1,8 @@
+id,asset_id,projet_id,projet,technologie,cod,mw,taux_succès,puissance_installée,eoh,date_merchant,date_dementelement,repowering,date_msi,en_planif
+104,104,CACHE,Caumont-Chériennes (CC),éolien,2024-02-01,14.400,1,14.400,2772.986,2044-01-31,,,,False
+105,105,CRUI,Cruis,solaire,2024-04-01,13.000,1,13.000,1846.692,2044-03-31,,,,False
+106,106,SEDCA,Seuil du Cambrésis (RIB2),éolien,2024-04-01,19.800,1,19.800,3080.745,2044-03-31,,,,False
+107,107,STAND-RE,Repowering St-André,éolien,2024-12-31,15.000,1,15.000,3110.000,2044-12-30,,,,False
+108,108,LMHE,Le Moulin d'Hestrus (LMH-62),éolien,2025-12-01,68.000,1,68.000,2330.000,2045-11-30,,,,False
+109,109,MAZAG,Mazagran,solaire,2025-12-01,106.000,1,106.000,1493.396,2045-11-30,,,,False
+110,110,HELF,Helfaut (SSO),éolien,2025-12-01,20.000,1,20.000,2416.825,2045-11-30,,,,False

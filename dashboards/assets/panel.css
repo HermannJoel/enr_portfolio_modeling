@@ -1,0 +1,65 @@
+.central-panel0 {
+	background-color: #132E3D;
+	display: inline-block;
+	padding-bottom: 0.25%;
+	padding-left: 2%;
+	padding-right: 2%;
+	padding-top: 0.25%;
+	text-align: center;
+    width: 100%;
+}
+
+.central-panel1 {
+	background-color: #17384A;
+	display: span;
+	padding-bottom: 0.25%;
+	padding-top: 0.25%;
+	text-align: center;
+}
+
+.central-panel1-title {
+	background-color: #17384A;
+	border-color: #3C3F47;
+	border-style: none none solid none;
+	border-width: 1px;
+	display: flex;	
+	font-size: 12px;
+	font-weight: bold;
+	height: 1.7%;
+	justify-content: center;
+	margin-top: 0.05%;
+	padding-top: 0.10%;
+	padding-bottom: 0.25%;
+	width: 100%;
+}
+
+.central-panel2-title {
+	font-size: 12px;
+	font-weight: bold;
+	justify-content: center;
+	margin-top: 0.75%;
+	padding-top: 0.10%;
+	padding-bottom: 0.25%;
+	width: 100%;
+}
+
+.lateral-panel0 {
+	display: inline-block;
+    text-align: center;
+    vertical-align: top;
+	width: 0.5%;
+}
+
+/* To fill screen. height def. as a little bit more than 100 vh */
+.screen-filler {
+    background-color: #0F2430;
+    color: #FFFFFF;
+    height: 100vh;
+    overflow: auto;
+}
+
+.Select--multi .Select-value {
+    background-color: green;
+    border-color: #e3a700;
+    color: orange;
+}

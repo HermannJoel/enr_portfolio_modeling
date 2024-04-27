@@ -1,0 +1,69 @@
+name: blx_mdp
+
+on: 
+  push: 
+    branches: [ "test" ]
+  pull_request: 
+    branches: [ "test" ]
+permissions: 
+  contents: read
+
+jobs: 
+  build-linux:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 5
+    #defaults:
+      #run:
+        #working-directory: ./enr_portfolio_modeling
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.9'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pytest
+        if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        # flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        # flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Print current working directory
+      run: |
+        pwd
+    - name: Run etl asset
+      working-directory: /mnt/d/local-repo-github/enr_portfolio_modeling/
+      run: |
+        python /enr_portfolio_modeling/src/data/etl_xlsx_xlsxcsv/etl_asset_xlsx.py
+#       export PYTHONPATH="${PYTHONPATH}:/home/runner/work/enr_portfolio_modeling/enr_portfolio_modeling"
+#       python /home/runner/work/enr_portfolio_modeling/enr_portfolio_modeling/src/data/etl_xlsx_xlsxcsv/etl_asset_xlsx.py
+#    - name: Run etl profile
+#      run: |
+#        python /home/runner/work/enr_portfolio_modeling/enr_portfolio_modeling/src/data/etl_xlsx_xlsxcsv/etl_profile_xlsx.py
+#    - name: Run etl hedge
+#      run: |
+#        python /home/runner/work/enr_portfolio_modeling/enr_portfolio_modeling/src/data/etl_xlsx_xlsxcsv/etl_hedge_xlsx.py
+#    - name: Run etl prices
+#      run: |
+#        python /home/runner/work/enr_portfolio_modeling/enr_portfolio_modeling/src/data/etl_xlsx_xlsxcsv/etl_prices_xlsx.py
+#    - name: Run etl settlement prices
+#      run: |
+#        python /home/runner/work/enr_portfolio_modeling/enr_portfolio_modeling/src/data/etl_xlsx_xlsxcsv/etl_settlement_prices_xlsx.py
+#    - name: Run etl contract prices
+#      run: |
+#        python /home/runner/work/enr_portfolio_modeling/enr_portfolio_modeling/src/data/etl_xlsx_xlsxcsv/etl_contract_prices_xlsx.py
+#    - name: Run etl production asset
+#      run: |
+#        python /home/runner/work/enr_portfolio_modeling/enr_portfolio_modeling/src/data/etl_xlsx_xlsxcsv/etl_prod_xlsx.py
+#    - name: Run etl volume hedge
+#      run: |
+#        python /home/runner/work/enr_portfolio_modeling/enr_portfolio_modeling/src/data/etl_xlsx_xlsxcsv/etl_vol_hedge_xlsx.py
+    - name: Run tests
+      run: |
+        pytest
+    

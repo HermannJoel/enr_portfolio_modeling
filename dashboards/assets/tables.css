@@ -1,0 +1,41 @@
+.table .table-striped {
+	background-color: #17384A;
+	border-color: #3C3F47;
+	color: #3C3F47;
+	font-size: 12px;
+	padding: 4%;
+}
+
+.table .table-striped > thead {
+	background-color: #17384A;
+	border-color: #FFFFFF;
+	color: #FFFFFF;
+	font-size: 12px;
+	padding: 4%;
+}
+
+.table .table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+	background-color: #17384A;
+	color: #FFFFFF;
+	font-size: 12px;
+	padding: 4%;
+}
+
+.table .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+	background-color: #234253;
+	color: #FFFFFF;
+	font-size: 12px;
+	padding: 4%;
+}
+
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner input:not([type=radio]):not([type=checkbox]){
+    color: white!important;
+    font-family: helvetica!important;
+    font-size: 14px!important;
+	font-weight: bold;
+    text-align: left;
+}
+
+.dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner {
+	margin-top: 34px;
+}
