@@ -1,5 +1,0 @@
-logs/
-plugins/
-airflow.cfg
-airflow.db
-webserver_config.py

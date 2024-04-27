@@ -1,6 +1,6 @@
-.ipynb_checkpoints/
-.Config/
-.__pycache__/
+ipynb_checkpoints/
+Config/
+__pycache__/
 cookies.pkl
 Futures_products_2022.xlsx
 Futures_products_2023.xlsx
