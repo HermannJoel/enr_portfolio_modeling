@@ -4,6 +4,12 @@ __pycache__/
 cookies.pkl
 Futures_products_2022.xlsx
 Futures_products_2023.xlsx
-
+logs/
+plugins/
+airflow.cfg
+airflow.db
+airflow-webserver.pid
+webserver_config.py
+raw/
 
 
