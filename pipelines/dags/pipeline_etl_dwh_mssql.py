@@ -25,7 +25,7 @@ python_val_path = '/mnt/d/local-repo-github/enr_portfolio_modeling/test/'
 dag = DAG(
     dag_id='pipeline_dwh_mssql',
     description='stagging to dwh mssql',
-    schedule_interval= '0 * * * *',   # 0 * * * *(@hourly) 0 0 * * 0 (@weekly) 15 20 * * 1-7 
+    schedule_interval= '45 18 * * 1-7',   # 0 * * * *(@hourly) 0 0 * * 0 (@weekly) 15 20 * * 1-7 
     default_args=default_args,
     catchup=False
     )
@@ -34,12 +34,10 @@ pipeline_stg_mssql_sensor = ExternalTaskSensor(
     task_id='pipeline_dwh_mssql_sensor',
     external_dag_id = 'pipeline_stg_mssql',
     external_task_id = 'etl_asset_stg',
-    check_existence=True,
     allowed_states=['success'],
-    mode = 'reschedule',
-    timeout = 2500,
-    poke_interval=60,
-    execution_delta=timedelta(minutes=1),
+    poke_interval = 60*30,
+    timeout=60*60,
+    execution_delta=timedelta(minutes=15),
     dag=dag,
 )
 
