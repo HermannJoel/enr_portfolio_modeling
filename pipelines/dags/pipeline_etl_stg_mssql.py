@@ -25,7 +25,7 @@ python_script_path = '/mnt/d/local-repo-github/enr_portfolio_modeling/src/data/e
 dag = DAG(
     dag_id='pipeline_stg_mssql',
     description='xlsx to stagging mssql',
-    schedule_interval= '0 * * * *',   # 0 * * * *(@hourly) 0 0 * * 0 (@weekly) 15 20 * * 1-7
+    schedule_interval= '30 18 * * 1-7',   # 0 * * * *(@hourly) 0 0 * * 0 (@weekly) 15 20 * * 1-7
     default_args=default_args,
     catchup=False
     )
@@ -34,12 +34,10 @@ etl_xlsx_csv_sensor = ExternalTaskSensor(
     task_id='pipeline_xlsx_csv_sensor',
     external_dag_id = 'pipeline_xlsx_csv',
     external_task_id = 'etl_asset',
-    check_existence=True,
     allowed_states=['success'],
-    mode = 'reschedule',
-    timeout = 2500,
-    poke_interval=60,
-    execution_delta=timedelta(minutes=1),
+    poke_interval = 60*30,
+    timeout=60*60,
+    execution_delta=timedelta(minutes=15),
     dag=dag,
 )
 
@@ -60,13 +58,6 @@ load_hedge_stg_task = BashOperator(
     bash_command=f'python {python_script_path}'+'etl_hedge_stg_mssql.py',
     dag=dag,
     )
-
-# hedge_scd2_task = PostgresOperator(
-#     task_id='hedge_scd2',
-#     postgres_conn_id='warehouse_con',
-#     sql=f'python {python_script_path}'+'hedge_scd2.sql',
-#     dag=dag,
-#     )
 
 load_prices_stg_task  = BashOperator(
     task_id='etl_prices_stg',
