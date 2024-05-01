@@ -87,13 +87,6 @@ load_vol_hedge_stg_task  = BashOperator(
     bash_command=f'python {python_script_path}'+'etl_vol_hedge_stg_mssql.py',
     dag=dag,
     )
-# email_task = EmailOperator(
-#      task_id='send_email_on_failure',
-#      to="hermannjoel.ngayap@gmail.com",
-#      subject="pipeline_xls_xlsxcsv failed",
-#      html_content='This batch did not run successfully. Check you logs',
-#       )
-
 etl_xlsx_csv_sensor >> load_asset_stg_task >> load_profile_stg_task >> load_hedge_stg_task >> load_prices_stg_task >>[load_settlement_prices_stg_task, load_contract_prices_stg_task, load_prod_asset_stg_task, load_vol_hedge_stg_task] 
 if __name__ == "__main__":
     dag.cli()
