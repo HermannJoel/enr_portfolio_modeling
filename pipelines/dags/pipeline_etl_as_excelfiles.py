@@ -77,15 +77,7 @@ compute_vol_hedge_task  = BashOperator(
     bash_command=f'python {python_script_path}'+'etl_vol_hedge_xlsx.py',
     dag=dag,
     )
-# email_task = EmailOperator(
-#     task_id='send_email_on_failure',
-#     to="hermannjoel.ngayap@gmail.com",
-#     subject="pipeline_xls_xlsxcsv failed",
-#     html_content='This batch did not run successfully. Check you logs',
-#     )
-
 create_asset_task >> create_profile_task >> create_hedge_task >> create_prices_task >> [compute_settl_prices_task, compute_contract_prices_task, compute_prod_asset_task, compute_vol_hedge_task] 
-#>> email_task
 
 if __name__ == "__main__":
     dag.cli()
