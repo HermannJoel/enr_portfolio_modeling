@@ -39,7 +39,7 @@ Data validation tasks are handled with great_expectations.
 
 ## 5. ETL Pipeline
 #### 1. Mssql Pipeline 
-![Image]( /pipeline_msql.jpg "mssql pipeline")
+![Image]( /pipeline_dwh.jpg "mssql pipeline")
 
 ## 6. Staging
 
