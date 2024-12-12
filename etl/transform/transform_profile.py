@@ -5,9 +5,12 @@ import sys
 sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling')
 os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
+import logging.config
 
+logger = logging.getLogger(__name__)
 
 def transform_prod_profile(data_productible, data_profile, data_project_names, data_template_asset):
+    logger.info('transform profile starts!')
     try:
         #To import prod data from as pd data frame  
         df = data_productible
@@ -88,9 +91,12 @@ def transform_prod_profile(data_productible, data_profile, data_project_names, d
         
         template_asset_with_prod = pd.merge(data_template_asset, df_productibles__, how="left", on=['projet_id', 'projet'])
         
-        return df_productibles__, profile_id, profile, mean_profile, template_asset_with_prod
-    
     except Exception as e:
-        print("Template profile transformation error!: "+str(e))
+        logger.error(e)
+        return
+        print("transform profile error!: "+str(e))
+        
+    logger.info('transform profile ends!')    
+    return df_productibles__, profile_id, profile, mean_profile, template_asset_with_prod
     
 

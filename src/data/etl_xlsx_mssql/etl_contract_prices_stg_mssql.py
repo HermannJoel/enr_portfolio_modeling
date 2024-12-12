@@ -14,12 +14,7 @@ config_file=os.path.join(os.path.dirname("__file__"), 'Config/config.ini')
 config=configparser.ConfigParser(allow_no_value=True)
 config.read(config_file)
 
-src_dir = os.path.join(os.path.dirname("__file__"),config['develop']['src_dir'])
-dest_dir = os.path.join(os.path.dirname("__file__"),config['develop']['processed_files_dir'])
-template_asset = os.path.join(os.path.dirname("__file__"),config['develop']['template_asset'])
-ppa = os.path.join(os.path.dirname("__file__"),config['develop']['ppa'])
-template_hedge = os.path.join(os.path.dirname("__file__"),config['develop']['template_hedge'])
-template_prices = os.path.join(os.path.dirname("__file__"),config['develop']['template_prices'])
+contract_prices = os.path.join(os.path.dirname("__file__"),config['develop']['contract_prices'])
 mongodbatlas_dw_conn_str = os.path.join(os.path.dirname("__file__"),config['develop']['mongodbatlas_dw_conn_str'])
 mssqluid = os.path.join(os.path.dirname("__file__"),config['develop']['mssqluid'])
 mssqlserver = os.path.join(os.path.dirname("__file__"),config['develop']['mssqlserver'])
@@ -32,12 +27,14 @@ pgdwhdb=os.path.join(os.path.dirname("__file__"),config['develop']['pgdwhdb'])
 pgport=os.path.join(os.path.dirname("__file__"),config['develop']['pgport'])
 
 if __name__ == '__main__':
-    df_hedge, df_asset, df_ppa, df_prices = extract_contract_prices(template_hedge_path=template_hedge, template_asset_path=template_asset, ppa_path=ppa, template_prices_path=template_prices)  
-    prices_planif = transform_contract_prices_planif(data_hedge=df_hedge)
-    prices_ppa = transform_contract_price_ppa(template_asset=df_asset, data_ppa=df_ppa)
-    prices_oa_cr = transform_contract_prices_inprod(template_asset=df_asset, template_hedge=df_hedge, template_prices=df_prices , data_ppa=df_ppa)
-    data_contract_prices = merge_data_frame(prices_planif, prices_ppa, prices_oa_cr)
-    load_contract_prices_all(dest_dir = dest_dir, src_flow = data_contract_prices, file_name = 'contract_prices', file_extension = '.csv')
+    #df_hedge, df_asset, df_ppa, df_prices = extract_contract_prices(template_hedge_path=template_hedge, template_asset_path=template_asset, ppa_path=ppa, template_prices_path=template_prices)  
+    #prices_planif = transform_contract_prices_planif(data_hedge=df_hedge)
+    #prices_ppa = transform_contract_price_ppa(template_asset=df_asset, data_ppa=df_ppa)
+    #prices_oa_cr = transform_contract_prices_inprod(template_asset=df_asset, template_hedge=df_hedge, template_prices=df_prices , data_ppa=df_ppa)
+    #data_contract_prices = merge_data_frame(prices_planif, prices_ppa, prices_oa_cr)
+    #load_contract_prices_all(dest_dir = dest_dir, src_flow = data_contract_prices, file_name = 'contract_prices', file_extension = '.csv')
+    
+    data_contract_prices=read_excel_file(contract_prices)
     load_docs_to_mongodb(dest_db='dw', dest_collection='ContractPrices', 
                          src_data= data_contract_prices, 
                          date_format = '%Y-%m-%d', 

@@ -906,4 +906,61 @@ from stagging."ProductionAsset"
 where pa."Year"=2022 and pa."ProjectId" in (select a."ProjectId" from a."Asset" a where a."InPlanif"=False);
 
 
+delete from dwh."I_Asset" ia
+where exists (select 'fait present dans la table de stagging' from stagging."ProductionAsset" stga 
+where ia."ProjectId"=stga."ProjectId" and  ia."AssetId"=stga."AssetId" and ia."Date"=stga."Date")
+returning ia."Id";
+
+
+delete from dwh."I_Hedge" ih
+where exists (select 'fait present dans la table de stagging' from stagging."VolumeHedge" stgh 
+where ih."HedgeId"=stgh."HedgeId" and ih."ProjectId"=stgh."ProjectId" and ih."Date"=stgh."Date")
+returning ih."Id";
+
+
+MERGE dwh."D_Asset" AS DST
+USING staging."Asset" AS SRC
+ON (SRC."AssetId" = DST."AssetId" AND SRC."ProjectId" = DST."ProjectId")
+WHEN NOT MATCHED THEN
+INSERT ("AssetId", "ProjectId", "Project", "Technology", "Cod", "MW", "SuccessPct", "InstalledPower", "Eoh", 
+"DateMerchant", "DismentleDate", "Repowering", "DateMsi", "InPlanif", "P50", "P90")
+VALUES (SRC."AssetId", SRC."ProjectId", SRC."Project", SRC."Technology", SRC."Cod", SRC."MW", SRC."SuccessPct", 
+SRC."InstalledPower", SRC."Eoh", SRC."DateMerchant", SRC."DismentleDate", SRC."Repowering", SRC."DateMsi", SRC."InPlanif", 
+SRC."P50", SRC."P90")
+WHEN MATCHED 
+AND (
+ ISNULL(DST."Project",'') <> ISNULL(SRC."Project",'') 
+ OR ISNULL(DST."Technology",'') <> ISNULL(SRC."Technology",'') 
+ OR ISNULL(DST."Cod",'') <> ISNULL(SRC."Cod",'')
+ OR ISNULL(DST."MW",'') <> ISNULL(SRC."MW",'')
+ OR ISNULL(DST."SuccessPct",'') <> ISNULL(SRC."SuccessPct",'')
+ OR ISNULL(DST."InstalledPower",'') <> ISNULL(SRC."InstalledPower",'')
+ OR ISNULL(DST."Eoh",'') <> ISNULL(SRC."Eoh",'')
+ OR ISNULL(DST."DateMerchant",'') <> ISNULL(SRC."DateMerchant",'')
+ OR ISNULL(DST."DismentleDate",'') <> ISNULL(SRC."DismentleDate",'')
+ OR ISNULL(DST."Repowering",'') <> ISNULL(SRC."Repowering",'')
+ OR ISNULL(DST."DateMsi",'') <> ISNULL(SRC."DateMsi",'')
+ OR ISNULL(DST."InPlanif",'') <> ISNULL(SRC."InPlanif",'')
+ OR ISNULL(DST."P50",'') <> ISNULL(SRC."P50",'')
+ OR ISNULL(DST."P90",'') <> ISNULL(SRC."P90",'')
+ )
+THEN UPDATE 
+SET 
+ DST."Project" = SRC."Project" 
+ ,DST."Technology = SRC."Technology" 
+ ,DST."Cod = SRC."Cod"
+ ,DST."MW = SRC."MW"
+ ,DST."SuccessPct" = SRC."SuccessPct"
+ ,DST."InstalledPower" = SRC."InstalledPower"
+ ,DST."Eoh" = SRC."Eoh"
+ ,DST."DateMerchant" = SRC."DateMerchant" 
+ ,DST."DismentleDate" = SRC."DismentleDate"
+ ,DST."Repowering" = SRC."Repowering"
+ ,DST."DateMsi" = SRC."DateMsi"
+ ,DST."InPlanif" = SRC."InPlanif"
+ ,DST."P50" = SRC."P50"
+ ,DST."P90" = SRC."P90"
+ ;
+
+
 

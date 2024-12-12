@@ -18,6 +18,10 @@ from selenium.webdriver.common.keys import Keys
 from datetime import datetime as dt
 import os
 import sys
+import logging.config
+
+logger = logging.getLogger(__name__)
+
 sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling')
 os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 

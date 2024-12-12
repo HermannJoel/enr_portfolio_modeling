@@ -14,8 +14,11 @@ pd.options.mode.chained_assignment = None
 sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
+import logging.config
 
 temp_dir='/mnt/d/local-repo-github/enr_portfolio_modeling/files-storage/temp/'
+
+logger = logging.getLogger(__name__)
 
 
 def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
@@ -33,6 +36,7 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
     --------
     >>>transform_asset(data_asset_vmr, data_asset_planif, **kwargs)
     """
+    logger.info('transform asset starts!')
     print('create template asset starts!:\n')
     try:
         #To create a list containing parcs that are out of service
@@ -249,7 +253,11 @@ def transform_asset(data_asset_vmr, data_asset_planif, **kwargs):
         #To create a column containing row number
         asset_vmr_planif.drop("id", axis=1, inplace=True)
         template_asset_without_prod=asset_vmr_planif.assign(id=[1 + i for i in xrange(len(asset_vmr_planif))])[['id'] + asset_vmr_planif.columns.tolist()]
-        print('template asset ends!:\n')
-        return template_asset_without_prod
     except Exception as e:
-        print("Template asset transformation error!: "+str(e))
+        logger.error(e)
+        return
+        print("template asset transformation error!: "+str(e))
+    
+    logger.info("transform asset ends!")
+    print('template asset ends!:\n')
+    return template_asset_without_prod
