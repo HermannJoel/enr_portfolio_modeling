@@ -35,7 +35,7 @@ if __name__ == '__main__':
     src_data = transform_prod_asset(data_prod=df_prod, mean_pct=df_mean_profile, prod_pct=df_profile, 
                                     sub_asset=sub_df_asset, profile=df_profile, asset=df_asset)   
     load_prod(dest_dir = dest_dir, src_flow = src_data, file_name='production_asset', file_extension='.csv')
-src_data.head()
+
     load_docs_to_mongodb(dest_db='dw', dest_collection='ProductionAsset', 
                          src_data=src_data, 
                          date_format = '%Y-%m-%d', 

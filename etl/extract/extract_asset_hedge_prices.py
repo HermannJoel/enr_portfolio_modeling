@@ -4,15 +4,18 @@ import sys
 sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling')
 os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
+import logging.config
+
+logger = logging.getLogger(__name__)
 
 
 def extract_asset_hedge_prices(prod_asset_path, vol_hedge_path, template_hedge_path, template_asset_path, contract_prices_path, settl_prices_path):
-    ''' Function to extract excel files.
+    '''Function to extract excel files.
     Parameters
-    ==========
-    prod_asset_path: str
+    ----------
+    prod_asset_path : str
         path excel file containing data asset in prod
-    vol_hedge_path: str
+    vol_hedge_path : str
         path excel file containing data asset in planif
     template_hedge_path : str
     
@@ -22,12 +25,13 @@ def extract_asset_hedge_prices(prod_asset_path, vol_hedge_path, template_hedge_p
     
     settl_prices_path : str
     Returns
-    =======
-    df_asset_vmr: DataFrame
+    -------
+    df_asset_vmr : DataFrame
         asset vmr dataframe
-    df_planif: DataFrame
+    df_planif : DataFrame
         asset planif dataframe
     '''
+    logger.info("extract asset hedge starts!")
     try:
         df_prod_asset = rename_df_columns(df=read_excel_file(prod_asset_path, usecols=['asset_id', 'projet_id', 'date', 'année', 'trim', 'mois', 'p50_adj', 'p90_adj']), 
                                           column_names=['asset_id', 'projet_id', 'date', 'année', 'trim', 'mois', 'p50_a', 'p90_a'])
@@ -37,7 +41,11 @@ def extract_asset_hedge_prices(prod_asset_path, vol_hedge_path, template_hedge_p
         df_template_asset = read_excel_file(template_asset_path, usecols=['asset_id', 'projet_id', 'cod', 'date_merchant', 'date_dementelement'])
         df_contract_prices = read_excel_file(contract_prices_path)
         df_settlement_prices = read_excel_file(settl_prices_path, usecols=['DeliveryPeriod', 'SettlementPrice'])
-        
-        return df_prod_asset, df_vol_hedge, df_template_hedge, df_template_asset, df_contract_prices, df_settlement_prices  
+          
     except Exception as e:
-        print("Data extraction error!: "+str(e))
+        logger.error(e)
+        return
+        print("extract asset hedge error!: "+str(e))
+        
+    logger.info("extract asset hedge ends!")
+    return df_prod_asset, df_vol_hedge, df_template_hedge, df_template_asset, df_contract_prices, df_settlement_prices

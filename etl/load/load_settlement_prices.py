@@ -5,6 +5,9 @@ from datetime import datetime, timedelta
 sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling')
 os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
 from src.utils.functions import*
+import logging.config
+
+logger = logging.getLogger(__name__)
 
     
 def load_settlement_prices_as_excel(dest_dir, src_flow, file_name, file_extension):

@@ -24,6 +24,18 @@ pgport=os.path.join(os.path.dirname("__file__"),config['develop']['pgport'])
 
 if __name__ == '__main__':
     excucute_postgres_crud_ops(queries=[
+        '''delete from dwh."I_Asset" ia 
+        where exists (select 'fait present dans la table de stagging' from stagging."ProductionAsset" stga 
+        where ia."ProjectId"=stga."ProjectId" and  ia."AssetId"=stga."AssetId" and ia."Date"=stga."Date") 
+        returning ia."Id";'''], 
+                               pguid=pguid, 
+                               pgpw=pgpw, 
+                               pgserver=pgserver,
+                               pgport=pgport,
+                               pgdb=pgdwhdb,
+                               params=None
+                              )
+    excucute_postgres_crud_ops(queries=[
         '''INSERT into dwh."I_Asset" (
         "AssetId", "DateId", "ProjectId", "Project", "Date", "Year", "Quarter", "Month", "P50A", "P90A") 
         select 

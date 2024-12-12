@@ -34,6 +34,19 @@ if __name__ == '__main__':
                                    pgport=pgport,
                                    pgdb=pgdwhdb,
                                    params=None)
+    
+    excucute_postgres_crud_ops(queries=[
+        '''delete from dwh."I_Hedge" ih 
+        where exists (select 'fait present dans la table de stagging' from stagging."VolumeHedge" stgh 
+        where ih."HedgeId"=stgh."HedgeId" and ih."ProjectId"=stgh."ProjectId" and ih."Date"=stgh."Date") 
+        returning ih."Id";'''], 
+                               pguid=pguid, 
+                               pgpw=pgpw, 
+                               pgserver=pgserver,
+                               pgport=pgport,
+                               pgdb=pgdwhdb,
+                               params=None
+                              )
     excucute_postgres_crud_ops(queries=[
         '''INSERT into dwh."I_Hedge" (
         "HedgeId", "DateId", "ProjectId", "Project", "TypeHedge", "Date", "Year", "Quarter", "Month", "P50H", "P90H") 

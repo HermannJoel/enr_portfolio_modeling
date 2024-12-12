@@ -4,6 +4,7 @@ from datetime import datetime
 xrange = range
 import warnings
 import os
+import sys
 import pathlib
 import psycopg2
 from psycopg2 import sql
@@ -21,6 +22,85 @@ from snowflake.connector.pandas_tools import write_pandas
 import csv
 from io import StringIO
 from unidecode import unidecode
+import logging.config
+
+
+# def log(message, is_error=False, include_checkmark=True,
+#        log_file_path:str='/mnt/d/local-repo-github/enr_portfolio_modeling/logs/etl_logs'):
+#     """Function to capture etl logs and record in a text file
+#     parameters
+#     ----------
+#     message : str 
+#         message to display in the log (string) :
+#     is_error : bool 
+#         whether the job failed, default = False
+#     include_checkmark : bool
+#         whether success checkmark is included, default = true
+#     log_file_path : str
+#         path where the log file will be store
+#     Returns
+#     -------
+#     file : .txt
+#         file that capture etl logs
+    
+#     example
+#     -------
+#     >>>log(message, is_error=False, 
+#     include_checkmark=True,
+#     log_file_path=/mnt/d/local-repo-github/enr_portfolio_modeling/logs/etl_logs
+#     )
+#     """
+#     timestamp_format = '%Y-%b-%d-%H:%M:%S'  # Year-Monthname-Day-Hour-Minute-Second
+#     current_datetime = datetime.now()
+#     loging_timestamp = current_datetime.strftime('%Y%m%d%H%M%S')
+#     timestamp = current_datetime.strftime(timestamp_format)
+     
+    
+#     if include_checkmark:
+#         symbol = '✓' if not is_error else '✗'
+#     else:
+#         symbol = ''
+    
+#     log_message = f"[{timestamp}] {symbol} {message}\n"
+    
+#     with open(f"{log_file_path}/logfile_{loging_timestamp}.txt", "a", encoding='utf-8') as f:
+#         f.write(log_message)
+        
+    
+# def logger(log_file_path:str='/mnt/d/local-repo-github/enr_portfolio_modeling/logs/'):
+#     """Function to
+#     parameters
+#     ----------
+#     log_file_path : str
+#         path where the log file will be store
+#     Returns
+#     -------
+#     file : .log
+#         file that capture etl logs
+    
+#     example
+#     -------
+#     >>>logger().info("Extract assests Starts!!")
+#     """
+#     sys.path.append('/mnt/d/local-repo-github/enr_portfolio_modeling')
+#     os.chdir('/mnt/d/local-repo-github/enr_portfolio_modeling/')
+#     logger = logging.getLogger(__name__)
+#     logger.setLevel(logging.DEBUG)
+#     config_file=os.path.join(os.path.dirname('__file__'), 'Config/config.ini') 
+#     config=configparser.ConfigParser(allow_no_value=True)
+#     config.read(config_file)
+#     JobConfig = config['develop']
+#     formatter = logging.Formatter('%(levelname)s:  %(asctime)s:  %(process)s:  %(funcName)s:  %(message)s')
+#     ##creating handler
+#     current_datetime = datetime.now()
+#     loging_timestamp = current_datetime.strftime('%Y%m%d%H%M%S')
+#     stream_handler = logging.StreamHandler()
+#     #file_handler = logging.FileHandler(f"JobConfig['log_name']")
+#     file_handler = logging.FileHandler(f"{log_file_path}/portfolio_modeling_{loging_timestamp}.log")
+#     file_handler.setFormatter(formatter)
+#     logger.addHandler(file_handler)
+    
+#     return logger
 
 def remove_p50_p90_type_hedge(data, *args, **kwargs):
     """udf to remove p50 p90 values based on date_debut and date_fin
@@ -243,11 +323,14 @@ def choose_cwd(**kwargs):
         
 
 def read_excel_file(path, **kwargs):
-    ext=pathlib.Path(path).suffix
-    if ext in ['.xlsx', '.xls', '.xlsm', '.xlsb', '.odf', '.ods', '.odt']:
-        return pd.read_excel(path, **kwargs)
-    else: 
-        return pd.read_csv(path, **kwargs)
+    try:
+        ext=pathlib.Path(path).suffix
+        if ext in ['.xlsx', '.xls', '.xlsm', '.xlsb', '.odf', '.ods', '.odt']:
+            return pd.read_excel(path, **kwargs)
+        else: 
+            return pd.read_csv(path, **kwargs)
+    except Exception as e:
+        print("read error!: "+str(e))
    
     
 def format_float(df, column, decimals=2):
@@ -256,8 +339,6 @@ def format_float(df, column, decimals=2):
  
 def select_columns(data, *args):
     """select columns from a data frame
-    
-    
     """
     columns=args
     list=[]
@@ -1399,7 +1480,8 @@ def assign_value_to_df_column(src_df:pd.DataFrame, target_df:pd.DataFrame, src_c
     except Exception as e:
         print(f"An error occurred: {str(e)}")
         
-    
+        
+        
 
 
 
